@@ -64,10 +64,10 @@ const Hero: React.FC<Props> = ({ locale, total }) => {
             className="px-4 py-5 sm:px-6"
             spotlightColor="rgba(217, 164, 65, 0.18)"
           >
-            <p className="text-[10px] uppercase tracking-widest text-muted">
+            <p className="font-mono text-[10px] uppercase tracking-widest text-muted">
               {stat.label}
             </p>
-            <p className="mt-1.5 text-2xl font-semibold tracking-tight text-ink tabular-nums sm:text-3xl">
+            <p className="mt-1.5 font-display text-2xl font-semibold tracking-tight text-ink tabular-nums sm:text-3xl">
               <CountUp to={stat.value} duration={2} separator="," />
             </p>
           </SpotlightCard>

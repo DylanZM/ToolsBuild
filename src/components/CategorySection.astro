@@ -20,7 +20,7 @@ const num = String(index).padStart(2, "0");
 <section id={category.slug} data-spy-section data-name={category.name[locale]} data-num={num} class="scroll-mt-24">
   <div class="mb-6 flex items-end justify-between gap-6 border-b border-line pb-4">
     <div class="flex items-baseline gap-4">
-      <span class="text-[11px] font-medium tracking-[0.2em] text-accent tabular-nums"
+      <span class="font-mono text-[11px] font-medium tracking-[0.2em] text-accent tabular-nums"
         >{num}</span
       >
       <div>
@@ -32,7 +32,7 @@ const num = String(index).padStart(2, "0");
         </p>
       </div>
     </div>
-    <span class="hidden shrink-0 text-[11px] uppercase tracking-widest text-muted sm:block">
+    <span class="hidden shrink-0 font-mono text-[11px] uppercase tracking-widest text-muted sm:block">
       {links.length} {t("section.items")}
     </span>
   </div>

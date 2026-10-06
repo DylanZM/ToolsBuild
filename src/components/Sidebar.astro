@@ -68,7 +68,7 @@ const items = categories.map((c, i) => ({
     aria-label={t("nav.categories")}
   >
     <p
-      class="px-2 pb-3 pt-2 text-[10px] uppercase tracking-[0.2em] text-muted lg:pt-0"
+      class="px-2 pb-3 pt-2 font-mono text-[10px] uppercase tracking-[0.2em] text-muted lg:pt-0"
     >
       {t("nav.categories")}
     </p>
@@ -83,12 +83,12 @@ const items = categories.map((c, i) => ({
               class="group flex items-center justify-between gap-3 rounded-md px-2 py-1.5 text-[12.5px] tracking-tight text-muted transition-colors hover:bg-surface-2 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             >
               <span class="flex min-w-0 items-center gap-2.5">
-                <span class="spy-num text-[10px] tabular-nums tracking-wider text-accent/70">
+                <span class="spy-num font-mono text-[10px] tabular-nums tracking-wider text-accent/70">
                   {item.num}
                 </span>
                 <span class="truncate">{item.short}</span>
               </span>
-              <span class="spy-count text-[10px] tabular-nums opacity-70">
+              <span class="spy-count font-mono text-[10px] tabular-nums opacity-70">
                 {item.count}
               </span>
             </a>
@@ -99,7 +99,7 @@ const items = categories.map((c, i) => ({
   </nav>
 
   <div
-    class="hidden shrink-0 border-t border-line px-5 py-3.5 text-[11px] tabular-nums text-muted lg:block"
+    class="hidden shrink-0 border-t border-line px-5 py-3.5 font-mono text-[11px] tabular-nums text-muted lg:block"
   >
     {links.length} {t("stat.links")}
   </div>

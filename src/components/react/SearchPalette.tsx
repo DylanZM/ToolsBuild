@@ -214,7 +214,7 @@ const SearchPalette: React.FC<Props> = ({ items, locale }) => {
                     {item.desc}
                   </span>
                 </span>
-                <span className="shrink-0 rounded border border-line px-1.5 py-0.5 text-[10px] uppercase tracking-wider text-muted">
+                <span className="shrink-0 rounded border border-line px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-muted">
                   {catName(item.category)}
                 </span>
               </a>
@@ -222,7 +222,7 @@ const SearchPalette: React.FC<Props> = ({ items, locale }) => {
           )}
         </div>
 
-        <div className="flex items-center justify-between border-t border-line px-4 py-2.5 text-[10.5px] uppercase tracking-wider text-muted">
+        <div className="flex items-center justify-between border-t border-line px-4 py-2.5 font-mono text-[10.5px] uppercase tracking-wider text-muted">
           <span>
             {results.length} {t("search.results")}
           </span>

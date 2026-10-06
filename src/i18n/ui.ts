@@ -51,7 +51,7 @@ export const ui = {
     "card.visit": "Visitar",
     "card.newTab": "(se abre en una pestaña nueva)",
 
-    "footer.built": "Hecho con Astro, Tailwind y Fira Code.",
+    "footer.built": "Hecho con Astro, Tailwind, Archivo e Inter.",
     "footer.rights": "Todos los derechos reservados.",
     "footer.navigate": "Navegar",
     "footer.note": "Curado con esmero. Los recursos pertenecen a sus autores.",
@@ -110,7 +110,7 @@ export const ui = {
     "card.visit": "Visit",
     "card.newTab": "(opens in a new tab)",
 
-    "footer.built": "Built with Astro, Tailwind and Fira Code.",
+    "footer.built": "Built with Astro, Tailwind, Archivo and Inter.",
     "footer.rights": "All rights reserved.",
     "footer.navigate": "Navigate",
     "footer.note": "Curated with care. Resources belong to their authors.",
