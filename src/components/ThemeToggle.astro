@@ -1,0 +1,63 @@
+---
+interface Props {
+  label: string;
+}
+const { label } = Astro.props;
+---
+
+<button
+  type="button"
+  data-theme-toggle
+  aria-label={label}
+  class="grid h-8 w-8 place-items-center rounded-md border border-line text-muted transition-colors hover:border-accent/50 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+>
+  <svg
+    data-icon-sun
+    class="hidden dark:block"
+    width="14"
+    height="14"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    ><circle cx="12" cy="12" r="4"></circle><path
+      d="M12 2v2"></path><path d="M12 20v2"></path><path
+      d="m4.93 4.93 1.41 1.41"></path><path
+      d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path
+      d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path
+      d="m19.07 4.93-1.41 1.41"></path></svg
+  >
+  <svg
+    data-icon-moon
+    class="block dark:hidden"
+    width="14"
+    height="14"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    ><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg
+  >
+</button>
+
+<script>
+  function bind() {
+    document.querySelectorAll<HTMLButtonElement>("[data-theme-toggle]").forEach((btn) => {
+      if (btn.dataset.bound) return;
+      btn.dataset.bound = "1";
+      btn.addEventListener("click", () => {
+        const isDark = document.documentElement.classList.toggle("dark");
+        document.documentElement.style.colorScheme = isDark ? "dark" : "light";
+        try {
+          localStorage.setItem("theme", isDark ? "dark" : "light");
+        } catch {}
+      });
+    });
+  }
+  bind();
+  document.addEventListener("astro:page-load", bind);
+</script>

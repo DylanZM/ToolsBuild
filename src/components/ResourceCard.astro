@@ -1,0 +1,89 @@
+---
+import type { Link } from "../data/links";
+import { faviconUrl, domainOf } from "../lib/url";
+import type { Locale } from "../i18n/ui";
+
+interface Props {
+  link: Link;
+  locale: Locale;
+  index?: number;
+}
+
+const { link, locale, index = 0 } = Astro.props;
+const href = link.url;
+---
+
+<a
+  href={href}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="group relative flex flex-col gap-3 rounded-xl border border-line bg-surface-2 p-4 transition-all duration-300 ease-out-expo hover:-translate-y-0.5 hover:border-accent/50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:p-5"
+  data-search-item
+  data-name={link.name.toLowerCase()}
+  data-desc={link.desc[locale].toLowerCase()}
+  data-tags={link.tags.join(" ").toLowerCase()}
+>
+  <div class="flex items-start justify-between gap-3">
+    <div class="flex items-center gap-3 min-w-0">
+      <span
+        class="relative grid h-9 w-9 shrink-0 place-items-center overflow-hidden rounded-lg border border-line bg-surface"
+      >
+        <img
+          src={faviconUrl(link.url)}
+          alt=""
+          width="18"
+          height="18"
+          loading="lazy"
+          decoding="async"
+          class="h-[18px] w-[18px] object-contain opacity-80 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0"
+        />
+      </span>
+      <div class="min-w-0">
+        <h3
+          class="truncate text-[13px] font-medium tracking-tight text-ink transition-colors group-hover:text-accent"
+        >
+          {link.name}
+        </h3>
+        <p class="truncate text-[11px] text-muted">{domainOf(link.url)}</p>
+      </div>
+    </div>
+    <span
+      aria-hidden="true"
+      class="mt-1 shrink-0 text-muted opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 -translate-x-1"
+    >
+      <svg
+        width="13"
+        height="13"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        ><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg
+      >
+    </span>
+  </div>
+
+  <p class="text-[12.5px] leading-relaxed text-muted line-clamp-2">
+    {link.desc[locale]}
+  </p>
+
+  {
+    link.tags.length > 0 && (
+      <div class="mt-auto flex flex-wrap gap-1.5 pt-1">
+        {link.tags.slice(0, 3).map((tag) => (
+          <span class="rounded border border-line px-1.5 py-0.5 text-[10px] uppercase tracking-wider text-muted transition-colors group-hover:border-accent/40 group-hover:text-ink">
+            {tag}
+          </span>
+        ))}
+      </div>
+    )
+  }
+
+  {
+    link.featured && (
+      <span class="absolute -top-px left-4 h-px w-8 bg-accent" aria-hidden="true" />
+    )
+  }
+</a>

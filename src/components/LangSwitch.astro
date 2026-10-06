@@ -1,0 +1,35 @@
+---
+import type { Locale } from "../i18n/ui";
+import { switchLocalePath } from "../i18n/path";
+
+interface Props {
+  locale: Locale;
+  label: string;
+}
+const { locale, label } = Astro.props;
+const href = switchLocalePath(Astro.url.pathname, locale);
+const nextLang = locale === "es" ? "EN" : "ES";
+---
+
+<a
+  href={href}
+  hreflang={locale === "es" ? "en" : "es"}
+  aria-label={label}
+  class="flex h-8 items-center gap-1.5 rounded-md border border-line px-2.5 text-[11px] font-medium uppercase tracking-widest text-muted transition-colors hover:border-accent/50 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+>
+  <svg
+    width="13"
+    height="13"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+    ><circle cx="12" cy="12" r="10"></circle><path
+      d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path
+      d="M2 12h20"></path></svg
+  >
+  <span data-lang-label>{nextLang}</span>
+</a>

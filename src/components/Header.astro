@@ -1,0 +1,101 @@
+---
+import type { Locale } from "../i18n/ui";
+import { createT } from "../i18n/ui";
+import { localePath } from "../i18n/path";
+import { categories } from "../data/categories";
+import ThemeToggle from "./ThemeToggle.astro";
+import LangSwitch from "./LangSwitch.astro";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = createT(locale);
+
+const navItems = categories.map((c) => ({
+  href: localePath(locale, `/${c.slug}`),
+  label: c.name[locale],
+}));
+
+const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "/en/";
+---
+
+<header
+  class="sticky top-0 z-40 border-b border-line bg-surface/85 backdrop-blur-md"
+>
+  <div class="mx-auto flex h-14 max-w-[1400px] items-center gap-4 px-5 sm:px-8">
+    <a
+      href={localePath(locale, "/")}
+      class="group flex shrink-0 items-center gap-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+    >
+      <span
+        class="grid h-6 w-6 place-items-center rounded bg-ink text-[11px] font-bold text-surface transition-transform duration-300 group-hover:rotate-90"
+        aria-hidden="true">T</span
+      >
+      <span class="text-[13px] font-semibold tracking-tight text-ink"
+        >{t("site.name")}</span
+      >
+    </a>
+
+    <nav
+      class="hidden flex-1 items-center gap-1 lg:flex"
+      aria-label={t("nav.categories")}
+    >
+      {
+        navItems.map((item) => (
+          <a
+            href={item.href}
+            class="rounded-md px-2.5 py-1.5 text-[12px] tracking-tight text-muted transition-colors hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="ml-auto flex items-center gap-2">
+      <button
+        type="button"
+        data-open-search
+        class="group flex h-8 items-center gap-2 rounded-md border border-line px-2.5 text-[12px] text-muted transition-colors hover:border-accent/50 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        aria-label={t("nav.search")}
+      >
+        <svg
+          width="13"
+          height="13"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          ><circle cx="11" cy="11" r="8"></circle><path
+            d="m21 21-4.3-4.3"></path></svg
+        >
+        <span class="hidden sm:inline">{t("nav.searchHint")}</span>
+        <kbd
+          class="hidden rounded border border-line px-1 py-px text-[10px] font-medium tracking-wider text-muted sm:inline"
+          >{t("nav.shortcut")}</kbd
+        >
+      </button>
+
+      <LangSwitch locale={locale} label={t("lang.switch")} />
+      <ThemeToggle label={t("theme.toggle")} />
+    </div>
+  </div>
+</header>
+
+<script>
+  function bind() {
+    document.querySelectorAll<HTMLElement>("[data-open-search]").forEach((el) => {
+      if (el.dataset.bound) return;
+      el.dataset.bound = "1";
+      el.addEventListener("click", () => {
+        window.dispatchEvent(new CustomEvent("toolchain:search"));
+      });
+    });
+  }
+  bind();
+  document.addEventListener("astro:page-load", bind);
+</script>
