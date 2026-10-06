@@ -19,6 +19,8 @@ const href = link.url;
   rel="noopener noreferrer"
   class="group relative flex flex-col gap-3 rounded-xl border border-line bg-surface-2 p-4 transition-all duration-300 ease-out-expo hover:-translate-y-0.5 hover:border-accent/50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:p-5"
   data-search-item
+  data-preview-url={href}
+  data-preview-name={link.name}
   data-name={link.name.toLowerCase()}
   data-desc={link.desc[locale].toLowerCase()}
   data-tags={link.tags.join(" ").toLowerCase()}
@@ -35,7 +37,7 @@ const href = link.url;
           height="18"
           loading="lazy"
           decoding="async"
-          class="h-[18px] w-[18px] object-contain opacity-80 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0"
+          class="h-[18px] w-[18px] object-contain"
         />
       </span>
       <div class="min-w-0">

@@ -14,3 +14,8 @@ export function domainOf(url: string): string {
     return url;
   }
 }
+
+/** Microlink screenshot endpoint used for the card hover preview. */
+export function previewUrl(url: string): string {
+  return `https://api.microlink.io/?url=${encodeURIComponent(url)}&screenshot=true&embed=screenshot.url&viewport.width=1280&viewport.height=800`;
+}

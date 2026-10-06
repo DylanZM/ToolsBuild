@@ -44,7 +44,7 @@ const year = new Date().getFullYear();
             categories.map((c) => (
               <li>
                 <a
-                  href={localePath(locale, `/${c.slug}`)}
+                  href={`#${c.slug}`}
                   class="text-[12.5px] text-muted transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                 >
                   {c.name[locale]}

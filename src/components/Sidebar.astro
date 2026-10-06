@@ -1,0 +1,215 @@
+---
+import type { Locale } from "../i18n/ui";
+import { createT } from "../i18n/ui";
+import { localePath } from "../i18n/path";
+import { categories } from "../data/categories";
+import { links, linksByCategory } from "../data/links";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = createT(locale);
+
+const items = categories.map((c, i) => ({
+  slug: c.slug,
+  name: c.name[locale],
+  short: c.short[locale],
+  num: String(i + 1).padStart(2, "0"),
+  count: linksByCategory(c.id).length,
+}));
+---
+
+<aside
+  id="sidebar"
+  data-sidebar
+  inert
+  aria-label={t("nav.categories")}
+  class="invisible fixed inset-y-0 left-0 z-50 flex w-[276px] -translate-x-full flex-col border-r border-line bg-surface transition-[transform,visibility] duration-300 ease-out-expo lg:visible lg:sticky lg:top-0 lg:bottom-auto lg:left-auto lg:z-30 lg:h-screen lg:w-auto lg:translate-x-0 lg:self-start"
+>
+  <div
+    class="flex h-14 shrink-0 items-center justify-between gap-3 px-5 lg:h-auto lg:px-5 lg:pb-1 lg:pt-6"
+  >
+    <a
+      href={localePath(locale, "/")}
+      class="group flex items-center gap-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+    >
+      <span
+        class="grid h-6 w-6 place-items-center rounded bg-ink text-[11px] font-bold text-surface transition-transform duration-300 group-hover:rotate-90"
+        aria-hidden="true">T</span
+      >
+      <span class="text-[13px] font-semibold tracking-tight text-ink"
+        >{t("site.name")}</span
+      >
+    </a>
+
+    <button
+      type="button"
+      data-sidebar-close
+      aria-label={t("nav.close")}
+      class="grid h-8 w-8 place-items-center rounded-md border border-line text-muted transition-colors hover:border-accent/50 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent lg:hidden"
+    >
+      <svg
+        width="14"
+        height="14"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        aria-hidden="true"
+        ><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg
+      >
+    </button>
+  </div>
+
+  <nav
+    class="min-h-0 flex-1 overflow-y-auto px-3 pb-4 lg:py-3"
+    aria-label={t("nav.categories")}
+  >
+    <p
+      class="px-2 pb-3 pt-2 text-[10px] uppercase tracking-[0.2em] text-muted lg:pt-0"
+    >
+      {t("nav.categories")}
+    </p>
+    <ul class="space-y-0.5" data-spy-root data-spy-home={t("nav.home")}>
+      {
+        items.map((item) => (
+          <li>
+            <a
+              href={`#${item.slug}`}
+              data-spy-link
+              data-active="false"
+              class="group flex items-center justify-between gap-3 rounded-md px-2 py-1.5 text-[12.5px] tracking-tight text-muted transition-colors hover:bg-surface-2 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+            >
+              <span class="flex min-w-0 items-center gap-2.5">
+                <span class="spy-num text-[10px] tabular-nums tracking-wider text-accent/70">
+                  {item.num}
+                </span>
+                <span class="truncate">{item.short}</span>
+              </span>
+              <span class="spy-count text-[10px] tabular-nums opacity-70">
+                {item.count}
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+
+  <div
+    class="hidden shrink-0 border-t border-line px-5 py-3.5 text-[11px] tabular-nums text-muted lg:block"
+  >
+    {links.length} {t("stat.links")}
+  </div>
+</aside>
+
+<script>
+  function initSidebar() {
+    const aside = document.querySelector<HTMLElement>("[data-sidebar]");
+    const backdrop = document.querySelector<HTMLElement>("[data-sidebar-backdrop]");
+    const openBtn = document.querySelector<HTMLButtonElement>("[data-sidebar-open]");
+    const closeBtn = document.querySelector<HTMLButtonElement>("[data-sidebar-close]");
+    if (!aside || !backdrop || !openBtn) return;
+    if (aside.dataset.ready) return;
+    aside.dataset.ready = "1";
+
+    const mq = window.matchMedia("(min-width: 1024px)");
+    let open = false;
+
+    function paint() {
+      if (mq.matches) {
+        aside!.classList.remove("-translate-x-full", "invisible");
+        aside!.removeAttribute("inert");
+        backdrop!.classList.add("opacity-0", "pointer-events-none");
+        document.body.classList.remove("overflow-hidden");
+        open = false;
+        openBtn!.setAttribute("aria-expanded", "false");
+        return;
+      }
+      aside!.classList.toggle("-translate-x-full", !open);
+      aside!.classList.toggle("invisible", !open);
+      if (open) aside!.removeAttribute("inert");
+      else aside!.setAttribute("inert", "");
+      backdrop!.classList.toggle("opacity-0", !open);
+      backdrop!.classList.toggle("pointer-events-none", !open);
+      document.body.classList.toggle("overflow-hidden", open);
+      openBtn!.setAttribute("aria-expanded", String(open));
+    }
+
+    function setOpen(next: boolean) {
+      open = next;
+      paint();
+      if (open) closeBtn?.focus();
+      else openBtn?.focus();
+    }
+
+    openBtn.addEventListener("click", () => setOpen(true));
+    closeBtn?.addEventListener("click", () => setOpen(false));
+    backdrop.addEventListener("click", () => setOpen(false));
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && open) setOpen(false);
+    });
+    document.addEventListener("astro:page-load", paint);
+    (mq as MediaQueryList).addEventListener("change", paint);
+    paint();
+
+    // --- scroll spy ---
+    const root = document.querySelector("[data-spy-root]");
+    const links = Array.from(
+      document.querySelectorAll<HTMLAnchorElement>("[data-spy-link]"),
+    );
+    const sections = Array.from(
+      document.querySelectorAll<HTMLElement>("[data-spy-section]"),
+    );
+    const headerNum = document.querySelector<HTMLElement>("[data-header-num]");
+    const headerName = document.querySelector<HTMLElement>("[data-header-name]");
+    const home = root?.getAttribute("data-spy-home") ?? "";
+    if (!root || links.length !== sections.length) return;
+
+    let current = -2;
+    let frame = 0;
+
+    function update() {
+      frame = 0;
+      const marker = window.scrollY + window.innerHeight * 0.28;
+      let next = -1;
+      for (let i = 0; i < sections.length; i++) {
+        const top = sections[i].getBoundingClientRect().top + window.scrollY;
+        if (top <= marker) next = i;
+      }
+      if (next === current) return;
+      current = next;
+
+      links.forEach((l, i) => {
+        const on = i === next;
+        l.dataset.active = String(on);
+        if (on) l.setAttribute("aria-current", "true");
+        else l.removeAttribute("aria-current");
+      });
+
+      if (headerNum)
+        headerNum.textContent = next >= 0 ? sections[next].dataset.num ?? "" : "";
+      if (headerName)
+        headerName.textContent = next >= 0 ? sections[next].dataset.name ?? "" : home;
+    }
+
+    function onScroll() {
+      if (!frame) frame = requestAnimationFrame(update);
+    }
+
+    links.forEach((l) =>
+      l.addEventListener("click", () => {
+        if (!mq.matches) setOpen(false);
+      }),
+    );
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    update();
+  }
+
+  initSidebar();
+  document.addEventListener("astro:page-load", initSidebar);
+</script>

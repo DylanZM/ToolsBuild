@@ -1,7 +1,6 @@
 import React from "react";
 import type { Locale } from "../../i18n/ui";
 import { createT } from "../../i18n/ui";
-import { localePath } from "../../i18n/path";
 import { categories } from "../../data/categories";
 import CountUp from "./CountUp";
 import ShinyText from "./ShinyText";
@@ -45,13 +44,13 @@ const Hero: React.FC<Props> = ({ locale, total }) => {
       <div className="mt-9 flex flex-wrap items-center gap-3">
         <StarBorder
           as="a"
-          href="#categories"
+          href="#inspiration"
           className="focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
         >
           {t("hero.cta")} →
         </StarBorder>
         <a
-          href={localePath(locale, "/components")}
+          href="#components"
           className="inline-flex h-10 items-center gap-2 rounded-md border border-line px-5 text-[12.5px] tracking-tight text-ink transition-colors hover:border-accent/60 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
         >
           {t("hero.ctaSecondary")}

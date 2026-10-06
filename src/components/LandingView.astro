@@ -1,0 +1,35 @@
+---
+import type { Locale } from "../i18n/ui";
+import { categories } from "../data/categories";
+import { links, linksByCategory } from "../data/links";
+import CategorySection from "./CategorySection.astro";
+import Hero from "./react/Hero";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+
+const sections = categories.map((category, i) => ({
+  category,
+  links: linksByCategory(category.id),
+  index: i + 1,
+}));
+---
+
+<div class="mx-auto max-w-[1360px] px-5 sm:px-8">
+  <Hero client:load locale={locale} total={links.length} />
+
+  <div class="space-y-16 pb-6 sm:space-y-24">
+    {
+      sections.map(({ category, links: catLinks, index }) => (
+        <CategorySection
+          category={category}
+          links={catLinks}
+          locale={locale}
+          index={index}
+        />
+      ))
+    }
+  </div>
+</div>

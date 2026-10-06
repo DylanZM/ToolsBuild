@@ -1,7 +1,6 @@
 ---
 import type { Locale } from "../i18n/ui";
 import { createT } from "../i18n/ui";
-import { localePath } from "../i18n/path";
 import type { Category } from "../data/categories";
 import type { Link } from "../data/links";
 import ResourceCard from "./ResourceCard.astro";
@@ -11,71 +10,38 @@ interface Props {
   links: Link[];
   locale: Locale;
   index?: number;
-  compact?: boolean;
 }
 
-const { category, links, locale, index = 1, compact = false } = Astro.props;
+const { category, links, locale, index = 1 } = Astro.props;
 const t = createT(locale);
-const shown = compact ? links.slice(0, 8) : links;
 const num = String(index).padStart(2, "0");
 ---
 
-<section id={category.slug} class="scroll-mt-20">
+<section id={category.slug} data-spy-section data-name={category.name[locale]} data-num={num} class="scroll-mt-24">
   <div class="mb-6 flex items-end justify-between gap-6 border-b border-line pb-4">
     <div class="flex items-baseline gap-4">
-      <span class="text-[11px] font-medium tracking-[0.2em] text-accent"
+      <span class="text-[11px] font-medium tracking-[0.2em] text-accent tabular-nums"
         >{num}</span
       >
       <div>
         <h2 class="text-xl font-semibold tracking-tight text-ink sm:text-2xl">
           {category.name[locale]}
         </h2>
-        <p class="mt-1 max-w-xl text-[12.5px] leading-relaxed text-muted">
+        <p class="mt-1 max-w-[72ch] text-[12.5px] leading-relaxed text-muted">
           {category.desc[locale]}
         </p>
       </div>
     </div>
-    <div class="hidden shrink-0 items-center gap-3 sm:flex">
-      <span class="text-[11px] uppercase tracking-widest text-muted">
-        {links.length} {t("section.items")}
-      </span>
-      {
-        compact && (
-          <a
-            href={localePath(locale, `/${category.slug}`)}
-            class="group flex items-center gap-1 text-[12px] text-ink transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-          >
-            {t("section.viewAll")}
-            <span
-              class="transition-transform duration-300 group-hover:translate-x-0.5"
-              aria-hidden="true"
-            >
-              →
-            </span>
-          </a>
-        )
-      }
-    </div>
+    <span class="hidden shrink-0 text-[11px] uppercase tracking-widest text-muted sm:block">
+      {links.length} {t("section.items")}
+    </span>
   </div>
 
-  <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+  <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
     {
-      shown.map((link, i) => (
+      links.map((link, i) => (
         <ResourceCard link={link} locale={locale} index={i} />
       ))
     }
   </div>
-
-  {
-    compact && links.length > shown.length && (
-      <div class="mt-5 sm:hidden">
-        <a
-          href={localePath(locale, `/${category.slug}`)}
-          class="text-[12px] text-ink hover:text-accent"
-        >
-          {t("section.viewAll")} →
-        </a>
-      </div>
-    )
-  }
 </section>

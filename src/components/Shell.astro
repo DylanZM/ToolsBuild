@@ -2,7 +2,9 @@
 import Layout from "../layouts/Layout.astro";
 import Header from "./Header.astro";
 import Footer from "./Footer.astro";
+import Sidebar from "./Sidebar.astro";
 import SearchPalette from "./react/SearchPalette";
+import HoverPreview from "./react/HoverPreview";
 import type { Locale } from "../i18n/ui";
 import { createT } from "../i18n/ui";
 import { links } from "../data/links";
@@ -27,8 +29,21 @@ const searchItems = links.map((l) => ({
 ---
 
 <Layout title={title} description={description} locale={locale}>
-  <Header locale={locale} />
-  <slot />
-  <Footer locale={locale} />
+  <div
+    data-sidebar-backdrop
+    class="pointer-events-none fixed inset-0 z-40 bg-surface/70 opacity-0 backdrop-blur-sm transition-opacity duration-300 lg:hidden"
+    aria-hidden="true"
+  ></div>
+
+  <div class="lg:grid lg:grid-cols-[240px_minmax(0,1fr)]">
+    <Sidebar locale={locale} />
+    <div class="min-w-0">
+      <Header locale={locale} />
+      <slot />
+      <Footer locale={locale} />
+    </div>
+  </div>
+
   <SearchPalette client:load items={searchItems} locale={locale} />
+  <HoverPreview client:load />
 </Layout>

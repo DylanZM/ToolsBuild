@@ -1,6 +1,6 @@
 ---
 import Shell from "../components/Shell.astro";
-import HomeView from "../components/HomeView.astro";
+import LandingView from "../components/LandingView.astro";
 import { createT } from "../i18n/ui";
 
 const locale = "es" as const;
@@ -12,5 +12,5 @@ const t = createT(locale);
   description={t("site.description")}
   locale={locale}
 >
-  <HomeView locale={locale} />
+  <LandingView locale={locale} />
 </Shell>

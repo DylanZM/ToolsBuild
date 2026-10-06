@@ -146,6 +146,30 @@
   animation: fade-in 0.2s ease-out;
 }
 
+@keyframes preview-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Sidebar scroll-spy: unlayered so it wins over hover utilities. */
+[data-spy-link][data-active="true"],
+[data-spy-link][data-active="true"]:hover {
+  background-color: var(--ink);
+  color: var(--surface);
+}
+
+[data-spy-link][data-active="true"] .spy-num {
+  color: var(--accent-bright);
+}
+
+[data-spy-link][data-active="true"] .spy-count {
+  opacity: 0.7;
+}
+
 @utility no-scrollbar {
   scrollbar-width: none;
   &::-webkit-scrollbar {
