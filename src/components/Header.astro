@@ -103,7 +103,7 @@ const t = createT(locale);
       if (el.dataset.bound) return;
       el.dataset.bound = "1";
       el.addEventListener("click", () => {
-        window.dispatchEvent(new CustomEvent("toolchain:search"));
+        window.dispatchEvent(new CustomEvent("toolsbuild:search"));
       });
     });
 

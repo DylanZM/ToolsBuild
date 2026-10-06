@@ -2,7 +2,7 @@ export type Locale = "es" | "en";
 
 export const ui = {
   es: {
-    "site.name": "Toolchain",
+    "site.name": "Toolsbuild",
     "site.tagline":
       "Colección curada de herramientas, componentes, IA e inspiración para builders.",
     "site.description":
@@ -61,7 +61,7 @@ export const ui = {
     "notfound.back": "Volver al inicio",
   },
   en: {
-    "site.name": "Toolchain",
+    "site.name": "Toolsbuild",
     "site.tagline":
       "A curated collection of tools, components, AI and inspiration for builders.",
     "site.description":

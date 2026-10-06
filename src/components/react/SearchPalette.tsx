@@ -91,10 +91,10 @@ const SearchPalette: React.FC<Props> = ({ items, locale }) => {
     };
     const onCustom = () => open_();
     window.addEventListener("keydown", onKey);
-    window.addEventListener("toolchain:search", onCustom as EventListener);
+    window.addEventListener("toolsbuild:search", onCustom as EventListener);
     return () => {
       window.removeEventListener("keydown", onKey);
-      window.removeEventListener("toolchain:search", onCustom as EventListener);
+      window.removeEventListener("toolsbuild:search", onCustom as EventListener);
     };
   }, [open_]);
 
