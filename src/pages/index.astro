@@ -1,18 +1,16 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import HomeView from "../components/HomeView.astro";
+import { createT } from "../i18n/ui";
+
+const locale = "es" as const;
+const t = createT(locale);
 ---
 
-<Layout
-  title="Toolchain — Recursos de diseño"
-  description="Colección curada de herramientas, componentes e inspiración."
->
-  <main class="mx-auto max-w-5xl px-6 py-24">
-    <h1 class="text-4xl font-semibold tracking-tight">Toolchain</h1>
-    <p class="mt-4 text-sm text-muted">
-      Setup verificado — Tailwind v4 + Fira Code + dark mode.
-    </p>
-    <p class="mt-8 text-xs uppercase tracking-widest text-accent">
-      01 — categorías
-    </p>
-  </main>
+<Layout title={`${t("site.name")} — ${t("site.tagline")}`} description={t("site.description")} locale={locale}>
+  <Header locale={locale} />
+  <HomeView locale={locale} />
+  <Footer locale={locale} />
 </Layout>

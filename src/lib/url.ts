@@ -1,4 +1,3 @@
----
 export function faviconUrl(url: string, size = 64): string {
   try {
     const domain = new URL(url).hostname;

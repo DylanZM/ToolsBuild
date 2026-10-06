@@ -1,0 +1,163 @@
+---
+import type { Locale } from "../i18n/ui";
+import { createT } from "../i18n/ui";
+import { localePath } from "../i18n/path";
+import { categories } from "../data/categories";
+import { linksByCategory } from "../data/links";
+import ResourceCard from "./ResourceCard.astro";
+import CategoryNav from "./CategoryNav.astro";
+
+interface Props {
+  locale: Locale;
+  activeSlug: string;
+}
+const { locale, activeSlug } = Astro.props;
+const t = createT(locale);
+
+const active = categories.find((c) => c.slug === activeSlug);
+const index = categories.findIndex((c) => c.slug === activeSlug) + 1;
+const catLinks = linksByCategory(activeSlug);
+const num = String(index).padStart(2, "0");
+---
+
+<div class="mx-auto max-w-[1400px] px-5 sm:px-8">
+  <div class="grid gap-10 py-12 lg:grid-cols-[220px_1fr] lg:gap-14 lg:py-16">
+    <aside class="lg:sticky lg:top-20 lg:self-start">
+      <CategoryNav locale={locale} activeSlug={activeSlug} />
+    </aside>
+
+    <main>
+      {
+        active && (
+          <header class="mb-8 border-b border-line pb-6">
+            <div class="flex items-baseline gap-4">
+              <span class="text-[11px] font-medium tracking-[0.2em] text-accent">
+                {num}
+              </span>
+              <div>
+                <h1 class="text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+                  {active.name[locale]}
+                </h1>
+                <p class="mt-2 max-w-2xl text-[13px] leading-relaxed text-muted">
+                  {active.desc[locale]}
+                </p>
+              </div>
+            </div>
+            <p class="mt-5 text-[11px] uppercase tracking-widest text-muted">
+              {catLinks.length} {t("section.items")}
+            </p>
+          </header>
+        )
+      }
+
+      <!-- Local filter -->
+      <div class="mb-6">
+        <label class="sr-only" for="category-filter">{t("nav.search")}</label>
+        <div class="relative">
+          <svg
+            class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted"
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            ><circle cx="11" cy="11" r="8"></circle><path
+              d="m21 21-4.3-4.3"></path></svg
+          >
+          <input
+            id="category-filter"
+            type="search"
+            data-filter-input
+            autocomplete="off"
+            placeholder={t("nav.searchHint")}
+            class="h-10 w-full rounded-md border border-line bg-surface-2 pl-9 pr-3 text-[13px] text-ink placeholder:text-muted focus:border-accent/60 focus:outline-none"
+          />
+        </div>
+      </div>
+
+      <div
+        data-filter-grid
+        class="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3"
+      >
+        {
+          catLinks.map((link) => (
+            <div data-filter-item data-keywords={`${link.name} ${link.desc[locale]} ${link.tags.join(" ")}`.toLowerCase()}>
+              <ResourceCard link={link} locale={locale} />
+            </div>
+          ))
+        }
+      </div>
+
+      <p data-filter-empty class="hidden py-16 text-center text-[13px] text-muted">
+        {t("search.empty")} <span data-filter-query class="text-ink"></span>
+      </p>
+
+      <nav class="mt-14 flex items-center justify-between gap-4 border-t border-line pt-6">
+        {
+          index > 1 ? (
+            <a
+              href={localePath(locale, `/${categories[index - 2].slug}`)}
+              class="group flex items-center gap-2 text-[12.5px] text-muted transition-colors hover:text-accent"
+            >
+              <span class="transition-transform duration-300 group-hover:-translate-x-0.5">
+                ←
+              </span>
+              {categories[index - 2].name[locale]}
+            </a>
+          ) : (
+            <span />
+          )
+        }
+        {
+          index < categories.length && (
+            <a
+              href={localePath(locale, `/${categories[index].slug}`)}
+              class="group flex items-center gap-2 text-[12.5px] text-muted transition-colors hover:text-accent"
+            >
+              {categories[index].name[locale]}
+              <span class="transition-transform duration-300 group-hover:translate-x-0.5">
+                →
+              </span>
+            </a>
+          )
+        }
+      </nav>
+    </main>
+  </div>
+</div>
+
+<script>
+  function bindFilter() {
+    const input = document.querySelector<HTMLInputElement>("[data-filter-input]");
+    const grid = document.querySelector<HTMLElement>("[data-filter-grid]");
+    if (!input || !grid || input.dataset.bound) return;
+    input.dataset.bound = "1";
+
+    const items = Array.from(
+      grid.querySelectorAll<HTMLElement>("[data-filter-item]"),
+    );
+    const empty = document.querySelector<HTMLElement>("[data-filter-empty]");
+    const queryEl = document.querySelector<HTMLElement>("[data-filter-query]");
+
+    input.addEventListener("input", () => {
+      const q = input.value.trim().toLowerCase();
+      let visible = 0;
+      items.forEach((item) => {
+        const hay = item.dataset.keywords || "";
+        const match = q === "" || hay.includes(q);
+        item.hidden = !match;
+        if (match) visible++;
+      });
+      if (empty && queryEl) {
+        empty.classList.toggle("hidden", visible !== 0);
+        queryEl.textContent = input.value;
+      }
+    });
+  }
+  bindFilter();
+  document.addEventListener("astro:page-load", bindFilter);
+</script>
