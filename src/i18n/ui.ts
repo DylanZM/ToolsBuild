@@ -21,7 +21,6 @@ export const ui = {
     "lang.switch": "Switch to English",
     "lang.label": "Idioma",
 
-    "hero.eyebrow": "Directorio curado",
     "hero.title1": "Los recursos que",
     "hero.title2": "realmente importan.",
     "hero.subtitle":
@@ -83,7 +82,6 @@ export const ui = {
     "lang.switch": "Cambiar a español",
     "lang.label": "Language",
 
-    "hero.eyebrow": "Curated directory",
     "hero.title1": "The resources that",
     "hero.title2": "actually matter.",
     "hero.subtitle":

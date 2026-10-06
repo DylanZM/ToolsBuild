@@ -14,19 +14,19 @@ const t = createT(locale);
 
 const navItems = categories.map((c) => ({
   href: localePath(locale, `/${c.slug}`),
-  label: c.name[locale],
+  label: c.short[locale],
+  active: Astro.url.pathname.replace(/\/$/, "") === localePath(locale, `/${c.slug}`).replace(/\/$/, ""),
 }));
 
 const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "/en/";
 ---
-
 <header
   class="sticky top-0 z-40 border-b border-line bg-surface/85 backdrop-blur-md"
 >
-  <div class="mx-auto flex h-14 max-w-[1400px] items-center gap-4 px-5 sm:px-8">
+  <div class="mx-auto flex max-w-[1400px] flex-wrap items-center gap-x-4 px-5 sm:px-8">
     <a
       href={localePath(locale, "/")}
-      class="group flex shrink-0 items-center gap-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+      class="group order-1 flex h-14 shrink-0 items-center gap-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
     >
       <span
         class="grid h-6 w-6 place-items-center rounded bg-ink text-[11px] font-bold text-surface transition-transform duration-300 group-hover:rotate-90"
@@ -38,22 +38,30 @@ const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "/en/";
     </a>
 
     <nav
-      class="hidden flex-1 items-center gap-1 lg:flex"
+      class="order-3 w-full border-t border-line py-1.5 xl:order-2 xl:mx-1 xl:w-auto xl:flex-1 xl:border-t-0 xl:py-0"
       aria-label={t("nav.categories")}
     >
-      {
-        navItems.map((item) => (
-          <a
-            href={item.href}
-            class="rounded-md px-2.5 py-1.5 text-[12px] tracking-tight text-muted transition-colors hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-          >
-            {item.label}
-          </a>
-        ))
-      }
+      <ul class="flex items-center gap-1 overflow-x-auto no-scrollbar xl:overflow-x-visible">
+        {
+          navItems.map((item) => (
+            <li class="shrink-0">
+              <a
+                href={item.href}
+                aria-current={item.active ? "page" : undefined}
+                class:list={[
+                  "block whitespace-nowrap rounded-md px-2 py-1.5 text-[12px] tracking-tight transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
+                  item.active ? "text-ink" : "text-muted hover:text-ink",
+                ]}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
     </nav>
 
-    <div class="ml-auto flex items-center gap-2">
+    <div class="order-2 ml-auto flex h-14 items-center gap-2 xl:order-3">
       <button
         type="button"
         data-open-search
@@ -75,6 +83,7 @@ const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "/en/";
         >
         <span class="hidden sm:inline">{t("nav.searchHint")}</span>
         <kbd
+          data-shortcut
           class="hidden rounded border border-line px-1 py-px text-[10px] font-medium tracking-wider text-muted sm:inline"
           >{t("nav.shortcut")}</kbd
         >
@@ -95,6 +104,12 @@ const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "/en/";
         window.dispatchEvent(new CustomEvent("toolchain:search"));
       });
     });
+
+    if (/Mac|iPhone|iPad|iPod/.test(navigator.platform || "")) {
+      document.querySelectorAll("[data-shortcut]").forEach((kbd) => {
+        kbd.textContent = "⌘ K";
+      });
+    }
   }
   bind();
   document.addEventListener("astro:page-load", bind);

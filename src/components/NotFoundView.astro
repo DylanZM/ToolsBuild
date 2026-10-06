@@ -1,0 +1,41 @@
+---
+import type { Locale } from "../i18n/ui";
+import { createT } from "../i18n/ui";
+import { localePath } from "../i18n/path";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = createT(locale);
+---
+
+<main
+  class="mx-auto flex min-h-[68vh] max-w-[1400px] flex-col justify-center px-5 py-24 sm:px-8"
+>
+  <h1
+    class="text-[clamp(5rem,20vw,12rem)] font-semibold leading-[0.85] tracking-[-0.04em] text-ink tabular-nums"
+  >
+    404<span class="sr-only"> — {t("notfound.text")}</span>
+  </h1>
+
+  <p class="mt-8 max-w-[52ch] text-balance text-lg leading-relaxed text-muted">
+    {t("notfound.text")}
+  </p>
+
+  <div class="mt-9 flex flex-wrap items-center gap-3">
+    <a
+      href={localePath(locale, "/")}
+      class="inline-flex h-10 items-center gap-2 rounded-md bg-ink px-5 text-[12.5px] tracking-tight text-surface transition-opacity hover:opacity-85 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+    >
+      ← {t("notfound.back")}
+    </a>
+    <button
+      type="button"
+      data-open-search
+      class="inline-flex h-10 items-center gap-2 rounded-md border border-line px-5 text-[12.5px] tracking-tight text-ink transition-colors hover:border-accent/60 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+    >
+      {t("nav.search")}
+    </button>
+  </div>
+</main>

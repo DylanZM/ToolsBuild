@@ -1,0 +1,16 @@
+---
+import Shell from "../components/Shell.astro";
+import NotFoundView from "../components/NotFoundView.astro";
+import { createT } from "../i18n/ui";
+
+const locale = "es" as const;
+const t = createT(locale);
+---
+
+<Shell
+  title={`${t("notfound.title")} — ${t("site.name")}`}
+  description={t("site.description")}
+  locale={locale}
+>
+  <NotFoundView locale={locale} />
+</Shell>

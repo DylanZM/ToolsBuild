@@ -23,41 +23,33 @@ const Hero: React.FC<Props> = ({ locale, total }) => {
   ];
 
   return (
-    <section className="pb-16 pt-16 sm:pb-24 sm:pt-24">
-      <div className="flex items-center gap-3">
-        <span className="h-px w-8 bg-accent" aria-hidden="true" />
-        <span className="text-[11px] uppercase tracking-[0.25em] text-accent">
-          {t("hero.eyebrow")}
-        </span>
-      </div>
-
-      <h1 className="mt-6 max-w-4xl text-4xl font-semibold leading-[1.05] tracking-tight text-ink sm:text-6xl lg:text-7xl">
+    <section className="pb-16 pt-14 sm:pb-24 sm:pt-20">
+      <h1 className="max-w-4xl text-balance text-4xl font-semibold leading-[1.05] tracking-[-0.035em] text-ink sm:text-6xl lg:text-7xl">
         <span className="block">{t("hero.title1")}</span>
         <span className="block text-muted">
           <ShinyText
             text={t("hero.title2")}
             speed={4}
             color="var(--muted, #7c7d78)"
-            shineColor="#d9a441"
+            shineColor="var(--accent)"
             spread={90}
             pauseOnHover
           />
         </span>
       </h1>
 
-      <p className="mt-6 max-w-2xl text-[14px] leading-relaxed text-muted">
+      <p className="mt-6 max-w-[68ch] text-[14px] leading-relaxed text-muted">
         {t("hero.subtitle")}
       </p>
 
       <div className="mt-9 flex flex-wrap items-center gap-3">
-        <a
+        <StarBorder
+          as="a"
           href="#categories"
-          className="inline-block rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          className="focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
         >
-          <StarBorder className="text-[12.5px]">
-            {t("hero.cta")} →
-          </StarBorder>
-        </a>
+          {t("hero.cta")} →
+        </StarBorder>
         <a
           href={localePath(locale, "/components")}
           className="inline-flex h-10 items-center gap-2 rounded-md border border-line px-5 text-[12.5px] tracking-tight text-ink transition-colors hover:border-accent/60 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
@@ -76,7 +68,7 @@ const Hero: React.FC<Props> = ({ locale, total }) => {
             <p className="text-[10px] uppercase tracking-widest text-muted">
               {stat.label}
             </p>
-            <p className="mt-1.5 text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
+            <p className="mt-1.5 text-2xl font-semibold tracking-tight text-ink tabular-nums sm:text-3xl">
               <CountUp to={stat.value} duration={2} separator="," />
             </p>
           </SpotlightCard>

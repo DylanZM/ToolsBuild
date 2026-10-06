@@ -12,7 +12,8 @@
   --color-ink: var(--ink);
   --color-muted: var(--muted);
   --color-line: var(--line);
-  --color-accent: #d9a441;
+  --color-accent: var(--accent);
+  --color-accent-bright: var(--accent-bright);
   --color-accent-ink: #141512;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -22,8 +23,10 @@
   --surface: #ebece6;
   --surface-2: #f3f4ef;
   --ink: #141512;
-  --muted: rgba(20, 21, 18, 0.58);
+  --muted: rgba(20, 21, 18, 0.63);
   --line: rgba(20, 21, 18, 0.12);
+  --accent: #8a5a00;
+  --accent-bright: #d9a441;
   color-scheme: light;
 }
 
@@ -33,6 +36,8 @@
   --ink: #e8e9e3;
   --muted: rgba(232, 233, 227, 0.52);
   --line: rgba(232, 233, 227, 0.09);
+  --accent: #d9a441;
+  --accent-bright: #d9a441;
   color-scheme: dark;
 }
 
@@ -52,11 +57,36 @@
     color: var(--ink);
     font-family: var(--font-sans);
     font-weight: 400;
+    caret-color: var(--accent);
+    scrollbar-color: var(--line) transparent;
   }
 
   ::selection {
-    background-color: #d9a441;
+    background-color: var(--accent-bright);
     color: #141512;
+  }
+
+  ::-webkit-scrollbar {
+    width: 11px;
+    height: 11px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--line);
+    border: 3px solid var(--surface);
+    border-radius: 999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--accent);
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: transparent;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -114,4 +144,11 @@
 
 @utility animate-fade-in {
   animation: fade-in 0.2s ease-out;
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }

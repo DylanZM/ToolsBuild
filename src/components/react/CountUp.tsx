@@ -31,8 +31,8 @@ export default function CountUp({
   const ref = useRef<HTMLSpanElement>(null);
   const motionValue = useMotionValue(direction === 'down' ? to : from);
 
-  const damping = 20 + 40 * (1 / duration);
-  const stiffness = 100 * (1 / duration);
+  const damping = 20 + 20 * (1 / duration);
+  const stiffness = 200 * (1 / duration);
 
   const springValue = useSpring(motionValue, {
     damping,
@@ -54,6 +54,10 @@ export default function CountUp({
 
   const maxDecimals = Math.max(getDecimalPlaces(from), getDecimalPlaces(to));
 
+  const prefersReduced = () =>
+    typeof window !== 'undefined' &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   const formatValue = useCallback(
     (latest: number) => {
       const hasDecimals = maxDecimals > 0;
@@ -73,12 +77,14 @@ export default function CountUp({
 
   useEffect(() => {
     if (ref.current) {
-      ref.current.textContent = formatValue(direction === 'down' ? to : from);
+      ref.current.textContent = formatValue(
+        prefersReduced() ? to : direction === 'down' ? to : from
+      );
     }
   }, [from, to, direction, formatValue]);
 
   useEffect(() => {
-    if (isInView && startWhen) {
+    if (isInView && startWhen && !prefersReduced()) {
       if (typeof onStart === 'function') {
         onStart();
       }
