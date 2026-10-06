@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import { ClientRouter } from "astro:transitions";
 
 interface Props {
   title: string;
@@ -27,20 +28,26 @@ const ogLocale = locale === "es" ? "es_ES" : "en_US";
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <title>{title}</title>
+    <ClientRouter />
     <script is:inline>
       (function () {
-        try {
-          var stored = localStorage.getItem("theme");
-          var theme = stored === "light" ? "light" : "dark";
-          document.documentElement.classList.toggle("dark", theme === "dark");
-          document.documentElement.style.colorScheme = theme;
-        } catch (e) {}
-        try {
-          var view = localStorage.getItem("view");
-          document.documentElement.dataset.view = view === "list" ? "list" : "grid";
-        } catch (e) {
-          document.documentElement.dataset.view = "grid";
+        function apply() {
+          try {
+            var stored = localStorage.getItem("theme");
+            var theme = stored === "light" ? "light" : "dark";
+            document.documentElement.classList.toggle("dark", theme === "dark");
+            document.documentElement.style.colorScheme = theme;
+          } catch (e) {}
+          try {
+            var view = localStorage.getItem("view");
+            document.documentElement.dataset.view =
+              view === "list" ? "list" : "grid";
+          } catch (e) {
+            document.documentElement.dataset.view = "grid";
+          }
         }
+        apply();
+        document.addEventListener("astro:after-swap", apply);
       })();
     </script>
   </head>

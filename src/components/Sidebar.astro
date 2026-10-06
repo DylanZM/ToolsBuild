@@ -12,12 +12,16 @@ interface Props {
 const { locale } = Astro.props;
 const t = createT(locale);
 
+const rawPath = Astro.url.pathname.replace(/^\/en(?=\/|$)/, "") || "/";
+const currentSlug =
+  rawPath === "/" ? "" : rawPath.replace(/^\//, "").split("/")[0];
+
 const items = categories.map((c, i) => ({
   slug: c.slug,
-  name: c.name[locale],
-  short: c.short[locale],
+  name: c.short[locale],
   num: String(i + 1).padStart(2, "0"),
   count: linksByCategory(c.id).length,
+  active: c.slug === currentSlug,
 }));
 ---
 
@@ -29,7 +33,7 @@ const items = categories.map((c, i) => ({
   class="invisible fixed inset-y-0 left-0 z-50 flex w-[276px] -translate-x-full flex-col border-r border-line bg-surface transition-[transform,visibility] duration-300 ease-out-expo lg:visible lg:sticky lg:top-0 lg:bottom-auto lg:left-auto lg:z-30 lg:h-screen lg:w-auto lg:translate-x-0 lg:self-start"
 >
   <div
-    class="flex h-14 shrink-0 items-center justify-between gap-3 px-5 lg:h-auto lg:px-5 lg:pb-1 lg:pt-6"
+    class="flex h-14 shrink-0 items-center justify-between gap-3 border-b border-line px-5"
   >
     <a
       href={localePath(locale, "/")}
@@ -42,7 +46,7 @@ const items = categories.map((c, i) => ({
       type="button"
       data-sidebar-close
       aria-label={t("nav.close")}
-      class="grid h-8 w-8 place-items-center rounded-md border border-line text-muted transition-colors hover:border-accent/50 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent lg:hidden"
+      class="grid h-8 w-8 place-items-center rounded-md text-muted transition-colors hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent lg:hidden"
     >
       <svg
         width="14"
@@ -59,31 +63,34 @@ const items = categories.map((c, i) => ({
   </div>
 
   <nav
-    class="min-h-0 flex-1 overflow-y-auto px-3 pb-4 lg:py-3"
+    class="min-h-0 flex-1 overflow-y-auto px-3 py-4"
     aria-label={t("nav.categories")}
   >
     <p
-      class="px-2 pb-3 pt-2 font-mono text-[10px] uppercase tracking-[0.2em] text-muted lg:pt-0"
+      class="px-2 pb-2.5 font-mono text-[10px] uppercase tracking-[0.2em] text-muted"
     >
       {t("nav.categories")}
     </p>
-    <ul class="space-y-0.5" data-spy-root data-spy-home={t("nav.home")}>
+    <ul class="space-y-0.5">
       {
         items.map((item) => (
           <li>
             <a
-              href={`#${item.slug}`}
-              data-spy-link
-              data-active="false"
-              class="group flex items-center justify-between gap-3 rounded-md px-2 py-1.5 text-[12.5px] tracking-tight text-muted transition-colors hover:bg-surface-2 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              href={localePath(locale, `/${item.slug}`)}
+              data-nav-link
+              data-active={item.active ? "true" : "false"}
+              aria-current={item.active ? "page" : undefined}
+              class="group flex items-center justify-between gap-3 rounded-md px-2 py-1.5 transition-colors hover:bg-surface-2 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             >
               <span class="flex min-w-0 items-center gap-2.5">
-                <span class="spy-num font-mono text-[10px] tabular-nums tracking-wider text-accent/70">
+                <span class="nav-num font-mono text-[10px] tabular-nums tracking-wider text-accent/70">
                   {item.num}
                 </span>
-                <span class="truncate">{item.short}</span>
+                <span class="truncate font-display text-[13px] font-medium tracking-tight">
+                  {item.name}
+                </span>
               </span>
-              <span class="spy-count font-mono text-[10px] tabular-nums opacity-70">
+              <span class="nav-count font-mono text-[10px] tabular-nums opacity-70">
                 {item.count}
               </span>
             </a>
@@ -146,63 +153,16 @@ const items = categories.map((c, i) => ({
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && open) setOpen(false);
     });
-    document.addEventListener("astro:page-load", paint);
-    (mq as MediaQueryList).addEventListener("change", paint);
-    paint();
 
-    // --- scroll spy ---
-    const root = document.querySelector("[data-spy-root]");
-    const links = Array.from(
-      document.querySelectorAll<HTMLAnchorElement>("[data-spy-link]"),
-    );
-    const sections = Array.from(
-      document.querySelectorAll<HTMLElement>("[data-spy-section]"),
-    );
-    const headerNum = document.querySelector<HTMLElement>("[data-header-num]");
-    const headerName = document.querySelector<HTMLElement>("[data-header-name]");
-    const home = root?.getAttribute("data-spy-home") ?? "";
-    if (!root || links.length !== sections.length) return;
-
-    let current = -2;
-    let frame = 0;
-
-    function update() {
-      frame = 0;
-      const marker = window.scrollY + window.innerHeight * 0.28;
-      let next = -1;
-      for (let i = 0; i < sections.length; i++) {
-        const top = sections[i].getBoundingClientRect().top + window.scrollY;
-        if (top <= marker) next = i;
-      }
-      if (next === current) return;
-      current = next;
-
-      links.forEach((l, i) => {
-        const on = i === next;
-        l.dataset.active = String(on);
-        if (on) l.setAttribute("aria-current", "true");
-        else l.removeAttribute("aria-current");
-      });
-
-      if (headerNum)
-        headerNum.textContent = next >= 0 ? sections[next].dataset.num ?? "" : "";
-      if (headerName)
-        headerName.textContent = next >= 0 ? sections[next].dataset.name ?? "" : home;
-    }
-
-    function onScroll() {
-      if (!frame) frame = requestAnimationFrame(update);
-    }
-
-    links.forEach((l) =>
+    document.querySelectorAll<HTMLAnchorElement>("[data-nav-link]").forEach((l) =>
       l.addEventListener("click", () => {
         if (!mq.matches) setOpen(false);
       }),
     );
 
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    update();
+    document.addEventListener("astro:page-load", paint);
+    (mq as MediaQueryList).addEventListener("change", paint);
+    paint();
   }
 
   initSidebar();

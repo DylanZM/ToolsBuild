@@ -14,7 +14,6 @@ export const ui = {
     "nav.explore": "Explorar",
     "nav.categories": "Categorías",
     "nav.search": "Buscar",
-    "nav.searchHint": "Buscar recursos…",
     "nav.shortcut": "Ctrl K",
 
     "theme.toggle": "Cambiar tema",
@@ -32,11 +31,9 @@ export const ui = {
     "hero.subtitle":
       "Una colección seleccionada a mano de webs, librerías, componentes, iconos y herramientas de IA. Sin ruido, solo lo bueno.",
     "hero.cta": "Explorar ahora",
-    "hero.ctaSecondary": "Ver componentes",
 
     "stat.links": "recursos",
     "stat.categories": "categorías",
-    "stat.locales": "idiomas",
 
     "section.items": "recursos",
 
@@ -77,7 +74,6 @@ export const ui = {
     "nav.explore": "Explore",
     "nav.categories": "Categories",
     "nav.search": "Search",
-    "nav.searchHint": "Search resources…",
     "nav.shortcut": "Ctrl K",
 
     "theme.toggle": "Toggle theme",
@@ -95,11 +91,9 @@ export const ui = {
     "hero.subtitle":
       "A hand-picked collection of websites, libraries, components, icons and AI tools. No noise, just the good stuff.",
     "hero.cta": "Explore now",
-    "hero.ctaSecondary": "View components",
 
     "stat.links": "resources",
     "stat.categories": "categories",
-    "stat.locales": "languages",
 
     "section.items": "resources",
 

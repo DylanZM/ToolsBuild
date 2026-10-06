@@ -1,7 +1,7 @@
 ---
 import type { Locale } from "../i18n/ui";
 import { categories } from "../data/categories";
-import { links, linksByCategory } from "../data/links";
+import { linksByCategory } from "../data/links";
 import CategorySection from "./CategorySection.astro";
 import Hero from "./react/Hero";
 
@@ -18,7 +18,7 @@ const sections = categories.map((category, i) => ({
 ---
 
 <div class="mx-auto max-w-[1360px] px-5 sm:px-8">
-  <Hero client:load locale={locale} total={links.length} />
+  <Hero client:load locale={locale} />
 
   <div class="space-y-16 pb-6 sm:space-y-24 lg:space-y-32">
     {

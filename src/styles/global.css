@@ -171,18 +171,18 @@
   }
 }
 
-/* Sidebar scroll-spy: unlayered so it wins over hover utilities. */
-[data-spy-link][data-active="true"],
-[data-spy-link][data-active="true"]:hover {
+/* Active sidebar category: unlayered so it wins over hover utilities. */
+[data-nav-link][data-active="true"],
+[data-nav-link][data-active="true"]:hover {
   background-color: var(--ink);
   color: var(--surface);
 }
 
-[data-spy-link][data-active="true"] .spy-num {
+[data-nav-link][data-active="true"] .nav-num {
   color: var(--accent-bright);
 }
 
-[data-spy-link][data-active="true"] .spy-count {
+[data-nav-link][data-active="true"] .nav-count {
   opacity: 0.7;
 }
 
@@ -191,14 +191,6 @@
   &::-webkit-scrollbar {
     display: none;
   }
-}
-
-/* View toggle active state: set pre-paint via html[data-view], so no flash. */
-html[data-view="list"] [data-view-set="list"],
-html:not([data-view="list"]) [data-view-set="grid"] {
-  border-color: color-mix(in srgb, var(--accent) 60%, transparent);
-  background-color: var(--surface-2);
-  color: var(--ink);
 }
 
 /*

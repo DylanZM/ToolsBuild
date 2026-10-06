@@ -7,7 +7,8 @@ import React, {
 } from "react";
 import type { Locale } from "../../i18n/ui";
 import { createT } from "../../i18n/ui";
-import { categories } from "../../data/categories";
+import { MorphIcon } from "morphicons/react";
+import { Search } from "lucide";
 
 export interface SearchItem {
   id: string;
@@ -66,12 +67,6 @@ const SearchPalette: React.FC<Props> = ({ items, locale }) => {
       : items;
     return base.slice(0, 30);
   }, [items, query]);
-
-  const catName = useCallback(
-    (id: string) =>
-      categories.find((c) => c.id === id)?.name[locale] ?? id,
-    [locale],
-  );
 
   const open_ = useCallback(() => {
     setOpen(true);
@@ -146,21 +141,12 @@ const SearchPalette: React.FC<Props> = ({ items, locale }) => {
 
       <div className="relative w-full max-w-xl overflow-hidden rounded-xl border border-line bg-surface shadow-2xl">
         <div className="flex items-center gap-3 border-b border-line px-4">
-          <svg
+          <MorphIcon
+            icon={Search}
+            size={15}
+            strokeWidth={2}
             className="shrink-0 text-muted"
-            width="15"
-            height="15"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            aria-hidden="true"
-          >
-            <circle cx="11" cy="11" r="8" />
-            <path d="m21 21-4.3-4.3" />
-          </svg>
+          />
           <input
             ref={inputRef}
             value={query}
@@ -213,9 +199,6 @@ const SearchPalette: React.FC<Props> = ({ items, locale }) => {
                   <span className="block truncate text-[11.5px] text-muted">
                     {item.desc}
                   </span>
-                </span>
-                <span className="shrink-0 rounded border border-line px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-muted">
-                  {catName(item.category)}
                 </span>
               </a>
             ))

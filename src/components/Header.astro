@@ -5,11 +5,14 @@ import { localePath } from "../i18n/path";
 import ThemeToggle from "./ThemeToggle.astro";
 import LangSwitch from "./LangSwitch.astro";
 import Logo from "./Logo.astro";
+import MorphIcon from "morphicons/astro";
+import { Grid2X2, List, Search } from "lucide";
 
 interface Props {
   locale: Locale;
+  section?: { num: string; name: string } | null;
 }
-const { locale } = Astro.props;
+const { locale, section = null } = Astro.props;
 const t = createT(locale);
 ---
 
@@ -23,7 +26,7 @@ const t = createT(locale);
       aria-label={t("nav.menu")}
       aria-controls="sidebar"
       aria-expanded="false"
-      class="grid h-8 w-8 shrink-0 place-items-center rounded-md border border-line text-muted transition-colors hover:border-accent/50 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent lg:hidden"
+      class="grid h-8 w-8 shrink-0 place-items-center rounded-md text-muted transition-colors hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent lg:hidden"
     >
       <svg
         width="14"
@@ -47,95 +50,47 @@ const t = createT(locale);
       <Logo name={t("site.name")} />
     </a>
 
-    <div class="hidden min-w-0 items-baseline gap-2.5 lg:flex" aria-live="polite">
-      <span
-        data-header-num
-        class="font-mono text-[11px] tabular-nums tracking-[0.2em] text-accent"></span>
-      <span
-        data-header-name
-        class="truncate text-[13px] font-medium tracking-tight text-ink"
-        >{t("nav.home")}</span
-      >
-    </div>
+    {
+      section && (
+        <div class="hidden min-w-0 items-baseline gap-2.5 lg:flex">
+          <span class="font-mono text-[11px] tabular-nums tracking-[0.2em] text-accent">
+            {section.num}
+          </span>
+          <span class="truncate text-[13px] font-medium tracking-tight text-ink">
+            {section.name}
+          </span>
+        </div>
+      )
+    }
 
-    <div class="ml-auto flex shrink-0 items-center gap-2">
-      <div
-        class="hidden shrink-0 items-center gap-1 lg:flex"
-        role="group"
-        aria-label={t("view.label")}
+    <div class="ml-auto flex shrink-0 items-center gap-1.5 sm:gap-2">
+      <button
+        type="button"
+        data-view-toggle
+        data-label-grid={t("view.grid")}
+        data-label-list={t("view.list")}
+        aria-label={t("view.list")}
+        aria-pressed="true"
+        class="hidden h-8 w-8 place-items-center rounded-md text-muted transition-colors hover:bg-surface-2 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent lg:grid"
       >
-        <button
-          type="button"
-          data-view-set="grid"
-          aria-label={t("view.grid")}
-          aria-pressed="true"
-          class="grid h-7 w-7 place-items-center rounded-md border border-line text-muted transition-colors hover:border-accent/50 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-        >
-          <svg
-            width="12"
-            height="12"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
-            ><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect
-              x="14"
-              y="3"
-              width="7"
-              height="7"
-              rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"
-            ></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect></svg
-          >
-        </button>
-        <button
-          type="button"
-          data-view-set="list"
-          aria-label={t("view.list")}
-          aria-pressed="false"
-          class="grid h-7 w-7 place-items-center rounded-md border border-line text-muted transition-colors hover:border-accent/50 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-        >
-          <svg
-            width="12"
-            height="12"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            aria-hidden="true"
-            ><path d="M8 6h13M8 12h13M8 18h13"></path><path
-              d="M3 6h.01M3 12h.01M3 18h.01"></path></svg
-          >
-        </button>
-      </div>
+        <MorphIcon icon={Grid2X2} size={14} strokeWidth={2} />
+      </button>
 
       <button
         type="button"
         data-open-search
-        class="group flex h-8 items-center gap-2 rounded-md border border-line px-2.5 text-[12px] text-muted transition-colors hover:border-accent/50 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        class="flex h-8 items-center gap-1.5 rounded-md px-1.5 text-muted transition-colors hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
         aria-label={t("nav.search")}
       >
-        <svg
-          width="13"
-          height="13"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          aria-hidden="true"
-          ><circle cx="11" cy="11" r="8"></circle><path
-            d="m21 21-4.3-4.3"></path></svg
-        >
-        <span class="hidden sm:inline">{t("nav.searchHint")}</span>
+        <MorphIcon icon={Search} size={14} strokeWidth={2} />
         <kbd
-          data-shortcut
+          data-shortcut-mod
           class="hidden rounded border border-line px-1 py-px font-mono text-[10px] font-medium tracking-wider text-muted sm:inline"
-          >{t("nav.shortcut")}</kbd
+          >Ctrl</kbd
+        >
+        <kbd
+          class="hidden rounded border border-line px-1 py-px font-mono text-[10px] font-medium tracking-wider text-muted sm:inline"
+          >K</kbd
         >
       </button>
 
@@ -146,10 +101,17 @@ const t = createT(locale);
 </header>
 
 <script>
-  function applyView(view: string) {
-    document.documentElement.dataset.view = view;
-    document.querySelectorAll<HTMLButtonElement>("[data-view-set]").forEach((btn) => {
-      btn.setAttribute("aria-pressed", String(btn.dataset.viewSet === view));
+  import { Grid2X2, List } from "lucide";
+  import { setIcon } from "../lib/morph";
+
+  function applyView(view: string, animate = false) {
+    const isGrid = view !== "list";
+    document.documentElement.dataset.view = isGrid ? "grid" : "list";
+    document.querySelectorAll<HTMLButtonElement>("[data-view-toggle]").forEach((btn) => {
+      btn.setAttribute("aria-pressed", String(isGrid));
+      const label = isGrid ? btn.dataset.labelList : btn.dataset.labelGrid;
+      if (label) btn.setAttribute("aria-label", label);
+      setIcon(btn, isGrid ? Grid2X2 : List, animate);
     });
   }
 
@@ -162,12 +124,12 @@ const t = createT(locale);
       });
     });
 
-    document.querySelectorAll<HTMLButtonElement>("[data-view-set]").forEach((btn) => {
+    document.querySelectorAll<HTMLButtonElement>("[data-view-toggle]").forEach((btn) => {
       if (btn.dataset.bound) return;
       btn.dataset.bound = "1";
       btn.addEventListener("click", () => {
-        const view = btn.dataset.viewSet === "list" ? "list" : "grid";
-        applyView(view);
+        const view = document.documentElement.dataset.view === "list" ? "grid" : "list";
+        applyView(view, true);
         try {
           localStorage.setItem("view", view);
         } catch {}
@@ -177,8 +139,8 @@ const t = createT(locale);
     applyView(document.documentElement.dataset.view || "grid");
 
     if (/Mac|iPhone|iPad|iPod/.test(navigator.platform || "")) {
-      document.querySelectorAll("[data-shortcut]").forEach((kbd) => {
-        kbd.textContent = "⌘ K";
+      document.querySelectorAll("[data-shortcut-mod]").forEach((kbd) => {
+        kbd.textContent = "⌘";
       });
     }
   }
