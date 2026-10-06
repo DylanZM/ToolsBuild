@@ -6,6 +6,7 @@ import { categories } from "../data/categories";
 import { links } from "../data/links";
 import { linksByCategory } from "../data/links";
 import CategorySection from "./CategorySection.astro";
+import Hero from "./react/Hero";
 
 interface Props {
   locale: Locale;
@@ -23,73 +24,7 @@ const total = links.length;
 ---
 
 <div class="mx-auto max-w-[1400px] px-5 sm:px-8">
-  <!-- Hero -->
-  <section class="pb-16 pt-16 sm:pb-24 sm:pt-24">
-    <div class="flex items-center gap-3">
-      <span class="h-px w-8 bg-accent" aria-hidden="true"></span>
-      <span class="text-[11px] uppercase tracking-[0.25em] text-accent">
-        {t("hero.eyebrow")}
-      </span>
-    </div>
-
-    <h1
-      class="mt-6 max-w-4xl text-4xl font-semibold leading-[1.05] tracking-tight text-ink sm:text-6xl lg:text-7xl"
-    >
-      <span class="block">{t("hero.title1")}</span>
-      <span class="block text-muted" data-hero-accent>{t("hero.title2")}</span>
-    </h1>
-
-    <p class="mt-6 max-w-2xl text-[14px] leading-relaxed text-muted">
-      {t("hero.subtitle")}
-    </p>
-
-    <div class="mt-9 flex flex-wrap items-center gap-3">
-      <a
-        href="#categories"
-        class="group inline-flex h-10 items-center gap-2 rounded-md bg-ink px-5 text-[12.5px] font-medium tracking-tight text-surface transition-all duration-300 ease-out-expo hover:gap-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-      >
-        {t("hero.cta")}
-        <span class="transition-transform duration-300 group-hover:translate-x-0.5"
-          >→</span
-        >
-      </a>
-      <a
-        href={localePath(locale, "/components")}
-        class="inline-flex h-10 items-center gap-2 rounded-md border border-line px-5 text-[12.5px] tracking-tight text-ink transition-colors hover:border-accent/60 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-      >
-        {t("hero.ctaSecondary")}
-      </a>
-    </div>
-
-    <dl
-      class="mt-14 grid max-w-2xl grid-cols-3 gap-px overflow-hidden rounded-lg border border-line bg-line"
-    >
-      <div class="bg-surface px-4 py-5 sm:px-6">
-        <dt class="text-[10px] uppercase tracking-widest text-muted">
-          {t("stat.links")}
-        </dt>
-        <dd class="mt-1.5 text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
-          <span data-count-to={total}>0</span>
-        </dd>
-      </div>
-      <div class="bg-surface px-4 py-5 sm:px-6">
-        <dt class="text-[10px] uppercase tracking-widest text-muted">
-          {t("stat.categories")}
-        </dt>
-        <dd class="mt-1.5 text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
-          <span data-count-to={categories.length}>0</span>
-        </dd>
-      </div>
-      <div class="bg-surface px-4 py-5 sm:px-6">
-        <dt class="text-[10px] uppercase tracking-widest text-muted">
-          {t("stat.locales")}
-        </dt>
-        <dd class="mt-1.5 text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
-          <span data-count-to={2}>0</span>
-        </dd>
-      </div>
-    </dl>
-  </section>
+  <Hero client:load locale={locale} total={total} />
 
   <!-- Categories overview -->
   <section id="categories" class="scroll-mt-20 pb-8">
@@ -137,40 +72,3 @@ const total = links.length;
     }
   </div>
 </div>
-
-<script>
-  function animateCount(el: HTMLElement) {
-    const target = Number(el.dataset.countTo || 0);
-    if (!target) return;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce) {
-      el.textContent = String(target);
-      return;
-    }
-    const duration = 1100;
-    const start = performance.now();
-    const tick = (now: number) => {
-      const p = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = String(Math.round(target * eased));
-      if (p < 1) requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-  }
-
-  const seen = new WeakSet<HTMLElement>();
-  const io = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting && !seen.has(entry.target as HTMLElement)) {
-          seen.add(entry.target as HTMLElement);
-          animateCount(entry.target as HTMLElement);
-          io.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.5 },
-  );
-
-  document.querySelectorAll<HTMLElement>("[data-count-to]").forEach((el) => io.observe(el));
-</script>

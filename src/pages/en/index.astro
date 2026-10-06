@@ -1,7 +1,5 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import Header from "../../components/Header.astro";
-import Footer from "../../components/Footer.astro";
+import Shell from "../../components/Shell.astro";
 import HomeView from "../../components/HomeView.astro";
 import { createT } from "../../i18n/ui";
 
@@ -9,12 +7,10 @@ const locale = "en" as const;
 const t = createT(locale);
 ---
 
-<Layout
+<Shell
   title={`${t("site.name")} — ${t("site.tagline")}`}
   description={t("site.description")}
   locale={locale}
 >
-  <Header locale={locale} />
   <HomeView locale={locale} />
-  <Footer locale={locale} />
-</Layout>
+</Shell>

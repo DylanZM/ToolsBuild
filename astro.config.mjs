@@ -12,7 +12,8 @@ export default defineConfig({
       prefixDefaultLocale: false,
     },
   },
+  integrations: [react()],
   vite: {
-    plugins: [tailwindcss(), react()],
+    plugins: [tailwindcss()],
   },
 });
