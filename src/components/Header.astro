@@ -59,6 +59,59 @@ const t = createT(locale);
     </div>
 
     <div class="ml-auto flex shrink-0 items-center gap-2">
+      <div
+        class="hidden shrink-0 items-center gap-1 lg:flex"
+        role="group"
+        aria-label={t("view.label")}
+      >
+        <button
+          type="button"
+          data-view-set="grid"
+          aria-label={t("view.grid")}
+          aria-pressed="true"
+          class="grid h-7 w-7 place-items-center rounded-md border border-line text-muted transition-colors hover:border-accent/50 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        >
+          <svg
+            width="12"
+            height="12"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            ><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect
+              x="14"
+              y="3"
+              width="7"
+              height="7"
+              rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"
+            ></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect></svg
+          >
+        </button>
+        <button
+          type="button"
+          data-view-set="list"
+          aria-label={t("view.list")}
+          aria-pressed="false"
+          class="grid h-7 w-7 place-items-center rounded-md border border-line text-muted transition-colors hover:border-accent/50 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        >
+          <svg
+            width="12"
+            height="12"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            aria-hidden="true"
+            ><path d="M8 6h13M8 12h13M8 18h13"></path><path
+              d="M3 6h.01M3 12h.01M3 18h.01"></path></svg
+          >
+        </button>
+      </div>
+
       <button
         type="button"
         data-open-search
@@ -93,6 +146,13 @@ const t = createT(locale);
 </header>
 
 <script>
+  function applyView(view: string) {
+    document.documentElement.dataset.view = view;
+    document.querySelectorAll<HTMLButtonElement>("[data-view-set]").forEach((btn) => {
+      btn.setAttribute("aria-pressed", String(btn.dataset.viewSet === view));
+    });
+  }
+
   function bind() {
     document.querySelectorAll<HTMLElement>("[data-open-search]").forEach((el) => {
       if (el.dataset.bound) return;
@@ -101,6 +161,20 @@ const t = createT(locale);
         window.dispatchEvent(new CustomEvent("toolsbuild:search"));
       });
     });
+
+    document.querySelectorAll<HTMLButtonElement>("[data-view-set]").forEach((btn) => {
+      if (btn.dataset.bound) return;
+      btn.dataset.bound = "1";
+      btn.addEventListener("click", () => {
+        const view = btn.dataset.viewSet === "list" ? "list" : "grid";
+        applyView(view);
+        try {
+          localStorage.setItem("view", view);
+        } catch {}
+      });
+    });
+
+    applyView(document.documentElement.dataset.view || "grid");
 
     if (/Mac|iPhone|iPad|iPod/.test(navigator.platform || "")) {
       document.querySelectorAll("[data-shortcut]").forEach((kbd) => {

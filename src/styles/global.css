@@ -192,3 +192,77 @@
     display: none;
   }
 }
+
+/* View toggle active state: set pre-paint via html[data-view], so no flash. */
+html[data-view="list"] [data-view-set="list"],
+html:not([data-view="list"]) [data-view-set="grid"] {
+  border-color: color-mix(in srgb, var(--accent) 60%, transparent);
+  background-color: var(--surface-2);
+  color: var(--ink);
+}
+
+/*
+ * List view (desktop only, matching the toggle's lg breakpoint).
+ * Unlayered so it wins over the card/grid utilities.
+ */
+@media (width >= 64rem) {
+  html[data-view="list"] [data-card-grid] {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.5rem;
+  }
+
+  html[data-view="list"] [data-card] {
+    display: grid;
+    grid-template-columns: minmax(11rem, 17rem) minmax(0, 1fr) auto auto;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 0.8125rem;
+    padding-bottom: 0.8125rem;
+  }
+
+  html[data-view="list"] [data-card-head] {
+    display: contents;
+  }
+
+  html[data-view="list"] [data-card-head] > div {
+    min-width: 0;
+    order: 1;
+  }
+
+  html[data-view="list"] [data-card-desc] {
+    order: 2;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  html[data-view="list"] [data-card-tags] {
+    order: 3;
+    display: none;
+    flex-wrap: nowrap;
+    margin-top: 0;
+    padding-top: 0;
+    justify-content: flex-end;
+  }
+
+  html[data-view="list"] [data-card-head] > span {
+    order: 4;
+    margin-top: 0;
+  }
+
+  html[data-view="list"] [data-card-tick] {
+    top: 50%;
+    bottom: auto;
+    left: -1px;
+    width: 2px;
+    height: 1.25rem;
+    transform: translateY(-50%);
+  }
+}
+
+@media (width >= 80rem) {
+  html[data-view="list"] [data-card-tags] {
+    display: flex;
+  }
+}

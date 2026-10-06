@@ -37,7 +37,7 @@ const num = String(index).padStart(2, "0");
     </span>
   </div>
 
-  <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+  <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4" data-card-grid>
     {
       links.map((link, i) => (
         <ResourceCard link={link} locale={locale} index={i} />

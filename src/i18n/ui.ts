@@ -23,6 +23,10 @@ export const ui = {
     "lang.switch": "Switch to English",
     "lang.label": "Idioma",
 
+    "view.label": "Vista",
+    "view.grid": "Cambiar a vista de cuadrícula",
+    "view.list": "Cambiar a vista de lista",
+
     "hero.title1": "Los recursos que",
     "hero.title2": "realmente importan.",
     "hero.subtitle":
@@ -81,6 +85,10 @@ export const ui = {
     "theme.dark": "Dark",
     "lang.switch": "Cambiar a español",
     "lang.label": "Language",
+
+    "view.label": "View",
+    "view.grid": "Switch to grid view",
+    "view.list": "Switch to list view",
 
     "hero.title1": "The resources that",
     "hero.title2": "actually matter.",
