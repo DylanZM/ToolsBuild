@@ -5,11 +5,34 @@ import { localePath } from "../i18n/path";
 import { categories } from "../data/categories";
 import { links, linksByCategory } from "../data/links";
 import Logo from "./Logo.astro";
+import {
+  BookOpen,
+  Brain,
+  Eye,
+  Hammer,
+  LayoutGrid,
+  Lightbulb,
+  Shapes,
+  Waves,
+} from "lucide";
 
 interface Props {
   locale: Locale;
+  /** Top padding (lg only) so the first row lines up with the page content. */
+  pad?: string;
 }
-const { locale } = Astro.props;
+const { locale, pad = "lg:pt-20" } = Astro.props;
+
+const ICONS: Record<string, any> = {
+  inspiration: Lightbulb,
+  components: LayoutGrid,
+  icons: Shapes,
+  motion: Waves,
+  visuals: Eye,
+  ai: Brain,
+  build: Hammer,
+  learn: BookOpen,
+};
 const t = createT(locale);
 
 const rawPath = Astro.url.pathname.replace(/^\/en(?=\/|$)/, "") || "/";
@@ -21,6 +44,7 @@ const items = categories.map((c) => ({
   name: c.short[locale],
   count: linksByCategory(c.id).length,
   active: c.slug === currentSlug,
+  icon: ICONS[c.id] ?? Lightbulb,
 }));
 ---
 
@@ -62,7 +86,7 @@ const items = categories.map((c) => ({
   </div>
 
   <nav
-    class="min-h-0 flex-1 overflow-y-auto px-3 py-4 lg:pt-6"
+    class:list={["min-h-0 flex-1 overflow-y-auto px-3 py-4", pad]}
     aria-label={t("nav.categories")}
   >
     <p class="px-2 pb-2.5 text-[11px] font-medium uppercase tracking-[0.18em] text-muted">
@@ -79,8 +103,36 @@ const items = categories.map((c) => ({
               aria-current={item.active ? "page" : undefined}
               class="group flex items-center justify-between gap-3 rounded-md px-2 py-1.5 transition-colors hover:bg-surface-2 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             >
-              <span class="min-w-0 truncate font-display text-[13px] font-medium tracking-tight">
-                {item.name}
+              <span class="flex min-w-0 items-center gap-2.5">
+                <svg
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  class="nav-icon shrink-0 opacity-55"
+                >
+                  {
+                    item.icon.map(([tag, attrs]: [string, Record<string, string>]) =>
+                      tag === "circle" ? (
+                        <circle {...attrs} />
+                      ) : tag === "rect" ? (
+                        <rect {...attrs} />
+                      ) : tag === "line" ? (
+                        <line {...attrs} />
+                      ) : (
+                        <path {...attrs} />
+                      ),
+                    )
+                  }
+                </svg>
+                <span class="truncate font-display text-[13px] font-medium tracking-tight">
+                  {item.name}
+                </span>
               </span>
               <span class="nav-count shrink-0 text-[11px] tabular-nums opacity-70">
                 {item.count}
@@ -112,14 +164,27 @@ const items = categories.map((c) => ({
     const mq = window.matchMedia("(min-width: 1024px)");
     let open = false;
 
+    const isCollapsed = () =>
+      document.documentElement.dataset.sidebarCollapsed === "true";
+
+    const syncTip = () => {
+      const tip = !mq.matches
+        ? openBtn.dataset.tipMenu
+        : isCollapsed()
+          ? openBtn.dataset.tipShow
+          : openBtn.dataset.tipHide;
+      if (tip) openBtn.setAttribute("data-tooltip", tip);
+    };
+
     function paint() {
       if (mq.matches) {
         aside!.classList.remove("-translate-x-full", "invisible");
-        aside!.removeAttribute("inert");
+        aside!.toggleAttribute("inert", isCollapsed());
         backdrop!.classList.add("opacity-0", "pointer-events-none");
         document.body.classList.remove("overflow-hidden");
         open = false;
-        openBtn!.setAttribute("aria-expanded", "false");
+        openBtn!.setAttribute("aria-expanded", String(!isCollapsed()));
+        syncTip();
         return;
       }
       aside!.classList.toggle("-translate-x-full", !open);
@@ -130,6 +195,7 @@ const items = categories.map((c) => ({
       backdrop!.classList.toggle("pointer-events-none", !open);
       document.body.classList.toggle("overflow-hidden", open);
       openBtn!.setAttribute("aria-expanded", String(open));
+      syncTip();
     }
 
     function setOpen(next: boolean) {
@@ -139,7 +205,18 @@ const items = categories.map((c) => ({
       else openBtn?.focus();
     }
 
-    openBtn.addEventListener("click", () => setOpen(true));
+    openBtn.addEventListener("click", () => {
+      if (mq.matches) {
+        const next = !isCollapsed();
+        document.documentElement.dataset.sidebarCollapsed = String(next);
+        try {
+          localStorage.setItem("sidebar", next ? "hidden" : "shown");
+        } catch {}
+        paint();
+        return;
+      }
+      setOpen(true);
+    });
     closeBtn?.addEventListener("click", () => setOpen(false));
     backdrop.addEventListener("click", () => setOpen(false));
     document.addEventListener("keydown", (e) => {

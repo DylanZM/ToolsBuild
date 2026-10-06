@@ -15,7 +15,12 @@ export function domainOf(url: string): string {
   }
 }
 
-/** Microlink screenshot endpoint used for the card hover preview. */
+/** Primary screenshot endpoint used for the card hover preview. */
 export function previewUrl(url: string): string {
+  return `https://image.thum.io/get/width/1280/crop/800/noanimate/${url.replace(/\/+$/, "")}`;
+}
+
+/** Fallback screenshot endpoint when the primary one fails. */
+export function previewFallbackUrl(url: string): string {
   return `https://api.microlink.io/?url=${encodeURIComponent(url)}&screenshot=true&embed=screenshot.url&viewport.width=1280&viewport.height=800`;
 }

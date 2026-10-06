@@ -13,9 +13,11 @@ interface Props {
   locale: Locale;
   title: string;
   description: string;
+  /** lg top padding of the sidebar so it lines up with the page content. */
+  sidebarPad?: string;
 }
 
-const { locale, title, description } = Astro.props;
+const { locale, title, description, sidebarPad = "lg:pt-20" } = Astro.props;
 const t = createT(locale);
 
 const searchItems = links.map((l) => ({
@@ -37,8 +39,8 @@ const searchItems = links.map((l) => ({
 
   <Header locale={locale} />
 
-  <div class="lg:grid lg:grid-cols-[240px_minmax(0,1fr)]">
-    <Sidebar locale={locale} />
+  <div class="shell-grid lg:grid lg:grid-cols-[240px_minmax(0,1fr)]">
+    <Sidebar locale={locale} pad={sidebarPad} />
     <div class="min-w-0">
       <slot />
       <Footer locale={locale} />

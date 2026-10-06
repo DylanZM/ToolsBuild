@@ -4,10 +4,10 @@ interface Props {
   wordmark?: boolean;
   size?: number;
 }
-const { name, wordmark = true, size = 22 } = Astro.props;
+const { name, wordmark = true, size = 26 } = Astro.props;
 ---
 
-<span class="inline-flex items-center gap-2">
+<span class="inline-flex items-center gap-2.5">
   <svg
     width={size}
     height={size}
@@ -20,7 +20,7 @@ const { name, wordmark = true, size = 22 } = Astro.props;
   </svg>
   {
     wordmark && (
-      <span class="text-[13px] font-semibold tracking-tight text-ink">{name}</span>
+      <span class="text-[15px] font-semibold tracking-tight text-ink">{name}</span>
     )
   }
 </span>

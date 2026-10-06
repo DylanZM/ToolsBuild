@@ -22,6 +22,7 @@ const index = categories.findIndex((c) => c.id === category.id) + 1;
   title={`${category.name[locale]} — ${t("site.name")}`}
   description={category.desc[locale]}
   locale={locale}
+  sidebarPad="lg:pt-8"
 >
   <div class="mx-auto max-w-[1360px] px-5 pb-8 pt-6 sm:px-8 sm:pt-8">
     <CategorySection

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { domainOf, previewUrl } from "../../lib/url";
+import { domainOf, previewFallbackUrl, previewUrl } from "../../lib/url";
 
 const W = 340;
 const H = 212;
@@ -14,8 +14,18 @@ type Item = { url: string; name: string };
 const HoverPreview: React.FC = () => {
   const nodeRef = useRef<HTMLDivElement>(null);
   const [item, setItem] = useState<Item | null>(null);
+  const [src, setSrc] = useState("");
+  const [alt, setAlt] = useState("");
   const [ready, setReady] = useState(false);
   const [failed, setFailed] = useState(false);
+
+  useEffect(() => {
+    if (!item) return;
+    setSrc(previewUrl(item.url));
+    setAlt(previewFallbackUrl(item.url));
+    setReady(false);
+    setFailed(false);
+  }, [item?.url]);
 
   const pt = useRef({ x: -999, y: -999 });
   const timer = useRef<number>(0);
@@ -111,8 +121,6 @@ const HoverPreview: React.FC = () => {
     };
   }, []);
 
-  const src = item ? previewUrl(item.url) : "";
-
   return (
     <div
       ref={nodeRef}
@@ -167,6 +175,10 @@ const HoverPreview: React.FC = () => {
                       setReady(true);
                     }}
                     onError={() => {
+                      if (alt && src !== alt) {
+                        setSrc(alt);
+                        return;
+                      }
                       bad.add(item.url);
                       setFailed(true);
                     }}

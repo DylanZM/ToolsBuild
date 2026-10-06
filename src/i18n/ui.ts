@@ -10,6 +10,8 @@ export const ui = {
 
     "nav.home": "Inicio",
     "nav.menu": "Abrir menú",
+    "nav.hideSidebar": "Ocultar barra lateral",
+    "nav.showSidebar": "Mostrar barra lateral",
     "nav.close": "Cerrar",
     "nav.explore": "Explorar",
     "nav.categories": "Categorías",
@@ -76,6 +78,8 @@ export const ui = {
 
     "nav.home": "Home",
     "nav.menu": "Open menu",
+    "nav.hideSidebar": "Hide sidebar",
+    "nav.showSidebar": "Show sidebar",
     "nav.close": "Close",
     "nav.explore": "Explore",
     "nav.categories": "Categories",

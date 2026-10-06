@@ -22,10 +22,15 @@ const t = createT(locale);
     <button
       type="button"
       data-sidebar-open
+      data-tooltip={t("nav.menu")}
+      data-tooltip-align="start"
+      data-tip-menu={t("nav.menu")}
+      data-tip-hide={t("nav.hideSidebar")}
+      data-tip-show={t("nav.showSidebar")}
       aria-label={t("nav.menu")}
       aria-controls="sidebar"
-      aria-expanded="false"
-      class="grid h-8 w-8 shrink-0 place-items-center rounded-md text-muted transition-colors hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent lg:hidden"
+      aria-expanded="true"
+      class="grid h-8 w-8 shrink-0 place-items-center rounded-md text-muted transition-colors hover:bg-surface-2 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
     >
       <svg
         width="14"
@@ -52,24 +57,9 @@ const t = createT(locale);
     <div class="ml-auto flex shrink-0 items-center gap-1.5 sm:gap-2">
       <button
         type="button"
-        data-view-toggle
-        data-label-grid={t("view.grid")}
-        data-label-list={t("view.list")}
-        data-tooltip={t("tooltip.viewToList")}
-        data-tip-to-list={t("tooltip.viewToList")}
-        data-tip-to-grid={t("tooltip.viewToGrid")}
-        aria-label={t("view.list")}
-        aria-pressed="true"
-        class="hidden h-8 w-8 place-items-center rounded-md text-muted transition-colors hover:bg-surface-2 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent lg:grid"
-      >
-        <MorphIcon icon={Grid2X2} size={14} strokeWidth={2} />
-      </button>
-
-      <button
-        type="button"
         data-open-search
         data-tooltip={t("tooltip.search")}
-        class="flex h-8 items-center gap-1.5 rounded-md px-1.5 text-muted transition-colors hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        class="flex h-8 items-center gap-1.5 rounded-md px-1.5 text-muted transition-colors hover:bg-surface-2 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
         aria-label={t("nav.search")}
       >
         <MorphIcon icon={Search} size={14} strokeWidth={2} />
@@ -85,6 +75,21 @@ const t = createT(locale);
       </button>
 
       <LangSwitch locale={locale} label={t("lang.switch")} />
+      <button
+        type="button"
+        data-view-toggle
+        data-label-grid={t("view.grid")}
+        data-label-list={t("view.list")}
+        data-tooltip={t("tooltip.viewToList")}
+        data-tip-to-list={t("tooltip.viewToList")}
+        data-tip-to-grid={t("tooltip.viewToGrid")}
+        aria-label={t("view.list")}
+        aria-pressed="true"
+        class="hidden h-8 w-8 place-items-center rounded-md text-muted transition-colors hover:bg-surface-2 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent lg:grid"
+      >
+        <MorphIcon icon={Grid2X2} size={14} strokeWidth={2} />
+      </button>
+
       <ThemeToggle
         label={t("theme.toggle")}
         tipLight={t("tooltip.themeToLight")}
@@ -111,39 +116,59 @@ const t = createT(locale);
     });
   }
 
-  /** Reflows the cards with a FLIP animation so the view change reads as
-   *  motion instead of a reload. */
-  function switchView(view: string) {
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  /**
+   * Fades the cards out, swaps the layout, then fades them back in, so the
+   * view change reads as resources leaving and returning (not a reload).
+   */
+  let switching = false;
 
-    // Capture the old geometry of on-screen cards; off-screen rows snap.
-    const before = new Map<HTMLElement, { x: number; y: number }>();
-    if (!reduce) {
-      document.querySelectorAll<HTMLElement>("[data-card]").forEach((card) => {
-        const r = card.getBoundingClientRect();
-        if (r.bottom < -240 || r.top > window.innerHeight + 240) return;
-        before.set(card, { x: r.left, y: r.top });
-      });
+  async function switchView(view: string) {
+    if (switching) return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) {
+      applyView(view, false);
+      return;
     }
 
-    applyView(view, !reduce);
-    if (reduce) return;
+    switching = true;
+    try {
+      const visible = Array.from(document.querySelectorAll<HTMLElement>("[data-card]")).filter((card) => {
+        const r = card.getBoundingClientRect();
+        return r.bottom > -160 && r.top < window.innerHeight + 160;
+      });
 
-    before.forEach((f, card) => {
-      const l = card.getBoundingClientRect();
-      const dx = f.x - l.left;
-      const dy = f.y - l.top;
-      if (Math.abs(dx) < 1 && Math.abs(dy) < 1) return;
-
-      card.getAnimations().forEach((a) => a.cancel());
-      card.animate(
-        [
-          { transform: `translate(${dx}px, ${dy}px)`, opacity: 0.35 },
-          { transform: "none", opacity: 1 },
-        ],
-        { duration: 420, easing: "cubic-bezier(0.22, 1, 0.36, 1)" },
+      await Promise.allSettled(
+        visible.map((card) =>
+          card
+            .animate(
+              [
+                { opacity: 1, transform: "none" },
+                { opacity: 0, transform: "translateY(-10px) scale(0.985)" },
+              ],
+              { duration: 170, easing: "cubic-bezier(0.4, 0, 1, 1)", fill: "forwards" },
+            ).finished,
+        ),
       );
-    });
+
+      applyView(view, true);
+
+      visible.forEach((card, i) => {
+        card.getAnimations().forEach((a) => a.cancel());
+        card.animate(
+          [
+            { opacity: 0, transform: "translateY(10px) scale(0.985)" },
+            { opacity: 1, transform: "none" },
+          ],
+          {
+            duration: 340,
+            delay: Math.min(i, 8) * 18,
+            easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+          },
+        );
+      });
+    } finally {
+      switching = false;
+    }
   }
 
   function bind() {
