@@ -4,6 +4,7 @@ import { createT } from "../i18n/ui";
 import { localePath } from "../i18n/path";
 import { categories } from "../data/categories";
 import { links } from "../data/links";
+import Logo from "./Logo.astro";
 
 interface Props {
   locale: Locale;
@@ -18,13 +19,7 @@ const year = new Date().getFullYear();
     <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
       <div class="lg:col-span-2">
         <div class="flex items-center gap-2">
-          <span
-            class="grid h-6 w-6 place-items-center rounded bg-ink text-[11px] font-bold text-surface"
-            aria-hidden="true">T</span
-          >
-          <span class="text-[13px] font-semibold tracking-tight text-ink"
-            >{t("site.name")}</span
-          >
+          <Logo name={t("site.name")} />
         </div>
         <p class="mt-3 max-w-sm text-[12.5px] leading-relaxed text-muted">
           {t("site.tagline")}

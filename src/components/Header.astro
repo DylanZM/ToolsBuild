@@ -4,6 +4,7 @@ import { createT } from "../i18n/ui";
 import { localePath } from "../i18n/path";
 import ThemeToggle from "./ThemeToggle.astro";
 import LangSwitch from "./LangSwitch.astro";
+import Logo from "./Logo.astro";
 
 interface Props {
   locale: Locale;
@@ -43,13 +44,7 @@ const t = createT(locale);
       href={localePath(locale, "/")}
       class="group flex shrink-0 items-center gap-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent lg:hidden"
     >
-      <span
-        class="grid h-6 w-6 place-items-center rounded bg-ink text-[11px] font-bold text-surface transition-transform duration-300 group-hover:rotate-90"
-        aria-hidden="true">T</span
-      >
-      <span class="text-[13px] font-semibold tracking-tight text-ink"
-        >{t("site.name")}</span
-      >
+      <Logo name={t("site.name")} />
     </a>
 
     <div class="hidden min-w-0 items-baseline gap-2.5 lg:flex" aria-live="polite">
