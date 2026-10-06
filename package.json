@@ -12,7 +12,13 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^7.3.6"
+    "@astrojs/react": "^7.0.1",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.3.6",
+    "framer-motion": "^14.0.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "tailwindcss": "^4.3.3"
   },
   "allowScripts": {
     "esbuild": true

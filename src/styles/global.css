@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --font-sans: "Fira Code", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-mono: "Fira Code", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: #d9a441;
+  --color-accent-ink: #141512;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+:root {
+  --surface: #ebece6;
+  --surface-2: #f3f4ef;
+  --ink: #141512;
+  --muted: rgba(20, 21, 18, 0.58);
+  --line: rgba(20, 21, 18, 0.12);
+  color-scheme: light;
+}
+
+.dark {
+  --surface: #07080a;
+  --surface-2: #0d0f13;
+  --ink: #e8e9e3;
+  --muted: rgba(232, 233, 227, 0.52);
+  --line: rgba(232, 233, 227, 0.09);
+  color-scheme: dark;
+}
+
+@layer base {
+  * {
+    border-color: var(--line);
+  }
+
+  html {
+    background-color: var(--surface);
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--surface);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-weight: 400;
+  }
+
+  ::selection {
+    background-color: #d9a441;
+    color: #141512;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
