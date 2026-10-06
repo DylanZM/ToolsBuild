@@ -4,13 +4,19 @@ import { Sun } from "lucide";
 
 interface Props {
   label: string;
+  tipLight: string;
+  tipDark: string;
 }
-const { label } = Astro.props;
+const { label, tipLight, tipDark } = Astro.props;
 ---
 
 <button
   type="button"
   data-theme-toggle
+  data-tooltip={label}
+  data-tooltip-align="end"
+  data-tooltip-dark={tipDark}
+  data-tooltip-light={tipLight}
   aria-label={label}
   class="grid h-8 w-8 place-items-center rounded-md text-muted transition-colors hover:bg-surface-2 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
 >
@@ -24,6 +30,8 @@ const { label } = Astro.props;
   function sync(btn: HTMLElement, animate: boolean) {
     const isDark = document.documentElement.classList.contains("dark");
     setIcon(btn, isDark ? Sun : Moon, animate);
+    const tip = isDark ? btn.dataset.tooltipLight : btn.dataset.tooltipDark;
+    if (tip) btn.setAttribute("data-tooltip", tip);
   }
 
   function bind() {

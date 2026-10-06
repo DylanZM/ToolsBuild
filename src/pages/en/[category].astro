@@ -16,21 +16,21 @@ const category = getCategory(Astro.params.category ?? "");
 if (!category) throw new Error(`Unknown category: ${Astro.params.category}`);
 
 const index = categories.findIndex((c) => c.id === category.id) + 1;
-const num = String(index).padStart(2, "0");
 ---
 
 <Shell
   title={`${category.name[locale]} — ${t("site.name")}`}
   description={category.desc[locale]}
   locale={locale}
-  section={{ num, name: category.name[locale] }}
 >
-  <div class="mx-auto max-w-[1360px] px-5 py-10 sm:px-8 sm:py-14">
+  <div class="mx-auto max-w-[1360px] px-5 pb-8 pt-6 sm:px-8 sm:pt-8">
     <CategorySection
       category={category}
       links={linksByCategory(category.id)}
       locale={locale}
       index={index}
+      showRule={false}
+      heading="h1"
     />
   </div>
 </Shell>

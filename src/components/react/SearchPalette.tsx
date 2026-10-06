@@ -205,7 +205,7 @@ const SearchPalette: React.FC<Props> = ({ items, locale }) => {
           )}
         </div>
 
-        <div className="flex items-center justify-between border-t border-line px-4 py-2.5 font-mono text-[10.5px] uppercase tracking-wider text-muted">
+        <div className="flex items-center justify-between border-t border-line px-4 py-2.5 text-[10.5px] uppercase tracking-wider text-muted">
           <span>
             {results.length} {t("search.results")}
           </span>

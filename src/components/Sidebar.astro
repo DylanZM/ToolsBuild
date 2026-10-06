@@ -16,10 +16,9 @@ const rawPath = Astro.url.pathname.replace(/^\/en(?=\/|$)/, "") || "/";
 const currentSlug =
   rawPath === "/" ? "" : rawPath.replace(/^\//, "").split("/")[0];
 
-const items = categories.map((c, i) => ({
+const items = categories.map((c) => ({
   slug: c.slug,
   name: c.short[locale],
-  num: String(i + 1).padStart(2, "0"),
   count: linksByCategory(c.id).length,
   active: c.slug === currentSlug,
 }));
@@ -30,10 +29,10 @@ const items = categories.map((c, i) => ({
   data-sidebar
   inert
   aria-label={t("nav.categories")}
-  class="invisible fixed inset-y-0 left-0 z-50 flex w-[276px] -translate-x-full flex-col border-r border-line bg-surface transition-[transform,visibility] duration-300 ease-out-expo lg:visible lg:sticky lg:top-0 lg:bottom-auto lg:left-auto lg:z-30 lg:h-screen lg:w-auto lg:translate-x-0 lg:self-start"
+  class="invisible fixed inset-y-0 left-0 z-50 flex w-[276px] -translate-x-full flex-col border-r border-line bg-surface transition-[transform,visibility] duration-300 ease-out-expo lg:visible lg:sticky lg:top-[57px] lg:bottom-auto lg:left-auto lg:z-30 lg:h-[calc(100vh-57px)] lg:w-auto lg:translate-x-0 lg:self-start"
 >
   <div
-    class="flex h-14 shrink-0 items-center justify-between gap-3 border-b border-line px-5"
+    class="flex h-14 shrink-0 items-center justify-between gap-3 border-b border-line px-5 lg:hidden"
   >
     <a
       href={localePath(locale, "/")}
@@ -46,7 +45,7 @@ const items = categories.map((c, i) => ({
       type="button"
       data-sidebar-close
       aria-label={t("nav.close")}
-      class="grid h-8 w-8 place-items-center rounded-md text-muted transition-colors hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent lg:hidden"
+      class="grid h-8 w-8 place-items-center rounded-md text-muted transition-colors hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
     >
       <svg
         width="14"
@@ -63,12 +62,10 @@ const items = categories.map((c, i) => ({
   </div>
 
   <nav
-    class="min-h-0 flex-1 overflow-y-auto px-3 py-4"
+    class="min-h-0 flex-1 overflow-y-auto px-3 py-4 lg:pt-6"
     aria-label={t("nav.categories")}
   >
-    <p
-      class="px-2 pb-2.5 font-mono text-[10px] uppercase tracking-[0.2em] text-muted"
-    >
+    <p class="px-2 pb-2.5 text-[11px] font-medium uppercase tracking-[0.18em] text-muted">
       {t("nav.categories")}
     </p>
     <ul class="space-y-0.5">
@@ -82,15 +79,10 @@ const items = categories.map((c, i) => ({
               aria-current={item.active ? "page" : undefined}
               class="group flex items-center justify-between gap-3 rounded-md px-2 py-1.5 transition-colors hover:bg-surface-2 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             >
-              <span class="flex min-w-0 items-center gap-2.5">
-                <span class="nav-num font-mono text-[10px] tabular-nums tracking-wider text-accent/70">
-                  {item.num}
-                </span>
-                <span class="truncate font-display text-[13px] font-medium tracking-tight">
-                  {item.name}
-                </span>
+              <span class="min-w-0 truncate font-display text-[13px] font-medium tracking-tight">
+                {item.name}
               </span>
-              <span class="nav-count font-mono text-[10px] tabular-nums opacity-70">
+              <span class="nav-count shrink-0 text-[11px] tabular-nums opacity-70">
                 {item.count}
               </span>
             </a>
@@ -101,7 +93,7 @@ const items = categories.map((c, i) => ({
   </nav>
 
   <div
-    class="hidden shrink-0 border-t border-line px-5 py-3.5 font-mono text-[11px] tabular-nums text-muted lg:block"
+    class="hidden shrink-0 border-t border-line px-5 py-3.5 text-[11px] tabular-nums text-muted lg:block"
   >
     {links.length} {t("stat.links")}
   </div>

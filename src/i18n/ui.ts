@@ -22,6 +22,12 @@ export const ui = {
     "lang.switch": "Switch to English",
     "lang.label": "Idioma",
 
+    "tooltip.search": "Buscar",
+    "tooltip.themeToLight": "Usar tema claro",
+    "tooltip.themeToDark": "Usar tema oscuro",
+    "tooltip.viewToList": "Vista de lista",
+    "tooltip.viewToGrid": "Vista de cuadrícula",
+
     "view.label": "Vista",
     "view.grid": "Cambiar a vista de cuadrícula",
     "view.list": "Cambiar a vista de lista",
@@ -81,6 +87,12 @@ export const ui = {
     "theme.dark": "Dark",
     "lang.switch": "Cambiar a español",
     "lang.label": "Language",
+
+    "tooltip.search": "Search",
+    "tooltip.themeToLight": "Use light theme",
+    "tooltip.themeToDark": "Use dark theme",
+    "tooltip.viewToList": "List view",
+    "tooltip.viewToGrid": "Grid view",
 
     "view.label": "View",
     "view.grid": "Switch to grid view",

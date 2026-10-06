@@ -13,10 +13,9 @@ interface Props {
   locale: Locale;
   title: string;
   description: string;
-  section?: { num: string; name: string } | null;
 }
 
-const { locale, title, description, section = null } = Astro.props;
+const { locale, title, description } = Astro.props;
 const t = createT(locale);
 
 const searchItems = links.map((l) => ({
@@ -36,10 +35,11 @@ const searchItems = links.map((l) => ({
     aria-hidden="true"
   ></div>
 
+  <Header locale={locale} />
+
   <div class="lg:grid lg:grid-cols-[240px_minmax(0,1fr)]">
     <Sidebar locale={locale} />
     <div class="min-w-0">
-      <Header locale={locale} section={section} />
       <slot />
       <Footer locale={locale} />
     </div>

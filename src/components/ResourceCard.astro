@@ -38,7 +38,7 @@ const href = link.url;
         class="h-5 w-5 shrink-0 object-contain"
         data-favicon
         data-fallback={domainOf(link.url).charAt(0).toUpperCase()}
-        onerror="this.outerHTML='<span class=&quot;grid h-5 w-5 shrink-0 place-items-center font-mono text-[11px] text-muted&quot;>' + this.dataset.fallback + '</span>'"
+        onerror="this.outerHTML='<span class=&quot;grid h-5 w-5 shrink-0 place-items-center text-[11px] font-medium text-muted&quot;>' + this.dataset.fallback + '</span>'"
       />
       <div class="min-w-0">
         <h3
@@ -75,7 +75,7 @@ const href = link.url;
     link.tags.length > 0 && (
       <div class="mt-auto flex flex-wrap gap-1.5 pt-1" data-card-tags>
         {link.tags.slice(0, 3).map((tag) => (
-          <span class="rounded border border-line px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-muted transition-colors group-hover:border-accent/40 group-hover:text-ink">
+          <span class="rounded border border-line px-1.5 py-0.5 text-[10px] uppercase tracking-wider text-muted transition-colors group-hover:border-accent/40 group-hover:text-ink">
             {tag}
           </span>
         ))}

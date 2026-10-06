@@ -10,29 +10,57 @@ interface Props {
   links: Link[];
   locale: Locale;
   index?: number;
+  /** Draw the top rule + spacing (landing sections). Off on category pages. */
+  showRule?: boolean;
+  heading?: "h1" | "h2";
 }
 
-const { category, links, locale, index = 1 } = Astro.props;
+const {
+  category,
+  links,
+  locale,
+  index = 1,
+  showRule = true,
+  heading = "h2",
+} = Astro.props;
 const t = createT(locale);
 const num = String(index).padStart(2, "0");
+const Heading = heading;
+const isPageHeading = heading === "h1";
 ---
 
-<section id={category.slug} class="scroll-mt-24 border-t border-line pt-8 sm:pt-12 lg:pt-16">
+<section
+  id={category.slug}
+  class:list={[
+    "scroll-mt-24",
+    showRule && "border-t border-line pt-8 sm:pt-12 lg:pt-16",
+  ]}
+>
   <div class="mb-6 flex items-end justify-between gap-6 border-b border-line pb-4">
     <div class="flex items-baseline gap-4">
-      <span class="font-mono text-[11px] font-medium tracking-[0.2em] text-accent tabular-nums"
+      <span
+        class="text-[11px] font-medium uppercase tracking-[0.2em] text-accent tabular-nums"
         >{num}</span
       >
       <div>
-        <h2 class="text-xl font-semibold tracking-tight text-ink sm:text-2xl">
+        <Heading
+          class:list={[
+            "font-semibold tracking-tight text-ink",
+            isPageHeading
+              ? "text-2xl sm:text-3xl"
+              : "text-xl sm:text-2xl",
+          ]}
+        >
           {category.name[locale]}
-        </h2>
+        </Heading>
         <p class="mt-1 max-w-[72ch] text-[12.5px] leading-relaxed text-muted">
           {category.desc[locale]}
         </p>
       </div>
     </div>
-    <span class="hidden shrink-0 font-mono text-[11px] uppercase tracking-widest text-muted sm:block">
+    <span
+      class="hidden shrink-0 text-[11px] uppercase tracking-widest text-muted sm:block"
+    >
       {links.length} {t("section.items")}
     </span>
   </div>

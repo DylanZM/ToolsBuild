@@ -10,9 +10,8 @@ import { Grid2X2, List, Search } from "lucide";
 
 interface Props {
   locale: Locale;
-  section?: { num: string; name: string } | null;
 }
-const { locale, section = null } = Astro.props;
+const { locale } = Astro.props;
 const t = createT(locale);
 ---
 
@@ -45,23 +44,10 @@ const t = createT(locale);
 
     <a
       href={localePath(locale, "/")}
-      class="group flex shrink-0 items-center gap-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent lg:hidden"
+      class="group flex shrink-0 items-center gap-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
     >
       <Logo name={t("site.name")} />
     </a>
-
-    {
-      section && (
-        <div class="hidden min-w-0 items-baseline gap-2.5 lg:flex">
-          <span class="font-mono text-[11px] tabular-nums tracking-[0.2em] text-accent">
-            {section.num}
-          </span>
-          <span class="truncate text-[13px] font-medium tracking-tight text-ink">
-            {section.name}
-          </span>
-        </div>
-      )
-    }
 
     <div class="ml-auto flex shrink-0 items-center gap-1.5 sm:gap-2">
       <button
@@ -69,6 +55,9 @@ const t = createT(locale);
         data-view-toggle
         data-label-grid={t("view.grid")}
         data-label-list={t("view.list")}
+        data-tooltip={t("tooltip.viewToList")}
+        data-tip-to-list={t("tooltip.viewToList")}
+        data-tip-to-grid={t("tooltip.viewToGrid")}
         aria-label={t("view.list")}
         aria-pressed="true"
         class="hidden h-8 w-8 place-items-center rounded-md text-muted transition-colors hover:bg-surface-2 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent lg:grid"
@@ -79,23 +68,28 @@ const t = createT(locale);
       <button
         type="button"
         data-open-search
+        data-tooltip={t("tooltip.search")}
         class="flex h-8 items-center gap-1.5 rounded-md px-1.5 text-muted transition-colors hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
         aria-label={t("nav.search")}
       >
         <MorphIcon icon={Search} size={14} strokeWidth={2} />
         <kbd
           data-shortcut-mod
-          class="hidden rounded border border-line px-1 py-px font-mono text-[10px] font-medium tracking-wider text-muted sm:inline"
+          class="hidden rounded border border-line px-1 py-px text-[10px] font-medium tracking-wider text-muted sm:inline"
           >Ctrl</kbd
         >
         <kbd
-          class="hidden rounded border border-line px-1 py-px font-mono text-[10px] font-medium tracking-wider text-muted sm:inline"
+          class="hidden rounded border border-line px-1 py-px text-[10px] font-medium tracking-wider text-muted sm:inline"
           >K</kbd
         >
       </button>
 
       <LangSwitch locale={locale} label={t("lang.switch")} />
-      <ThemeToggle label={t("theme.toggle")} />
+      <ThemeToggle
+        label={t("theme.toggle")}
+        tipLight={t("tooltip.themeToLight")}
+        tipDark={t("tooltip.themeToDark")}
+      />
     </div>
   </div>
 </header>
@@ -111,7 +105,44 @@ const t = createT(locale);
       btn.setAttribute("aria-pressed", String(isGrid));
       const label = isGrid ? btn.dataset.labelList : btn.dataset.labelGrid;
       if (label) btn.setAttribute("aria-label", label);
+      const tip = isGrid ? btn.dataset.tipToList : btn.dataset.tipToGrid;
+      if (tip) btn.setAttribute("data-tooltip", tip);
       setIcon(btn, isGrid ? Grid2X2 : List, animate);
+    });
+  }
+
+  /** Reflows the cards with a FLIP animation so the view change reads as
+   *  motion instead of a reload. */
+  function switchView(view: string) {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    // Capture the old geometry of on-screen cards; off-screen rows snap.
+    const before = new Map<HTMLElement, { x: number; y: number }>();
+    if (!reduce) {
+      document.querySelectorAll<HTMLElement>("[data-card]").forEach((card) => {
+        const r = card.getBoundingClientRect();
+        if (r.bottom < -240 || r.top > window.innerHeight + 240) return;
+        before.set(card, { x: r.left, y: r.top });
+      });
+    }
+
+    applyView(view, !reduce);
+    if (reduce) return;
+
+    before.forEach((f, card) => {
+      const l = card.getBoundingClientRect();
+      const dx = f.x - l.left;
+      const dy = f.y - l.top;
+      if (Math.abs(dx) < 1 && Math.abs(dy) < 1) return;
+
+      card.getAnimations().forEach((a) => a.cancel());
+      card.animate(
+        [
+          { transform: `translate(${dx}px, ${dy}px)`, opacity: 0.35 },
+          { transform: "none", opacity: 1 },
+        ],
+        { duration: 420, easing: "cubic-bezier(0.22, 1, 0.36, 1)" },
+      );
     });
   }
 
@@ -129,7 +160,7 @@ const t = createT(locale);
       btn.dataset.bound = "1";
       btn.addEventListener("click", () => {
         const view = document.documentElement.dataset.view === "list" ? "grid" : "list";
-        applyView(view, true);
+        switchView(view);
         try {
           localStorage.setItem("view", view);
         } catch {}
