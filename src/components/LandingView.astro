@@ -20,7 +20,7 @@ const sections = categories.map((category, i) => ({
 <div class="mx-auto max-w-[1360px] px-5 sm:px-8">
   <Hero client:load locale={locale} total={links.length} />
 
-  <div class="space-y-16 pb-6 sm:space-y-24">
+  <div class="space-y-16 pb-6 sm:space-y-24 lg:space-y-32">
     {
       sections.map(({ category, links: catLinks, index }) => (
         <CategorySection

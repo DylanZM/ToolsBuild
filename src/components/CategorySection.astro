@@ -17,7 +17,13 @@ const t = createT(locale);
 const num = String(index).padStart(2, "0");
 ---
 
-<section id={category.slug} data-spy-section data-name={category.name[locale]} data-num={num} class="scroll-mt-24">
+<section
+  id={category.slug}
+  data-spy-section
+  data-name={category.name[locale]}
+  data-num={num}
+  class="scroll-mt-24 border-t border-line pt-8 sm:pt-12 lg:pt-16"
+>
   <div class="mb-6 flex items-end justify-between gap-6 border-b border-line pb-4">
     <div class="flex items-baseline gap-4">
       <span class="font-mono text-[11px] font-medium tracking-[0.2em] text-accent tabular-nums"
