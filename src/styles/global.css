@@ -14,6 +14,7 @@
   --color-line: var(--line);
   --color-accent: var(--accent);
   --color-accent-bright: var(--accent-bright);
+  --color-accent-soft: var(--accent-soft);
   --color-accent-ink: #141512;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);

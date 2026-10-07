@@ -15,13 +15,6 @@ import {
 } from "../ui/table";
 import { Pencil, Trash2 } from "lucide-react";
 
-const NEW_WINDOW_MS = 14 * 24 * 60 * 60 * 1000;
-const isNew = (l: Link): boolean => {
-  if (!l.addedAt) return false;
-  const t = Date.parse(l.addedAt);
-  return Number.isFinite(t) && Date.now() - t < NEW_WINDOW_MS;
-};
-
 const Favicon: React.FC<{ url: string; host: string }> = ({ url, host }) => {
   const [broken, setBroken] = useState(false);
   if (broken) {
@@ -48,8 +41,6 @@ const Favicon: React.FC<{ url: string; host: string }> = ({ url, host }) => {
 interface TableResourcesProps {
   items: Link[];
   categories: { id: string; name: string }[];
-  newIds?: Set<string>;
-  locale?: "es" | "en";
   onEdit: (l: Link) => void;
   onDelete: (l: Link) => void;
 }
@@ -57,8 +48,6 @@ interface TableResourcesProps {
 const TableResources: React.FC<TableResourcesProps> = ({
   items,
   categories,
-  newIds,
-  locale = "es",
   onEdit,
   onDelete,
 }) => {
@@ -178,11 +167,6 @@ const TableResources: React.FC<TableResourcesProps> = ({
                           >
                             {l.name}
                           </a>
-                          {(newIds?.has(l.id) || isNew(l)) && (
-                            <Badge tone="success" size="sm">
-                              {locale === "en" ? "NEW" : "Nuevo"}
-                            </Badge>
-                          )}
                         </div>
                         <div className="truncate text-[11.5px] text-muted">
                           {domainOf(l.url)}
