@@ -1,6 +1,15 @@
 # build output
 dist/
 
+# admin panel (local-only: la UI y la API no se suben a GitHub;
+# los datos viven en src/data/links.json y sí se commitean)
+/src/pages/admin.astro
+/src/components/react/AdminPanel.tsx
+/src/components/react/TableResources.tsx
+/src/components/arc/
+/src/components/ui/
+/scripts/admin-links.mjs
+
 # generated types
 .astro/
 
