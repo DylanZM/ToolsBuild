@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import react from '@astrojs/react';
+import { handleAdminLinks } from './scripts/admin-links.mjs';
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,6 +15,26 @@ export default defineConfig({
   },
   integrations: [react()],
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [
+      tailwindcss(),
+      {
+        name: 'admin-links-api',
+        /**
+         * API local para el panel /admin: solo existe en `astro dev`
+         * (el build estático no incluye middlewares de Vite).
+         * @param {import('vite').ViteDevServer} server
+         */
+        configureServer(server) {
+          server.middlewares.use((req, res, next) => {
+            const url = (req.url || '').split('?')[0];
+            if (url === '/api/links') {
+              handleAdminLinks(req, res);
+              return;
+            }
+            next();
+          });
+        },
+      },
+    ],
   },
 });

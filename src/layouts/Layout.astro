@@ -29,6 +29,7 @@ const ogLocale = locale === "es" ? "es_ES" : "en_US";
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://image.thum.io" crossorigin />
     <title>{title}</title>
+    <slot name="head" />
     <ClientRouter />
     <script is:inline>
       (function () {
