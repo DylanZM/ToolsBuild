@@ -1,32 +1,23 @@
 ---
 import type { Locale } from "../i18n/ui";
-import { categories } from "../data/categories";
-import { linksByCategory } from "../data/links";
-import CategorySection from "./CategorySection.astro";
+import { links } from "../data/links";
+import ResourceCard from "./ResourceCard.astro";
 
 interface Props {
   locale: Locale;
 }
 const { locale } = Astro.props;
-
-const sections = categories.map((category, i) => ({
-  category,
-  links: linksByCategory(category.id),
-  index: i + 1,
-}));
 ---
 
-<div>
-  <div class="space-y-16 pb-6 sm:space-y-24 lg:space-y-32">
-    {
-      sections.map(({ category, links: catLinks, index }) => (
-        <CategorySection
-          category={category}
-          links={catLinks}
-          locale={locale}
-          index={index}
-        />
-      ))
-    }
-  </div>
+<div
+  id="recursos"
+  data-card-grid
+  data-filter-grid
+  class="grid scroll-mt-24 grid-cols-1 gap-3 pb-6 transition-opacity duration-200 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4"
+>
+  {
+    links.map((link, i) => (
+      <ResourceCard link={link} locale={locale} index={i} />
+    ))
+  }
 </div>

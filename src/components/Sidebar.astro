@@ -18,6 +18,8 @@ interface Props {
 }
 const { locale, items } = Astro.props;
 const t = createT(locale);
+const base = localePath(locale, "/");
+const hrefFor = (slug: string) => (slug === "all" ? base : `${base}#${slug}`);
 ---
 
 <aside
@@ -34,12 +36,9 @@ const t = createT(locale);
       items.map((item) => (
         <li>
           <a
-            href={
-              item.slug
-                ? localePath(locale, `/${item.slug}`)
-                : localePath(locale, "/")
-            }
+            href={hrefFor(item.slug)}
             data-nav-link
+            data-filter-link={item.slug}
             data-active={item.active ? "true" : "false"}
             aria-current={item.active ? "page" : undefined}
             class="grid min-h-[42px] grid-cols-[24px_minmax(0,1fr)_auto] items-center gap-2 border-l border-line pl-3.5 pr-3 text-[12.5px] text-muted transition-colors hover:bg-surface-2 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"

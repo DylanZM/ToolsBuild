@@ -8,8 +8,7 @@ export const ui = {
     "site.description":
       "Directorio curado de herramientas de diseño, componentes, iconos, animaciones, IA y recursos de inspiración.",
 
-    "nav.home": "Inicio",
-    "nav.explore": "Explorar",
+    "nav.all": "Todos los recursos",
     "nav.categories": "Categorías",
     "nav.search": "Buscar",
     "nav.shortcut": "Ctrl K",
@@ -39,8 +38,6 @@ export const ui = {
     "stat.links": "recursos",
     "stat.categories": "categorías",
 
-    "section.items": "recursos",
-
     "filter.all": "Todos",
     "filter.label": "Filtrar por categoría",
 
@@ -67,8 +64,7 @@ export const ui = {
     "site.description":
       "Curated directory of design tools, components, icons, animations, AI and inspiration resources.",
 
-    "nav.home": "Home",
-    "nav.explore": "Explore",
+    "nav.all": "All resources",
     "nav.categories": "Categories",
     "nav.search": "Search",
     "nav.shortcut": "Ctrl K",
@@ -97,8 +93,6 @@ export const ui = {
 
     "stat.links": "resources",
     "stat.categories": "categories",
-
-    "section.items": "resources",
 
     "filter.all": "All",
     "filter.label": "Filter by category",

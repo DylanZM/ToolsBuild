@@ -17,7 +17,7 @@ import {
   Brain,
   Eye,
   Hammer,
-  House,
+  Layers,
   LayoutGrid,
   Lightbulb,
   Shapes,
@@ -32,6 +32,7 @@ interface Props {
 
 const { locale, title, description } = Astro.props;
 const t = createT(locale);
+const base = localePath(locale, "/");
 
 const searchItems = links.map((l) => ({
   id: l.id,
@@ -53,26 +54,25 @@ const ICONS: Record<string, any> = {
   learn: BookOpen,
 };
 
-const rawPath = Astro.url.pathname.replace(/^\/en(?=\/|$)/, "") || "/";
-const currentSlug =
-  rawPath === "/" ? "" : rawPath.replace(/^\//, "").split("/")[0];
-
 const navItems: NavItem[] = [
   {
-    slug: "",
-    name: t("nav.home"),
+    slug: "all",
+    name: t("nav.all"),
     count: links.length,
-    active: currentSlug === "",
-    icon: House,
+    active: true,
+    icon: Layers,
   },
   ...categories.map((c) => ({
     slug: c.slug,
     name: c.name[locale],
     count: linksByCategory(c.id).length,
-    active: c.slug === currentSlug,
+    active: false,
     icon: ICONS[c.id] ?? Lightbulb,
   })),
 ];
+
+const hrefFor = (slug: string) =>
+  slug === "all" ? base : `${base}#${slug}`;
 ---
 
 <Layout title={title} description={description} locale={locale}>
@@ -85,19 +85,12 @@ const navItems: NavItem[] = [
     {
       navItems.map((item) => (
         <a
-          href={
-            item.slug
-              ? localePath(locale, `/${item.slug}`)
-              : localePath(locale, "/")
-          }
+          href={hrefFor(item.slug)}
+          data-filter-link={item.slug}
+          data-chip
           data-active={item.active ? "true" : "false"}
           aria-current={item.active ? "page" : undefined}
-          class:list={[
-            "inline-flex h-8 shrink-0 items-center gap-1.5 rounded-full border px-3 text-[12px] transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
-            item.active
-              ? "border-accent/50 bg-accent/10 text-accent"
-              : "border-line text-muted",
-          ]}
+          class="chip inline-flex h-8 shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border border-line px-3 text-[12px] text-muted transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
         >
           <NavIcon icon={item.icon} size={13} class="shrink-0 opacity-70" />
           <span class="whitespace-nowrap">{item.name}</span>
@@ -123,3 +116,96 @@ const navItems: NavItem[] = [
   <SearchPalette client:load items={searchItems} locale={locale} />
   <HoverPreview client:load />
 </Layout>
+
+<script>
+  function applyFilterFromDom() {
+    const grid = document.querySelector<HTMLElement>("[data-filter-grid]");
+    const links = Array.from(
+      document.querySelectorAll<HTMLAnchorElement>("[data-filter-link]"),
+    );
+    if (!grid || !links.length) return;
+    const slugs = new Set(links.map((a) => a.dataset.filterLink || "all"));
+    const raw = decodeURIComponent(location.hash.slice(1));
+    const slug = raw && slugs.has(raw) ? raw : "all";
+    links.forEach((a) => {
+      const on = (a.dataset.filterLink || "all") === slug;
+      a.dataset.active = on ? "true" : "false";
+      if (on) a.setAttribute("aria-current", "page");
+      else a.removeAttribute("aria-current");
+    });
+    grid
+      .querySelectorAll<HTMLElement>("[data-category]")
+      .forEach((card) => {
+        card.hidden = slug !== "all" && card.dataset.category !== slug;
+      });
+    if (raw && raw !== slug) {
+      history.replaceState(null, "", location.pathname + location.search);
+    }
+  }
+
+  function setupFilters() {
+    const grid = document.querySelector<HTMLElement>("[data-filter-grid]");
+    const links = Array.from(
+      document.querySelectorAll<HTMLAnchorElement>("[data-filter-link]"),
+    );
+    if (!links.length) return;
+
+    const slugs = new Set(links.map((a) => a.dataset.filterLink || "all"));
+
+    const setActive = (slug: string) => {
+      links.forEach((a) => {
+        const on = (a.dataset.filterLink || "all") === slug;
+        a.dataset.active = on ? "true" : "false";
+        if (on) a.setAttribute("aria-current", "page");
+        else a.removeAttribute("aria-current");
+      });
+    };
+
+    const applyCards = (slug: string) => {
+      grid
+        ?.querySelectorAll<HTMLElement>("[data-category]")
+        .forEach((card) => {
+          card.hidden = slug !== "all" && card.dataset.category !== slug;
+        });
+    };
+
+    let timer = 0;
+
+    links.forEach((a) => {
+      if (a.dataset.filterBound) return;
+      a.dataset.filterBound = "1";
+      a.addEventListener("click", (e) => {
+        const slug = a.dataset.filterLink || "all";
+        if (!grid || !slugs.has(slug)) return;
+        e.preventDefault();
+        window.clearTimeout(timer);
+        setActive(slug);
+        grid.style.opacity = "0";
+        timer = window.setTimeout(() => {
+          applyCards(slug);
+          grid.style.opacity = "1";
+          if (a.hasAttribute("data-chip")) {
+            grid.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }, 150);
+        history.replaceState(
+          null,
+          "",
+          location.pathname +
+            location.search +
+            (slug === "all" ? "" : `#${slug}`),
+        );
+      });
+    });
+
+    applyFilterFromDom();
+
+    if (!(window as any).__filterHashBound) {
+      (window as any).__filterHashBound = true;
+      window.addEventListener("hashchange", applyFilterFromDom);
+    }
+  }
+
+  setupFilters();
+  document.addEventListener("astro:page-load", setupFilters);
+</script>

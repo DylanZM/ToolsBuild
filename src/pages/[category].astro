@@ -1,46 +1,29 @@
 ---
-import Shell from "../components/Shell.astro";
-import CategorySection from "../components/CategorySection.astro";
-import CategoryHeader from "../components/CategoryHeader.astro";
-import { categories, getCategory } from "../data/categories";
-import { linksByCategory } from "../data/links";
-import { createT } from "../i18n/ui";
+import { categories } from "../data/categories";
+import { localePath } from "../i18n/path";
 
 export function getStaticPaths() {
   return categories.map((c) => ({ params: { category: c.slug } }));
 }
 
 const locale = "es" as const;
-const t = createT(locale);
-
-const category = getCategory(Astro.params.category ?? "");
-if (!category) throw new Error(`Unknown category: ${Astro.params.category}`);
-
-const index = categories.findIndex((c) => c.id === category.id) + 1;
+const slug = Astro.params.category ?? "";
+const dest = `${localePath(locale, "/")}#${slug}`;
 ---
 
-<Shell
-  title={`${category.name[locale]} — ${t("site.name")}`}
-  description={category.desc[locale]}
-  locale={locale}
->
-  <div slot="top" class="pt-6 sm:pt-8">
-    <CategoryHeader
-      category={category}
-      locale={locale}
-      index={index}
-      count={linksByCategory(category.id).length}
-      heading="h1"
-    />
-  </div>
-  <div class="pb-8">
-    <CategorySection
-      category={category}
-      links={linksByCategory(category.id)}
-      locale={locale}
-      index={index}
-      showRule={false}
-      hideHeader
-    />
-  </div>
-</Shell>
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="refresh" content={`0;url=${dest}`} />
+    <link rel="canonical" href={dest} />
+    <title>Toolsbuild</title>
+    <script is:inline define:vars={{ dest }}>
+      window.location.replace(dest);
+    </script>
+  </head>
+  <body>
+    <a href={dest}>Toolsbuild</a>
+  </body>
+</html>

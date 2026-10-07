@@ -173,6 +173,16 @@
   color: var(--ink);
 }
 
+.chip[data-active="true"] {
+  border-color: color-mix(in oklab, var(--accent) 50%, transparent);
+  background-color: color-mix(in oklab, var(--accent) 10%, transparent);
+  color: var(--accent);
+}
+
+[data-card][hidden] {
+  display: none !important;
+}
+
 [data-nav-link][data-active="true"] .nav-icon {
   color: var(--accent);
   opacity: 1;
