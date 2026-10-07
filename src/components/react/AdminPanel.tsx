@@ -9,6 +9,14 @@ import { Select } from "../arc/select/select";
 import { TagInput } from "../arc/tag-input/tag-input";
 import { SearchField } from "../arc/search-field/search-field";
 import { Badge } from "../arc/badge/badge";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "../ui/table";
 import Toast from "../arc/toast/toast";
 import { Pencil, Star, Trash2 } from "lucide-react";
 
@@ -237,9 +245,6 @@ const AdminPanel: React.FC<Props> = ({ links, categories, dev }) => {
         : "border-line text-muted hover:border-ink/30 hover:text-ink"
     }`;
 
-  const btnGhost =
-    "rounded-md border border-line px-3 py-2 text-[13px] text-muted transition-colors hover:border-ink/30 hover:text-ink";
-
   return (
     <div className="mx-auto max-w-[860px] px-5 py-9 sm:px-8">
       <div className="mb-7 flex flex-wrap items-center justify-between gap-3">
@@ -249,9 +254,6 @@ const AdminPanel: React.FC<Props> = ({ links, categories, dev }) => {
           </h1>
           <span className="text-[13px] text-muted">{items.length} enlaces</span>
         </div>
-        <a href="/" className={btnGhost}>
-          Ver sitio ↗
-        </a>
       </div>
 
       {!dev && (
@@ -368,137 +370,143 @@ const AdminPanel: React.FC<Props> = ({ links, categories, dev }) => {
         </form>
       )}
 
-      <div className="overflow-hidden rounded-xl border border-line bg-surface">
-        <div className="flex items-end justify-between gap-3 border-b border-line px-4 py-3 sm:px-5">
-          <div className="flex items-baseline gap-2">
-            <h2 className="text-[14px] font-semibold text-ink">Lista</h2>
-            <span className="text-[11.5px] text-muted">
-              {filtered.length !== items.length
-                ? `${filtered.length} de ${items.length}`
-                : `${items.length} enlaces`}
-            </span>
-          </div>
-          <div className="w-full min-w-0 max-w-[260px]">
-            <SearchField
-              label="Buscar"
-              placeholder="Nombre, dominio o descripción"
-              value={query}
-              onValueChange={setQuery}
-            />
-          </div>
+      <div className="mb-3 flex items-end justify-between gap-3">
+        <div className="flex items-baseline gap-2">
+          <h2 className="text-[14px] font-semibold text-ink">Lista</h2>
+          <span className="text-[11.5px] text-muted">
+            {filtered.length !== items.length
+              ? `${filtered.length} de ${items.length}`
+              : `${items.length} enlaces`}
+          </span>
         </div>
-        <div className="flex flex-wrap items-center gap-1.5 border-b border-line px-4 py-2.5 sm:px-5">
+        <div className="w-full min-w-0 max-w-[260px]">
+          <SearchField
+            label="Buscar"
+            placeholder="Nombre, dominio o descripción"
+            value={query}
+            onValueChange={setQuery}
+          />
+        </div>
+      </div>
+      <div className="mb-2.5 flex flex-wrap items-center gap-1.5">
+        <button
+          type="button"
+          onClick={() => setFilterCat(null)}
+          className={chipCls(filterCat === null)}
+        >
+          Todas <span className="opacity-60">{items.length}</span>
+        </button>
+        {categories.map((c) => (
           <button
+            key={c.id}
             type="button"
-            onClick={() => setFilterCat(null)}
-            className={chipCls(filterCat === null)}
+            onClick={() =>
+              setFilterCat((cur) => (cur === c.id ? null : c.id))
+            }
+            className={chipCls(filterCat === c.id)}
           >
-            Todas <span className="opacity-60">{items.length}</span>
+            {c.name} <span className="opacity-60">{catCounts.get(c.id) ?? 0}</span>
           </button>
-          {categories.map((c) => (
-            <button
-              key={c.id}
-              type="button"
-              onClick={() =>
-                setFilterCat((cur) => (cur === c.id ? null : c.id))
-              }
-              className={chipCls(filterCat === c.id)}
-            >
-              {c.name} <span className="opacity-60">{catCounts.get(c.id) ?? 0}</span>
-            </button>
-          ))}
-        </div>
-        <ul>
-          {filtered.map((l) => (
-            <li
-              key={l.id}
-              className="group flex items-center gap-3 border-b border-line px-4 py-2.5 transition-colors last:border-b-0 hover:bg-surface-2 sm:px-5"
-            >
-              <Favicon url={l.url} host={domainOf(l.url)} />
-              <div className="min-w-0 flex-1">
-                <div className="flex items-baseline gap-2">
-                  <a
-                    href={l.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="truncate text-[13px] font-medium text-ink transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-                  >
-                    {l.name}
-                  </a>
-                  {l.featured && (
-                    <Badge
-                      tone="warning"
-                      size="sm"
-                      icon={<Star size={11} fill="currentColor" strokeWidth={0} />}
-                    >
-                      destacado
-                    </Badge>
-                  )}
-                  <span
-                    aria-hidden="true"
-                    className="shrink-0 -translate-x-1 text-[11px] text-muted opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100"
-                  >
-                    ↗
-                  </span>
-                </div>
-                <div className="flex items-center gap-2 text-[11.5px] text-muted">
-                  <span className="shrink-0">{domainOf(l.url)}</span>
-                  <span aria-hidden="true" className="opacity-40">
-                    ·
-                  </span>
-                  <span className="min-w-0 truncate">{l.desc.es}</span>
-                  {l.tags.length > 0 && (
-                    <span className="ml-auto hidden shrink-0 items-center gap-1 md:flex">
-                      {l.tags.slice(0, 2).map((t) => (
-                        <span
-                          key={t}
-                          className="rounded-md bg-surface-2 px-1.5 py-px text-[10px] font-medium text-muted transition-colors group-hover:bg-surface"
-                        >
-                          {t}
-                        </span>
-                      ))}
-                      {l.tags.length > 2 && (
-                        <span className="text-[10px] text-muted/70">
-                          +{l.tags.length - 2}
-                        </span>
-                      )}
+        ))}
+      </div>
+      <div className="overflow-hidden rounded-xl border border-line bg-surface">
+        <Table>
+          <TableHeader>
+            <TableRow className="hover:bg-transparent">
+              <TableHead className="w-[32%] pl-5">Recurso</TableHead>
+              <TableHead>Descripción</TableHead>
+              <TableHead className="w-[150px]">Categoría</TableHead>
+              <TableHead className="w-[180px] pr-5 text-right">
+                Acciones
+              </TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {filtered.length === 0 ? (
+              <TableRow className="hover:bg-transparent">
+                <TableCell
+                  colSpan={4}
+                  className="py-12 text-center text-[13px] text-muted"
+                >
+                  {query.trim()
+                    ? `Sin resultados para “${query}”`
+                    : "Sin recursos en esta categoría"}
+                </TableCell>
+              </TableRow>
+            ) : (
+              filtered.map((l) => (
+                <TableRow key={l.id}>
+                  <TableCell className="pl-5">
+                    <div className="flex min-w-0 items-center gap-2.5">
+                      <Favicon url={l.url} host={domainOf(l.url)} />
+                      <div className="min-w-0">
+                        <div className="flex min-w-0 items-center gap-1.5">
+                          <a
+                            href={l.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            title={l.url}
+                            className="truncate text-[13px] font-medium text-ink transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                          >
+                            {l.name}
+                          </a>
+                          {l.featured && (
+                            <Badge
+                              tone="warning"
+                              size="sm"
+                              icon={
+                                <Star
+                                  size={11}
+                                  fill="currentColor"
+                                  strokeWidth={0}
+                                />
+                              }
+                            >
+                              destacado
+                            </Badge>
+                          )}
+                        </div>
+                        <div className="truncate text-[11.5px] text-muted">
+                          {domainOf(l.url)}
+                        </div>
+                      </div>
+                    </div>
+                  </TableCell>
+                  <TableCell>
+                    <span className="block truncate text-[12.5px] text-muted">
+                      {l.desc.es}
                     </span>
-                  )}
-                </div>
-              </div>
-              <span className="hidden shrink-0 sm:block">
-                <Badge tone="neutral" size="sm">
-                  {catName(l.category)}
-                </Badge>
-              </span>
-              <div className="flex shrink-0 items-center gap-1">
-                <Button
-                  type="button"
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => startEdit(l)}
-                >
-                  <Pencil size={13} aria-hidden="true" /> Editar
-                </Button>
-                <Button
-                  type="button"
-                  variant="danger"
-                  size="sm"
-                  onClick={() => remove(l)}
-                >
-                  <Trash2 size={13} aria-hidden="true" /> Eliminar
-                </Button>
-              </div>
-            </li>
-          ))}
-          {filtered.length === 0 && (
-            <li className="px-5 py-8 text-center text-[13px] text-muted">
-              {query.trim()
-                ? `Sin resultados para “${query}”`
-                : "Sin recursos en esta categoría"}
-            </li>
-          )}
-        </ul>
+                  </TableCell>
+                  <TableCell>
+                    <Badge tone="neutral" size="sm">
+                      {catName(l.category)}
+                    </Badge>
+                  </TableCell>
+                  <TableCell className="pr-5">
+                    <div className="flex items-center justify-end gap-1">
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => startEdit(l)}
+                      >
+                        <Pencil size={13} aria-hidden="true" /> Editar
+                      </Button>
+                      <Button
+                        type="button"
+                        variant="danger"
+                        size="sm"
+                        onClick={() => remove(l)}
+                      >
+                        <Trash2 size={13} aria-hidden="true" /> Eliminar
+                      </Button>
+                    </div>
+                  </TableCell>
+                </TableRow>
+              ))
+            )}
+          </TableBody>
+        </Table>
       </div>
 
       <div className="pointer-events-none fixed bottom-5 right-5 z-50">
