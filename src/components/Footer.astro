@@ -2,8 +2,6 @@
 import type { Locale } from "../i18n/ui";
 import { createT } from "../i18n/ui";
 import { localePath } from "../i18n/path";
-import { categories } from "../data/categories";
-import { links, linksByCategory } from "../data/links";
 import Logo from "./Logo.astro";
 
 interface Props {
@@ -13,58 +11,20 @@ const { locale } = Astro.props;
 const t = createT(locale);
 const year = new Date().getFullYear();
 const base = localePath(locale, "/");
-const hrefFor = (slug: string) => (slug === "all" ? base : `${base}#${slug}`);
-
-const items = [
-  { slug: "all", name: t("nav.all"), count: links.length },
-  ...categories.map((c) => ({
-    slug: c.slug,
-    name: c.name[locale],
-    count: linksByCategory(c.id).length,
-  })),
-];
 ---
 
 <footer class="mt-16 border-t border-line">
   <div class="mx-auto max-w-[1360px] px-5 sm:px-8">
-    <div
-      class="grid gap-10 py-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.7fr)] lg:gap-16"
-    >
-      <div class="max-w-[42ch]">
-        <a
-          href={base}
-          class="inline-flex focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
-        >
-          <Logo name={t("site.name")} />
-        </a>
-        <p class="mt-4 text-[13px] leading-relaxed text-muted">
-          {t("site.description")}
-        </p>
-        <p class="mt-6 text-[11.5px] text-muted">{t("footer.built")}</p>
-      </div>
-
-      <div>
-        <ul class="grid grid-cols-2 gap-x-8 sm:grid-cols-3">
-          {
-            items.map((item) => (
-              <li>
-                <a
-                  href={hrefFor(item.slug)}
-                  data-nav-link
-                  data-filter-link={item.slug}
-                  data-active={item.slug === "all" ? "true" : "false"}
-                  class="flex items-center justify-between gap-3 rounded-md px-2 py-1.5 text-[12.5px] text-muted transition-colors hover:bg-surface-2 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-                >
-                  <span class="truncate">{item.name}</span>
-                  <small class="nav-count shrink-0 text-[11px] tabular-nums opacity-70">
-                    {item.count}
-                  </small>
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
+    <div class="max-w-[42ch] py-12">
+      <a
+        href={base}
+        class="inline-flex focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+      >
+        <Logo name={t("site.name")} />
+      </a>
+      <p class="mt-4 text-[13px] leading-relaxed text-muted">
+        {t("site.description")}
+      </p>
     </div>
 
     <div
