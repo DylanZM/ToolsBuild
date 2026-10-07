@@ -1,5 +1,5 @@
 /* No row gap: grid tracks clamp a negative margin at zero, so a closed message row would still pay the gap. Each row carries its own space instead. */
-.field { display: grid; min-width: 0; }
+.field { display: grid; min-width: 0; align-content: start; }
 .field label { margin-bottom: var(--space-2); font-size: var(--arc-text-sm); font-weight: 500; }
 /* Same focus language as Input: the ring contracts onto the border while it fades in, and the box never changes size. */
 .control { width: 100%; min-height: 110px; resize: vertical; border: 1px solid var(--border-strong); border-radius: var(--radius-control); padding: var(--space-3); background: var(--arc-surface); color: var(--foreground); font: inherit; font-size: var(--arc-text-sm); line-height: var(--leading-body); outline: none; box-shadow: 0 0 0 6px transparent; transition: border-color var(--duration-fast) var(--ease-standard), box-shadow var(--duration-standard) var(--ease-standard), background-color var(--duration-fast) var(--ease-standard); }

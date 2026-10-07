@@ -1,6 +1,6 @@
 /* No row gap: grid tracks clamp a negative margin at zero, so a closed message row would still pay the gap. Each row carries its own space instead. */
 /* The field fills its column, so a new tag never widens it or re-centers it inside a centered layout. */
-.field { display: grid; width: 100%; min-width: 0; }
+.field { display: grid; width: 100%; min-width: 0; align-content: start; }
 .field label { margin-bottom: var(--space-2); font-size: var(--arc-text-sm); font-weight: 500; }
 /* The shell animates its height to .content, which carries the wrapping rows. The ring contracts onto the border on focus. */
 .control { box-sizing: content-box; overflow: hidden; border: 1px solid var(--border); border-radius: var(--radius-control); background: var(--arc-surface); box-shadow: 0 0 0 6px transparent; transition: border-color var(--duration-fast) var(--ease-standard), box-shadow var(--duration-standard) var(--ease-standard); }

@@ -6,7 +6,6 @@ import { Button } from "../arc/button/button";
 import { Input } from "../arc/input/input";
 import { Textarea } from "../arc/textarea/textarea";
 import { Select } from "../arc/select/select";
-import { Switch } from "../arc/switch/switch";
 import { TagInput } from "../arc/tag-input/tag-input";
 import Toast from "../arc/toast/toast";
 
@@ -28,7 +27,6 @@ interface FormState {
   tags: string[];
   descEs: string;
   descEn: string;
-  featured: boolean;
 }
 
 type FieldErrors = Partial<Record<"name" | "url" | "descEs" | "descEn", string>>;
@@ -50,7 +48,6 @@ const AdminPanel: React.FC<Props> = ({ links, categories, dev }) => {
     tags: [],
     descEs: "",
     descEn: "",
-    featured: false,
   });
 
   const [items, setItems] = useState<Link[]>(links);
@@ -128,7 +125,6 @@ const AdminPanel: React.FC<Props> = ({ links, categories, dev }) => {
     }
     setErrors({});
     const tags = form.tags.map((t) => t.trim()).filter(Boolean);
-    const featured = form.featured ? true : undefined;
 
     if (editingId) {
       const next = items.map((l) =>
@@ -140,7 +136,6 @@ const AdminPanel: React.FC<Props> = ({ links, categories, dev }) => {
               category: form.category,
               tags,
               desc: { es: descEs, en: descEn },
-              ...(featured ? { featured: true } : {}),
             }
           : l,
       );
@@ -162,7 +157,6 @@ const AdminPanel: React.FC<Props> = ({ links, categories, dev }) => {
       category: form.category,
       tags,
       desc: { es: descEs, en: descEn },
-      ...(featured ? { featured: true } : {}),
     };
     if (await persist([...items, entry])) {
       saved(`✓ "${name}" agregado a ${catName(form.category)}`);
@@ -187,7 +181,6 @@ const AdminPanel: React.FC<Props> = ({ links, categories, dev }) => {
       tags: [...l.tags],
       descEs: l.desc.es,
       descEn: l.desc.en,
-      featured: !!l.featured,
     });
     formRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
   };
@@ -325,15 +318,7 @@ const AdminPanel: React.FC<Props> = ({ links, categories, dev }) => {
             />
           </div>
 
-          <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
-            <Switch
-              id="f-featured"
-              label="Destacado"
-              checked={form.featured}
-              onCheckedChange={(checked) =>
-                setForm({ ...form, featured: checked })
-              }
-            />
+          <div className="mt-5 flex justify-end">
             <Button type="submit" variant="primary" loading={busy}>
               {editingId ? "Guardar cambios" : "+ Agregar"}
             </Button>
