@@ -19,34 +19,6 @@ const t = createT(locale);
   class="sticky top-0 z-30 border-b border-line bg-surface/85 backdrop-blur-md"
 >
   <div class="flex h-14 items-center gap-3 px-5 sm:px-8">
-    <button
-      type="button"
-      data-sidebar-open
-      data-tooltip={t("nav.menu")}
-      data-tooltip-align="start"
-      data-tip-menu={t("nav.menu")}
-      data-tip-hide={t("nav.hideSidebar")}
-      data-tip-show={t("nav.showSidebar")}
-      aria-label={t("nav.menu")}
-      aria-controls="sidebar"
-      aria-expanded="true"
-      class="grid h-8 w-8 shrink-0 place-items-center rounded-md text-muted transition-colors hover:bg-surface-2 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-    >
-      <svg
-        width="14"
-        height="14"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        aria-hidden="true"
-        ><path d="M4 6h16"></path><path d="M4 12h16"></path><path
-          d="M4 18h16"
-        ></path></svg
-      >
-    </button>
-
     <a
       href={localePath(locale, "/")}
       class="group flex shrink-0 items-center gap-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
@@ -59,7 +31,7 @@ const t = createT(locale);
         type="button"
         data-open-search
         data-tooltip={t("tooltip.search")}
-        class="flex h-8 items-center gap-1.5 rounded-md px-1.5 text-muted transition-colors hover:bg-surface-2 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        class="hdr-hover flex h-8 items-center gap-1.5 rounded-md px-1.5 text-muted transition-colors hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
         aria-label={t("nav.search")}
       >
         <MorphIcon icon={Search} size={14} strokeWidth={2} />
@@ -85,7 +57,7 @@ const t = createT(locale);
         data-tip-to-grid={t("tooltip.viewToGrid")}
         aria-label={t("view.list")}
         aria-pressed="true"
-        class="hidden h-8 w-8 place-items-center rounded-md text-muted transition-colors hover:bg-surface-2 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent lg:grid"
+        class="hdr-hover hidden h-8 w-8 place-items-center rounded-md text-muted transition-colors hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent lg:grid"
       >
         <MorphIcon icon={Grid2X2} size={14} strokeWidth={2} />
       </button>
@@ -117,8 +89,8 @@ const t = createT(locale);
   }
 
   /**
-   * Fades the cards out, swaps the layout, then fades them back in, so the
-   * view change reads as resources leaving and returning (not a reload).
+   * Fades each visible card grid out as a single block, swaps the layout,
+   * then fades the grids back in — one animation, no per-card stagger.
    */
   let switching = false;
 
@@ -132,39 +104,32 @@ const t = createT(locale);
 
     switching = true;
     try {
-      const visible = Array.from(document.querySelectorAll<HTMLElement>("[data-card]")).filter((card) => {
-        const r = card.getBoundingClientRect();
+      const grids = Array.from(
+        document.querySelectorAll<HTMLElement>("[data-card-grid]"),
+      ).filter((grid) => {
+        const r = grid.getBoundingClientRect();
         return r.bottom > -160 && r.top < window.innerHeight + 160;
       });
 
       await Promise.allSettled(
-        visible.map((card) =>
-          card
-            .animate(
-              [
-                { opacity: 1, transform: "none" },
-                { opacity: 0, transform: "translateY(-10px) scale(0.985)" },
-              ],
-              { duration: 170, easing: "cubic-bezier(0.4, 0, 1, 1)", fill: "forwards" },
-            ).finished,
+        grids.map((grid) =>
+          grid
+            .animate([{ opacity: 1 }, { opacity: 0 }], {
+              duration: 170,
+              easing: "cubic-bezier(0.4, 0, 1, 1)",
+              fill: "forwards",
+            }).finished,
         ),
       );
 
       applyView(view, true);
 
-      visible.forEach((card, i) => {
-        card.getAnimations().forEach((a) => a.cancel());
-        card.animate(
-          [
-            { opacity: 0, transform: "translateY(10px) scale(0.985)" },
-            { opacity: 1, transform: "none" },
-          ],
-          {
-            duration: 340,
-            delay: Math.min(i, 8) * 18,
-            easing: "cubic-bezier(0.22, 1, 0.36, 1)",
-          },
-        );
+      grids.forEach((grid) => {
+        grid.getAnimations().forEach((a) => a.cancel());
+        grid.animate([{ opacity: 0 }, { opacity: 1 }], {
+          duration: 300,
+          easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+        });
       });
     } finally {
       switching = false;

@@ -1,30 +1,45 @@
 import React, { useEffect, useRef, useState } from "react";
-import { domainOf, previewFallbackUrl, previewUrl } from "../../lib/url";
+import { domainOf, faviconUrl } from "../../lib/url";
+import { getPreview, type PreviewData } from "../../lib/preview";
 
 const W = 340;
 const H = 212;
 const DELAY = 350;
 const MARGIN = 14;
 
-const ok = new Set<string>();
-const bad = new Set<string>();
-
 type Item = { url: string; name: string };
+type Phase = "loading" | "image" | "fallback";
 
 const HoverPreview: React.FC = () => {
   const nodeRef = useRef<HTMLDivElement>(null);
   const [item, setItem] = useState<Item | null>(null);
-  const [src, setSrc] = useState("");
-  const [alt, setAlt] = useState("");
-  const [ready, setReady] = useState(false);
-  const [failed, setFailed] = useState(false);
+  const [meta, setMeta] = useState<PreviewData | null>(null);
+  const [phase, setPhase] = useState<Phase>("loading");
+  const [imgSrc, setImgSrc] = useState("");
+  const [imgOk, setImgOk] = useState(false);
+  const badImages = useRef(new Set<string>());
 
   useEffect(() => {
     if (!item) return;
-    setSrc(previewUrl(item.url));
-    setAlt(previewFallbackUrl(item.url));
-    setReady(false);
-    setFailed(false);
+    const url = item.url;
+    setMeta(null);
+    setImgSrc("");
+    setImgOk(false);
+    setPhase("loading");
+    let alive = true;
+    getPreview(url).then((data) => {
+      if (!alive) return;
+      setMeta(data);
+      if (data?.image && !badImages.current.has(data.image)) {
+        setImgSrc(data.image);
+        setPhase("image");
+      } else {
+        setPhase("fallback");
+      }
+    });
+    return () => {
+      alive = false;
+    };
   }, [item?.url]);
 
   const pt = useRef({ x: -999, y: -999 });
@@ -65,8 +80,6 @@ const HoverPreview: React.FC = () => {
       const name = el.dataset.previewName || domainOf(url);
       shown.current = true;
       place();
-      setFailed(bad.has(url));
-      setReady(ok.has(url));
       setItem({ url, name });
     };
 
@@ -121,6 +134,24 @@ const HoverPreview: React.FC = () => {
     };
   }, []);
 
+  const shimmer = (
+    <div
+      className={`absolute inset-0 transition-opacity duration-300 ${
+        imgOk ? "opacity-0" : "opacity-100"
+      }`}
+      style={{
+        backgroundImage:
+          "linear-gradient(90deg, transparent, var(--line), transparent)",
+        backgroundSize: "200% 100%",
+        animation: "preview-shimmer 1.4s linear infinite",
+      }}
+    />
+  );
+
+  const faviconSrc =
+    (meta?.favicon ?? undefined) ||
+    faviconUrl(item?.url ?? "", 128);
+
   return (
     <div
       ref={nodeRef}
@@ -136,53 +167,52 @@ const HoverPreview: React.FC = () => {
         {item && (
           <div className="w-[340px] overflow-hidden rounded-xl border border-line bg-surface shadow-[0_24px_60px_-18px_rgba(0,0,0,0.55)]">
             <div className="relative aspect-[16/10] w-full overflow-hidden bg-surface-2">
-              {failed ? (
-                <div className="flex h-full flex-col items-center justify-center gap-2">
-                  <span
-                    className="grid h-9 w-9 place-items-center rounded-lg border border-line bg-surface text-[13px] font-bold text-ink"
-                    aria-hidden="true"
-                  >
-                    {domainOf(item.url).charAt(0).toUpperCase()}
-                  </span>
+              {phase === "fallback" ? (
+                <div className="flex h-full flex-col items-center justify-center gap-2.5">
+                  <img
+                    src={faviconSrc}
+                    alt=""
+                    width={36}
+                    height={36}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-9 w-9 rounded-lg object-contain"
+                    onError={(e) => {
+                      const img = e.currentTarget;
+                      img.outerHTML =
+                        '<span class="grid h-9 w-9 place-items-center rounded-lg border border-line bg-surface text-[13px] font-bold text-ink">' +
+                        domainOf(item.url).charAt(0).toUpperCase() +
+                        "</span>";
+                    }}
+                  />
                   <span className="max-w-[85%] truncate text-[11.5px] text-muted">
                     {domainOf(item.url)}
                   </span>
                 </div>
               ) : (
                 <>
-                  <div
-                    className={`absolute inset-0 transition-opacity duration-300 ${
-                      ready ? "opacity-0" : "opacity-100"
-                    }`}
-                    style={{
-                      backgroundImage:
-                        "linear-gradient(90deg, transparent, var(--line), transparent)",
-                      backgroundSize: "200% 100%",
-                      animation: "preview-shimmer 1.4s linear infinite",
-                    }}
-                  />
-                  <img
-                    src={src}
-                    alt=""
-                    width={340}
-                    height={212}
-                    decoding="async"
-                    className={`h-full w-full object-cover object-top transition-opacity duration-300 ${
-                      ready ? "opacity-100" : "opacity-0"
-                    }`}
-                    onLoad={() => {
-                      ok.add(item.url);
-                      setReady(true);
-                    }}
-                    onError={() => {
-                      if (alt && src !== alt) {
-                        setSrc(alt);
-                        return;
-                      }
-                      bad.add(item.url);
-                      setFailed(true);
-                    }}
-                  />
+                  {phase === "loading" ? (
+                    shimmer
+                  ) : (
+                    <>
+                      {shimmer}
+                      <img
+                        src={imgSrc}
+                        alt=""
+                        width={340}
+                        height={212}
+                        decoding="async"
+                        className={`h-full w-full object-cover object-top transition-opacity duration-300 ${
+                          imgOk ? "opacity-100" : "opacity-0"
+                        }`}
+                        onLoad={() => setImgOk(true)}
+                        onError={() => {
+                          if (imgSrc) badImages.current.add(imgSrc);
+                          setPhase("fallback");
+                        }}
+                      />
+                    </>
+                  )}
                 </>
               )}
             </div>

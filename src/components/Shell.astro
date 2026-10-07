@@ -3,21 +3,36 @@ import Layout from "../layouts/Layout.astro";
 import Header from "./Header.astro";
 import Footer from "./Footer.astro";
 import Sidebar from "./Sidebar.astro";
+import type { NavItem } from "./Sidebar.astro";
+import NavIcon from "./NavIcon.astro";
 import SearchPalette from "./react/SearchPalette";
 import HoverPreview from "./react/HoverPreview";
 import type { Locale } from "../i18n/ui";
 import { createT } from "../i18n/ui";
-import { links } from "../data/links";
+import { localePath } from "../i18n/path";
+import { categories } from "../data/categories";
+import { links, linksByCategory } from "../data/links";
+import {
+  BookOpen,
+  Brain,
+  Eye,
+  Hammer,
+  House,
+  LayoutGrid,
+  Lightbulb,
+  Shapes,
+  Waves,
+} from "lucide";
 
 interface Props {
   locale: Locale;
   title: string;
   description: string;
-  /** lg top padding of the sidebar so it lines up with the page content. */
+  /** lg top offset of the rail so its first line meets the content's first line. */
   sidebarPad?: string;
 }
 
-const { locale, title, description, sidebarPad = "lg:pt-20" } = Astro.props;
+const { locale, title, description, sidebarPad = "lg:mt-20" } = Astro.props;
 const t = createT(locale);
 
 const searchItems = links.map((l) => ({
@@ -28,19 +43,75 @@ const searchItems = links.map((l) => ({
   desc: l.desc[locale],
   tags: l.tags,
 }));
+
+const ICONS: Record<string, any> = {
+  inspiration: Lightbulb,
+  components: LayoutGrid,
+  icons: Shapes,
+  motion: Waves,
+  visuals: Eye,
+  ai: Brain,
+  build: Hammer,
+  learn: BookOpen,
+};
+
+const rawPath = Astro.url.pathname.replace(/^\/en(?=\/|$)/, "") || "/";
+const currentSlug =
+  rawPath === "/" ? "" : rawPath.replace(/^\//, "").split("/")[0];
+
+const navItems: NavItem[] = [
+  {
+    slug: "",
+    name: t("nav.home"),
+    count: links.length,
+    active: currentSlug === "",
+    icon: House,
+  },
+  ...categories.map((c) => ({
+    slug: c.slug,
+    name: c.name[locale],
+    count: linksByCategory(c.id).length,
+    active: c.slug === currentSlug,
+    icon: ICONS[c.id] ?? Lightbulb,
+  })),
+];
 ---
 
 <Layout title={title} description={description} locale={locale}>
-  <div
-    data-sidebar-backdrop
-    class="pointer-events-none fixed inset-0 z-40 bg-surface/70 opacity-0 backdrop-blur-sm transition-opacity duration-300 lg:hidden"
-    aria-hidden="true"
-  ></div>
-
   <Header locale={locale} />
 
-  <div class="shell-grid lg:grid lg:grid-cols-[240px_minmax(0,1fr)]">
-    <Sidebar locale={locale} pad={sidebarPad} />
+  <nav
+    aria-label={t("nav.categories")}
+    class="no-scrollbar flex gap-2 overflow-x-auto border-b border-line px-5 py-2.5 sm:px-8 lg:hidden"
+  >
+    {
+      navItems.map((item) => (
+        <a
+          href={
+            item.slug
+              ? localePath(locale, `/${item.slug}`)
+              : localePath(locale, "/")
+          }
+          data-active={item.active ? "true" : "false"}
+          aria-current={item.active ? "page" : undefined}
+          class:list={[
+            "inline-flex h-8 shrink-0 items-center gap-1.5 rounded-full border px-3 text-[12px] transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
+            item.active
+              ? "border-accent/50 bg-accent/10 text-accent"
+              : "border-line text-muted",
+          ]}
+        >
+          <NavIcon icon={item.icon} size={13} class="shrink-0 opacity-70" />
+          <span class="whitespace-nowrap">{item.name}</span>
+        </a>
+      ))
+    }
+  </nav>
+
+  <div
+    class="mx-auto grid max-w-[1360px] px-5 sm:px-8 lg:grid-cols-[230px_minmax(0,1fr)] lg:gap-11 xl:gap-14"
+  >
+    <Sidebar locale={locale} items={navItems} pad={sidebarPad} />
     <div class="min-w-0">
       <slot />
       <Footer locale={locale} />

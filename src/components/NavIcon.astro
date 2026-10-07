@@ -1,0 +1,35 @@
+---
+interface Props {
+  icon: [string, Record<string, string>][];
+  size?: number;
+  class?: string;
+}
+const { icon, size = 15, class: cls } = Astro.props;
+---
+
+<svg
+  width={size}
+  height={size}
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+  class={cls}
+>
+  {
+    icon.map(([tag, attrs]: [string, Record<string, string>]) =>
+      tag === "circle" ? (
+        <circle {...attrs} />
+      ) : tag === "rect" ? (
+        <rect {...attrs} />
+      ) : tag === "line" ? (
+        <line {...attrs} />
+      ) : (
+        <path {...attrs} />
+      ),
+    )
+  }
+</svg>

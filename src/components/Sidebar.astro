@@ -2,238 +2,60 @@
 import type { Locale } from "../i18n/ui";
 import { createT } from "../i18n/ui";
 import { localePath } from "../i18n/path";
-import { categories } from "../data/categories";
-import { links, linksByCategory } from "../data/links";
-import Logo from "./Logo.astro";
-import {
-  BookOpen,
-  Brain,
-  Eye,
-  Hammer,
-  LayoutGrid,
-  Lightbulb,
-  Shapes,
-  Waves,
-} from "lucide";
+import NavIcon from "./NavIcon.astro";
+
+export interface NavItem {
+  slug: string;
+  name: string;
+  count: number;
+  active: boolean;
+  icon: [string, Record<string, string>][];
+}
 
 interface Props {
   locale: Locale;
-  /** Top padding (lg only) so the first row lines up with the page content. */
+  items: NavItem[];
+  /** lg top margin so the first line meets the content's first line. */
   pad?: string;
 }
-const { locale, pad = "lg:pt-20" } = Astro.props;
-
-const ICONS: Record<string, any> = {
-  inspiration: Lightbulb,
-  components: LayoutGrid,
-  icons: Shapes,
-  motion: Waves,
-  visuals: Eye,
-  ai: Brain,
-  build: Hammer,
-  learn: BookOpen,
-};
+const { locale, items, pad = "lg:mt-20" } = Astro.props;
 const t = createT(locale);
-
-const rawPath = Astro.url.pathname.replace(/^\/en(?=\/|$)/, "") || "/";
-const currentSlug =
-  rawPath === "/" ? "" : rawPath.replace(/^\//, "").split("/")[0];
-
-const items = categories.map((c) => ({
-  slug: c.slug,
-  name: c.short[locale],
-  count: linksByCategory(c.id).length,
-  active: c.slug === currentSlug,
-  icon: ICONS[c.id] ?? Lightbulb,
-}));
 ---
 
 <aside
-  id="sidebar"
-  data-sidebar
-  inert
   aria-label={t("nav.categories")}
-  class="invisible fixed inset-y-0 left-0 z-50 flex w-[276px] -translate-x-full flex-col border-r border-line bg-surface transition-[transform,visibility] duration-300 ease-out-expo lg:visible lg:sticky lg:top-[57px] lg:bottom-auto lg:left-auto lg:z-30 lg:h-[calc(100vh-57px)] lg:w-auto lg:translate-x-0 lg:self-start"
+  class:list={["hidden lg:sticky lg:top-[76px] lg:block lg:self-start", pad]}
 >
-  <div
-    class="flex h-14 shrink-0 items-center justify-between gap-3 border-b border-line px-5 lg:hidden"
+  <p
+    class="mb-3.5 pl-3.5 text-[11px] font-medium uppercase tracking-[0.16em] text-muted"
   >
-    <a
-      href={localePath(locale, "/")}
-      class="group flex items-center gap-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
-    >
-      <Logo name={t("site.name")} />
-    </a>
-
-    <button
-      type="button"
-      data-sidebar-close
-      aria-label={t("nav.close")}
-      class="grid h-8 w-8 place-items-center rounded-md text-muted transition-colors hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-    >
-      <svg
-        width="14"
-        height="14"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        aria-hidden="true"
-        ><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg
-      >
-    </button>
-  </div>
-
-  <nav
-    class:list={["min-h-0 flex-1 overflow-y-auto px-3 py-4", pad]}
-    aria-label={t("nav.categories")}
-  >
-    <p class="px-2 pb-2.5 text-[11px] font-medium uppercase tracking-[0.18em] text-muted">
-      {t("nav.categories")}
-    </p>
-    <ul class="space-y-0.5">
-      {
-        items.map((item) => (
-          <li>
-            <a
-              href={localePath(locale, `/${item.slug}`)}
-              data-nav-link
-              data-active={item.active ? "true" : "false"}
-              aria-current={item.active ? "page" : undefined}
-              class="group flex items-center justify-between gap-3 rounded-md px-2 py-1.5 transition-colors hover:bg-surface-2 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-            >
-              <span class="flex min-w-0 items-center gap-2.5">
-                <svg
-                  width="13"
-                  height="13"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
-                  class="nav-icon shrink-0 opacity-55"
-                >
-                  {
-                    item.icon.map(([tag, attrs]: [string, Record<string, string>]) =>
-                      tag === "circle" ? (
-                        <circle {...attrs} />
-                      ) : tag === "rect" ? (
-                        <rect {...attrs} />
-                      ) : tag === "line" ? (
-                        <line {...attrs} />
-                      ) : (
-                        <path {...attrs} />
-                      ),
-                    )
-                  }
-                </svg>
-                <span class="truncate font-display text-[13px] font-medium tracking-tight">
-                  {item.name}
-                </span>
-              </span>
-              <span class="nav-count shrink-0 text-[11px] tabular-nums opacity-70">
-                {item.count}
-              </span>
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </nav>
-
-  <div
-    class="hidden shrink-0 border-t border-line px-5 py-3.5 text-[11px] tabular-nums text-muted lg:block"
-  >
-    {links.length} {t("stat.links")}
-  </div>
+    {t("nav.categories")}
+  </p>
+  <ul class="space-y-px">
+    {
+      items.map((item) => (
+        <li>
+          <a
+            href={
+              item.slug
+                ? localePath(locale, `/${item.slug}`)
+                : localePath(locale, "/")
+            }
+            data-nav-link
+            data-active={item.active ? "true" : "false"}
+            aria-current={item.active ? "page" : undefined}
+            class="grid min-h-[42px] grid-cols-[24px_minmax(0,1fr)_auto] items-center gap-2 border-l border-line pl-3.5 pr-3 text-[12.5px] text-muted transition-colors hover:bg-surface-2 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          >
+            <NavIcon icon={item.icon} size={15} class="nav-icon shrink-0 opacity-60" />
+            <span class="truncate font-display font-medium tracking-tight">
+              {item.name}
+            </span>
+            <small class="nav-count text-[10.5px] tabular-nums opacity-70">
+              {item.count}
+            </small>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
 </aside>
-
-<script>
-  function initSidebar() {
-    const aside = document.querySelector<HTMLElement>("[data-sidebar]");
-    const backdrop = document.querySelector<HTMLElement>("[data-sidebar-backdrop]");
-    const openBtn = document.querySelector<HTMLButtonElement>("[data-sidebar-open]");
-    const closeBtn = document.querySelector<HTMLButtonElement>("[data-sidebar-close]");
-    if (!aside || !backdrop || !openBtn) return;
-    if (aside.dataset.ready) return;
-    aside.dataset.ready = "1";
-
-    const mq = window.matchMedia("(min-width: 1024px)");
-    let open = false;
-
-    const isCollapsed = () =>
-      document.documentElement.dataset.sidebarCollapsed === "true";
-
-    const syncTip = () => {
-      const tip = !mq.matches
-        ? openBtn.dataset.tipMenu
-        : isCollapsed()
-          ? openBtn.dataset.tipShow
-          : openBtn.dataset.tipHide;
-      if (tip) openBtn.setAttribute("data-tooltip", tip);
-    };
-
-    function paint() {
-      if (mq.matches) {
-        aside!.classList.remove("-translate-x-full", "invisible");
-        aside!.toggleAttribute("inert", isCollapsed());
-        backdrop!.classList.add("opacity-0", "pointer-events-none");
-        document.body.classList.remove("overflow-hidden");
-        open = false;
-        openBtn!.setAttribute("aria-expanded", String(!isCollapsed()));
-        syncTip();
-        return;
-      }
-      aside!.classList.toggle("-translate-x-full", !open);
-      aside!.classList.toggle("invisible", !open);
-      if (open) aside!.removeAttribute("inert");
-      else aside!.setAttribute("inert", "");
-      backdrop!.classList.toggle("opacity-0", !open);
-      backdrop!.classList.toggle("pointer-events-none", !open);
-      document.body.classList.toggle("overflow-hidden", open);
-      openBtn!.setAttribute("aria-expanded", String(open));
-      syncTip();
-    }
-
-    function setOpen(next: boolean) {
-      open = next;
-      paint();
-      if (open) closeBtn?.focus();
-      else openBtn?.focus();
-    }
-
-    openBtn.addEventListener("click", () => {
-      if (mq.matches) {
-        const next = !isCollapsed();
-        document.documentElement.dataset.sidebarCollapsed = String(next);
-        try {
-          localStorage.setItem("sidebar", next ? "hidden" : "shown");
-        } catch {}
-        paint();
-        return;
-      }
-      setOpen(true);
-    });
-    closeBtn?.addEventListener("click", () => setOpen(false));
-    backdrop.addEventListener("click", () => setOpen(false));
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && open) setOpen(false);
-    });
-
-    document.querySelectorAll<HTMLAnchorElement>("[data-nav-link]").forEach((l) =>
-      l.addEventListener("click", () => {
-        if (!mq.matches) setOpen(false);
-      }),
-    );
-
-    document.addEventListener("astro:page-load", paint);
-    (mq as MediaQueryList).addEventListener("change", paint);
-    paint();
-  }
-
-  initSidebar();
-  document.addEventListener("astro:page-load", initSidebar);
-</script>

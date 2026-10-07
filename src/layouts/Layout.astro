@@ -39,13 +39,6 @@ const ogLocale = locale === "es" ? "es_ES" : "en_US";
             document.documentElement.style.colorScheme = theme;
           } catch (e) {}
           try {
-            var rail = localStorage.getItem("sidebar");
-            document.documentElement.dataset.sidebarCollapsed =
-              rail === "hidden" ? "true" : "false";
-          } catch (e) {
-            document.documentElement.dataset.sidebarCollapsed = "false";
-          }
-          try {
             var view = localStorage.getItem("view");
             document.documentElement.dataset.view =
               view === "list" ? "list" : "grid";

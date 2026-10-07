@@ -27,6 +27,8 @@
   --line: rgba(20, 21, 18, 0.12);
   --accent: #8a5a00;
   --accent-bright: #d9a441;
+  --accent-soft: rgba(138, 90, 0, 0.08);
+  --header-hover: #f5f5f5;
   color-scheme: light;
 }
 
@@ -38,6 +40,8 @@
   --line: rgba(232, 233, 227, 0.09);
   --accent: #d9a441;
   --accent-bright: #d9a441;
+  --accent-soft: rgba(217, 164, 65, 0.1);
+  --header-hover: #1a1a1a;
   color-scheme: dark;
 }
 
@@ -171,39 +175,22 @@
   }
 }
 
-/* Active sidebar category: unlayered so it wins over hover utilities. */
-[data-nav-link][data-active="true"],
-[data-nav-link][data-active="true"]:hover {
-  background-color: var(--ink);
-  color: var(--surface);
-}
-
-[data-nav-link][data-active="true"] .nav-count {
-  opacity: 0.7;
+/* Active category row: accent edge + soft wash (unlayered wins over hover). */
+[data-nav-link][data-active="true"] {
+  border-left-color: var(--accent);
+  background-image: linear-gradient(90deg, var(--accent-soft), transparent);
+  color: var(--ink);
 }
 
 [data-nav-link][data-active="true"] .nav-icon {
-  color: var(--accent-bright);
+  color: var(--accent);
   opacity: 1;
 }
 
-/* Desktop rail collapse: unlayered so it wins over the grid utilities. */
-@media (width >= 64rem) {
-  .shell-grid {
-    transition: grid-template-columns 0.32s ease-out;
-  }
-
-  html[data-sidebar-collapsed="true"] .shell-grid {
-    grid-template-columns: 0px minmax(0, 1fr);
-  }
-
-  html[data-sidebar-collapsed="true"] [data-sidebar] {
-    width: 240px;
-    transform: translateX(-100%);
-    visibility: hidden;
-    transition:
-      transform 0.32s ease-out,
-      visibility 0s linear 0.32s;
+/* Header controls hover: exact hexes, independent of theme tokens. */
+@media (hover: hover) {
+  .hdr-hover:hover {
+    background-color: var(--header-hover);
   }
 }
 

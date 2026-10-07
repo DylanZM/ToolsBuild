@@ -9,10 +9,6 @@ export const ui = {
       "Directorio curado de herramientas de diseño, componentes, iconos, animaciones, IA y recursos de inspiración.",
 
     "nav.home": "Inicio",
-    "nav.menu": "Abrir menú",
-    "nav.hideSidebar": "Ocultar barra lateral",
-    "nav.showSidebar": "Mostrar barra lateral",
-    "nav.close": "Cerrar",
     "nav.explore": "Explorar",
     "nav.categories": "Categorías",
     "nav.search": "Buscar",
@@ -77,10 +73,6 @@ export const ui = {
       "Curated directory of design tools, components, icons, animations, AI and inspiration resources.",
 
     "nav.home": "Home",
-    "nav.menu": "Open menu",
-    "nav.hideSidebar": "Hide sidebar",
-    "nav.showSidebar": "Show sidebar",
-    "nav.close": "Close",
     "nav.explore": "Explore",
     "nav.categories": "Categories",
     "nav.search": "Search",
