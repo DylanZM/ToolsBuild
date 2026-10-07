@@ -629,7 +629,7 @@ export const links: Link[] = [
     id: "coucou",
     url: "https://louis-cfm.github.io/coucou/",
     name: "Coucou",
-    category: "components",
+    category: "ai",
     tags: ["widget", "fun", "notch"],
     desc: {
       es: "Un pequeño amigo para tu notch: widget juguetón de página.",
@@ -1233,7 +1233,7 @@ export const links: Link[] = [
     id: "ui-skills",
     url: "https://www.ui-skills.com/skills",
     name: "UI Skills",
-    category: "learn",
+    category: "build",
     tags: ["skills", "store", "ui", "ai"],
     desc: {
       es: "Tienda de skills para diseñar interfaces con IA.",
@@ -1244,7 +1244,7 @@ export const links: Link[] = [
     id: "skills-sh",
     url: "https://www.skills.sh",
     name: "Skills.sh",
-    category: "learn",
+    category: "build",
     tags: ["agent skills", "directory", "install"],
     desc: {
       es: "Directorio de agent skills: descubre e instala skills para tus agentes IA.",

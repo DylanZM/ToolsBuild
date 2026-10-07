@@ -45,8 +45,8 @@ export const categories: Category[] = [
     id: "motion",
     slug: "motion",
     order: 4,
-    name: { es: "Movimiento", en: "Motion" },
-    short: { es: "Movimiento", en: "Motion" },
+    name: { es: "Animaciones", en: "Animations" },
+    short: { es: "Animaciones", en: "Animations" },
     desc: {
       es: "Micro-interacciones, animaciones, loaders, sonidos y efectos para dar vida a la UI.",
       en: "Micro-interactions, animations, loaders, sounds and effects to bring UI to life.",
