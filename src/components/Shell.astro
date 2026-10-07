@@ -4,12 +4,10 @@ import Header from "./Header.astro";
 import Footer from "./Footer.astro";
 import Sidebar from "./Sidebar.astro";
 import type { NavItem } from "./Sidebar.astro";
-import NavIcon from "./NavIcon.astro";
 import SearchPalette from "./react/SearchPalette";
 import HoverPreview from "./react/HoverPreview";
 import type { Locale } from "../i18n/ui";
 import { createT } from "../i18n/ui";
-import { localePath } from "../i18n/path";
 import { categories } from "../data/categories";
 import { links, linksByCategory } from "../data/links";
 import {
@@ -32,7 +30,6 @@ interface Props {
 
 const { locale, title, description } = Astro.props;
 const t = createT(locale);
-const base = localePath(locale, "/");
 
 const searchItems = links.map((l) => ({
   id: l.id,
@@ -70,48 +67,31 @@ const navItems: NavItem[] = [
     icon: ICONS[c.id] ?? Lightbulb,
   })),
 ];
-
-const hrefFor = (slug: string) =>
-  slug === "all" ? base : `${base}#${slug}`;
 ---
 
 <Layout title={title} description={description} locale={locale}>
-  <Header locale={locale} />
+  <div
+    data-sidebar-backdrop
+    class="pointer-events-none fixed inset-0 z-40 bg-surface/70 opacity-0 backdrop-blur-sm transition-opacity duration-300 lg:hidden"
+    aria-hidden="true"
+  ></div>
 
-  <nav
-    aria-label={t("nav.categories")}
-    class="no-scrollbar flex gap-2 overflow-x-auto border-b border-line px-5 py-2.5 sm:px-8 lg:hidden"
-  >
-    {
-      navItems.map((item) => (
-        <a
-          href={hrefFor(item.slug)}
-          data-filter-link={item.slug}
-          data-chip
-          data-active={item.active ? "true" : "false"}
-          aria-current={item.active ? "page" : undefined}
-          class="chip inline-flex h-8 shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border border-line px-3 text-[12px] text-muted transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-        >
-          <NavIcon icon={item.icon} size={13} class="shrink-0 opacity-70" />
-          <span class="whitespace-nowrap">{item.name}</span>
-        </a>
-      ))
-    }
-  </nav>
+  <Header locale={locale} />
 
   <div class="mx-auto max-w-[1360px] px-5 sm:px-8">
     <slot name="top" />
   </div>
 
   <div
-    class="mx-auto grid max-w-[1360px] px-5 sm:px-8 lg:grid-cols-[230px_minmax(0,1fr)] lg:gap-11 xl:gap-14"
+    class="shell-grid mx-auto grid max-w-[1360px] px-5 sm:px-8 lg:grid-cols-[230px_minmax(0,1fr)] lg:gap-11 xl:gap-14"
   >
     <Sidebar locale={locale} items={navItems} />
     <div class="min-w-0">
       <slot />
-      <Footer locale={locale} />
     </div>
   </div>
+
+  <Footer locale={locale} />
 
   <SearchPalette client:load items={searchItems} locale={locale} />
   <HoverPreview client:load />
@@ -184,7 +164,7 @@ const hrefFor = (slug: string) =>
         timer = window.setTimeout(() => {
           applyCards(slug);
           grid.style.opacity = "1";
-          if (a.hasAttribute("data-chip")) {
+          if (!window.matchMedia("(min-width: 1024px)").matches) {
             grid.scrollIntoView({ behavior: "smooth", block: "start" });
           }
         }, 150);

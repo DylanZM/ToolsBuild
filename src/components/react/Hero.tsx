@@ -2,7 +2,8 @@ import React from "react";
 import type { Locale } from "../../i18n/ui";
 import { createT } from "../../i18n/ui";
 import ShinyText from "./ShinyText";
-import StarBorder from "./StarBorder";
+import { links } from "../../data/links";
+import { categories } from "../../data/categories";
 
 interface Props {
   locale: Locale;
@@ -37,15 +38,17 @@ const Hero: React.FC<Props> = ({ locale }) => {
         {t("hero.subtitle")}
       </p>
 
-      <div className="mt-10 flex flex-wrap items-center gap-3">
-        <StarBorder
-          as="a"
-          href="#recursos"
-          className="focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-        >
-          {t("hero.cta")} →
-        </StarBorder>
-      </div>
+      <p className="mt-7 flex items-center gap-2.5 text-[12.5px] tabular-nums tracking-tight text-muted">
+        <span>
+          {links.length} {t("stat.links")}
+        </span>
+        <span aria-hidden="true" className="opacity-40">
+          ·
+        </span>
+        <span>
+          {categories.length} {t("stat.categories")}
+        </span>
+      </p>
     </section>
   );
 };

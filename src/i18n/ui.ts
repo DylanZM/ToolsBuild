@@ -9,6 +9,10 @@ export const ui = {
       "Directorio curado de herramientas de diseño, componentes, iconos, animaciones, IA y recursos de inspiración.",
 
     "nav.all": "Todos los recursos",
+    "nav.menu": "Abrir menú",
+    "nav.hideSidebar": "Ocultar barra lateral",
+    "nav.showSidebar": "Mostrar barra lateral",
+    "nav.close": "Cerrar",
     "nav.categories": "Categorías",
     "nav.search": "Buscar",
     "nav.shortcut": "Ctrl K",
@@ -33,7 +37,6 @@ export const ui = {
     "hero.title2": "realmente importan.",
     "hero.subtitle":
       "Una colección seleccionada a mano de webs, librerías, componentes, iconos y herramientas de IA. Sin ruido, solo lo bueno.",
-    "hero.cta": "Explorar ahora",
 
     "stat.links": "recursos",
     "stat.categories": "categorías",
@@ -42,7 +45,7 @@ export const ui = {
     "filter.label": "Filtrar por categoría",
 
     "search.title": "Buscar recursos",
-    "search.placeholder": "Buscar por nombre, descripción o tag…",
+    "search.placeholder": "Buscar…",
     "search.empty": "Sin resultados para",
 
     "card.visit": "Visitar",
@@ -65,6 +68,10 @@ export const ui = {
       "Curated directory of design tools, components, icons, animations, AI and inspiration resources.",
 
     "nav.all": "All resources",
+    "nav.menu": "Open menu",
+    "nav.hideSidebar": "Hide sidebar",
+    "nav.showSidebar": "Show sidebar",
+    "nav.close": "Close",
     "nav.categories": "Categories",
     "nav.search": "Search",
     "nav.shortcut": "Ctrl K",
@@ -89,7 +96,6 @@ export const ui = {
     "hero.title2": "actually matter.",
     "hero.subtitle":
       "A hand-picked collection of websites, libraries, components, icons and AI tools. No noise, just the good stuff.",
-    "hero.cta": "Explore now",
 
     "stat.links": "resources",
     "stat.categories": "categories",
@@ -98,7 +104,7 @@ export const ui = {
     "filter.label": "Filter by category",
 
     "search.title": "Search resources",
-    "search.placeholder": "Search by name, description or tag…",
+    "search.placeholder": "Search...",
     "search.empty": "No results for",
 
     "card.visit": "Visit",

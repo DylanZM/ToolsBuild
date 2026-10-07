@@ -46,6 +46,13 @@ const ogLocale = locale === "es" ? "es_ES" : "en_US";
           } catch (e) {
             document.documentElement.dataset.view = "grid";
           }
+          try {
+            var rail = localStorage.getItem("sidebar");
+            document.documentElement.dataset.sidebarCollapsed =
+              rail === "hidden" ? "true" : "false";
+          } catch (e) {
+            document.documentElement.dataset.sidebarCollapsed = "false";
+          }
         }
         apply();
         document.addEventListener("astro:after-swap", apply);

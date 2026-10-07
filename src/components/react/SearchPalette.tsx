@@ -139,8 +139,8 @@ const SearchPalette: React.FC<Props> = ({ items, locale }) => {
         onClick={close}
       />
 
-      <div className="relative w-full max-w-xl overflow-hidden rounded-xl border border-line bg-surface shadow-2xl">
-        <div className="flex items-center gap-3 border-b border-line px-4">
+      <div className="relative w-full max-w-xl overflow-hidden rounded-xl  bg-surface shadow-2xl">
+        <div className="flex items-center gap-3 px-4">
           <MorphIcon
             icon={Search}
             size={15}
@@ -179,14 +179,14 @@ const SearchPalette: React.FC<Props> = ({ items, locale }) => {
                   idx === active ? "bg-surface-2" : ""
                 }`}
               >
-                <span className="grid h-7 w-7 shrink-0 place-items-center rounded-md border border-line bg-surface">
+                <span className="grid h-7 w-7 shrink-0 place-items-center ">
                   <img
                     src={faviconUrl(item.url)}
                     alt=""
-                    width="14"
-                    height="14"
+                    width="17"
+                    height="17"
                     loading="lazy"
-                    className="h-[14px] w-[14px] object-contain"
+                    className="h-[20px] w-[20px] object-contain"
                   />
                 </span>
                 <span className="min-w-0 flex-1">
