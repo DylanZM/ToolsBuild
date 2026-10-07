@@ -14,11 +14,15 @@
   "dependencies": {
     "@astrojs/react": "^7.0.1",
     "@lucide/astro": "^1.52.0",
+    "@radix-ui/react-select": "^2.3.8",
+    "@radix-ui/react-switch": "^1.3.8",
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.3.6",
     "framer-motion": "^14.0.0",
     "lucide": "^1.52.0",
+    "lucide-react": "^1.52.0",
     "morphicons": "^1.7.1",
+    "motion": "^14.0.0",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
     "tailwindcss": "^4.3.3"

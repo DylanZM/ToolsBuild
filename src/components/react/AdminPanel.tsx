@@ -1,6 +1,14 @@
 import React, { useMemo, useRef, useState } from "react";
 import type { Link } from "../../data/links";
 import { domainOf } from "../../lib/url";
+import "../arc/foundation.css";
+import { Button } from "../arc/button/button";
+import { Input } from "../arc/input/input";
+import { Textarea } from "../arc/textarea/textarea";
+import { Select } from "../arc/select/select";
+import { Switch } from "../arc/switch/switch";
+import { TagInput } from "../arc/tag-input/tag-input";
+import Toast from "../arc/toast/toast";
 
 interface CatOpt {
   id: string;
@@ -17,11 +25,13 @@ interface FormState {
   name: string;
   url: string;
   category: string;
-  tags: string;
+  tags: string[];
   descEs: string;
   descEn: string;
   featured: boolean;
 }
+
+type FieldErrors = Partial<Record<"name" | "url" | "descEs" | "descEn", string>>;
 
 const slugify = (s: string) =>
   s
@@ -32,18 +42,12 @@ const slugify = (s: string) =>
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
 
-const parseTags = (s: string) =>
-  s
-    .split(",")
-    .map((t) => t.trim())
-    .filter(Boolean);
-
 const AdminPanel: React.FC<Props> = ({ links, categories, dev }) => {
   const emptyForm = (): FormState => ({
     name: "",
     url: "",
     category: categories[0]?.id ?? "",
-    tags: "",
+    tags: [],
     descEs: "",
     descEn: "",
     featured: false,
@@ -54,23 +58,23 @@ const AdminPanel: React.FC<Props> = ({ links, categories, dev }) => {
   const [editingId, setEditingId] = useState<string | null>(null);
   const [query, setQuery] = useState("");
   const [busy, setBusy] = useState(false);
-  const [toast, setToast] = useState<{ kind: "ok" | "err"; msg: string } | null>(
-    null,
-  );
-  const toastTimer = useRef<number | undefined>(undefined);
+  const [errors, setErrors] = useState<FieldErrors>({});
+  const [formError, setFormError] = useState<string | null>(null);
+  const [toastOpen, setToastOpen] = useState(false);
+  const savedTitle = useRef("");
   const formRef = useRef<HTMLFormElement>(null);
 
   const catName = (id: string) =>
     categories.find((c) => c.id === id)?.name ?? id;
 
-  const showToast = (kind: "ok" | "err", msg: string) => {
-    setToast({ kind, msg });
-    window.clearTimeout(toastTimer.current);
-    toastTimer.current = window.setTimeout(() => setToast(null), 3200);
+  const saved = (msg: string) => {
+    savedTitle.current = msg;
+    setToastOpen(true);
   };
 
   const persist = async (next: Link[]): Promise<boolean> => {
     setBusy(true);
+    setFormError(null);
     try {
       const res = await fetch("/api/links", {
         method: "POST",
@@ -82,14 +86,13 @@ const AdminPanel: React.FC<Props> = ({ links, categories, dev }) => {
         error?: string;
       };
       if (!res.ok || !data.ok) {
-        showToast("err", data.error || `Error ${res.status} del servidor`);
+        setFormError(data.error || `Error ${res.status} del servidor`);
         return false;
       }
       setItems(next);
       return true;
     } catch {
-      showToast(
-        "err",
+      setFormError(
         "No se pudo escribir el archivo. ¿Sigue corriendo astro dev?",
       );
       return false;
@@ -101,23 +104,30 @@ const AdminPanel: React.FC<Props> = ({ links, categories, dev }) => {
   const resetForm = () => {
     setForm(emptyForm());
     setEditingId(null);
+    setErrors({});
+    setFormError(null);
   };
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setFormError(null);
     const name = form.name.trim();
     const url = form.url.trim();
     const descEs = form.descEs.trim();
     const descEn = form.descEn.trim();
-    if (!name || !url || !descEs || !descEn) {
-      showToast("err", "Nombre, URL y descripción (ES/EN) son obligatorios.");
+    const nextErrors: FieldErrors = {};
+    if (!name) nextErrors.name = "El nombre es obligatorio.";
+    if (!url) nextErrors.url = "La URL es obligatoria.";
+    else if (!/^https?:\/\//.test(url))
+      nextErrors.url = "Debe empezar por http:// o https://";
+    if (!descEs) nextErrors.descEs = "La descripción en español es obligatoria.";
+    if (!descEn) nextErrors.descEn = "La descripción en inglés es obligatoria.";
+    if (Object.keys(nextErrors).length) {
+      setErrors(nextErrors);
       return;
     }
-    if (!/^https?:\/\//.test(url)) {
-      showToast("err", "La URL debe empezar por http:// o https://");
-      return;
-    }
-    const tags = parseTags(form.tags);
+    setErrors({});
+    const tags = form.tags.map((t) => t.trim()).filter(Boolean);
     const featured = form.featured ? true : undefined;
 
     if (editingId) {
@@ -135,7 +145,7 @@ const AdminPanel: React.FC<Props> = ({ links, categories, dev }) => {
           : l,
       );
       if (await persist(next)) {
-        showToast("ok", `✓ "${name}" actualizado`);
+        saved(`✓ "${name}" actualizado`);
         resetForm();
       }
       return;
@@ -155,7 +165,7 @@ const AdminPanel: React.FC<Props> = ({ links, categories, dev }) => {
       ...(featured ? { featured: true } : {}),
     };
     if (await persist([...items, entry])) {
-      showToast("ok", `✓ "${name}" agregado a ${catName(form.category)}`);
+      saved(`✓ "${name}" agregado a ${catName(form.category)}`);
       resetForm();
     }
   };
@@ -163,16 +173,18 @@ const AdminPanel: React.FC<Props> = ({ links, categories, dev }) => {
   const remove = async (l: Link) => {
     if (!window.confirm(`¿Eliminar "${l.name}" de la lista?`)) return;
     if (await persist(items.filter((x) => x.id !== l.id)))
-      showToast("ok", `✓ "${l.name}" eliminado`);
+      saved(`✓ "${l.name}" eliminado`);
   };
 
   const startEdit = (l: Link) => {
     setEditingId(l.id);
+    setErrors({});
+    setFormError(null);
     setForm({
       name: l.name,
       url: l.url,
       category: l.category,
-      tags: l.tags.join(", "),
+      tags: [...l.tags],
       descEs: l.desc.es,
       descEn: l.desc.en,
       featured: !!l.featured,
@@ -190,11 +202,6 @@ const AdminPanel: React.FC<Props> = ({ links, categories, dev }) => {
     );
   }, [items, query]);
 
-  const inputCls =
-    "h-9 w-full rounded-md border border-line bg-surface-2 px-3 text-[13px] text-ink outline-none transition-colors placeholder:text-muted/70 focus:border-accent";
-  const labelCls = "mb-1.5 block text-[12px] font-medium text-muted";
-  const btnPrimary =
-    "rounded-md bg-ink px-4 py-2 text-[13px] font-medium text-surface transition-opacity hover:opacity-90 disabled:opacity-50";
   const btnGhost =
     "rounded-md border border-line px-3 py-2 text-[13px] text-muted transition-colors hover:border-ink/30 hover:text-ink";
 
@@ -232,111 +239,104 @@ const AdminPanel: React.FC<Props> = ({ links, categories, dev }) => {
                 : "Agregar recurso"}
             </h2>
             {editingId && (
-              <button type="button" onClick={resetForm} className={btnGhost}>
+              <Button type="button" variant="secondary" size="sm" onClick={resetForm}>
                 Cancelar
-              </button>
+              </Button>
             )}
           </div>
 
+          {formError && (
+            <div
+              role="alert"
+              className="mb-4 rounded-lg border border-[#d06060]/50 bg-[#d06060]/10 px-4 py-2.5 text-[13px] text-[#e08a8a]"
+            >
+              {formError}
+            </div>
+          )}
+
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div className="sm:col-span-2">
-              <label className={labelCls} htmlFor="f-name">
-                Nombre
-              </label>
-              <input
+              <Input
                 id="f-name"
-                className={inputCls}
+                label="Nombre"
                 value={form.name}
-                onChange={(e) => setForm({ ...form, name: e.target.value })}
+                onChange={(e) => {
+                  setForm({ ...form, name: e.target.value });
+                  if (errors.name) setErrors({ ...errors, name: undefined });
+                }}
                 placeholder="Magic UI"
+                error={errors.name}
               />
             </div>
             <div className="sm:col-span-2">
-              <label className={labelCls} htmlFor="f-url">
-                URL
-              </label>
-              <input
+              <Input
                 id="f-url"
-                className={inputCls}
+                label="URL"
+                type="url"
                 value={form.url}
-                onChange={(e) => setForm({ ...form, url: e.target.value })}
+                onChange={(e) => {
+                  setForm({ ...form, url: e.target.value });
+                  if (errors.url) setErrors({ ...errors, url: undefined });
+                }}
                 placeholder="https://magicui.design"
+                error={errors.url}
               />
             </div>
-            <div>
-              <label className={labelCls} htmlFor="f-cat">
-                Categoría
-              </label>
-              <select
-                id="f-cat"
-                className={inputCls}
-                value={form.category}
-                onChange={(e) => setForm({ ...form, category: e.target.value })}
-              >
-                {categories.map((c) => (
-                  <option key={c.id} value={c.id}>
-                    {c.name}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div>
-              <label className={labelCls} htmlFor="f-tags">
-                Tags (separados por coma)
-              </label>
-              <input
-                id="f-tags"
-                className={inputCls}
-                value={form.tags}
-                onChange={(e) => setForm({ ...form, tags: e.target.value })}
-                placeholder="components, react, free"
-              />
-            </div>
-            <div>
-              <label className={labelCls} htmlFor="f-es">
-                Descripción ES
-              </label>
-              <input
-                id="f-es"
-                className={inputCls}
-                value={form.descEs}
-                onChange={(e) => setForm({ ...form, descEs: e.target.value })}
-                placeholder="Componentes animados listos para copiar."
-              />
-            </div>
-            <div>
-              <label className={labelCls} htmlFor="f-en">
-                Descripción EN
-              </label>
-              <input
-                id="f-en"
-                className={inputCls}
-                value={form.descEn}
-                onChange={(e) => setForm({ ...form, descEn: e.target.value })}
-                placeholder="Animated components ready to copy."
-              />
-            </div>
+            <Select
+              id="f-cat"
+              label="Categoría"
+              value={form.category}
+              onValueChange={(value) => setForm({ ...form, category: value })}
+              options={categories.map((c) => ({ value: c.id, label: c.name }))}
+            />
+            <TagInput
+              id="f-tags"
+              label="Tags"
+              placeholder="components, react, free"
+              description="Enter o coma para agregar; Backspace elimina."
+              value={form.tags}
+              onValueChange={(tags) => setForm({ ...form, tags })}
+            />
+            <Textarea
+              id="f-es"
+              label="Descripción ES"
+              rows={3}
+              value={form.descEs}
+              onChange={(e) => {
+                setForm({ ...form, descEs: e.target.value });
+                if (errors.descEs)
+                  setErrors({ ...errors, descEs: undefined });
+              }}
+              placeholder="Componentes animados listos para copiar."
+              error={errors.descEs}
+            />
+            <Textarea
+              id="f-en"
+              label="Descripción EN"
+              rows={3}
+              value={form.descEn}
+              onChange={(e) => {
+                setForm({ ...form, descEn: e.target.value });
+                if (errors.descEn)
+                  setErrors({ ...errors, descEn: undefined });
+              }}
+              placeholder="Animated components ready to copy."
+              error={errors.descEn}
+            />
           </div>
 
           <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
-            <label className="inline-flex cursor-pointer items-center gap-2 text-[13px] text-muted">
-              <input
-                type="checkbox"
-                checked={form.featured}
-                onChange={(e) =>
-                  setForm({ ...form, featured: e.target.checked })
-                }
-                className="h-4 w-4 accent-[var(--accent)]"
-              />
-              Destacado
-            </label>
-            <button type="submit" disabled={busy} className={btnPrimary}>
-              {busy
-                ? "Guardando…"
-                : editingId
-                  ? "Guardar cambios"
-                  : "+ Agregar"}
-            </button>
+            <Switch
+              id="f-featured"
+              label="Destacado"
+              checked={form.featured}
+              onCheckedChange={(checked) =>
+                setForm({ ...form, featured: checked })
+              }
+            />
+            <Button type="submit" variant="primary" loading={busy}>
+              {editingId ? "Guardar cambios" : "+ Agregar"}
+            </Button>
           </div>
         </form>
       )}
@@ -378,20 +378,22 @@ const AdminPanel: React.FC<Props> = ({ links, categories, dev }) => {
                 {catName(l.category)}
               </span>
               <div className="flex shrink-0 items-center gap-1">
-                <button
+                <Button
                   type="button"
+                  variant="ghost"
+                  size="sm"
                   onClick={() => startEdit(l)}
-                  className="rounded-md px-2.5 py-1.5 text-[12.5px] text-muted transition-colors hover:bg-surface-2 hover:text-ink"
                 >
                   Editar
-                </button>
-                <button
+                </Button>
+                <Button
                   type="button"
+                  variant="danger"
+                  size="sm"
                   onClick={() => remove(l)}
-                  className="rounded-md px-2.5 py-1.5 text-[12.5px] text-muted transition-colors hover:text-[#d06060]"
                 >
                   Eliminar
-                </button>
+                </Button>
               </div>
             </li>
           ))}
@@ -403,18 +405,15 @@ const AdminPanel: React.FC<Props> = ({ links, categories, dev }) => {
         </ul>
       </div>
 
-      {toast && (
-        <div
-          role="status"
-          className={`fixed bottom-5 right-5 z-50 rounded-lg border bg-surface px-4 py-2.5 text-[13px] shadow-2xl ${
-            toast.kind === "ok"
-              ? "border-line text-ink"
-              : "border-[#d06060]/50 text-[#e08a8a]"
-          }`}
-        >
-          {toast.msg}
+      <div className="pointer-events-none fixed bottom-5 right-5 z-50">
+        <div className="pointer-events-auto">
+          <Toast
+            open={toastOpen}
+            onOpenChange={setToastOpen}
+            title={savedTitle.current}
+          />
         </div>
-      )}
+      </div>
     </div>
   );
 };
