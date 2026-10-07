@@ -1,6 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@100..900&family=Inter:wght@100..900&display=swap');
 @import "tailwindcss";
 
+/* El panel /admin vive en .gitignore (local-only) y Tailwind no escanea
+   archivos ignorados; sin estas líneas sus utilities no se generan. */
+@source "../pages/admin.astro";
+@source "../components/react/AdminPanel.tsx";
+@source "../components/react/TableResources.tsx";
+@source "../components/ui/table.tsx";
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {
