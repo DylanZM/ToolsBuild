@@ -15,6 +15,7 @@ export interface SearchItem {
   url: string;
   name: string;
   category: string;
+  catName: string;
   desc: string;
   tags: string[];
 }
@@ -38,13 +39,33 @@ function score(item: SearchItem, q: string): number {
   const desc = item.desc.toLowerCase();
   const tags = item.tags.join(" ").toLowerCase();
   const cat = item.category.toLowerCase();
+  const catName = item.catName.toLowerCase();
 
   if (name === q) return 100;
   if (name.startsWith(q)) return 80;
   if (name.includes(q)) return 60;
   if (tags.includes(q)) return 45;
   if (desc.includes(q)) return 30;
-  if (cat.includes(q)) return 20;
+  if (cat.includes(q) || catName.includes(q)) return 20;
+
+  const tokens = q.split(/[\s&,·]+/).filter(Boolean);
+  if (tokens.length > 1) {
+    const inName = tokens.every((tk) => name.includes(tk));
+    const inMeta = tokens.every(
+      (tk) => tags.includes(tk) || catName.includes(tk) || cat.includes(tk),
+    );
+    const inAll = tokens.every(
+      (tk) =>
+        name.includes(tk) ||
+        tags.includes(tk) ||
+        desc.includes(tk) ||
+        cat.includes(tk) ||
+        catName.includes(tk),
+    );
+    if (inName) return 55;
+    if (inMeta) return 40;
+    if (inAll) return 25;
+  }
   return 0;
 }
 

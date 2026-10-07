@@ -67,7 +67,7 @@ export const categories: Category[] = [
     id: "ai",
     slug: "ai",
     order: 6,
-    name: { es: "Inteligencia Artificial", en: "Artificial Intelligence" },
+    name: { es: "IA y lenguaje de máquina", en: "AI & machine learning" },
     short: { es: "IA", en: "AI" },
     desc: {
       es: "Modelos, agentes, generación de imágenes/video y workspaces de IA.",

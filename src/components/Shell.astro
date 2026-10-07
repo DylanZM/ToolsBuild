@@ -20,14 +20,18 @@ interface Props {
 const { locale, title, description } = Astro.props;
 const t = createT(locale);
 
-const searchItems = links.map((l) => ({
-  id: l.id,
-  url: l.url,
-  name: l.name,
-  category: l.category,
-  desc: l.desc[locale],
-  tags: l.tags,
-}));
+const searchItems = links.map((l) => {
+  const cat = categories.find((c) => c.id === l.category);
+  return {
+    id: l.id,
+    url: l.url,
+    name: l.name,
+    category: l.category,
+    catName: cat ? `${cat.name.es} ${cat.name.en}` : "",
+    desc: l.desc[locale],
+    tags: l.tags,
+  };
+});
 
 const navItems: NavItem[] = [
   {

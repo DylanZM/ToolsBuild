@@ -6,7 +6,7 @@ export const ui = {
     "site.tagline":
       "Colección curada de herramientas, componentes, IA e inspiración para builders.",
     "site.description":
-      "Directorio curado de herramientas de diseño, componentes, iconos, animaciones, IA y recursos de inspiración.",
+      "Un directorio cuidado a mano con herramientas de diseño, componentes, iconos, movimiento e IA que destacan. Cada enlace se lo gana.",
 
     "nav.all": "Todos los recursos",
     "nav.menu": "Abrir menú",
@@ -34,7 +34,7 @@ export const ui = {
     "hero.title1": "Los recursos que",
     "hero.title2": "realmente importan.",
     "hero.subtitle":
-      "Una colección seleccionada a mano de webs, librerías, componentes, iconos y herramientas de IA. Sin ruido, solo lo bueno.",
+      "Un catálogo reunido a mano con recursos, herramientas y componentes que de verdad ayudan a developers, makers y equipos pequeños.",
 
     "stat.links": "recursos",
     "stat.categories": "categorías",
@@ -49,9 +49,9 @@ export const ui = {
     "card.visit": "Visitar",
     "card.newTab": "(se abre en una pestaña nueva)",
 
-    "footer.rights": "Todos los derechos reservados.",
-    "footer.navigate": "Navegar",
     "footer.note": "Curado con esmero. Los recursos pertenecen a sus autores.",
+    "footer.projectBy": "Un proyecto de",
+    "footer.links": "Enlaces de DylanZM",
 
     "notfound.title": "404",
     "notfound.text": "Esta página no existe.",
@@ -62,7 +62,7 @@ export const ui = {
     "site.tagline":
       "A curated collection of tools, components, AI and inspiration for builders.",
     "site.description":
-      "Curated directory of design tools, components, icons, animations, AI and inspiration resources.",
+      "A hand-curated directory of standout design tools, components, icons, motion and AI resources. Every link earns its place.",
 
     "nav.all": "All resources",
     "nav.menu": "Open menu",
@@ -90,7 +90,7 @@ export const ui = {
     "hero.title1": "The resources that",
     "hero.title2": "actually matter.",
     "hero.subtitle":
-      "A hand-picked collection of websites, libraries, components, icons and AI tools. No noise, just the good stuff.",
+      "A hand-assembled catalog of resources, tools and components that actually help developers, makers and small teams.",
 
     "stat.links": "resources",
     "stat.categories": "categories",
@@ -105,9 +105,9 @@ export const ui = {
     "card.visit": "Visit",
     "card.newTab": "(opens in a new tab)",
 
-    "footer.rights": "All rights reserved.",
-    "footer.navigate": "Navigate",
     "footer.note": "Curated with care. Resources belong to their authors.",
+    "footer.projectBy": "A project by",
+    "footer.links": "DylanZM links",
 
     "notfound.title": "404",
     "notfound.text": "This page does not exist.",
