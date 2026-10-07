@@ -186,26 +186,6 @@
   display: none !important;
 }
 
-/* Desktop rail collapse: unlayered so it wins over the grid utilities. */
-@media (width >= 64rem) {
-  .shell-grid {
-    transition: grid-template-columns 0.32s ease-out;
-  }
-
-  html[data-sidebar-collapsed="true"] .shell-grid {
-    grid-template-columns: 0px minmax(0, 1fr);
-  }
-
-  html[data-sidebar-collapsed="true"] [data-sidebar] {
-    width: 230px;
-    transform: translateX(-100%);
-    visibility: hidden;
-    transition:
-      transform 0.32s ease-out,
-      visibility 0s linear 0.32s;
-  }
-}
-
 /* Header controls hover: exact hexes, independent of theme tokens. */
 @media (hover: hover) {
   .hdr-hover:hover {

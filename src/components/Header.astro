@@ -24,13 +24,10 @@ const t = createT(locale);
       data-sidebar-open
       data-tooltip={t("nav.menu")}
       data-tooltip-align="start"
-      data-tip-menu={t("nav.menu")}
-      data-tip-hide={t("nav.hideSidebar")}
-      data-tip-show={t("nav.showSidebar")}
       aria-label={t("nav.menu")}
       aria-controls="sidebar"
-      aria-expanded="true"
-      class="grid h-8 w-8 shrink-0 place-items-center rounded-md text-muted transition-colors hover:bg-surface-2 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+      aria-expanded="false"
+      class="grid h-8 w-8 shrink-0 place-items-center rounded-md text-muted transition-colors hover:bg-surface-2 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent lg:hidden"
     >
       <svg
         width="14"

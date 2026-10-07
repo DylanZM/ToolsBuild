@@ -10,8 +10,6 @@ export const ui = {
 
     "nav.all": "Todos los recursos",
     "nav.menu": "Abrir menú",
-    "nav.hideSidebar": "Ocultar barra lateral",
-    "nav.showSidebar": "Mostrar barra lateral",
     "nav.close": "Cerrar",
     "nav.categories": "Categorías",
     "nav.search": "Buscar",
@@ -69,8 +67,6 @@ export const ui = {
 
     "nav.all": "All resources",
     "nav.menu": "Open menu",
-    "nav.hideSidebar": "Hide sidebar",
-    "nav.showSidebar": "Show sidebar",
     "nav.close": "Close",
     "nav.categories": "Categories",
     "nav.search": "Search",

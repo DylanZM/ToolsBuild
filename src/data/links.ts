@@ -226,7 +226,7 @@ export const links: Link[] = [
     url: "https://sokosumi.com/tools/design-md",
     name: "Sokosumi DesignMD",
     category: "inspiration",
-    tags: ["design md", "generator", "cursor"],
+    tags: ["design md", "generator", "tokens"],
     desc: {
       es: "Genera DESIGN.md desde cualquier URL: colores, tipografía y espaciado.",
       en: "Generate DESIGN.md from any URL: colors, typography and spacing.",
@@ -416,7 +416,7 @@ export const links: Link[] = [
     url: "https://mantine.dev",
     name: "Mantine",
     category: "components",
-    tags: ["react", "library", "hooks", "full"],
+    tags: ["react", "library", "hooks", "full-featured"],
     desc: {
       es: "Librería completa de componentes React con hooks y utilidades propias.",
       en: "Full-featured React component library with its own hooks and utilities.",
@@ -1085,7 +1085,7 @@ export const links: Link[] = [
     url: "https://labs.google/fx/es/tools/whisk",
     name: "Whisk",
     category: "ai",
-    tags: ["image", "generate", "google"],
+    tags: ["image generation", "google", "references"],
     desc: {
       es: "Genera imágenes con IA mezclando referencias visualmente.",
       en: "Generate AI images by blending visual references.",

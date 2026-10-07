@@ -1,35 +1,37 @@
 ---
+import {
+  BookOpen,
+  Brain,
+  Eye,
+  Hammer,
+  Layers,
+  LayoutGrid,
+  Lightbulb,
+  Shapes,
+  Waves,
+} from "@lucide/astro";
+
 interface Props {
-  icon: [string, Record<string, string>][];
+  name: string;
   size?: number;
   class?: string;
 }
-const { icon, size = 15, class: cls } = Astro.props;
+
+const { name, size = 14, class: cls } = Astro.props;
+
+const ICONS: Record<string, any> = {
+  all: Layers,
+  inspiration: Lightbulb,
+  components: LayoutGrid,
+  icons: Shapes,
+  motion: Waves,
+  visuals: Eye,
+  ai: Brain,
+  build: Hammer,
+  learn: BookOpen,
+};
+
+const Icon = ICONS[name] ?? Layers;
 ---
 
-<svg
-  width={size}
-  height={size}
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  stroke-width="2"
-  stroke-linecap="round"
-  stroke-linejoin="round"
-  aria-hidden="true"
-  class={cls}
->
-  {
-    icon.map(([tag, attrs]: [string, Record<string, string>]) =>
-      tag === "circle" ? (
-        <circle {...attrs} />
-      ) : tag === "rect" ? (
-        <rect {...attrs} />
-      ) : tag === "line" ? (
-        <line {...attrs} />
-      ) : (
-        <path {...attrs} />
-      ),
-    )
-  }
-</svg>
+<Icon size={size} stroke-width={1.75} class={cls} />

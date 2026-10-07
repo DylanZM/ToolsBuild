@@ -13,13 +13,13 @@ const Hero: React.FC<Props> = ({ locale }) => {
   const t = createT(locale);
 
   return (
-    <section className="pb-16 pt-14 sm:pb-20 sm:pt-20 lg:pb-24 lg:pt-24">
+    <section className="pb-16 pt-14 text-center sm:pb-20 sm:pt-20 lg:pb-24 lg:pt-24">
       <div className="relative">
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute -left-40 -top-44 h-72 w-[44rem] max-w-full rounded-full bg-[radial-gradient(closest-side,var(--accent-soft),transparent)]"
+          className="pointer-events-none absolute left-1/2 -top-44 h-72 w-[44rem] max-w-full -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,var(--accent-soft),transparent)]"
         />
-        <h1 className="relative max-w-4xl text-balance text-4xl font-semibold leading-[1.04] tracking-[-0.04em] text-ink sm:text-6xl lg:text-[5.25rem]">
+        <h1 className="relative mx-auto max-w-4xl text-balance text-4xl font-semibold leading-[1.04] tracking-[-0.04em] text-ink sm:text-6xl lg:text-[5.25rem]">
           <span className="block">{t("hero.title1")}</span>
           <span className="block text-muted">
             <ShinyText
@@ -34,21 +34,24 @@ const Hero: React.FC<Props> = ({ locale }) => {
         </h1>
       </div>
 
-      <p className="mt-7 max-w-[64ch] text-[14px] leading-relaxed text-muted">
+      <p className="mx-auto mt-7 max-w-[54ch] text-[14px] leading-relaxed text-muted">
         {t("hero.subtitle")}
       </p>
 
-      <p className="mt-7 flex items-center gap-2.5 text-[12.5px] tabular-nums tracking-tight text-muted">
-        <span>
-          {links.length} {t("stat.links")}
+      <div className="mt-8 flex items-center justify-center gap-3">
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-line px-3.5 py-1.5 text-[12.5px] text-muted">
+          <span className="font-semibold text-ink">{links.length}</span>
+          <span>{t("stat.links")}</span>
         </span>
-        <span aria-hidden="true" className="opacity-40">
-          ·
+        <span
+          aria-hidden="true"
+          className="h-1 w-1 rounded-full bg-accent"
+        />
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-line px-3.5 py-1.5 text-[12.5px] text-muted">
+          <span className="font-semibold text-ink">{categories.length}</span>
+          <span>{t("stat.categories")}</span>
         </span>
-        <span>
-          {categories.length} {t("stat.categories")}
-        </span>
-      </p>
+      </div>
     </section>
   );
 };

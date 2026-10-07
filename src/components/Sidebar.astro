@@ -4,14 +4,13 @@ import { createT } from "../i18n/ui";
 import { localePath } from "../i18n/path";
 import NavIcon from "./NavIcon.astro";
 import Logo from "./Logo.astro";
-import { links } from "../data/links";
+import { categories } from "../data/categories";
 
 export interface NavItem {
   slug: string;
   name: string;
   count: number;
   active: boolean;
-  icon: [string, Record<string, string>][];
 }
 
 interface Props {
@@ -22,6 +21,11 @@ const { locale, items } = Astro.props;
 const t = createT(locale);
 const base = localePath(locale, "/");
 const hrefFor = (slug: string) => (slug === "all" ? base : `${base}#${slug}`);
+
+const descs: Record<string, string> = {
+  all: t("site.description"),
+  ...Object.fromEntries(categories.map((c) => [c.slug, c.desc[locale]])),
+};
 ---
 
 <aside
@@ -29,11 +33,9 @@ const hrefFor = (slug: string) => (slug === "all" ? base : `${base}#${slug}`);
   data-sidebar
   inert
   aria-label={t("nav.categories")}
-  class="invisible fixed inset-y-0 left-0 z-50 flex w-[276px] -translate-x-full flex-col border-r border-line bg-surface transition-[transform,visibility] duration-300 ease-out-expo lg:visible lg:sticky lg:top-[57px] lg:bottom-auto lg:left-auto lg:z-30 lg:h-[calc(100vh-57px)] lg:w-auto lg:translate-x-0 lg:self-start"
+  class="invisible fixed inset-y-0 left-0 z-50 flex w-[276px] -translate-x-full flex-col bg-surface transition-[transform,visibility] duration-300 ease-out-expo lg:visible lg:sticky lg:top-[57px] lg:bottom-auto lg:left-auto lg:z-30 lg:max-h-[calc(100vh-57px)] lg:w-auto lg:translate-x-0 lg:self-start"
 >
-  <div
-    class="flex h-14 shrink-0 items-center justify-between gap-3 border-b border-line px-5 lg:hidden"
-  >
+  <div class="flex h-14 shrink-0 items-center justify-between gap-3 px-5 lg:hidden">
     <a
       href={base}
       class="group flex items-center gap-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
@@ -62,15 +64,18 @@ const hrefFor = (slug: string) => (slug === "all" ? base : `${base}#${slug}`);
   </div>
 
   <nav
-    class="min-h-0 flex-1 overflow-y-auto px-3 py-4"
+    data-sidebar-nav
+    data-descs={JSON.stringify(descs)}
+    class="flex min-h-0 flex-1 flex-col overflow-y-auto px-3 py-4"
     aria-label={t("nav.categories")}
   >
     <p
-      class="px-2 pb-2.5 text-[11px] font-medium uppercase tracking-[0.18em] text-muted"
+      class="px-2 pt-5 pb-2.5 font-sans text-[12px] font-medium tracking-tight text-muted"
     >
       {t("nav.categories")}
     </p>
-    <ul class="space-y-0.5">
+
+    <ul class="space-y-1">
       {
         items.map((item) => (
           <li>
@@ -80,12 +85,12 @@ const hrefFor = (slug: string) => (slug === "all" ? base : `${base}#${slug}`);
               data-filter-link={item.slug}
               data-active={item.active ? "true" : "false"}
               aria-current={item.active ? "page" : undefined}
-              class="group flex items-center justify-between gap-3 rounded-md px-2 py-1.5 transition-colors hover:bg-surface-2 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              class="group flex items-center justify-between gap-3 rounded-md px-2 py-2 transition-colors hover:bg-surface-2 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             >
               <span class="flex min-w-0 items-center gap-2.5">
                 <NavIcon
-                  icon={item.icon}
-                  size={13}
+                  name={item.slug}
+                  size={14}
                   class="nav-icon shrink-0 opacity-55"
                 />
                 <span class="truncate font-display text-[13px] font-medium tracking-tight">
@@ -100,13 +105,13 @@ const hrefFor = (slug: string) => (slug === "all" ? base : `${base}#${slug}`);
         ))
       }
     </ul>
-  </nav>
 
-  <div
-    class="hidden shrink-0 border-t border-line px-5 py-3.5 text-[11px] tabular-nums text-muted lg:block"
-  >
-    {links.length} {t("stat.links")}
-  </div>
+    <p
+      data-active-desc
+      class="mt-4 px-2 text-[11.5px] leading-[1.55] text-muted"
+    >
+    </p>
+  </nav>
 </aside>
 
 <script>
@@ -122,38 +127,16 @@ const hrefFor = (slug: string) => (slug === "all" ? base : `${base}#${slug}`);
     const mq = window.matchMedia("(min-width: 1024px)");
     let open = false;
 
-    const isCollapsed = () =>
-      document.documentElement.dataset.sidebarCollapsed === "true";
-
-    const syncTip = () => {
-      const tip = !mq.matches
-        ? openBtn.dataset.tipMenu
-        : isCollapsed()
-          ? openBtn.dataset.tipShow
-          : openBtn.dataset.tipHide;
-      if (tip) openBtn.setAttribute("data-tooltip", tip);
-    };
-
     function paint() {
-      if (mq.matches) {
-        aside!.classList.remove("-translate-x-full", "invisible");
-        aside!.toggleAttribute("inert", isCollapsed());
-        backdrop!.classList.add("opacity-0", "pointer-events-none");
-        document.body.classList.remove("overflow-hidden");
-        open = false;
-        openBtn!.setAttribute("aria-expanded", String(!isCollapsed()));
-        syncTip();
-        return;
-      }
-      aside!.classList.toggle("-translate-x-full", !open);
-      aside!.classList.toggle("invisible", !open);
-      if (open) aside!.removeAttribute("inert");
+      const visible = mq.matches || open;
+      aside!.classList.toggle("-translate-x-full", !visible);
+      aside!.classList.toggle("invisible", !visible);
+      if (visible) aside!.removeAttribute("inert");
       else aside!.setAttribute("inert", "");
-      backdrop!.classList.toggle("opacity-0", !open);
-      backdrop!.classList.toggle("pointer-events-none", !open);
-      document.body.classList.toggle("overflow-hidden", open);
-      openBtn!.setAttribute("aria-expanded", String(open));
-      syncTip();
+      backdrop!.classList.toggle("opacity-0", !visible);
+      backdrop!.classList.toggle("pointer-events-none", !visible);
+      document.body.classList.toggle("overflow-hidden", !mq.matches && open);
+      openBtn!.setAttribute("aria-expanded", String(visible));
     }
 
     function setOpen(next: boolean) {
@@ -163,18 +146,7 @@ const hrefFor = (slug: string) => (slug === "all" ? base : `${base}#${slug}`);
       else openBtn?.focus();
     }
 
-    openBtn.addEventListener("click", () => {
-      if (mq.matches) {
-        const next = !isCollapsed();
-        document.documentElement.dataset.sidebarCollapsed = String(next);
-        try {
-          localStorage.setItem("sidebar", next ? "hidden" : "shown");
-        } catch {}
-        paint();
-        return;
-      }
-      setOpen(true);
-    });
+    openBtn.addEventListener("click", () => setOpen(true));
     closeBtn?.addEventListener("click", () => setOpen(false));
     backdrop.addEventListener("click", () => setOpen(false));
     document.addEventListener("keydown", (e) => {
@@ -187,9 +159,26 @@ const hrefFor = (slug: string) => (slug === "all" ? base : `${base}#${slug}`);
       }),
     );
 
+    const nav = aside.querySelector<HTMLElement>("[data-sidebar-nav]");
+    const descEl = aside.querySelector<HTMLElement>("[data-active-desc]");
+    const descs: Record<string, string> = JSON.parse(nav?.dataset.descs || "{}");
+    const syncDesc = (slug?: string) => {
+      const raw = slug ?? decodeURIComponent(location.hash.slice(1));
+      const key = raw && descs[raw] ? raw : "all";
+      if (descEl) descEl.textContent = descs[key] || "";
+    };
+
+    document.addEventListener("click", (e) => {
+      const el = e.target as HTMLElement | null;
+      const link = el?.closest?.("[data-filter-link]") as HTMLElement | null;
+      if (link) syncDesc(link.getAttribute("data-filter-link") || undefined);
+    });
+    window.addEventListener("hashchange", () => syncDesc());
+
     document.addEventListener("astro:page-load", paint);
     (mq as MediaQueryList).addEventListener("change", paint);
     paint();
+    syncDesc();
   }
 
   initSidebar();
