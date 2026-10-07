@@ -16,6 +16,9 @@
   --arc-accent: var(--accent);
   --arc-accent-strong: var(--accent-bright);
   --arc-accent-subtle: var(--accent-soft);
+  /* Bare aliases: badge.tone=.info and a few component rules use these directly. */
+  --accent-strong: var(--accent-bright);
+  --accent-subtle: var(--accent-soft);
   --arc-accent-foreground: #f5f6f1;
   /* Selection controls (switch, checkbox, radio, slider). --control-on fills a chosen control; --control-glyph is the check or dot drawn on it;
      thumbs stay white in both states so they always read against the track. */

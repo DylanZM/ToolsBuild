@@ -7,7 +7,10 @@ import { Input } from "../arc/input/input";
 import { Textarea } from "../arc/textarea/textarea";
 import { Select } from "../arc/select/select";
 import { TagInput } from "../arc/tag-input/tag-input";
+import { SearchField } from "../arc/search-field/search-field";
+import { Badge } from "../arc/badge/badge";
 import Toast from "../arc/toast/toast";
+import { Pencil, Star, Trash2 } from "lucide-react";
 
 interface CatOpt {
   id: string;
@@ -366,7 +369,7 @@ const AdminPanel: React.FC<Props> = ({ links, categories, dev }) => {
       )}
 
       <div className="overflow-hidden rounded-xl border border-line bg-surface">
-        <div className="flex items-center justify-between gap-3 border-b border-line px-4 py-3 sm:px-5">
+        <div className="flex items-end justify-between gap-3 border-b border-line px-4 py-3 sm:px-5">
           <div className="flex items-baseline gap-2">
             <h2 className="text-[14px] font-semibold text-ink">Lista</h2>
             <span className="text-[11.5px] text-muted">
@@ -375,13 +378,14 @@ const AdminPanel: React.FC<Props> = ({ links, categories, dev }) => {
                 : `${items.length} enlaces`}
             </span>
           </div>
-          <input
-            className="h-8 w-44 rounded-md border border-line bg-surface-2 px-3 text-[12.5px] text-ink outline-none transition-colors placeholder:text-muted/70 focus:border-accent sm:w-56"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Buscar en la lista…"
-            aria-label="Buscar en la lista"
-          />
+          <div className="w-full min-w-0 max-w-[260px]">
+            <SearchField
+              label="Buscar"
+              placeholder="Nombre, dominio o descripción"
+              value={query}
+              onValueChange={setQuery}
+            />
+          </div>
         </div>
         <div className="flex flex-wrap items-center gap-1.5 border-b border-line px-4 py-2.5 sm:px-5">
           <button
@@ -422,9 +426,13 @@ const AdminPanel: React.FC<Props> = ({ links, categories, dev }) => {
                     {l.name}
                   </a>
                   {l.featured && (
-                    <span className="shrink-0 text-[10.5px] text-accent">
-                      ★ destacado
-                    </span>
+                    <Badge
+                      tone="warning"
+                      size="sm"
+                      icon={<Star size={11} fill="currentColor" strokeWidth={0} />}
+                    >
+                      destacado
+                    </Badge>
                   )}
                   <span
                     aria-hidden="true"
@@ -458,8 +466,10 @@ const AdminPanel: React.FC<Props> = ({ links, categories, dev }) => {
                   )}
                 </div>
               </div>
-              <span className="hidden shrink-0 rounded-md bg-surface-2 px-2 py-0.5 text-[10.5px] font-medium text-muted transition-colors group-hover:bg-surface sm:block">
-                {catName(l.category)}
+              <span className="hidden shrink-0 sm:block">
+                <Badge tone="neutral" size="sm">
+                  {catName(l.category)}
+                </Badge>
               </span>
               <div className="flex shrink-0 items-center gap-1">
                 <Button
@@ -468,7 +478,7 @@ const AdminPanel: React.FC<Props> = ({ links, categories, dev }) => {
                   size="sm"
                   onClick={() => startEdit(l)}
                 >
-                  Editar
+                  <Pencil size={13} aria-hidden="true" /> Editar
                 </Button>
                 <Button
                   type="button"
@@ -476,7 +486,7 @@ const AdminPanel: React.FC<Props> = ({ links, categories, dev }) => {
                   size="sm"
                   onClick={() => remove(l)}
                 >
-                  Eliminar
+                  <Trash2 size={13} aria-hidden="true" /> Eliminar
                 </Button>
               </div>
             </li>
