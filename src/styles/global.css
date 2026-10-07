@@ -325,15 +325,6 @@
     order: 4;
     margin-top: 0;
   }
-
-  html[data-view="list"] [data-card-tick] {
-    top: 50%;
-    bottom: auto;
-    left: -1px;
-    width: 2px;
-    height: 1.25rem;
-    transform: translateY(-50%);
-  }
 }
 
 @media (width >= 80rem) {

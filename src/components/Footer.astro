@@ -1,9 +1,6 @@
 ---
 import type { Locale } from "../i18n/ui";
 import { createT } from "../i18n/ui";
-import { localePath } from "../i18n/path";
-import { categories } from "../data/categories";
-import { links, linksByCategory } from "../data/links";
 import Logo from "./Logo.astro";
 
 interface Props {
@@ -15,110 +12,14 @@ const year = new Date().getFullYear();
 ---
 
 <footer class="mt-24 border-t border-line">
-  <div class="mx-auto max-w-[1400px] px-5 sm:px-8">
+  <div class="mx-auto max-w-[1400px] px-5 py-7 sm:px-8">
     <div
-      class="grid gap-12 py-12 sm:py-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)] lg:gap-20"
+      class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
     >
-      <div>
-        <Logo name={t("site.name")} />
-        <p class="mt-4 max-w-[44ch] text-[13px] leading-relaxed text-muted">
-          {t("site.tagline")}
-        </p>
-
-        <dl class="mt-9 flex gap-12">
-          <div>
-            <dd
-              class="font-display text-[2.5rem] font-medium leading-none tracking-tight text-ink tabular-nums"
-            >
-              {links.length}
-            </dd>
-            <dt class="mt-2 text-[11px] uppercase tracking-[0.18em] text-muted">
-              {t("stat.links")}
-            </dt>
-          </div>
-          <div>
-            <dd
-              class="font-display text-[2.5rem] font-medium leading-none tracking-tight text-ink tabular-nums"
-            >
-              {categories.length}
-            </dd>
-            <dt class="mt-2 text-[11px] uppercase tracking-[0.18em] text-muted">
-              {t("stat.categories")}
-            </dt>
-          </div>
-        </dl>
-      </div>
-
-      <div class="grid gap-10 sm:grid-cols-2 sm:gap-12">
-        <div>
-          <h3
-            class="text-[11px] font-medium uppercase tracking-[0.18em] text-muted"
-          >
-            {t("nav.categories")}
-          </h3>
-          <ul class="mt-4 grid grid-cols-1 gap-x-8 sm:grid-cols-2 lg:grid-cols-2">
-            {
-              categories.map((c) => (
-                <li>
-                  <a
-                    href={localePath(locale, `/${c.slug}`)}
-                    class="group flex items-baseline justify-between gap-3 border-b border-line py-2 text-[13px] text-muted transition-colors hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-                  >
-                    <span class="truncate font-display font-medium tracking-tight">
-                      {c.name[locale]}
-                    </span>
-                    <span class="shrink-0 text-[11px] tabular-nums opacity-70 transition-colors group-hover:text-accent">
-                      {linksByCategory(c.id).length}
-                    </span>
-                  </a>
-                </li>
-              ))
-            }
-          </ul>
-        </div>
-
-        <div>
-          <h3
-            class="text-[11px] font-medium uppercase tracking-[0.18em] text-muted"
-          >
-            {t("nav.explore")}
-          </h3>
-          <ul class="mt-4 space-y-2">
-            <li>
-              <button
-                type="button"
-                data-open-search
-                class="flex w-full items-center justify-between gap-3 border-b border-line py-2 text-[13px] text-muted transition-colors hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-              >
-                <span>{t("nav.search")}</span>
-                <span class="flex shrink-0 items-center gap-1">
-                  <kbd
-                    class="rounded border border-line px-1.5 py-px text-[10px] font-medium text-muted"
-                    >{t("nav.shortcut")}</kbd
-                  >
-                </span>
-              </button>
-            </li>
-            <li>
-              <a
-                href={localePath(locale, "/")}
-                class="flex items-baseline justify-between gap-3 border-b border-line py-2 text-[13px] text-muted transition-colors hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-              >
-                <span>{t("nav.home")}</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div
-      class="flex flex-col gap-2 border-t border-line py-5 sm:flex-row sm:items-center sm:justify-between"
-    >
+      <Logo name={t("site.name")} />
       <p class="text-[11.5px] text-muted">
         © {year} {t("site.name")} · {t("footer.rights")}
       </p>
-      <p class="text-[11.5px] text-muted">{t("footer.note")}</p>
     </div>
   </div>
 </footer>
