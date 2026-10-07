@@ -3,7 +3,6 @@ import type { Locale } from "../i18n/ui";
 import { categories } from "../data/categories";
 import { linksByCategory } from "../data/links";
 import CategorySection from "./CategorySection.astro";
-import Hero from "./react/Hero";
 
 interface Props {
   locale: Locale;
@@ -18,8 +17,6 @@ const sections = categories.map((category, i) => ({
 ---
 
 <div>
-  <Hero client:load locale={locale} />
-
   <div class="space-y-16 pb-6 sm:space-y-24 lg:space-y-32">
     {
       sections.map(({ category, links: catLinks, index }) => (

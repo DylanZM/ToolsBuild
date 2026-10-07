@@ -15,16 +15,14 @@ export interface NavItem {
 interface Props {
   locale: Locale;
   items: NavItem[];
-  /** lg top margin so the first line meets the content's first line. */
-  pad?: string;
 }
-const { locale, items, pad = "lg:mt-20" } = Astro.props;
+const { locale, items } = Astro.props;
 const t = createT(locale);
 ---
 
 <aside
   aria-label={t("nav.categories")}
-  class:list={["hidden lg:sticky lg:top-[76px] lg:block lg:self-start", pad]}
+  class="hidden lg:sticky lg:top-[76px] lg:block lg:self-start"
 >
   <p
     class="mb-3.5 pl-3.5 text-[11px] font-medium uppercase tracking-[0.16em] text-muted"

@@ -1,9 +1,9 @@
 ---
 import type { Locale } from "../i18n/ui";
-import { createT } from "../i18n/ui";
 import type { Category } from "../data/categories";
 import type { Link } from "../data/links";
 import ResourceCard from "./ResourceCard.astro";
+import CategoryHeader from "./CategoryHeader.astro";
 
 interface Props {
   category: Category;
@@ -13,6 +13,8 @@ interface Props {
   /** Draw the top rule + spacing (landing sections). Off on category pages. */
   showRule?: boolean;
   heading?: "h1" | "h2";
+  /** Skip the built-in header (category pages render it in Shell's top slot). */
+  hideHeader?: boolean;
 }
 
 const {
@@ -22,11 +24,8 @@ const {
   index = 1,
   showRule = true,
   heading = "h2",
+  hideHeader = false,
 } = Astro.props;
-const t = createT(locale);
-const num = String(index).padStart(2, "0");
-const Heading = heading;
-const isPageHeading = heading === "h1";
 ---
 
 <section
@@ -36,34 +35,15 @@ const isPageHeading = heading === "h1";
     showRule && "border-t border-line pt-8 sm:pt-12 lg:pt-16",
   ]}
 >
-  <div class="mb-6 flex items-end justify-between gap-6 border-b border-line pb-4">
-    <div class="flex items-baseline gap-4">
-      <span
-        class="text-[11px] font-medium uppercase tracking-[0.2em] text-accent tabular-nums"
-        >{num}</span
-      >
-      <div>
-        <Heading
-          class:list={[
-            "font-semibold tracking-tight text-ink",
-            isPageHeading
-              ? "text-2xl sm:text-3xl"
-              : "text-xl sm:text-2xl",
-          ]}
-        >
-          {category.name[locale]}
-        </Heading>
-        <p class="mt-1 max-w-[72ch] text-[12.5px] leading-relaxed text-muted">
-          {category.desc[locale]}
-        </p>
-      </div>
-    </div>
-    <span
-      class="hidden shrink-0 text-[11px] uppercase tracking-widest text-muted sm:block"
-    >
-      {links.length} {t("section.items")}
-    </span>
-  </div>
+  {!hideHeader && (
+    <CategoryHeader
+      category={category}
+      locale={locale}
+      index={index}
+      count={links.length}
+      heading={heading}
+    />
+  )}
 
   <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4" data-card-grid>
     {

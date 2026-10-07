@@ -47,11 +47,6 @@ export const ui = {
     "search.title": "Buscar recursos",
     "search.placeholder": "Buscar por nombre, descripción o tag…",
     "search.empty": "Sin resultados para",
-    "search.hintNav": "navegar",
-    "search.hintOpen": "abrir",
-    "search.hintClose": "cerrar",
-    "search.results": "resultados",
-    "search.loading": "Abriendo…",
 
     "card.visit": "Visitar",
     "card.newTab": "(se abre en una pestaña nueva)",
@@ -111,11 +106,6 @@ export const ui = {
     "search.title": "Search resources",
     "search.placeholder": "Search by name, description or tag…",
     "search.empty": "No results for",
-    "search.hintNav": "navigate",
-    "search.hintOpen": "open",
-    "search.hintClose": "close",
-    "search.results": "results",
-    "search.loading": "Opening…",
 
     "card.visit": "Visit",
     "card.newTab": "(opens in a new tab)",

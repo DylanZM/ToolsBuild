@@ -166,15 +166,6 @@
   animation: fade-in 0.2s ease-out;
 }
 
-@keyframes preview-shimmer {
-  0% {
-    background-position: 200% 0;
-  }
-  100% {
-    background-position: -200% 0;
-  }
-}
-
 /* Active category row: accent edge + soft wash (unlayered wins over hover). */
 [data-nav-link][data-active="true"] {
   border-left-color: var(--accent);

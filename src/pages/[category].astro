@@ -1,6 +1,7 @@
 ---
 import Shell from "../components/Shell.astro";
 import CategorySection from "../components/CategorySection.astro";
+import CategoryHeader from "../components/CategoryHeader.astro";
 import { categories, getCategory } from "../data/categories";
 import { linksByCategory } from "../data/links";
 import { createT } from "../i18n/ui";
@@ -22,16 +23,24 @@ const index = categories.findIndex((c) => c.id === category.id) + 1;
   title={`${category.name[locale]} — ${t("site.name")}`}
   description={category.desc[locale]}
   locale={locale}
-  sidebarPad="lg:mt-8"
 >
-  <div class="pb-8 pt-6 sm:pt-8">
+  <div slot="top" class="pt-6 sm:pt-8">
+    <CategoryHeader
+      category={category}
+      locale={locale}
+      index={index}
+      count={linksByCategory(category.id).length}
+      heading="h1"
+    />
+  </div>
+  <div class="pb-8">
     <CategorySection
       category={category}
       links={linksByCategory(category.id)}
       locale={locale}
       index={index}
       showRule={false}
-      heading="h1"
+      hideHeader
     />
   </div>
 </Shell>

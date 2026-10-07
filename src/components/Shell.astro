@@ -28,11 +28,9 @@ interface Props {
   locale: Locale;
   title: string;
   description: string;
-  /** lg top offset of the rail so its first line meets the content's first line. */
-  sidebarPad?: string;
 }
 
-const { locale, title, description, sidebarPad = "lg:mt-20" } = Astro.props;
+const { locale, title, description } = Astro.props;
 const t = createT(locale);
 
 const searchItems = links.map((l) => ({
@@ -108,10 +106,14 @@ const navItems: NavItem[] = [
     }
   </nav>
 
+  <div class="mx-auto max-w-[1360px] px-5 sm:px-8">
+    <slot name="top" />
+  </div>
+
   <div
     class="mx-auto grid max-w-[1360px] px-5 sm:px-8 lg:grid-cols-[230px_minmax(0,1fr)] lg:gap-11 xl:gap-14"
   >
-    <Sidebar locale={locale} items={navItems} pad={sidebarPad} />
+    <Sidebar locale={locale} items={navItems} />
     <div class="min-w-0">
       <slot />
       <Footer locale={locale} />

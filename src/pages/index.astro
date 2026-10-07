@@ -1,6 +1,7 @@
 ---
 import Shell from "../components/Shell.astro";
 import LandingView from "../components/LandingView.astro";
+import Hero from "../components/react/Hero";
 import { createT } from "../i18n/ui";
 
 const locale = "es" as const;
@@ -12,5 +13,6 @@ const t = createT(locale);
   description={t("site.description")}
   locale={locale}
 >
+  <Hero slot="top" client:load locale={locale} />
   <LandingView locale={locale} />
 </Shell>

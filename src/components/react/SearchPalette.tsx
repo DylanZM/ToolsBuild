@@ -157,9 +157,6 @@ const SearchPalette: React.FC<Props> = ({ items, locale }) => {
             autoComplete="off"
             spellCheck={false}
           />
-          <kbd className="hidden shrink-0 rounded border border-line px-1.5 py-0.5 text-[10px] tracking-wider text-muted sm:block">
-            ESC
-          </kbd>
         </div>
 
         <div ref={listRef} className="max-h-[52vh] overflow-y-auto p-2">
@@ -203,17 +200,6 @@ const SearchPalette: React.FC<Props> = ({ items, locale }) => {
               </a>
             ))
           )}
-        </div>
-
-        <div className="flex items-center justify-between border-t border-line px-4 py-2.5 text-[10.5px] uppercase tracking-wider text-muted">
-          <span>
-            {results.length} {t("search.results")}
-          </span>
-          <span className="flex items-center gap-3">
-            <span>↑↓ {t("search.hintNav")}</span>
-            <span>↵ {t("search.hintOpen")}</span>
-            <span>esc {t("search.hintClose")}</span>
-          </span>
         </div>
       </div>
     </div>
