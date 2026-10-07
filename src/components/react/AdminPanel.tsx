@@ -1,6 +1,6 @@
 import React, { useMemo, useRef, useState } from "react";
 import type { Link } from "../../data/links";
-import { domainOf } from "../../lib/url";
+import { domainOf, faviconUrl } from "../../lib/url";
 import "../arc/foundation.css";
 import { Button } from "../arc/button/button";
 import { Input } from "../arc/input/input";
@@ -40,6 +40,29 @@ const slugify = (s: string) =>
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
 
+const Favicon: React.FC<{ url: string; host: string }> = ({ url, host }) => {
+  const [broken, setBroken] = useState(false);
+  if (broken) {
+    return (
+      <span className="grid h-5 w-5 shrink-0 place-items-center rounded bg-surface-2 text-[10.5px] font-medium text-muted">
+        {host.charAt(0).toUpperCase()}
+      </span>
+    );
+  }
+  return (
+    <img
+      src={faviconUrl(url, 64)}
+      alt=""
+      width={20}
+      height={20}
+      loading="lazy"
+      decoding="async"
+      onError={() => setBroken(true)}
+      className="h-5 w-5 shrink-0 object-contain"
+    />
+  );
+};
+
 const AdminPanel: React.FC<Props> = ({ links, categories, dev }) => {
   const emptyForm = (): FormState => ({
     name: "",
@@ -54,6 +77,7 @@ const AdminPanel: React.FC<Props> = ({ links, categories, dev }) => {
   const [form, setForm] = useState<FormState>(emptyForm);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [query, setQuery] = useState("");
+  const [filterCat, setFilterCat] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [errors, setErrors] = useState<FieldErrors>({});
   const [formError, setFormError] = useState<string | null>(null);
@@ -185,15 +209,30 @@ const AdminPanel: React.FC<Props> = ({ links, categories, dev }) => {
     formRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
   };
 
+  const catCounts = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const l of items)
+      counts.set(l.category, (counts.get(l.category) ?? 0) + 1);
+    return counts;
+  }, [items]);
+
   const filtered = useMemo(() => {
     const s = query.trim().toLowerCase();
-    if (!s) return items;
-    return items.filter((l) =>
-      `${l.name} ${l.url} ${l.tags.join(" ")} ${catName(l.category)}`
+    return items.filter((l) => {
+      if (filterCat && l.category !== filterCat) return false;
+      if (!s) return true;
+      return `${l.name} ${l.url} ${l.tags.join(" ")} ${catName(l.category)} ${l.desc.es}`
         .toLowerCase()
-        .includes(s),
-    );
-  }, [items, query]);
+        .includes(s);
+    });
+  }, [items, query, filterCat]);
+
+  const chipCls = (active: boolean) =>
+    `rounded-full border px-2.5 py-1 text-[11.5px] font-medium transition-colors ${
+      active
+        ? "border-accent/50 bg-[var(--accent-soft)] text-accent"
+        : "border-line text-muted hover:border-ink/30 hover:text-ink"
+    }`;
 
   const btnGhost =
     "rounded-md border border-line px-3 py-2 text-[13px] text-muted transition-colors hover:border-ink/30 hover:text-ink";
@@ -327,39 +366,99 @@ const AdminPanel: React.FC<Props> = ({ links, categories, dev }) => {
       )}
 
       <div className="overflow-hidden rounded-xl border border-line bg-surface">
-        <div className="flex items-center justify-between gap-3 border-b border-line px-5 py-3.5">
-          <h2 className="text-[14px] font-semibold text-ink">Lista</h2>
+        <div className="flex items-center justify-between gap-3 border-b border-line px-4 py-3 sm:px-5">
+          <div className="flex items-baseline gap-2">
+            <h2 className="text-[14px] font-semibold text-ink">Lista</h2>
+            <span className="text-[11.5px] text-muted">
+              {filtered.length !== items.length
+                ? `${filtered.length} de ${items.length}`
+                : `${items.length} enlaces`}
+            </span>
+          </div>
           <input
-            className="h-8 w-48 rounded-md border border-line bg-surface-2 px-3 text-[12.5px] text-ink outline-none transition-colors placeholder:text-muted/70 focus:border-accent sm:w-56"
+            className="h-8 w-44 rounded-md border border-line bg-surface-2 px-3 text-[12.5px] text-ink outline-none transition-colors placeholder:text-muted/70 focus:border-accent sm:w-56"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Buscar en la lista…"
             aria-label="Buscar en la lista"
           />
         </div>
+        <div className="flex flex-wrap items-center gap-1.5 border-b border-line px-4 py-2.5 sm:px-5">
+          <button
+            type="button"
+            onClick={() => setFilterCat(null)}
+            className={chipCls(filterCat === null)}
+          >
+            Todas <span className="opacity-60">{items.length}</span>
+          </button>
+          {categories.map((c) => (
+            <button
+              key={c.id}
+              type="button"
+              onClick={() =>
+                setFilterCat((cur) => (cur === c.id ? null : c.id))
+              }
+              className={chipCls(filterCat === c.id)}
+            >
+              {c.name} <span className="opacity-60">{catCounts.get(c.id) ?? 0}</span>
+            </button>
+          ))}
+        </div>
         <ul>
           {filtered.map((l) => (
             <li
               key={l.id}
-              className="flex items-center gap-3 border-b border-line px-5 py-3 last:border-b-0"
+              className="group flex items-center gap-3 border-b border-line px-4 py-2.5 transition-colors last:border-b-0 hover:bg-surface-2 sm:px-5"
             >
+              <Favicon url={l.url} host={domainOf(l.url)} />
               <div className="min-w-0 flex-1">
                 <div className="flex items-baseline gap-2">
-                  <span className="truncate text-[13px] font-medium text-ink">
+                  <a
+                    href={l.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="truncate text-[13px] font-medium text-ink transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                  >
                     {l.name}
-                  </span>
+                  </a>
                   {l.featured && (
                     <span className="shrink-0 text-[10.5px] text-accent">
                       ★ destacado
                     </span>
                   )}
+                  <span
+                    aria-hidden="true"
+                    className="shrink-0 -translate-x-1 text-[11px] text-muted opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100"
+                  >
+                    ↗
+                  </span>
                 </div>
-                <div className="truncate text-[11.5px] text-muted">
-                  {domainOf(l.url)}
-                  {l.tags.length > 0 && ` · ${l.tags.join(", ")}`}
+                <div className="flex items-center gap-2 text-[11.5px] text-muted">
+                  <span className="shrink-0">{domainOf(l.url)}</span>
+                  <span aria-hidden="true" className="opacity-40">
+                    ·
+                  </span>
+                  <span className="min-w-0 truncate">{l.desc.es}</span>
+                  {l.tags.length > 0 && (
+                    <span className="ml-auto hidden shrink-0 items-center gap-1 md:flex">
+                      {l.tags.slice(0, 2).map((t) => (
+                        <span
+                          key={t}
+                          className="rounded-md bg-surface-2 px-1.5 py-px text-[10px] font-medium text-muted transition-colors group-hover:bg-surface"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                      {l.tags.length > 2 && (
+                        <span className="text-[10px] text-muted/70">
+                          +{l.tags.length - 2}
+                        </span>
+                      )}
+                    </span>
+                  )}
                 </div>
               </div>
-              <span className="hidden shrink-0 rounded-md bg-surface-2 px-2 py-0.5 text-[10.5px] font-medium text-muted sm:block">
+              <span className="hidden shrink-0 rounded-md bg-surface-2 px-2 py-0.5 text-[10.5px] font-medium text-muted transition-colors group-hover:bg-surface sm:block">
                 {catName(l.category)}
               </span>
               <div className="flex shrink-0 items-center gap-1">
@@ -384,7 +483,9 @@ const AdminPanel: React.FC<Props> = ({ links, categories, dev }) => {
           ))}
           {filtered.length === 0 && (
             <li className="px-5 py-8 text-center text-[13px] text-muted">
-              Sin resultados para “{query}”
+              {query.trim()
+                ? `Sin resultados para “${query}”`
+                : "Sin recursos en esta categoría"}
             </li>
           )}
         </ul>
