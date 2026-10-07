@@ -34,5 +34,6 @@ const cats = [...categories]
     links={links}
     categories={cats}
     dev={import.meta.env.DEV}
+    locale={(Astro.currentLocale as "es" | "en") ?? "es"}
   />
 </Layout>

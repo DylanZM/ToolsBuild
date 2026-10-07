@@ -1752,5 +1752,20 @@
       "es": "Tutor IA para estudio y exámenes.",
       "en": "AI tutor for studying and exams."
     }
+  },
+  {
+    "id": "design",
+    "url": "https://www.design.com",
+    "name": "Design",
+    "category": "ai",
+    "tags": [
+      "AI",
+      "desing"
+    ],
+    "desc": {
+      "es": "Diseña un logo, un sitio web o lo que quieras en segundos con el poder de la IA",
+      "en": "Design a logo, a website, or anything else in seconds with the power of AI."
+    },
+    "addedAt": "2026-10-07T21:50:22.207Z"
   }
 ]

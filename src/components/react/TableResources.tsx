@@ -2,7 +2,6 @@ import React, { useMemo, useState } from "react";
 import type { Link } from "../../data/links";
 import { domainOf, faviconUrl } from "../../lib/url";
 import "../arc/foundation.css";
-import { Button } from "../arc/button/button";
 import { SearchField } from "../arc/search-field/search-field";
 import { Badge } from "../arc/badge/badge";
 import { EmptyState } from "../arc/empty-state/empty-state";
@@ -14,7 +13,14 @@ import {
   TableHeader,
   TableRow,
 } from "../ui/table";
-import { Pencil, Star, Trash2 } from "lucide-react";
+import { Pencil, Trash2 } from "lucide-react";
+
+const NEW_WINDOW_MS = 14 * 24 * 60 * 60 * 1000;
+const isNew = (l: Link): boolean => {
+  if (!l.addedAt) return false;
+  const t = Date.parse(l.addedAt);
+  return Number.isFinite(t) && Date.now() - t < NEW_WINDOW_MS;
+};
 
 const Favicon: React.FC<{ url: string; host: string }> = ({ url, host }) => {
   const [broken, setBroken] = useState(false);
@@ -42,6 +48,8 @@ const Favicon: React.FC<{ url: string; host: string }> = ({ url, host }) => {
 interface TableResourcesProps {
   items: Link[];
   categories: { id: string; name: string }[];
+  newIds?: Set<string>;
+  locale?: "es" | "en";
   onEdit: (l: Link) => void;
   onDelete: (l: Link) => void;
 }
@@ -49,6 +57,8 @@ interface TableResourcesProps {
 const TableResources: React.FC<TableResourcesProps> = ({
   items,
   categories,
+  newIds,
+  locale = "es",
   onEdit,
   onDelete,
 }) => {
@@ -168,19 +178,9 @@ const TableResources: React.FC<TableResourcesProps> = ({
                           >
                             {l.name}
                           </a>
-                          {l.featured && (
-                            <Badge
-                              tone="warning"
-                              size="sm"
-                              icon={
-                                <Star
-                                  size={11}
-                                  fill="currentColor"
-                                  strokeWidth={0}
-                                />
-                              }
-                            >
-                              destacado
+                          {(newIds?.has(l.id) || isNew(l)) && (
+                            <Badge tone="success" size="sm">
+                              {locale === "en" ? "NEW" : "Nuevo"}
                             </Badge>
                           )}
                         </div>
@@ -202,22 +202,21 @@ const TableResources: React.FC<TableResourcesProps> = ({
                   </TableCell>
                   <TableCell className="pr-5">
                     <div className="flex items-center justify-end gap-1">
-                      <Button
+                      <button
                         type="button"
-                        variant="ghost"
-                        size="sm"
                         aria-label={`Editar ${l.name}`}
-                        title="Editar"
+                        data-tooltip="Editar"
                         onClick={() => onEdit(l)}
+                        className="grid size-8 place-items-center rounded-md text-muted transition-colors hdr-hover hover:bg-surface-2 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                       >
                         <Pencil size={14} aria-hidden="true" />
-                      </Button>
+                      </button>
                       <button
                         type="button"
                         aria-label={`Eliminar ${l.name}`}
-                        title="Eliminar"
+                        data-tooltip="Eliminar"
                         onClick={() => onDelete(l)}
-                        className="grid size-8 place-items-center rounded-lg text-rose-600 transition-colors hover:text-rose-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose-500 dark:text-rose-400 dark:hover:text-rose-300"
+                        className="grid size-8 place-items-center rounded-md text-rose-600 transition-colors hdr-hover hover:bg-surface-2 hover:text-rose-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent dark:text-rose-400 dark:hover:text-rose-300"
                       >
                         <Trash2 size={14} aria-hidden="true" />
                       </button>

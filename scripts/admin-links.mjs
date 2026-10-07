@@ -42,6 +42,11 @@ function validate(data, validCategories) {
       return `${label}: descripción ES/EN requerida.`;
     if (item.featured !== undefined && typeof item.featured !== "boolean")
       return `${label}: "featured" debe ser verdadero o falso.`;
+    if (
+      item.addedAt !== undefined &&
+      (typeof item.addedAt !== "string" || Number.isNaN(Date.parse(item.addedAt)))
+    )
+      return `${label}: "addedAt" debe ser una fecha ISO válida.`;
   }
   return null;
 }

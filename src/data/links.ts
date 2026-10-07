@@ -8,6 +8,7 @@ export interface Link {
   tags: string[];
   desc: { es: string; en: string };
   featured?: boolean;
+  addedAt?: string;
 }
 
 export const links = raw as Link[];

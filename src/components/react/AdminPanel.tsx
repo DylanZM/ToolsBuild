@@ -19,6 +19,7 @@ interface Props {
   links: Link[];
   categories: CatOpt[];
   dev: boolean;
+  locale?: "es" | "en";
 }
 
 interface FormState {
@@ -41,7 +42,7 @@ const slugify = (s: string) =>
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
 
-const AdminPanel: React.FC<Props> = ({ links, categories, dev }) => {
+const AdminPanel: React.FC<Props> = ({ links, categories, dev, locale = "es" }) => {
   const emptyForm = (): FormState => ({
     name: "",
     url: "",
@@ -59,6 +60,7 @@ const AdminPanel: React.FC<Props> = ({ links, categories, dev }) => {
   const [formError, setFormError] = useState<string | null>(null);
   const [toastOpen, setToastOpen] = useState(false);
   const [pendingDelete, setPendingDelete] = useState<Link | null>(null);
+  const [newIds, setNewIds] = useState<Set<string>>(new Set());
   const savedTitle = useRef("");
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -158,8 +160,10 @@ const AdminPanel: React.FC<Props> = ({ links, categories, dev }) => {
       category: form.category,
       tags,
       desc: { es: descEs, en: descEn },
+      addedAt: new Date().toISOString(),
     };
     if (await persist([...items, entry])) {
+      setNewIds((prev) => new Set(prev).add(id));
       saved(`✓ "${name}" agregado a ${catName(form.category)}`);
       resetForm();
     }
@@ -314,6 +318,8 @@ const AdminPanel: React.FC<Props> = ({ links, categories, dev }) => {
       <TableResources
         items={items}
         categories={categories}
+        newIds={newIds}
+        locale={locale}
         onEdit={startEdit}
         onDelete={setPendingDelete}
       />
@@ -326,6 +332,7 @@ const AdminPanel: React.FC<Props> = ({ links, categories, dev }) => {
       >
         <DialogContent
           title="¿Eliminar recurso?"
+          hideClose
           description={
             pendingDelete
               ? `Se quitará “${pendingDelete.name}” de la lista.`
