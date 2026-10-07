@@ -7,7 +7,7 @@ import { Textarea } from "../arc/textarea/textarea";
 import { Select } from "../arc/select/select";
 import { TagInput } from "../arc/tag-input/tag-input";
 import Toast from "../arc/toast/toast";
-import { ApiKeysTable } from "../spectrumui/blocks/tables/api-keys-table";
+import TableResources from "./TableResources";
 
 interface CatOpt {
   id: string;
@@ -163,16 +163,10 @@ const AdminPanel: React.FC<Props> = ({ links, categories, dev }) => {
     }
   };
 
-  const deleteIds = async (ids: string[]) => {
-    const first = items.find((x) => x.id === ids[0]);
-    const next = items.filter((x) => !ids.includes(x.id));
-    if (await persist(next)) {
-      saved(
-        ids.length === 1
-          ? `✓ "${first?.name}" eliminado`
-          : `✓ ${ids.length} recursos eliminados`,
-      );
-    }
+  const remove = async (l: Link) => {
+    if (!window.confirm(`¿Eliminar "${l.name}" de la lista?`)) return;
+    if (await persist(items.filter((x) => x.id !== l.id)))
+      saved(`✓ "${l.name}" eliminado`);
   };
 
   const startEdit = (l: Link) => {
@@ -315,11 +309,11 @@ const AdminPanel: React.FC<Props> = ({ links, categories, dev }) => {
         </form>
       )}
 
-      <ApiKeysTable
-        rows={items}
-        catName={catName}
+      <TableResources
+        items={items}
+        categories={categories}
         onEdit={startEdit}
-        onDelete={deleteIds}
+        onDelete={remove}
       />
 
       <div className="pointer-events-none fixed bottom-5 right-5 z-50">
