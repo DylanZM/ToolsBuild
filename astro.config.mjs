@@ -13,6 +13,11 @@ export default defineConfig({
       prefixDefaultLocale: false,
     },
   },
+  // El panel /admin es solo español: /en/admin no existe, así que redirige
+  // en lugar de caer en el 404.
+  redirects: {
+    '/en/admin': '/admin',
+  },
   integrations: [react()],
   vite: {
     plugins: [
