@@ -7,6 +7,7 @@ import { Textarea } from "../arc/textarea/textarea";
 import { Select } from "../arc/select/select";
 import { TagInput } from "../arc/tag-input/tag-input";
 import Toast from "../arc/toast/toast";
+import { Dialog, DialogContent } from "../arc/dialog/dialog";
 import TableResources from "./TableResources";
 
 interface CatOpt {
@@ -57,6 +58,7 @@ const AdminPanel: React.FC<Props> = ({ links, categories, dev }) => {
   const [errors, setErrors] = useState<FieldErrors>({});
   const [formError, setFormError] = useState<string | null>(null);
   const [toastOpen, setToastOpen] = useState(false);
+  const [pendingDelete, setPendingDelete] = useState<Link | null>(null);
   const savedTitle = useRef("");
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -164,9 +166,9 @@ const AdminPanel: React.FC<Props> = ({ links, categories, dev }) => {
   };
 
   const remove = async (l: Link) => {
-    if (!window.confirm(`¿Eliminar "${l.name}" de la lista?`)) return;
-    if (await persist(items.filter((x) => x.id !== l.id)))
-      saved(`✓ "${l.name}" eliminado`);
+    const ok = await persist(items.filter((x) => x.id !== l.id));
+    setPendingDelete(null);
+    if (ok) saved(`✓ "${l.name}" eliminado`);
   };
 
   const startEdit = (l: Link) => {
@@ -313,8 +315,44 @@ const AdminPanel: React.FC<Props> = ({ links, categories, dev }) => {
         items={items}
         categories={categories}
         onEdit={startEdit}
-        onDelete={remove}
+        onDelete={setPendingDelete}
       />
+
+      <Dialog
+        open={pendingDelete !== null}
+        onOpenChange={(o) => {
+          if (!o) setPendingDelete(null);
+        }}
+      >
+        <DialogContent
+          title="¿Eliminar recurso?"
+          description={
+            pendingDelete
+              ? `Se quitará “${pendingDelete.name}” de la lista.`
+              : undefined
+          }
+        >
+          <div className="flex justify-end gap-2">
+            <Button
+              type="button"
+              variant="ghost"
+              size="sm"
+              onClick={() => setPendingDelete(null)}
+            >
+              Cancelar
+            </Button>
+            <Button
+              type="button"
+              variant="danger"
+              size="sm"
+              loading={busy}
+              onClick={() => pendingDelete && remove(pendingDelete)}
+            >
+              Eliminar
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
 
       <div className="pointer-events-none fixed bottom-5 right-5 z-50">
         <div className="pointer-events-auto">

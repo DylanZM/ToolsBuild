@@ -212,16 +212,15 @@ const TableResources: React.FC<TableResourcesProps> = ({
                       >
                         <Pencil size={14} aria-hidden="true" />
                       </Button>
-                      <Button
+                      <button
                         type="button"
-                        variant="danger"
-                        size="sm"
                         aria-label={`Eliminar ${l.name}`}
                         title="Eliminar"
                         onClick={() => onDelete(l)}
+                        className="grid size-8 place-items-center rounded-lg text-rose-600 transition-colors hover:text-rose-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose-500 dark:text-rose-400 dark:hover:text-rose-300"
                       >
                         <Trash2 size={14} aria-hidden="true" />
-                      </Button>
+                      </button>
                     </div>
                   </TableCell>
                 </TableRow>
