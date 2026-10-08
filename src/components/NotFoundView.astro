@@ -12,9 +12,9 @@ const t = createT(locale);
 ---
 
 <main
-  class="mx-auto flex min-h-[68vh] max-w-[1400px] flex-col justify-center px-5 py-24 sm:px-8"
+  class="mx-auto flex min-h-[68vh] max-w-[1400px] flex-col items-center justify-center px-5 py-24 text-center sm:px-8"
 >
-  <div class="flex flex-wrap items-center gap-x-7 gap-y-5">
+  <div class="flex flex-wrap items-center justify-center gap-x-7 gap-y-5">
     <h1
       class="text-[clamp(5rem,20vw,12rem)] font-semibold leading-[0.85] tracking-[-0.04em] text-ink tabular-nums"
     >
@@ -24,6 +24,7 @@ const t = createT(locale);
       client:load
       state="error"
       size="clamp(84px, 14vw, 156px)"
+      colors={{ body: "#d9a441", bodyEdge: "#f3c66f", feature: "#141512" }}
     />
   </div>
 
@@ -31,7 +32,7 @@ const t = createT(locale);
     {t("notfound.text")}
   </p>
 
-  <div class="mt-9 flex flex-wrap items-center gap-3">
+  <div class="mt-9 flex flex-wrap items-center justify-center gap-3">
     <a
       href={localePath(locale, "/")}
       class="inline-flex h-10 items-center gap-2 rounded-md bg-ink px-5 text-[12.5px] tracking-tight text-surface transition-opacity hover:opacity-85 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"

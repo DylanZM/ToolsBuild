@@ -5,18 +5,74 @@ interface Props {
   size?: number;
 }
 const { name, wordmark = true, size = 26 } = Astro.props;
+const uid = Math.random().toString(36).slice(2, 8);
+const gradientId = `gold-gradient-${uid}`;
+const shadowId = `block-shadow-${uid}`;
 ---
 
 <span class="inline-flex items-center gap-2.5">
   <svg
     width={size}
     height={size}
-    viewBox="0 0 24 24"
+    viewBox="0 0 512 512"
     aria-hidden="true"
-    class="shrink-0 transition-transform duration-300 ease-out-expo group-hover:rotate-90"
+    class="shrink-0"
   >
-    <path fill="var(--accent)" d="M12 1 21.53 6.5v11L12 23 2.47 17.5v-11L12 1Z"></path>
-    <path fill="var(--surface)" d="M6.5 6.6h11v3.6h-4v7.4h-3v-7.4h-4V6.6Z"></path>
+    <defs>
+      <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#f3c66f"></stop>
+        <stop offset="50%" stop-color="#d9a441"></stop>
+        <stop offset="100%" stop-color="#a6761e"></stop>
+      </linearGradient>
+      <filter id={shadowId} x="-20%" y="-20%" width="140%" height="140%">
+        <feDropShadow
+          dx="0"
+          dy="8"
+          stdDeviation="10"
+          flood-color="#000000"
+          flood-opacity="0.12"
+        ></feDropShadow>
+      </filter>
+    </defs>
+    <g transform="translate(46, 46)">
+      <rect
+        x="30"
+        y="40"
+        width="360"
+        height="96"
+        rx="24"
+        fill={`url(#${gradientId})`}
+        filter={`url(#${shadowId})`}
+      ></rect>
+      <rect
+        x="162"
+        y="136"
+        width="96"
+        height="244"
+        rx="24"
+        fill={`url(#${gradientId})`}
+        filter={`url(#${shadowId})`}
+      ></rect>
+      <path
+        d="M 258,136 H 320 C 365,136 385,166 385,198 C 385,230 365,260 320,260 H 258"
+        fill="none"
+        stroke={`url(#${gradientId})`}
+        stroke-width="56"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        filter={`url(#${shadowId})`}
+      ></path>
+      <path
+        d="M 258,260 H 336 C 381,260 400,290 400,324 C 400,358 381,380 336,380 H 258"
+        fill="none"
+        stroke={`url(#${gradientId})`}
+        stroke-width="56"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        filter={`url(#${shadowId})`}
+      ></path>
+      <circle cx="210" cy="88" r="16" fill="#FFFFFF" opacity="0.9"></circle>
+    </g>
   </svg>
   {
     wordmark && (
