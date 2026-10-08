@@ -6,6 +6,7 @@ import ThemeToggle from "./ThemeToggle.astro";
 import LangSwitch from "./LangSwitch.astro";
 import Logo from "./Logo.astro";
 import MorphIcon from "morphicons/astro";
+import HeaderKbd from "./react/HeaderKbd";
 import { Grid2X2, List, Search } from "lucide";
 
 interface Props {
@@ -60,15 +61,7 @@ const t = createT(locale);
         aria-label={t("nav.search")}
       >
         <MorphIcon icon={Search} size={14} strokeWidth={2} />
-        <kbd
-          data-shortcut-mod
-          class="hidden rounded border border-line px-1 py-px text-[10px] font-medium tracking-wider text-muted sm:inline"
-          >Ctrl</kbd
-        >
-        <kbd
-          class="hidden rounded border border-line px-1 py-px text-[10px] font-medium tracking-wider text-muted sm:inline"
-          >K</kbd
-        >
+        <HeaderKbd client:idle />
       </button>
 
       <LangSwitch locale={locale} label={t("lang.switch")} />
@@ -183,12 +176,6 @@ const t = createT(locale);
     });
 
     applyView(document.documentElement.dataset.view || "grid");
-
-    if (/Mac|iPhone|iPad|iPod/.test(navigator.platform || "")) {
-      document.querySelectorAll("[data-shortcut-mod]").forEach((kbd) => {
-        kbd.textContent = "⌘";
-      });
-    }
   }
   bind();
   document.addEventListener("astro:page-load", bind);
