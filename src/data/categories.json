@@ -134,5 +134,22 @@
       "es": "Cursos, agent skills y material para seguir aprendiendo.",
       "en": "Courses, agent skills and material to keep learning."
     }
+  },
+  {
+    "id": "utilities",
+    "slug": "utilities",
+    "order": 9,
+    "name": {
+      "es": "Utilidades",
+      "en": "Utilities"
+    },
+    "short": {
+      "es": "Utilidades",
+      "en": "Utilities"
+    },
+    "desc": {
+      "es": "Utilidades de escritorio, captura de pantalla, pizarras infinitas y herramientas creativas para el día a día.",
+      "en": "Desktop utilities, screen capture, infinite whiteboards and everyday creative tools."
+    }
   }
 ]

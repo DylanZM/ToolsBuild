@@ -1825,5 +1825,4821 @@
       "en": "animated ascii art for web pages"
     },
     "addedAt": "2026-10-08T20:09:21.106Z"
+  },
+  {
+    "id": "awwwards",
+    "url": "https://www.awwwards.com",
+    "name": "Awwwards",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Premios que celebran la excelencia del oficio web digital.",
+      "en": "Awards celebrating exceptional digital web craft."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "cosmos",
+    "url": "https://www.cosmos.so",
+    "name": "Cosmos",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Moodboarding visual y motor de inspiración creativa.",
+      "en": "Visual moodboarding and creative inspiration engine."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "layers",
+    "url": "https://layers.to",
+    "name": "Layers",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Plataforma para compartir trabajo de diseño públicamente.",
+      "en": "Platform for sharing design work publicly."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "minimal-gallery",
+    "url": "https://minimal.gallery",
+    "name": "Minimal Gallery",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Colección de sitios web minimalistas y contenidos.",
+      "en": "Showcase of minimal and restrained websites."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "seesaw",
+    "url": "https://www.seesaw.website",
+    "name": "SEESAW",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Inspiración de diseño organizada por sección de página.",
+      "en": "Design inspiration organized by page section."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "supahero",
+    "url": "https://supahero.io",
+    "name": "Supahero",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Colección curada de secciones hero de sitios web.",
+      "en": "Curated collection of website hero sections."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "imageory",
+    "url": "https://www.imageory.in",
+    "name": "Imageory",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Galería visual que combina imágenes con prompts.",
+      "en": "Visual gallery pairing images with prompts."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "backgrounds-supply",
+    "url": "https://backgrounds.supply",
+    "name": "Backgrounds Supply",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Fondos web hechos a mano y listos para usar.",
+      "en": "Handcrafted website backgrounds ready to use."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "venust-backgrounds",
+    "url": "https://backgrounds.venust.ai",
+    "name": "Venust Backgrounds",
+    "category": "inspiration",
+    "tags": [
+      "ai"
+    ],
+    "desc": {
+      "es": "Fondos gratuitos generados por IA con sus prompts originales.",
+      "en": "Free AI-generated backgrounds with original prompts."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "details",
+    "url": "https://www.details.so",
+    "name": "Details",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Análisis de micro-interacciones de los mejores productos digitales.",
+      "en": "Micro-interaction analysis of top digital products."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "sombra",
+    "url": "https://sombra.design",
+    "name": "Sombra",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Muestra de interfaces web en modo oscuro.",
+      "en": "Showcase of dark-mode website interfaces."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "dribbble",
+    "url": "https://dribbble.com",
+    "name": "Dribbble",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Comunidad global que comparte conceptos de diseño.",
+      "en": "Global community sharing design concepts."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "behance",
+    "url": "https://www.behance.net",
+    "name": "Behance",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Vitrina de Adobe para portafolios creativos.",
+      "en": "Adobe showcase for creative portfolios."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "recent-design",
+    "url": "https://recent.design",
+    "name": "Recent Design",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Selección semanal de sitios web premiables.",
+      "en": "Weekly selection of award-worthy websites."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "navbar-design",
+    "url": "https://navbar.design",
+    "name": "navbar.design",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Galería curada de patrones de barras de navegación.",
+      "en": "Curated gallery of navigation bar patterns."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "footer-design",
+    "url": "https://footer.design",
+    "name": "footer.design",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Galería curada de footers web creativos.",
+      "en": "Curated gallery of creative website footers."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "land-book",
+    "url": "https://land-book.com",
+    "name": "Land-book",
+    "category": "inspiration",
+    "tags": [
+      "landing"
+    ],
+    "desc": {
+      "es": "Landing pages organizadas por industria.",
+      "en": "Landing pages organized by industry."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "siteinspire",
+    "url": "https://www.siteinspire.com",
+    "name": "SiteInspire",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Muestra del mejor oficio en diseño web.",
+      "en": "Showcase of fine web design craft."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "lapa-ninja",
+    "url": "https://www.lapa.ninja",
+    "name": "Lapa Ninja",
+    "category": "inspiration",
+    "tags": [
+      "landing"
+    ],
+    "desc": {
+      "es": "Galería curada de landing pages responsivas.",
+      "en": "Curated gallery of responsive landing pages."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "ux-archive",
+    "url": "https://uxarchive.com",
+    "name": "UX Archive",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Archivo histórico de flujos de onboarding móviles.",
+      "en": "Historical archive of mobile onboarding flows."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "screenlane",
+    "url": "https://screenlane.com",
+    "name": "Screenlane",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Galería de pantallas de interfaz con búsqueda.",
+      "en": "Searchable gallery of interface screens."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "flowbase",
+    "url": "https://www.flowbase.co",
+    "name": "Flowbase",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Componentes UI premium y patrones de interacción.",
+      "en": "Premium UI components and interaction patterns."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "hover-states",
+    "url": "https://hoverstat.es",
+    "name": "Hover States",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Muestra de diseño web interactivo e innovador.",
+      "en": "Showcase of innovative interactive web design."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "saasframe",
+    "url": "https://www.saasframe.io",
+    "name": "SaaSFrame",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Cientos de capturas de páginas de marketing SaaS.",
+      "en": "Hundreds of SaaS marketing page screenshots."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "landingfolio",
+    "url": "https://www.landingfolio.com",
+    "name": "Landingfolio",
+    "category": "inspiration",
+    "tags": [
+      "landing"
+    ],
+    "desc": {
+      "es": "Amplia biblioteca de diseños de landing pages.",
+      "en": "Extensive library of landing page designs."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "pttrns",
+    "url": "https://pttrns.com",
+    "name": "Pttrns",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Directorio de patrones de interfaz de usuario móvil.",
+      "en": "Directory of mobile user interface patterns."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "one-page-love",
+    "url": "https://onepagelove.com",
+    "name": "One Page Love",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Muestra de sitios de una sola página.",
+      "en": "Showcase of single-page website designs."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "designspiration",
+    "url": "https://www.designspiration.com",
+    "name": "Designspiration",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Plataforma de búsqueda creativa de arte visual.",
+      "en": "Creative search platform for visual art."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "best-website-gallery",
+    "url": "https://bestwebsite.gallery",
+    "name": "Best Website Gallery",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Archivo curado de sitios web excepcionales.",
+      "en": "Curated archive of exceptional websites."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "inspiration-grid",
+    "url": "https://theinspirationgrid.com",
+    "name": "Inspiration Grid",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Revista online que celebra el diseño visual creativo.",
+      "en": "Online magazine celebrating creative visual design."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "scrnshts",
+    "url": "https://scrnshts.club",
+    "name": "Scrnshts",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Diseños de capturas de App Store curados.",
+      "en": "Curated App Store screenshot designs."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "are-na",
+    "url": "https://www.are.na",
+    "name": "Are.na",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Plataforma colaborativa de investigación y marcadores visuales.",
+      "en": "Collaborative research and visual bookmarking platform."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "appinspo",
+    "url": "https://www.appinspo.com",
+    "name": "Appinspo",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Galería curada de diseño de aplicaciones móviles.",
+      "en": "Curated mobile application design gallery."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "dark-mode-design",
+    "url": "https://www.darkmodedesign.com",
+    "name": "Dark Mode Design",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Muestra que celebra los sitios web en modo oscuro.",
+      "en": "Showcase celebrating dark-mode websites."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "pinterest",
+    "url": "https://www.pinterest.com",
+    "name": "Pinterest",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Motor de descubrimiento visual para ideas creativas.",
+      "en": "Visual discovery engine for creative ideas."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "posts-design",
+    "url": "https://posts.design",
+    "name": "posts.design",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Archivo curado de diseño de gráficos para redes sociales.",
+      "en": "Curated social media graphic design archive."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "loadmo-re",
+    "url": "https://loadmo.re",
+    "name": "loadmo.re",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Galería de diseños web móviles experimentales.",
+      "en": "Gallery of experimental mobile website designs."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "inspora-design",
+    "url": "https://www.inspora.design",
+    "name": "inspora.design",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Archivo de diseño web visual contemporáneo.",
+      "en": "Archive of contemporary visual web design."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "desengs-com",
+    "url": "https://desengs.com",
+    "name": "desengs.com",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Directorio de portafolios y relatos de ingeniería de diseño.",
+      "en": "Directory of design engineering portfolios and lore."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "isthereanytool",
+    "url": "https://isthereanytool.app",
+    "name": "isthereanytool",
+    "category": "inspiration",
+    "tags": [
+      "ai"
+    ],
+    "desc": {
+      "es": "Directorio de herramientas de diseño, oficio e IA poco conocidas.",
+      "en": "Directory of lesser-known design, craft, and AI tools."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "designeng-tools",
+    "url": "https://designeng.tools",
+    "name": "designeng.tools",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Herramientas, recursos e inspiración de ingeniería de diseño curados.",
+      "en": "Curated design engineering tools, resources, and inspiration."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "bestdesignsonx-com",
+    "url": "https://bestdesignsonx.com",
+    "name": "bestdesignsonx.com",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Creadores y publicaciones de diseño destacados en X.",
+      "en": "Curated design-forward creators and posts on X."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "design-bookmark",
+    "url": "https://designbookmark.com",
+    "name": "Design Bookmark",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Directorio de recursos y enlaces de diseño.",
+      "en": "Directory of design resources and links."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "curations",
+    "url": "https://curations.supply",
+    "name": "Curations",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Biblioteca de recursos digitales de diseño curados.",
+      "en": "Library of curated digital design assets."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "motionimo",
+    "url": "https://motionimo.xyz",
+    "name": "Motionimo",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Amplia biblioteca de clips de motion design.",
+      "en": "Extensive library of motion design clips."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "before-click",
+    "url": "https://before.click",
+    "name": "before.click",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Muestra de conceptos de capturas de apps de alta conversión.",
+      "en": "Showcase of high-converting app screenshot concepts."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "landdding",
+    "url": "https://landdding.com",
+    "name": "Landdding",
+    "category": "inspiration",
+    "tags": [
+      "landing"
+    ],
+    "desc": {
+      "es": "Catálogo diario de landing pages creativas.",
+      "en": "Daily catalogue of creative landing pages."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "designengineer-tools",
+    "url": "https://designengineer.tools",
+    "name": "designengineer.tools",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Herramientas esenciales para ingenieros de diseño.",
+      "en": "Essential tools tailored for design engineers."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "insposite",
+    "url": "https://www.insposite.com",
+    "name": "Insposite",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Directorio de referencias y herramientas de diseño.",
+      "en": "Directory of design references and tools."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "loader-buttons",
+    "url": "https://loader-buttons.appllama.io",
+    "name": "Loader Buttons",
+    "category": "inspiration",
+    "tags": [
+      "animated"
+    ],
+    "desc": {
+      "es": "Galería de 25 animaciones de botones de carga.",
+      "en": "Gallery of 25 loading button animations."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "what-ships",
+    "url": "https://whatships.com",
+    "name": "What Ships",
+    "category": "inspiration",
+    "tags": [
+      "video"
+    ],
+    "desc": {
+      "es": "Videos demo de lanzamientos de producto destacados en X.",
+      "en": "Standout product launch demo videos on X."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "greatstuff",
+    "url": "https://greatstuff.fyi",
+    "name": "GreatStuff",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Archivo cuidadosamente seleccionado de herramientas creativas.",
+      "en": "Carefully vetted archive of creative tools."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "great-apps",
+    "url": "https://greatapps.fyi",
+    "name": "Great Apps",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Galería semanal de apps iOS excepcionales.",
+      "en": "Weekly gallery highlighting exceptional iOS apps."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "curated-domains",
+    "url": "https://curated.domains",
+    "name": "Curated Domains",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Marcas que usan nombres de dominio creativos.",
+      "en": "Brands using creative top-level domain names."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "sections-wtf",
+    "url": "https://sections.wtf",
+    "name": "Sections.wtf",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Galería real de secciones y heroes web.",
+      "en": "Real-world website section and hero gallery."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "browse-cool",
+    "url": "https://browse.cool",
+    "name": "Browse.cool",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Sitios elegidos por su excepcional tacto digital.",
+      "en": "Websites chosen for exceptional tactile feel."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "folios-gallery",
+    "url": "https://folios.gallery",
+    "name": "Folios Gallery",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Directorio selecto de portafolios de diseñadores destacados.",
+      "en": "Selective directory of outstanding designer portfolios."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "wwwtf-site",
+    "url": "https://wwwtf.site",
+    "name": "wwwtf.site",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Rincones web excéntricos e interactivos.",
+      "en": "Quirky and experimental interactive web corners."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "early",
+    "url": "https://www.early.tools",
+    "name": "Early",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Plataforma de descubrimiento de productos de software en etapa temprana.",
+      "en": "Discovery platform for early-stage software products."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "openalternative",
+    "url": "https://openalternative.co",
+    "name": "OpenAlternative",
+    "category": "inspiration",
+    "tags": [
+      "open source"
+    ],
+    "desc": {
+      "es": "Alternativas de código abierto a los SaaS populares.",
+      "en": "Open-source alternatives to popular SaaS tools."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "everywhere-tools",
+    "url": "https://everywhere.tools",
+    "name": "Everywhere Tools",
+    "category": "inspiration",
+    "tags": [
+      "open source"
+    ],
+    "desc": {
+      "es": "Herramientas creativas de código abierto para el oficio del diseño.",
+      "en": "Open-source creative tools for design craft."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "jessy-in-s-gallery",
+    "url": "https://gallery.jessyin.world",
+    "name": "Jessy In's Gallery",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Moodboard colaborativo de hallazgos visuales únicos.",
+      "en": "Collaborative moodboard of unique visual finds."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "wall-of-portfolios",
+    "url": "https://www.wallofportfolios.in",
+    "name": "Wall of Portfolios",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Vitrinas de portafolios de ingeniería de diseño y producto.",
+      "en": "Design engineering and product portfolio showcases."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "detail-design",
+    "url": "https://detail.design",
+    "name": "Detail Design",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Archivo de micro-interacciones de software bien pensadas.",
+      "en": "Archive of thoughtful software micro-interactions."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "betwn-studios",
+    "url": "https://betwnstudios.com",
+    "name": "Betwn Studios",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Estudio que crea experiencias web modernas para SaaS.",
+      "en": "Studio crafting modern SaaS web experiences."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "saas-landing-page",
+    "url": "https://saaslandingpage.com",
+    "name": "SaaS Landing Page",
+    "category": "inspiration",
+    "tags": [
+      "landing"
+    ],
+    "desc": {
+      "es": "Muestra de las mejores landing pages SaaS.",
+      "en": "Showcase of top SaaS landing pages."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "best-saas-web-designs",
+    "url": "https://bestsaaswebdesigns.com",
+    "name": "Best SaaS Web Designs",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Galería de inspiración en diseño de sitios SaaS.",
+      "en": "Curated inspiration gallery of SaaS website design."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "a1",
+    "url": "https://www.a1.gallery",
+    "name": "A1",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Galería de inspiración en diseño web.",
+      "en": "Website design inspiration gallery."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "figma",
+    "url": "https://figma.com",
+    "name": "Figma",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Plataforma colaborativa de diseño de interfaces y prototipado.",
+      "en": "Collaborative interface design and prototyping platform."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "framer",
+    "url": "https://framer.com",
+    "name": "Framer",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Lienzo visual para diseñar y publicar sitios web.",
+      "en": "Visual canvas designing and publishing websites."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "make-design",
+    "url": "https://make.design",
+    "name": "make.design",
+    "category": "inspiration",
+    "tags": [
+      "ai"
+    ],
+    "desc": {
+      "es": "Generador de IA que convierte prompts en diseños pulidos.",
+      "en": "AI generator turning prompts into polished designs."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "penpot",
+    "url": "https://penpot.app",
+    "name": "Penpot",
+    "category": "inspiration",
+    "tags": [
+      "open source",
+      "svg"
+    ],
+    "desc": {
+      "es": "Plataforma de diseño web de código abierto con soporte de SVG.",
+      "en": "Open-source web design platform supporting SVG."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "spline",
+    "url": "https://spline.design",
+    "name": "Spline",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Software de diseño 3D en el navegador con física.",
+      "en": "Browser-based 3D design software with physics."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "interface-craft",
+    "url": "https://www.interfacecraft.dev",
+    "name": "Interface Craft",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Artículos sobre el oficio de las interfaces digitales modernas.",
+      "en": "Articles exploring modern digital interface craftsmanship."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "ui-labs",
+    "url": "https://www.uilabs.dev",
+    "name": "UI Labs",
+    "category": "inspiration",
+    "tags": [
+      "animated"
+    ],
+    "desc": {
+      "es": "Laboratorio que desconstruye componentes UI animados.",
+      "en": "Laboratory deconstructing animated UI components."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "uiwtf",
+    "url": "https://uiw.tf",
+    "name": "UIWTF",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Muestra de patrones de interfaz web experimentales.",
+      "en": "Showcase of experimental web interface patterns."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "lab01",
+    "url": "https://lab01.dev",
+    "name": "Lab01",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Experimentos de UI refinados de un estudio.",
+      "en": "Refined UI experiments from a studio."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "design-dev",
+    "url": "https://design.dev",
+    "name": "design.dev",
+    "category": "inspiration",
+    "tags": [
+      "ai"
+    ],
+    "desc": {
+      "es": "Editor de tokens y sistemas de diseño asistido por IA.",
+      "en": "AI-assisted design token and system editor."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "ui-playbook",
+    "url": "https://uiplaybook.dev",
+    "name": "UI Playbook",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Guía de los estados más comunes de los componentes UI.",
+      "en": "Guide to common UI component states."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "refactoring-ui",
+    "url": "https://refactoringui.com",
+    "name": "Refactoring UI",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Guía práctica de diseño para construir interfaces.",
+      "en": "Practical design guide for building interfaces."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "practical-typography",
+    "url": "https://practicaltypography.com",
+    "name": "Practical Typography",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Libro esencial sobre reglas tipográficas y diseño.",
+      "en": "Essential book covering typographic rules and layout."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "web-dev",
+    "url": "https://web.dev",
+    "name": "web.dev",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Consejos sobre rendimiento web y estándares modernos.",
+      "en": "Guidance on web performance and modern standards."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "inclusive-components",
+    "url": "https://inclusive-components.design",
+    "name": "Inclusive Components",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Biblioteca de patrones que enseña diseño de componentes accesibles.",
+      "en": "Pattern library teaching accessible component design."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "josh-comeau",
+    "url": "https://joshwcomeau.com",
+    "name": "Josh Comeau",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Tutoriales interactivos que desglosan el funcionamiento de CSS.",
+      "en": "Interactive tutorials breaking down CSS mechanics."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "design-books",
+    "url": "https://design-books.com",
+    "name": "Design Books",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Directorio de literatura de diseño esencial por disciplina.",
+      "en": "Directory of essential design literature by discipline."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "learn-kernels",
+    "url": "https://learn-kernels.com",
+    "name": "Learn Kernels",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Guía interactiva sobre programación de kernels de GPU.",
+      "en": "Interactive guide exploring GPU kernel programming."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "design-system-checklist",
+    "url": "https://designsystemchecklist.com",
+    "name": "Design System Checklist",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Lista de verificación exhaustiva para design systems en producción.",
+      "en": "Comprehensive checklist for production design systems."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "learn-ui",
+    "url": "https://learn-ui.com",
+    "name": "Learn UI",
+    "category": "inspiration",
+    "tags": [
+      "video"
+    ],
+    "desc": {
+      "es": "Curso en video de diseño práctico de interfaces de usuario.",
+      "en": "Video course teaching practical user interface design."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "good-ui",
+    "url": "https://goodui.org",
+    "name": "Good UI",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Patrones de diseño UI basados en evidencia y datos.",
+      "en": "Evidence-based UI design patterns and data."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "abduzeedo",
+    "url": "https://abduzeedo.com",
+    "name": "Abduzeedo",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Blog de diseño diario con inspiración visual.",
+      "en": "Daily design blog sharing visual inspiration."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "ux-collective",
+    "url": "https://uxdesign.cc",
+    "name": "UX Collective",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Publicación curada con ensayos críticos de UX.",
+      "en": "Curated publication sharing critical UX essays."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "smashing-magazine",
+    "url": "https://www.smashingmagazine.com",
+    "name": "Smashing Magazine",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Recurso de confianza para diseñadores y desarrolladores web.",
+      "en": "Reliable resource for web designers and developers."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "codrops",
+    "url": "https://tympanus.net/codrops/",
+    "name": "Codrops",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Blog de experimentos frontend creativos y tutoriales.",
+      "en": "Blog publishing creative frontend experiments and tutorials."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "muzli",
+    "url": "https://muz.li",
+    "name": "Muzli",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Digest diario con las últimas tendencias de diseño.",
+      "en": "Daily digest curating latest design trends."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "boxes-and-arrows",
+    "url": "https://boxesandarrows.com",
+    "name": "Boxes and Arrows",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Revista dedicada al oficio de la arquitectura de información.",
+      "en": "Journal dedicated to information architecture craft."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "designer-news",
+    "url": "https://www.designernews.co",
+    "name": "Designer News",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Noticiario comunitario con historias de diseño.",
+      "en": "Community-driven news feed highlighting design stories."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "web-designer-depot",
+    "url": "https://www.webdesignerdepot.com",
+    "name": "Web Designer Depot",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Publicación de diseño que cubre estándares y herramientas web.",
+      "en": "Design publication covering web standards and tools."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "designmodo",
+    "url": "https://designmodo.com",
+    "name": "Designmodo",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Artículos y herramientas sobre diseño web.",
+      "en": "Articles and tools covering web design."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "99designs-discover",
+    "url": "https://99designs.com/discover/",
+    "name": "99designs Discover",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Blog de diseño con ideas de branding creativo.",
+      "en": "Design blog exploring creative branding insights."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "interfaces",
+    "url": "https://interfaces.dev",
+    "name": "Interfaces",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Publicación digital mensual que explora las interfaces.",
+      "en": "Monthly digital publication exploring digital interfaces."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "making-software",
+    "url": "https://www.makingsoftware.com",
+    "name": "Making Software",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Ensayos sobre cómo las herramientas dan forma al diseño.",
+      "en": "Essays examining how tools shape design."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "visual-rambling",
+    "url": "https://visualrambling.space",
+    "name": "Visual Rambling",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Ensayos visuales personales sobre diseño de interfaces.",
+      "en": "Personal visual essays exploring interface design."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "degreeless-design",
+    "url": "https://www.degreeless.design",
+    "name": "Degreeless Design",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Hoja de ruta curada para dominar el diseño de producto.",
+      "en": "Curated roadmap for mastering product design."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "svg-guide",
+    "url": "https://www.svg.guide",
+    "name": "SVG Guide",
+    "category": "inspiration",
+    "tags": [
+      "animated",
+      "svg"
+    ],
+    "desc": {
+      "es": "Guía para dominar el marcado y las animaciones de SVG.",
+      "en": "Guide to mastering SVG markup and animations."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "animations-dev",
+    "url": "https://www.animations.dev",
+    "name": "Animations.dev",
+    "category": "inspiration",
+    "tags": [
+      "animated"
+    ],
+    "desc": {
+      "es": "Curso sobre cómo crear animaciones web que se sientan bien.",
+      "en": "Course on creating web animations that feel right."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "ui-land",
+    "url": "https://ui.land",
+    "name": "UI Land",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Entrevistas con ingenieros de diseño de primer nivel.",
+      "en": "Interviews with leading design engineers on craft."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "laws-of-ux",
+    "url": "https://lawsofux.com",
+    "name": "Laws of UX",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Principios psicológicos que influyen en la usabilidad de las interfaces.",
+      "en": "Psychological principles that influence interface usability."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "user-interface-wiki",
+    "url": "https://userinterface.wiki",
+    "name": "User Interface Wiki",
+    "category": "inspiration",
+    "tags": [],
+    "desc": {
+      "es": "Base de conocimiento con directrices y reglas de interfaz.",
+      "en": "Knowledge base documenting interface guidelines and rules."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "the-shape-of-ai",
+    "url": "https://www.shapeof.ai",
+    "name": "The Shape of AI",
+    "category": "inspiration",
+    "tags": [
+      "ai"
+    ],
+    "desc": {
+      "es": "Biblioteca de patrones de diseño de interfaces con IA.",
+      "en": "Pattern library highlighting AI interface design."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "forgeui",
+    "url": "https://forgeui.in",
+    "name": "ForgeUI",
+    "category": "components",
+    "tags": [
+      "animated",
+      "react",
+      "tailwind",
+      "templates"
+    ],
+    "desc": {
+      "es": "Componentes y plantillas animados de React y Tailwind.",
+      "en": "Animated React and Tailwind components and templates."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "rewampui",
+    "url": "https://www.rewampui.com",
+    "name": "RewampUI",
+    "category": "components",
+    "tags": [],
+    "desc": {
+      "es": "Panel de vitrina de componentes UI listos para usar.",
+      "en": "Component showcase dashboard of ready-made UI."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "radix",
+    "url": "https://www.radix-ui.com",
+    "name": "Radix",
+    "category": "components",
+    "tags": [
+      "react"
+    ],
+    "desc": {
+      "es": "Primitivos UI sin estilos y accesibles para React.",
+      "en": "Accessible unstyled UI primitives for React."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "motion-primitives",
+    "url": "https://motion-primitives.com",
+    "name": "Motion Primitives",
+    "category": "components",
+    "tags": [
+      "animated",
+      "react"
+    ],
+    "desc": {
+      "es": "Componentes React animados con Motion.",
+      "en": "Animated React components powered by Motion."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "numberflow",
+    "url": "https://number-flow.barvian.me",
+    "name": "NumberFlow",
+    "category": "components",
+    "tags": [],
+    "desc": {
+      "es": "Transiciones de números suaves en frameworks modernos.",
+      "en": "Smooth number transitions across modern frameworks."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "fancy-components",
+    "url": "https://www.fancycomponents.dev",
+    "name": "Fancy Components",
+    "category": "components",
+    "tags": [
+      "react"
+    ],
+    "desc": {
+      "es": "Componentes React divertidos con efectos de física.",
+      "en": "Playful React components with physics effects."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "opensource-ui",
+    "url": "https://opensourceui.in",
+    "name": "Opensource UI",
+    "category": "components",
+    "tags": [
+      "react"
+    ],
+    "desc": {
+      "es": "Componentes React y mockups de dispositivos para copiar y pegar.",
+      "en": "Copy-paste React UI and device mockups."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "amicro",
+    "url": "https://amicro.vercel.app",
+    "name": "Amicro",
+    "category": "components",
+    "tags": [
+      "animated",
+      "react"
+    ],
+    "desc": {
+      "es": "Primitivas ligeras de micro-animación para React.",
+      "en": "Lightweight drop-in React micro-animation primitives."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "painterly",
+    "url": "https://painterly.design-tools.workers.dev",
+    "name": "Painterly",
+    "category": "components",
+    "tags": [
+      "react"
+    ],
+    "desc": {
+      "es": "Componentes de loader artísticos sobre canvas para React.",
+      "en": "Artistic canvas loader components for React."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "shadcnblocks",
+    "url": "https://www.shadcnblocks.com",
+    "name": "shadcnblocks",
+    "category": "components",
+    "tags": [
+      "shadcn"
+    ],
+    "desc": {
+      "es": "Miles de bloques web limpios con shadcn.",
+      "en": "Thousands of clean shadcn website blocks."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "blocks-so",
+    "url": "https://blocks.so",
+    "name": "blocks.so",
+    "category": "components",
+    "tags": [
+      "open source"
+    ],
+    "desc": {
+      "es": "Bloques web de código abierto instalables por CLI.",
+      "en": "Open-source website blocks installable via CLI."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "8bitcn",
+    "url": "https://8bitcn.com",
+    "name": "8bitcn",
+    "category": "components",
+    "tags": [
+      "shadcn"
+    ],
+    "desc": {
+      "es": "Componentes retro de 8 bits para proyectos con shadcn.",
+      "en": "Retro 8-bit components for shadcn projects."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "coss-ui",
+    "url": "https://coss.com/ui/",
+    "name": "coss ui",
+    "category": "components",
+    "tags": [],
+    "desc": {
+      "es": "Componentes para copiar y pegar construidos sobre Base UI.",
+      "en": "Copy-paste components built on Base UI."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "butter-nav",
+    "url": "https://butter-nav.vercel.app",
+    "name": "Butter Nav",
+    "category": "components",
+    "tags": [],
+    "desc": {
+      "es": "Mega-menú con transiciones fluidas de morphing de layout.",
+      "en": "Mega-menu featuring fluid layout morphing transitions."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "cult-ui",
+    "url": "https://www.cult-ui.com",
+    "name": "Cult UI",
+    "category": "components",
+    "tags": [
+      "animated",
+      "react"
+    ],
+    "desc": {
+      "es": "Componentes React animados con Framer Motion.",
+      "en": "Animated React components with Framer Motion."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "daisyui",
+    "url": "https://daisyui.com",
+    "name": "daisyUI",
+    "category": "components",
+    "tags": [
+      "tailwind"
+    ],
+    "desc": {
+      "es": "Biblioteca de clases de componentes para Tailwind CSS.",
+      "en": "Component class library for Tailwind CSS."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "heroui",
+    "url": "https://www.heroui.com",
+    "name": "HeroUI",
+    "category": "components",
+    "tags": [
+      "react"
+    ],
+    "desc": {
+      "es": "Biblioteca UI moderna para React, antes NextUI.",
+      "en": "Modern React UI library, formerly NextUI."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "kibo-ui",
+    "url": "https://www.kibo-ui.com",
+    "name": "Kibo UI",
+    "category": "components",
+    "tags": [
+      "ai"
+    ],
+    "desc": {
+      "es": "Registro de componentes pensado para interfaces de IA.",
+      "en": "Component registry tailored for AI interfaces."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "animate-ui",
+    "url": "https://animate-ui.com",
+    "name": "Animate UI",
+    "category": "components",
+    "tags": [
+      "animated",
+      "shadcn"
+    ],
+    "desc": {
+      "es": "Componentes shadcn accesibles animados con Motion.",
+      "en": "Accessible shadcn components animated with Motion."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "flyonui",
+    "url": "https://flyonui.com",
+    "name": "FlyonUI",
+    "category": "components",
+    "tags": [
+      "tailwind"
+    ],
+    "desc": {
+      "es": "Componentes semánticos de Tailwind CSS listos para v4.",
+      "en": "Semantic Tailwind CSS components ready for v4."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "tailgrids",
+    "url": "https://tailgrids.com",
+    "name": "TailGrids",
+    "category": "components",
+    "tags": [
+      "tailwind"
+    ],
+    "desc": {
+      "es": "Bloques UI responsivos diseñados para Tailwind.",
+      "en": "Responsive UI blocks designed for Tailwind."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "hyperui",
+    "url": "https://www.hyperui.dev",
+    "name": "HyperUI",
+    "category": "components",
+    "tags": [
+      "tailwind",
+      "open source"
+    ],
+    "desc": {
+      "es": "Componentes UI gratuitos y open source de Tailwind CSS.",
+      "en": "Free open-source Tailwind CSS UI components."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "preline-ui",
+    "url": "https://preline.co",
+    "name": "Preline UI",
+    "category": "components",
+    "tags": [
+      "tailwind"
+    ],
+    "desc": {
+      "es": "Componentes Tailwind CSS para dashboards complejos.",
+      "en": "Tailwind CSS components for complex dashboards."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "float-ui",
+    "url": "https://floatui.com",
+    "name": "Float UI",
+    "category": "components",
+    "tags": [
+      "tailwind"
+    ],
+    "desc": {
+      "es": "Componentes Tailwind creados para sitios de marketing.",
+      "en": "Tailwind components crafted for marketing websites."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "meraki-ui",
+    "url": "https://merakiui.com",
+    "name": "Meraki UI",
+    "category": "components",
+    "tags": [
+      "tailwind"
+    ],
+    "desc": {
+      "es": "Componentes Tailwind con soporte de idiomas de derecha a izquierda.",
+      "en": "Tailwind components with right-to-left language support."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "tremor",
+    "url": "https://tremor.so",
+    "name": "Tremor",
+    "category": "components",
+    "tags": [
+      "react"
+    ],
+    "desc": {
+      "es": "Biblioteca React modular para construir dashboards.",
+      "en": "Modular React library for building dashboards."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "headless-ui",
+    "url": "https://headlessui.com",
+    "name": "Headless UI",
+    "category": "components",
+    "tags": [
+      "tailwind"
+    ],
+    "desc": {
+      "es": "Componentes accesibles sin estilos de Tailwind Labs.",
+      "en": "Unstyled accessible components from Tailwind Labs."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "base-cn",
+    "url": "https://basecn.dev",
+    "name": "Base CN",
+    "category": "components",
+    "tags": [
+      "shadcn"
+    ],
+    "desc": {
+      "es": "Primitivos de Base UI adaptados para shadcn.",
+      "en": "Base UI primitives adapted for shadcn."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "easy-ui",
+    "url": "https://easyui.pro",
+    "name": "Easy UI",
+    "category": "components",
+    "tags": [],
+    "desc": {
+      "es": "Biblioteca de componentes para copiar y pegar y construir rápido.",
+      "en": "Copy-paste component library for rapid building."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "eldora-ui",
+    "url": "https://eldoraui.site",
+    "name": "Eldora UI",
+    "category": "components",
+    "tags": [
+      "animated",
+      "landing"
+    ],
+    "desc": {
+      "es": "Componentes animados pensados para landings web.",
+      "en": "Animated components tailored for web landings."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "velora-ui",
+    "url": "https://velora.colorlib.com",
+    "name": "Velora UI",
+    "category": "components",
+    "tags": [
+      "tailwind"
+    ],
+    "desc": {
+      "es": "Componentes y secciones gratuitas de Tailwind CSS.",
+      "en": "Free Tailwind CSS components and sections."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "watermelon-ui",
+    "url": "https://watermelon.sh",
+    "name": "Watermelon UI",
+    "category": "components",
+    "tags": [
+      "react",
+      "shadcn"
+    ],
+    "desc": {
+      "es": "Biblioteca de componentes React para el ecosistema shadcn.",
+      "en": "React component library for shadcn ecosystem."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "beautiful-ui",
+    "url": "https://beautifului.dev",
+    "name": "Beautiful UI",
+    "category": "components",
+    "tags": [],
+    "desc": {
+      "es": "Componentes pulidos para copiar y pegar en apps web.",
+      "en": "Polished copy-paste components for web applications."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "hexter-ui",
+    "url": "https://hexter-ui.com",
+    "name": "Hexter UI",
+    "category": "components",
+    "tags": [
+      "shadcn"
+    ],
+    "desc": {
+      "es": "Colección de componentes limpios para proyectos shadcn.",
+      "en": "Clean component collection for shadcn projects."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "lightswind",
+    "url": "https://lightswind.com",
+    "name": "Lightswind",
+    "category": "components",
+    "tags": [
+      "tailwind"
+    ],
+    "desc": {
+      "es": "Componentes Tailwind con luces y brillos.",
+      "en": "Tailwind components featuring lighting and glows."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "reverse-ui",
+    "url": "https://reverseui.com",
+    "name": "Reverse UI",
+    "category": "components",
+    "tags": [
+      "react",
+      "tailwind"
+    ],
+    "desc": {
+      "es": "Biblioteca de componentes para Tailwind y React.",
+      "en": "Tailwind and React component library."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "tailark",
+    "url": "https://tailark.com",
+    "name": "Tailark",
+    "category": "components",
+    "tags": [
+      "tailwind"
+    ],
+    "desc": {
+      "es": "Secciones y componentes Tailwind para marketing.",
+      "en": "Tailwind sections and components for marketing."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "ui-layouts",
+    "url": "https://ui-layouts.com",
+    "name": "UI Layouts",
+    "category": "components",
+    "tags": [
+      "tailwind"
+    ],
+    "desc": {
+      "es": "Layouts de página completa y heroes para Tailwind.",
+      "en": "Full-page layouts and heroes for Tailwind."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "kokonut-ui",
+    "url": "https://kokonutui.com",
+    "name": "Kokonut UI",
+    "category": "components",
+    "tags": [
+      "shadcn"
+    ],
+    "desc": {
+      "es": "Componentes interactivos y creativos en formato shadcn.",
+      "en": "Creative interactive components for shadcn format."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "nex-ui",
+    "url": "https://nexui.dev",
+    "name": "Nex UI",
+    "category": "components",
+    "tags": [],
+    "desc": {
+      "es": "Biblioteca de componentes extensible para startups modernas.",
+      "en": "Extensible component library for modern startups."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "ninja-ui",
+    "url": "https://ninna-ui.dev",
+    "name": "Ninja UI",
+    "category": "components",
+    "tags": [],
+    "desc": {
+      "es": "Componentes UI ligeros para sitios rápidos.",
+      "en": "Lightweight UI components for fast websites."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "syntax-ui",
+    "url": "https://syntaxui.com",
+    "name": "Syntax UI",
+    "category": "components",
+    "tags": [
+      "animated",
+      "landing"
+    ],
+    "desc": {
+      "es": "Componentes animados para copiar y pegar en landing pages.",
+      "en": "Animated copy-paste components for landing pages."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "shadcn-cssinjs",
+    "url": "https://www.shadcn-cssinjs.com",
+    "name": "shadcn-cssinjs",
+    "category": "components",
+    "tags": [
+      "shadcn"
+    ],
+    "desc": {
+      "es": "Componentes shadcn adaptados a CSS-in-JS.",
+      "en": "shadcn components adapted for CSS-in-JS."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "transitions",
+    "url": "https://transitions.dev",
+    "name": "Transitions",
+    "category": "components",
+    "tags": [],
+    "desc": {
+      "es": "Recetas y easings de transiciones CSS curados.",
+      "en": "Curated CSS transition recipes and easings."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "23rd",
+    "url": "https://23rd.dev",
+    "name": "23rd",
+    "category": "components",
+    "tags": [
+      "react",
+      "shadcn"
+    ],
+    "desc": {
+      "es": "Componentes shadcn para React y Svelte.",
+      "en": "shadcn components for React and Svelte."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "oneko",
+    "url": "https://oneko.dhrv.pw",
+    "name": "Oneko",
+    "category": "components",
+    "tags": [],
+    "desc": {
+      "es": "Gato pixel que persigue el cursor.",
+      "en": "Pixel cat companion that chases cursor."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "rolling-number",
+    "url": "https://rolling.kitlangton.dev",
+    "name": "Rolling Number",
+    "category": "components",
+    "tags": [
+      "react"
+    ],
+    "desc": {
+      "es": "Contador de números con dígitos rodantes para React.",
+      "en": "Smooth digit-rolling number counter for React."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "annnimate",
+    "url": "https://annnimate.com",
+    "name": "Annnimate",
+    "category": "components",
+    "tags": [],
+    "desc": {
+      "es": "Componentes de motion con GSAP listos para producción.",
+      "en": "GSAP motion components ready for production."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "getlayers",
+    "url": "https://getlayers.ai",
+    "name": "GetLayers",
+    "category": "components",
+    "tags": [
+      "ai"
+    ],
+    "desc": {
+      "es": "Prompts de IA para secciones de página cinematográficas.",
+      "en": "AI prompts for cinematic page sections."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "scritto",
+    "url": "https://scrit.to",
+    "name": "Scritto",
+    "category": "components",
+    "tags": [],
+    "desc": {
+      "es": "Biblioteca de componentes de transición de texto con personajes rodantes.",
+      "en": "Rolling character text transition component library."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "ogimagecn",
+    "url": "https://www.ogimagecn.com",
+    "name": "ogimagecn",
+    "category": "components",
+    "tags": [],
+    "desc": {
+      "es": "Componentes de imágenes Open Graph construidos con Satori.",
+      "en": "Open Graph image components using Satori."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "dither-kit",
+    "url": "https://www.tripwire.sh/dither-kit/",
+    "name": "Dither Kit",
+    "category": "components",
+    "tags": [],
+    "desc": {
+      "es": "Componentes de gráficos con tramado retro.",
+      "en": "Dithered chart components with retro aesthetic."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "shieldcn",
+    "url": "https://shieldcn.dev",
+    "name": "shieldcn",
+    "category": "components",
+    "tags": [
+      "shadcn"
+    ],
+    "desc": {
+      "es": "Insignias de README con estética shadcn.",
+      "en": "README badges styled with shadcn aesthetics."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "unlumen-ui",
+    "url": "https://ui.unlumen.com",
+    "name": "unlumen UI",
+    "category": "components",
+    "tags": [
+      "react"
+    ],
+    "desc": {
+      "es": "Biblioteca de componentes React minimalista con CLI.",
+      "en": "Minimalist React component library with CLI."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "bearnie",
+    "url": "https://bearnie.dev",
+    "name": "Bearnie",
+    "category": "components",
+    "tags": [
+      "tailwind",
+      "astro"
+    ],
+    "desc": {
+      "es": "Colección de componentes con Astro y Tailwind.",
+      "en": "Astro and Tailwind component collection."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "fluid-functionalism",
+    "url": "https://www.fluidfunctionalism.com",
+    "name": "Fluid Functionalism",
+    "category": "components",
+    "tags": [
+      "animated"
+    ],
+    "desc": {
+      "es": "Componentes con animación física intencional.",
+      "en": "Components designed with purposeful physical animation."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "termcn",
+    "url": "https://termcn.dev",
+    "name": "termcn",
+    "category": "components",
+    "tags": [
+      "react"
+    ],
+    "desc": {
+      "es": "Componentes de UI de terminal para React, con Ink y OpenTUI.",
+      "en": "Terminal UI components for React, built on Ink and OpenTUI."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "framecn",
+    "url": "https://framecn.dev",
+    "name": "framecn",
+    "category": "components",
+    "tags": [
+      "react",
+      "video"
+    ],
+    "desc": {
+      "es": "Componentes de renderizado de video para React, con Editframe.",
+      "en": "Video rendering components for React, built on Editframe."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "emailcn",
+    "url": "https://emailcn.run",
+    "name": "emailcn",
+    "category": "components",
+    "tags": [
+      "react"
+    ],
+    "desc": {
+      "es": "Componentes de email responsivos para React Email, MJML y JSX Email.",
+      "en": "Responsive email components for React Email, MJML, and JSX Email."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "startercn",
+    "url": "https://startercn.vercel.app",
+    "name": "startercn",
+    "category": "components",
+    "tags": [
+      "shadcn",
+      "templates",
+      "landing"
+    ],
+    "desc": {
+      "es": "Plantilla de registro shadcn/ui con docs, landing y soporte de agentes.",
+      "en": "shadcn/ui registry template with docs, landing page, and agent support."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "pdfcn",
+    "url": "https://pdfcn.dev",
+    "name": "pdfcn",
+    "category": "components",
+    "tags": [
+      "react"
+    ],
+    "desc": {
+      "es": "Componentes PDF para React, con Takumi y Forme.",
+      "en": "PDF components for React, built on Takumi and Forme."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "editorcn",
+    "url": "https://editorcn.vercel.app",
+    "name": "editorcn",
+    "category": "components",
+    "tags": [
+      "react"
+    ],
+    "desc": {
+      "es": "Componentes de editor de texto enriquecido para React, con Tiptap.",
+      "en": "Rich text editor components for React, built on Tiptap."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "shadcn-labs",
+    "url": "https://www.shadcn-labs.com",
+    "name": "Shadcn Labs",
+    "category": "components",
+    "tags": [
+      "shadcn",
+      "open source"
+    ],
+    "desc": {
+      "es": "Ecosistema de registros de componentes shadcn/ui y herramientas open source.",
+      "en": "Open-source shadcn/ui component registries and tools ecosystem."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "frameblox",
+    "url": "https://frameblox.com",
+    "name": "Frameblox",
+    "category": "components",
+    "tags": [
+      "templates"
+    ],
+    "desc": {
+      "es": "Secciones y plantillas modulares para Framer.",
+      "en": "Modular Framer sections and templates."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "nexvyn-ui",
+    "url": "https://ui.nexvyn.dev",
+    "name": "Nexvyn UI",
+    "category": "components",
+    "tags": [],
+    "desc": {
+      "es": "Componentes pulidos e integrables para interfaces digitales.",
+      "en": "Polished drop-in components for digital interfaces."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "gradient-spin",
+    "url": "https://gradient-spin.vercel.app",
+    "name": "Gradient Spin",
+    "category": "components",
+    "tags": [
+      "react"
+    ],
+    "desc": {
+      "es": "Indicador de carga con degradado giratorio para React.",
+      "en": "Spinning gradient loading indicator for React."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "sona-ui",
+    "url": "https://www.sonaui.com",
+    "name": "Sona UI",
+    "category": "components",
+    "tags": [
+      "animated",
+      "react"
+    ],
+    "desc": {
+      "es": "Componentes React animados de los que eres dueño completo.",
+      "en": "Animated React components you fully own."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "colorion-text-effects",
+    "url": "https://text-effects.colorion.co",
+    "name": "Colorion Text Effects",
+    "category": "components",
+    "tags": [
+      "animated"
+    ],
+    "desc": {
+      "es": "Efectos de texto animados listos para copiar.",
+      "en": "Animated text effects ready to copy."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "dot-matrix",
+    "url": "https://dotmatrix.zzzzshawn.cloud",
+    "name": "Dot Matrix",
+    "category": "components",
+    "tags": [
+      "shadcn"
+    ],
+    "desc": {
+      "es": "Más de cincuenta loaders de matriz de puntos para shadcn.",
+      "en": "Over fifty dot-matrix loaders for shadcn."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "srcl",
+    "url": "https://www.sacred.computer",
+    "name": "SRCL",
+    "category": "components",
+    "tags": [],
+    "desc": {
+      "es": "Kit de componentes de terminal estilo DOS retro.",
+      "en": "Retro DOS-style terminal component kit."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "prompt-kit",
+    "url": "https://www.prompt-kit.com",
+    "name": "Prompt Kit",
+    "category": "components",
+    "tags": [
+      "ai"
+    ],
+    "desc": {
+      "es": "Primitivas de componentes para interfaces de chat y IA.",
+      "en": "Chat and AI interface component primitives."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "shoogle",
+    "url": "https://shoogle.dev",
+    "name": "Shoogle",
+    "category": "components",
+    "tags": [
+      "shadcn"
+    ],
+    "desc": {
+      "es": "Motor de búsqueda que abarca los registros de componentes shadcn.",
+      "en": "Search engine spanning shadcn component registries."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "interior-dev",
+    "url": "https://www.interior.dev",
+    "name": "interior.dev",
+    "category": "components",
+    "tags": [],
+    "desc": {
+      "es": "Micro-interacciones afinadas para respuesta al clic.",
+      "en": "Micro-interactions finely tuned for click responsiveness."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "soundcn",
+    "url": "https://soundcn.xyz",
+    "name": "soundcn",
+    "category": "components",
+    "tags": [],
+    "desc": {
+      "es": "Colección de efectos de sonido UI para copiar y pegar.",
+      "en": "Collection of copy-paste UI sound effects."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "odyssey-ui",
+    "url": "https://www.odysseyui.com",
+    "name": "Odyssey UI",
+    "category": "components",
+    "tags": [
+      "animated",
+      "react",
+      "shadcn"
+    ],
+    "desc": {
+      "es": "Componentes React animados construidos sobre shadcn.",
+      "en": "Animated React components built on shadcn."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "spell-ui",
+    "url": "https://spell.sh",
+    "name": "Spell UI",
+    "category": "components",
+    "tags": [],
+    "desc": {
+      "es": "Componentes interactivos de alto acabado para apps modernas.",
+      "en": "High-craft interactive components for modern apps."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "skiper-ui",
+    "url": "https://skiper-ui.com",
+    "name": "Skiper UI",
+    "category": "components",
+    "tags": [
+      "animated",
+      "tailwind"
+    ],
+    "desc": {
+      "es": "Primitivas UI animadas para Tailwind CSS.",
+      "en": "Animated UI primitives for Tailwind CSS."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "devl",
+    "url": "https://www.devl.dev",
+    "name": "devl",
+    "category": "components",
+    "tags": [],
+    "desc": {
+      "es": "Componentes UI experimentales minimalistas para web.",
+      "en": "Minimalist experimental UI components for web."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "uiuno",
+    "url": "https://uiuno.com",
+    "name": "Uiuno",
+    "category": "components",
+    "tags": [
+      "ai",
+      "shadcn"
+    ],
+    "desc": {
+      "es": "Workspace de IA para organizar componentes shadcn.",
+      "en": "AI workspace for organizing shadcn components."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "vengeance-ui",
+    "url": "https://www.vengeanceui.com",
+    "name": "Vengeance UI",
+    "category": "components",
+    "tags": [
+      "animated",
+      "react"
+    ],
+    "desc": {
+      "es": "Componentes React animados con interacciones de scroll.",
+      "en": "Animated React components with scroll interactions."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "sensory-ui",
+    "url": "https://www.sensory-ui.com",
+    "name": "sensory-ui",
+    "category": "components",
+    "tags": [
+      "shadcn"
+    ],
+    "desc": {
+      "es": "Sistema de diseño sonoro para componentes shadcn/ui.",
+      "en": "Sound design system for shadcn/ui components."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "amacro",
+    "url": "https://amacro.vercel.app",
+    "name": "Amacro",
+    "category": "components",
+    "tags": [
+      "animated",
+      "react"
+    ],
+    "desc": {
+      "es": "Animaciones de revelado de página integrables para React.",
+      "en": "Drop-in page reveal animations for React."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "evil-buttons",
+    "url": "https://www.evilbuttons.com",
+    "name": "Evil Buttons",
+    "category": "components",
+    "tags": [],
+    "desc": {
+      "es": "Botones interactivos y táctiles.",
+      "en": "Interactive and tactile button components."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "componentry",
+    "url": "https://componentry.dev",
+    "name": "Componentry",
+    "category": "components",
+    "tags": [
+      "react"
+    ],
+    "desc": {
+      "es": "Primitivas y componentes UI personalizables para React.",
+      "en": "Customizable React UI primitives and components."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "ruru-ui",
+    "url": "https://ui.ruru.build",
+    "name": "Ruru UI",
+    "category": "components",
+    "tags": [
+      "react"
+    ],
+    "desc": {
+      "es": "Componentes UI accesibles y personalizables para React.",
+      "en": "Accessible customizable UI components for React."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "shadcn-studio",
+    "url": "https://shadcnstudio.com",
+    "name": "Shadcn Studio",
+    "category": "components",
+    "tags": [
+      "shadcn",
+      "templates"
+    ],
+    "desc": {
+      "es": "Componentes, bloques y plantillas de shadcn/ui.",
+      "en": "shadcn/ui components, blocks, and templates."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "animated-shadcn-ui",
+    "url": "https://shadcn-animated.vercel.app",
+    "name": "Animated shadcn/ui",
+    "category": "components",
+    "tags": [
+      "animated",
+      "shadcn"
+    ],
+    "desc": {
+      "es": "Variantes animadas con Motion de los componentes shadcn/ui.",
+      "en": "Motion-powered variants of shadcn/ui components."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "pin-ui",
+    "url": "https://www.pinui.xyz",
+    "name": "Pin UI",
+    "category": "components",
+    "tags": [
+      "react",
+      "tailwind"
+    ],
+    "desc": {
+      "es": "Componentes React y Tailwind distintivos para copiar y pegar.",
+      "en": "Distinctive copy-paste React and Tailwind components."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "loading-dev",
+    "url": "https://loading.dev",
+    "name": "loading.dev",
+    "category": "components",
+    "tags": [
+      "react"
+    ],
+    "desc": {
+      "es": "Biblioteca ligera de indicadores de carga para React.",
+      "en": "Lightweight library of loading indicators for React."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "motion",
+    "url": "https://motion.dev",
+    "name": "Motion",
+    "category": "motion",
+    "tags": [
+      "motion",
+      "react"
+    ],
+    "desc": {
+      "es": "Biblioteca de animación lista para producción en React.",
+      "en": "Production-ready animation library for React applications."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "gsap",
+    "url": "https://gsap.com",
+    "name": "GSAP",
+    "category": "motion",
+    "tags": [
+      "motion"
+    ],
+    "desc": {
+      "es": "Motor de animación por timeline JS estándar de la industria.",
+      "en": "Industry-standard JavaScript timeline animation engine."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "rive",
+    "url": "https://rive.app",
+    "name": "Rive",
+    "category": "motion",
+    "tags": [
+      "motion"
+    ],
+    "desc": {
+      "es": "Herramienta de animación vectorial con máquinas de estados interactivas.",
+      "en": "Interactive state-machine vector animation tool."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "lottie",
+    "url": "https://lottiefiles.com",
+    "name": "Lottie",
+    "category": "motion",
+    "tags": [
+      "motion"
+    ],
+    "desc": {
+      "es": "Formato de animación vectorial ligero basado en JSON.",
+      "en": "Lightweight JSON-based vector animation format."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "easing-wizard",
+    "url": "https://easingwizard.com",
+    "name": "Easing Wizard",
+    "category": "motion",
+    "tags": [
+      "motion"
+    ],
+    "desc": {
+      "es": "Generador visual de springs CSS personalizados.",
+      "en": "Visual generator for custom CSS springs."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "morphrig",
+    "url": "https://morphrig.dev",
+    "name": "Morphrig",
+    "category": "motion",
+    "tags": [
+      "motion",
+      "icons"
+    ],
+    "desc": {
+      "es": "Manual interactivo de cómo funciona el morphing de iconos.",
+      "en": "Interactive manual on how icon morphing works."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "theatre-js",
+    "url": "https://www.theatrejs.com",
+    "name": "Theatre.js",
+    "category": "motion",
+    "tags": [
+      "motion"
+    ],
+    "desc": {
+      "es": "Secuenciador visual de motion design para el DOM.",
+      "en": "Visual motion design sequencer for DOM."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "glimm",
+    "url": "https://glimm.dev",
+    "name": "glimm",
+    "category": "motion",
+    "tags": [
+      "motion"
+    ],
+    "desc": {
+      "es": "Transiciones de página dirigidas por shaders para Next.js.",
+      "en": "Shader-driven page transitions for Next.js."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "devouring-details",
+    "url": "https://devouringdetails.com",
+    "name": "Devouring Details",
+    "category": "motion",
+    "tags": [
+      "motion"
+    ],
+    "desc": {
+      "es": "Libro interactivo que enseña diseño de micro-interacciones.",
+      "en": "Interactive book teaching micro-interaction design."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "textmotion",
+    "url": "https://textmotion.dev",
+    "name": "textmotion",
+    "category": "motion",
+    "tags": [
+      "motion"
+    ],
+    "desc": {
+      "es": "Primitiva de animación de texto rodante sin dependencias.",
+      "en": "Zero-dependency text roll animation primitive."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "claude-code",
+    "url": "https://claude.com/claude-code/",
+    "name": "Claude Code",
+    "category": "build",
+    "tags": [],
+    "desc": {
+      "es": "Herramienta de codificación con agentes dentro de tu terminal.",
+      "en": "Agentic coding tool inside your terminal."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "cursor",
+    "url": "https://cursor.com",
+    "name": "Cursor",
+    "category": "build",
+    "tags": [
+      "ai"
+    ],
+    "desc": {
+      "es": "Editor de código con IA para desarrollo rápido.",
+      "en": "AI-first code editor for rapid development."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "zed",
+    "url": "https://zed.dev",
+    "name": "Zed",
+    "category": "build",
+    "tags": [],
+    "desc": {
+      "es": "Editor de código de alto rendimiento pensado para baja latencia.",
+      "en": "High-performance code editor built for low latency."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "v0",
+    "url": "https://v0.app",
+    "name": "v0",
+    "category": "build",
+    "tags": [
+      "ai",
+      "shadcn"
+    ],
+    "desc": {
+      "es": "IA generativa que traduce prompts a código shadcn.",
+      "en": "Generative AI translating prompts into shadcn code."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "bolt-new",
+    "url": "https://bolt.new",
+    "name": "Bolt.new",
+    "category": "build",
+    "tags": [],
+    "desc": {
+      "es": "Sandbox de desarrollo en el navegador para aplicaciones full-stack.",
+      "en": "In-browser development sandbox for full-stack applications."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "vite",
+    "url": "https://vite.dev",
+    "name": "Vite",
+    "category": "build",
+    "tags": [],
+    "desc": {
+      "es": "Herramienta de build y desarrollo frontend ultrarrápida.",
+      "en": "Blazing fast frontend build and dev tool."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "biome",
+    "url": "https://biomejs.dev",
+    "name": "Biome",
+    "category": "build",
+    "tags": [],
+    "desc": {
+      "es": "Formateador y linter de código basado en Rust.",
+      "en": "Fast Rust-based formatter and code linter."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "playwright",
+    "url": "https://playwright.dev",
+    "name": "Playwright",
+    "category": "build",
+    "tags": [],
+    "desc": {
+      "es": "Automatización de navegador y tests end-to-end fiables.",
+      "en": "Reliable browser automation and end-to-end testing."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "buildertools",
+    "url": "https://www.buildertools.sh",
+    "name": "BuilderTools",
+    "category": "build",
+    "tags": [],
+    "desc": {
+      "es": "Herramientas de desarrollo enfocadas en lanzar software.",
+      "en": "Focused developer tools for shipping software."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "nuqs",
+    "url": "https://nuqs.47ng.com",
+    "name": "nuqs",
+    "category": "build",
+    "tags": [
+      "react"
+    ],
+    "desc": {
+      "es": "Parámetros de búsqueda URL con tipos para React.",
+      "en": "Type-safe URL search params for React."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "better-t-stack",
+    "url": "https://www.better-t-stack.dev",
+    "name": "Better T Stack",
+    "category": "build",
+    "tags": [],
+    "desc": {
+      "es": "CLI que genera estructuras full-stack TypeScript modernas.",
+      "en": "CLI scaffolding modern full-stack TypeScript setups."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "alumnium",
+    "url": "https://alumnium.ai",
+    "name": "Alumnium",
+    "category": "build",
+    "tags": [],
+    "desc": {
+      "es": "Tests end-to-end en lenguaje natural vía MCP.",
+      "en": "Natural-language end-to-end testing via MCP."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "vercel-doctor",
+    "url": "https://vercel-doctor.com",
+    "name": "Vercel Doctor",
+    "category": "build",
+    "tags": [],
+    "desc": {
+      "es": "Herramienta de diagnóstico de cuellos de botella de Next.js.",
+      "en": "Diagnostic tool identifying Next.js performance bottlenecks."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "oss-perks",
+    "url": "https://ossperks.com",
+    "name": "OSS Perks",
+    "category": "build",
+    "tags": [
+      "open source"
+    ],
+    "desc": {
+      "es": "Créditos cloud gratuitos para mantenedores open source.",
+      "en": "Free cloud credits for open-source maintainers."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "vinext",
+    "url": "https://vinext.dev",
+    "name": "Vinext",
+    "category": "build",
+    "tags": [],
+    "desc": {
+      "es": "Plugin de Vite que ejecuta Next.js en Cloudflare.",
+      "en": "Vite plugin running Next.js on Cloudflare."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "evlog",
+    "url": "https://www.evlog.dev",
+    "name": "evlog",
+    "category": "build",
+    "tags": [],
+    "desc": {
+      "es": "Framework de logging estructurado para aplicaciones web.",
+      "en": "Structured logging framework for web applications."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "web-kits-audio",
+    "url": "https://audio.raphaelsalaja.com",
+    "name": "@web-kits/audio",
+    "category": "build",
+    "tags": [],
+    "desc": {
+      "es": "Biblioteca de sonido declarativa para apps web.",
+      "en": "Declarative sound library for web apps."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "nue",
+    "url": "https://nuejs.org",
+    "name": "Nue",
+    "category": "build",
+    "tags": [
+      "react"
+    ],
+    "desc": {
+      "es": "Framework web ligero alternativo a React.",
+      "en": "Lightweight web framework alternative to React."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "umami",
+    "url": "https://umami.is",
+    "name": "Umami",
+    "category": "build",
+    "tags": [],
+    "desc": {
+      "es": "Analítica web centrada en privacidad sin banners de cookies.",
+      "en": "Privacy-focused web analytics without cookie banners."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "x-ai-bot",
+    "url": "https://x.ai/bot/",
+    "name": "x.ai/bot",
+    "category": "build",
+    "tags": [
+      "ai"
+    ],
+    "desc": {
+      "es": "Documentación de las especificaciones del rastreador web de xAI.",
+      "en": "Documentation detailing xAI web crawler specifications."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "tracwell",
+    "url": "https://tracwell.app",
+    "name": "Tracwell",
+    "category": "build",
+    "tags": [],
+    "desc": {
+      "es": "Analítica enfocada en seguimiento de visitantes y conversiones.",
+      "en": "Focused analytics tracking visitors and conversions."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "dialkit",
+    "url": "https://www.dialkit.dev",
+    "name": "DialKit",
+    "category": "build",
+    "tags": [],
+    "desc": {
+      "es": "Barra de herramientas flotante para ajustar parámetros.",
+      "en": "Floating interface toolbar for parameter tuning."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "dray",
+    "url": "https://www.drayhq.com",
+    "name": "Dray",
+    "category": "build",
+    "tags": [],
+    "desc": {
+      "es": "Workspace unificado en el desktop para gestionar agentes de codificación.",
+      "en": "Unified desktop workspace managing coding agents."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "typeui-sh",
+    "url": "https://typeui.sh",
+    "name": "typeui.sh",
+    "category": "build",
+    "tags": [],
+    "desc": {
+      "es": "Herramienta CLI que genera componentes UI tipados.",
+      "en": "Command-line tool scaffolding typed UI components."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "webclaw",
+    "url": "https://webclaw.io",
+    "name": "Webclaw",
+    "category": "build",
+    "tags": [],
+    "desc": {
+      "es": "Convierte cualquier página web en markdown estructurado.",
+      "en": "Converts any webpage into structured markdown."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "ghostex",
+    "url": "https://ghostex.dev",
+    "name": "Ghostex",
+    "category": "build",
+    "tags": [],
+    "desc": {
+      "es": "Orquesta múltiples sesiones de agentes de codificación en segundo plano.",
+      "en": "Orchestrates multiple background coding agent sessions."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "is-agentic-com",
+    "url": "https://is-agentic.com",
+    "name": "is-agentic.com",
+    "category": "build",
+    "tags": [],
+    "desc": {
+      "es": "Puntúa qué tan bien los sitios soportan a los rastreadores.",
+      "en": "Scores how effectively websites support crawlers."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "herdr",
+    "url": "https://herdr.dev",
+    "name": "Herdr",
+    "category": "build",
+    "tags": [],
+    "desc": {
+      "es": "Runner distribuido que gestiona trabajos de agentes de codificación.",
+      "en": "Distributed runner managing coding agent jobs."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "soubi",
+    "url": "https://soubi.vercel.app",
+    "name": "Soubi",
+    "category": "build",
+    "tags": [],
+    "desc": {
+      "es": "Compilador que transforma definiciones de skills de agentes.",
+      "en": "Compiler transforming agent skill definitions."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "agentcn",
+    "url": "https://agentcn.run",
+    "name": "agentcn",
+    "category": "build",
+    "tags": [
+      "ai",
+      "react"
+    ],
+    "desc": {
+      "es": "Recetas de agentes de IA listas para producción y personalizables para React.",
+      "en": "Customizable and production-ready AI agent recipes for React."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "mcpcn",
+    "url": "https://mcpcn.dev",
+    "name": "mcpcn",
+    "category": "build",
+    "tags": [
+      "react"
+    ],
+    "desc": {
+      "es": "Componentes UI de ChatGPT, Claude y apps MCP para React.",
+      "en": "ChatGPT, Claude, and MCP app UI components for React."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "integrations-sh",
+    "url": "https://integrations.sh",
+    "name": "integrations.sh",
+    "category": "build",
+    "tags": [],
+    "desc": {
+      "es": "Repositorio de especificaciones de integración de APIs para agentes.",
+      "en": "Repository of API integration specifications for agents."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "fx",
+    "url": "https://fx.sh",
+    "name": "fx",
+    "category": "build",
+    "tags": [],
+    "desc": {
+      "es": "CLI de codificación de alto rendimiento escrita en Zig.",
+      "en": "High-performance coding agent CLI in Zig."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "hyperframes",
+    "url": "https://www.hyperframes.dev",
+    "name": "HyperFrames",
+    "category": "build",
+    "tags": [
+      "video"
+    ],
+    "desc": {
+      "es": "Motor de renderizado de video headless HTML a MP4.",
+      "en": "Headless HTML-to-MP4 video rendering engine."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "foglamp",
+    "url": "https://www.foglamp.dev",
+    "name": "Foglamp",
+    "category": "build",
+    "tags": [],
+    "desc": {
+      "es": "Herramienta de observabilidad que monitorea latencia y costos.",
+      "en": "Observability tool monitoring latency and costs."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "distill",
+    "url": "https://distill.id",
+    "name": "Distill",
+    "category": "build",
+    "tags": [],
+    "desc": {
+      "es": "Agente inteligente que organiza notas de investigación dispersas.",
+      "en": "Intelligent agent organizing scattered research notes."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "agentation",
+    "url": "https://www.agentation.com",
+    "name": "Agentation",
+    "category": "build",
+    "tags": [],
+    "desc": {
+      "es": "Convierte anotaciones de UI en pantalla en contexto.",
+      "en": "Converts on-screen UI annotations into context."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "opencode",
+    "url": "https://opencode.ai",
+    "name": "OpenCode",
+    "category": "build",
+    "tags": [
+      "ai",
+      "open source"
+    ],
+    "desc": {
+      "es": "Agente de codificación con IA de código abierto en la terminal.",
+      "en": "Open-source terminal AI coding agent."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "impeccable",
+    "url": "https://impeccable.style",
+    "name": "Impeccable",
+    "category": "build",
+    "tags": [
+      "ai"
+    ],
+    "desc": {
+      "es": "Skill de inteligencia de diseño para agentes de IA.",
+      "en": "Design intelligence skill for AI agents."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "skillsync",
+    "url": "https://skillsync.com",
+    "name": "SkillSync",
+    "category": "build",
+    "tags": [],
+    "desc": {
+      "es": "Sincroniza el contexto de los agentes entre editores de código.",
+      "en": "Synchronizes agent context across code editors."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "bb",
+    "url": "https://getbb.app",
+    "name": "bb",
+    "category": "build",
+    "tags": [
+      "open source"
+    ],
+    "desc": {
+      "es": "Entorno de desarrollo open source para agentes de codificación.",
+      "en": "Open-source development environment for coding agents."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "capacity",
+    "url": "https://capacity.so",
+    "name": "Capacity",
+    "category": "build",
+    "tags": [],
+    "desc": {
+      "es": "Workspace en lenguaje natural que genera apps full-stack.",
+      "en": "Natural language workspace generating full-stack apps."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "lafys",
+    "url": "https://lafys.com",
+    "name": "Lafys",
+    "category": "build",
+    "tags": [],
+    "desc": {
+      "es": "Generador de componentes UI dirigido por prompts.",
+      "en": "Prompt-driven UI component generator for builders."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "efecto",
+    "url": "https://efecto.app",
+    "name": "Efecto",
+    "category": "build",
+    "tags": [],
+    "desc": {
+      "es": "Lienzo web visual agent-first con MCP.",
+      "en": "Agent-first visual web canvas with MCP."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "arc-labs",
+    "url": "https://www.arclabs.space",
+    "name": "Arc labs",
+    "category": "build",
+    "tags": [
+      "ai"
+    ],
+    "desc": {
+      "es": "Suite de carrera con IA que simula entrevistas técnicas.",
+      "en": "AI career suite simulating technical interviews."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "scira",
+    "url": "https://scira.ai",
+    "name": "Scira",
+    "category": "build",
+    "tags": [
+      "ai",
+      "open source"
+    ],
+    "desc": {
+      "es": "Motor de búsqueda con IA minimalista y open source.",
+      "en": "Minimalist open-source AI search engine."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "kombai",
+    "url": "https://kombai.com",
+    "name": "Kombai",
+    "category": "build",
+    "tags": [
+      "ai"
+    ],
+    "desc": {
+      "es": "Ingeniero de diseño de IA que programa UI a partir de contexto.",
+      "en": "AI design engineer that codes UI from context."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "causal",
+    "url": "https://causal.so",
+    "name": "Causal",
+    "category": "build",
+    "tags": [
+      "ai"
+    ],
+    "desc": {
+      "es": "Workspace de lienzo con IA para notas y planes.",
+      "en": "AI canvas workspace for notes and plans."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "vercel",
+    "url": "https://vercel.com",
+    "name": "Vercel",
+    "category": "build",
+    "tags": [],
+    "desc": {
+      "es": "Plataforma cloud para desplegar aplicaciones Next.js.",
+      "en": "Cloud platform for deploying Next.js applications."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "cloudflare",
+    "url": "https://developers.cloudflare.com/workers/",
+    "name": "Cloudflare",
+    "category": "build",
+    "tags": [],
+    "desc": {
+      "es": "Red global de edge que ejecuta Workers serverless.",
+      "en": "Global edge network running serverless Workers."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "netlify",
+    "url": "https://netlify.com",
+    "name": "Netlify",
+    "category": "build",
+    "tags": [],
+    "desc": {
+      "es": "Plataforma web con pipelines de despliegue continuo.",
+      "en": "Web platform providing continuous deployment pipelines."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "railway",
+    "url": "https://railway.app",
+    "name": "Railway",
+    "category": "build",
+    "tags": [],
+    "desc": {
+      "es": "Plataforma de infraestructura simplificada para desplegar bases de datos.",
+      "en": "Simplified infrastructure platform for deploying databases."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "fly-io",
+    "url": "https://fly.io",
+    "name": "Fly.io",
+    "category": "build",
+    "tags": [],
+    "desc": {
+      "es": "Ejecuta contenedores Docker cerca de los usuarios.",
+      "en": "Runs Docker containers close to users."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "fontshare",
+    "url": "https://fontshare.com",
+    "name": "Fontshare",
+    "category": "visuals",
+    "tags": [],
+    "desc": {
+      "es": "Fuentes profesionales de alta calidad, gratis para uso comercial.",
+      "en": "High-quality professional fonts free for commercial use."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "klim",
+    "url": "https://klim.co.nz",
+    "name": "Klim",
+    "category": "visuals",
+    "tags": [],
+    "desc": {
+      "es": "Fundición tipográfica que crea tipografías web contemporáneas.",
+      "en": "Type foundry creating contemporary web typefaces."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "wakamai-fondue",
+    "url": "https://wakamaifondue.com",
+    "name": "Wakamai Fondue",
+    "category": "visuals",
+    "tags": [],
+    "desc": {
+      "es": "Herramienta para inspeccionar archivos y funciones de fuentes.",
+      "en": "Tool inspecting font files and features."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "utopia",
+    "url": "https://utopia.fyi",
+    "name": "Utopia",
+    "category": "visuals",
+    "tags": [],
+    "desc": {
+      "es": "Calculadora de tipografía fluida que genera CSS clamp.",
+      "en": "Fluid typography calculator generating CSS clamp."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "velvetyne",
+    "url": "https://velvetyne.fr",
+    "name": "Velvetyne",
+    "category": "visuals",
+    "tags": [
+      "open source"
+    ],
+    "desc": {
+      "es": "Fundición open source que distribuye tipografías experimentales.",
+      "en": "Open-source foundry distributing experimental typefaces."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "departure-mono",
+    "url": "https://departuremono.com",
+    "name": "Departure Mono",
+    "category": "visuals",
+    "tags": [],
+    "desc": {
+      "es": "Tipografía monoespaciada pixel diseñada para terminales.",
+      "en": "Pixel monospace typeface designed for terminals."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "oklch",
+    "url": "https://oklch.com",
+    "name": "OKLCH",
+    "category": "visuals",
+    "tags": [],
+    "desc": {
+      "es": "Selector de color que usa un espacio perceptualmente uniforme.",
+      "en": "Color picker using perceptually uniform space."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "color-review",
+    "url": "https://color.review",
+    "name": "Color.review",
+    "category": "visuals",
+    "tags": [],
+    "desc": {
+      "es": "Verificador de contraste para diseñar paletas accesibles.",
+      "en": "Contrast checker helping design accessible palettes."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "huetone",
+    "url": "https://huetone.ardov.me",
+    "name": "Huetone",
+    "category": "visuals",
+    "tags": [],
+    "desc": {
+      "es": "Generador de paletas accesibles que equilibra ratios de contraste.",
+      "en": "Accessible palette generator balancing contrast ratios."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "apca",
+    "url": "https://www.myndex.com/APCA/",
+    "name": "APCA",
+    "category": "visuals",
+    "tags": [],
+    "desc": {
+      "es": "Algoritmo de contraste moderno que imita la percepción visual.",
+      "en": "Modern contrast algorithm matching visual perception."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "ramps",
+    "url": "https://www.ramps.studio",
+    "name": "Ramps",
+    "category": "visuals",
+    "tags": [],
+    "desc": {
+      "es": "Herramienta de tokens de diseño que genera rampas OKLCH.",
+      "en": "Design token tool generating OKLCH ramps."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "three-js",
+    "url": "https://threejs.org",
+    "name": "Three.js",
+    "category": "visuals",
+    "tags": [],
+    "desc": {
+      "es": "Biblioteca 3D en JavaScript que renderiza escenas WebGL.",
+      "en": "JavaScript 3D library rendering WebGL scenes."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "react-three-fiber",
+    "url": "https://r3f.docs.pmnd.rs",
+    "name": "React Three Fiber",
+    "category": "visuals",
+    "tags": [
+      "react"
+    ],
+    "desc": {
+      "es": "Renderer declarativo de React para escenas de Three.js.",
+      "en": "Declarative React renderer for Three.js scenes."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "drei",
+    "url": "https://drei.docs.pmnd.rs",
+    "name": "Drei",
+    "category": "visuals",
+    "tags": [
+      "react"
+    ],
+    "desc": {
+      "es": "Componentes de ayuda para React Three Fiber.",
+      "en": "Helper components for React Three Fiber."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "blender",
+    "url": "https://blender.org",
+    "name": "Blender",
+    "category": "visuals",
+    "tags": [
+      "animated",
+      "open source"
+    ],
+    "desc": {
+      "es": "Suite open source de modelado y animación 3D.",
+      "en": "Open-source 3D modeling and animation suite."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "gltf-report",
+    "url": "https://gltf.report",
+    "name": "gltf.report",
+    "category": "visuals",
+    "tags": [],
+    "desc": {
+      "es": "Optimizador web para archivos glTF 3D.",
+      "en": "Web-based optimizer for 3D glTF files."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "poly-haven",
+    "url": "https://polyhaven.com",
+    "name": "Poly Haven",
+    "category": "visuals",
+    "tags": [],
+    "desc": {
+      "es": "Biblioteca pública de texturas con licencia CC0.",
+      "en": "Public asset library offering CC0 textures."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "book-of-shaders",
+    "url": "https://thebookofshaders.com",
+    "name": "Book of Shaders",
+    "category": "visuals",
+    "tags": [],
+    "desc": {
+      "es": "Guía interactiva para dominar los fragment shaders.",
+      "en": "Interactive guide to mastering fragment shaders."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "compute-toys",
+    "url": "https://compute.toys",
+    "name": "compute.toys",
+    "category": "visuals",
+    "tags": [],
+    "desc": {
+      "es": "Sandbox para crear compute shaders WGSL.",
+      "en": "Sandbox for authoring WGSL compute shaders."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "shaderfrog",
+    "url": "https://shaderfrog.com",
+    "name": "Shaderfrog",
+    "category": "visuals",
+    "tags": [],
+    "desc": {
+      "es": "Editor visual por nodos para componer shaders.",
+      "en": "Visual node-based editor for composing shaders."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "shadercn",
+    "url": "https://shadercn.run",
+    "name": "shadercn",
+    "category": "visuals",
+    "tags": [
+      "react"
+    ],
+    "desc": {
+      "es": "Componentes de shader para React, sobre vgpu y TypeGPU.",
+      "en": "Shader components for React, built on vgpu and TypeGPU."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "paper-shaders",
+    "url": "https://shaders.paper.design",
+    "name": "Paper Shaders",
+    "category": "visuals",
+    "tags": [],
+    "desc": {
+      "es": "Shaders sin dependencias listos para importar.",
+      "en": "Zero-dependency shaders ready to import."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "openshaders",
+    "url": "https://openshaders.com",
+    "name": "OpenShaders",
+    "category": "visuals",
+    "tags": [
+      "open source"
+    ],
+    "desc": {
+      "es": "Colección open source de shaders para proyectos web.",
+      "en": "Open-source shader collection for web projects."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "orbkit",
+    "url": "https://orbkit.zzzzshawn.cloud",
+    "name": "Orbkit",
+    "category": "visuals",
+    "tags": [
+      "animated"
+    ],
+    "desc": {
+      "es": "Renderizador de shaders WebGL para animaciones de orbes.",
+      "en": "WebGL shader renderer for orb animations."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "lucide",
+    "url": "https://lucide.dev",
+    "name": "Lucide",
+    "category": "icons",
+    "tags": [
+      "icons"
+    ],
+    "desc": {
+      "es": "Fork de Feather Icons mantenido por la comunidad con miles de glifos.",
+      "en": "Community-maintained Feather Icons fork with thousands of glyphs."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "phosphor",
+    "url": "https://phosphoricons.com",
+    "name": "Phosphor",
+    "category": "icons",
+    "tags": [
+      "icons"
+    ],
+    "desc": {
+      "es": "Familia de iconos con seis pesos consistentes.",
+      "en": "Icon family providing six consistent weights."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "iconify-2",
+    "url": "https://iconify.design",
+    "name": "Iconify",
+    "category": "icons",
+    "tags": [
+      "icons"
+    ],
+    "desc": {
+      "es": "Framework unificado con acceso instantáneo a iconos.",
+      "en": "Unified framework providing instant icon access."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "rune-icons",
+    "url": "https://www.runeicons.com",
+    "name": "Rune Icons",
+    "category": "icons",
+    "tags": [
+      "icons"
+    ],
+    "desc": {
+      "es": "Set de iconos minimalista con cinco estilos.",
+      "en": "Minimalist icon set offering five styles."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "icon-museum",
+    "url": "https://icon.museum",
+    "name": "Icon Museum",
+    "category": "icons",
+    "tags": [
+      "icons"
+    ],
+    "desc": {
+      "es": "Archivo que celebra el oficio de los iconos de apps móviles.",
+      "en": "Archive celebrating mobile app icon craftsmanship."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "tabler-icons",
+    "url": "https://tabler.io/icons/",
+    "name": "Tabler Icons",
+    "category": "icons",
+    "tags": [
+      "icons"
+    ],
+    "desc": {
+      "es": "Biblioteca de miles de iconos de contorno.",
+      "en": "Library of thousands of outline icons."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "heroicons",
+    "url": "https://heroicons.com",
+    "name": "Heroicons",
+    "category": "icons",
+    "tags": [
+      "tailwind",
+      "svg",
+      "icons"
+    ],
+    "desc": {
+      "es": "Iconos SVG hechos a mano por los creadores de Tailwind.",
+      "en": "Handcrafted SVG icons from Tailwind creators."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "material-symbols",
+    "url": "https://fonts.google.com/icons/",
+    "name": "Material Symbols",
+    "category": "icons",
+    "tags": [
+      "icons"
+    ],
+    "desc": {
+      "es": "Fuente de iconos variable de Google con tres estilos.",
+      "en": "Google variable icon font spanning three styles."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "bootstrap-icons",
+    "url": "https://icons.getbootstrap.com",
+    "name": "Bootstrap Icons",
+    "category": "icons",
+    "tags": [
+      "icons"
+    ],
+    "desc": {
+      "es": "Biblioteca oficial de iconos para Bootstrap.",
+      "en": "Official icon library designed for Bootstrap."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "remix-icon",
+    "url": "https://remixicon.com",
+    "name": "Remix Icon",
+    "category": "icons",
+    "tags": [
+      "icons"
+    ],
+    "desc": {
+      "es": "Biblioteca de iconos neutros en contorno y relleno.",
+      "en": "Neutral icon library in outline and fill."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "iconoir",
+    "url": "https://iconoir.com",
+    "name": "Iconoir",
+    "category": "icons",
+    "tags": [
+      "open source",
+      "svg",
+      "icons"
+    ],
+    "desc": {
+      "es": "Iconos SVG open source con trazos consistentes.",
+      "en": "Open-source SVG icons with consistent strokes."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "ionicons",
+    "url": "https://ionic.io/ionicons/",
+    "name": "Ionicons",
+    "category": "icons",
+    "tags": [
+      "icons"
+    ],
+    "desc": {
+      "es": "Pack de iconos premium para web y móvil.",
+      "en": "Premium icon pack for web and mobile."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "simple-icons",
+    "url": "https://simpleicons.org",
+    "name": "Simple Icons",
+    "category": "icons",
+    "tags": [
+      "svg",
+      "icons"
+    ],
+    "desc": {
+      "es": "Más de tres mil logos de marcas en SVG.",
+      "en": "Over three thousand SVG brand logos."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "thesvg",
+    "url": "https://thesvg.org",
+    "name": "theSVG",
+    "category": "icons",
+    "tags": [
+      "svg"
+    ],
+    "desc": {
+      "es": "Colección curada de SVG de marca limpios.",
+      "en": "Curated collection of clean brand SVGs."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "feather",
+    "url": "https://feathericons.com",
+    "name": "Feather",
+    "category": "icons",
+    "tags": [
+      "open source",
+      "icons"
+    ],
+    "desc": {
+      "es": "Set de iconos minimalista y open source en grilla de 24px.",
+      "en": "Minimalist open-source icon set on 24px grid."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "carbon-icons",
+    "url": "https://carbondesignsystem.com",
+    "name": "Carbon Icons",
+    "category": "icons",
+    "tags": [
+      "icons"
+    ],
+    "desc": {
+      "es": "Biblioteca oficial de iconos de IBM para diseño empresarial.",
+      "en": "IBM official icon library for enterprise design."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "boxicons",
+    "url": "https://boxicons.com",
+    "name": "Boxicons",
+    "category": "icons",
+    "tags": [
+      "icons"
+    ],
+    "desc": {
+      "es": "Iconos vectoriales creados en tres estilos.",
+      "en": "Vector icons crafted in three styles."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "mx-icons",
+    "url": "https://mx-icons.vercel.app",
+    "name": "MX Icons",
+    "category": "icons",
+    "tags": [
+      "react",
+      "icons"
+    ],
+    "desc": {
+      "es": "Gran colección de iconos React personalizables.",
+      "en": "Large collection of customizable React icons."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "eva-icons",
+    "url": "https://akveo.github.io/eva-icons/",
+    "name": "Eva Icons",
+    "category": "icons",
+    "tags": [
+      "icons"
+    ],
+    "desc": {
+      "es": "Pack de 400 iconos en contorno y relleno.",
+      "en": "Pack of 400 icons in outline and fill."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "devicon",
+    "url": "https://devicon.dev",
+    "name": "Devicon",
+    "category": "icons",
+    "tags": [
+      "icons"
+    ],
+    "desc": {
+      "es": "Set de iconos para herramientas de programación.",
+      "en": "Developer-focused icon set for programming tools."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "css-gg",
+    "url": "https://css.gg",
+    "name": "css.gg",
+    "category": "icons",
+    "tags": [
+      "icons"
+    ],
+    "desc": {
+      "es": "700 iconos ligeros renderizados con CSS puro.",
+      "en": "700 lightweight icons rendered using pure CSS."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "iconsax",
+    "url": "https://app.iconsax.io",
+    "name": "Iconsax",
+    "category": "icons",
+    "tags": [
+      "icons"
+    ],
+    "desc": {
+      "es": "Set de iconos versátil con seis estilos visuales.",
+      "en": "Versatile icon set with six visual styles."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "icons-download",
+    "url": "https://icons.download",
+    "name": "Icons.download",
+    "category": "icons",
+    "tags": [
+      "icons"
+    ],
+    "desc": {
+      "es": "Biblioteca de iconos curada en dieciséis estéticas.",
+      "en": "Curated icon library in sixteen aesthetic styles."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "icon-foundry",
+    "url": "https://iconfoundry.store",
+    "name": "Icon Foundry",
+    "category": "icons",
+    "tags": [
+      "icons"
+    ],
+    "desc": {
+      "es": "Colección de iconos de muchas familias con búsqueda.",
+      "en": "Searchable collection of icons from many families."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "inkword",
+    "url": "https://inkword.app",
+    "name": "Inkword",
+    "category": "icons",
+    "tags": [],
+    "desc": {
+      "es": "Convierte una palabra en la ilustración que le corresponde.",
+      "en": "Turns a single word into a matching illustration."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "svgomg",
+    "url": "https://svgomg.net",
+    "name": "SVGOMG",
+    "category": "utilities",
+    "tags": [
+      "svg"
+    ],
+    "desc": {
+      "es": "GUI web para optimizar y limpiar archivos SVG.",
+      "en": "Web GUI to optimize and clean SVG files."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "regexr",
+    "url": "https://regexr.com",
+    "name": "RegExr",
+    "category": "utilities",
+    "tags": [],
+    "desc": {
+      "es": "Sandbox interactivo para probar expresiones regulares.",
+      "en": "Interactive sandbox for testing regular expressions."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "squoosh",
+    "url": "https://squoosh.app",
+    "name": "Squoosh",
+    "category": "utilities",
+    "tags": [],
+    "desc": {
+      "es": "Compresión de imágenes en el navegador con comparaciones visuales.",
+      "en": "Browser image compression with visual comparisons."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "fffuel",
+    "url": "https://fffuel.co",
+    "name": "Fffuel",
+    "category": "utilities",
+    "tags": [
+      "svg"
+    ],
+    "desc": {
+      "es": "Texturas, degradados y patrones SVG generativos.",
+      "en": "Generative SVG textures, gradients, and patterns."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "ui-camera",
+    "url": "https://ui.camera",
+    "name": "ui.camera",
+    "category": "utilities",
+    "tags": [],
+    "desc": {
+      "es": "Mockups 3D y puesta en escena de escenas para software.",
+      "en": "3D mockups and scene staging for software."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "ray-so",
+    "url": "https://ray.so",
+    "name": "Ray.so",
+    "category": "utilities",
+    "tags": [],
+    "desc": {
+      "es": "Convierte snippets de código en capturas compartibles.",
+      "en": "Turn code snippets into shareable screenshots."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "transform",
+    "url": "https://transform.tools",
+    "name": "Transform",
+    "category": "utilities",
+    "tags": [],
+    "desc": {
+      "es": "Convertidor de código políglota para JSON y tipos.",
+      "en": "Polyglot code converter for JSON and types."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "playgrnd",
+    "url": "https://www.playgrnd.tools",
+    "name": "Playgrnd",
+    "category": "utilities",
+    "tags": [],
+    "desc": {
+      "es": "Suite de herramientas creativas offline en el navegador.",
+      "en": "Suite of browser-based offline creative tools."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "anim8",
+    "url": "https://www.tryanim8.com",
+    "name": "Anim8",
+    "category": "utilities",
+    "tags": [
+      "animated",
+      "svg"
+    ],
+    "desc": {
+      "es": "Convierte grabaciones MP4 en gráficos SVG animados.",
+      "en": "Convert MP4 recordings into animated SVG graphics."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "ogfolio",
+    "url": "https://www.ogfolio.com",
+    "name": "OGFolio",
+    "category": "utilities",
+    "tags": [],
+    "desc": {
+      "es": "Inspecciona y previsualiza tarjetas Open Graph.",
+      "en": "Inspect and preview Open Graph social cards."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "dotforge",
+    "url": "https://dotforge.vercel.app",
+    "name": "DotForge",
+    "category": "utilities",
+    "tags": [],
+    "desc": {
+      "es": "Generador de efectos de tramado en tiempo real para web.",
+      "en": "Real-time dither effect generator for web."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "asciinator",
+    "url": "https://asciinator.app",
+    "name": "ASCIInator",
+    "category": "utilities",
+    "tags": [],
+    "desc": {
+      "es": "Utilidad que convierte imágenes en arte ASCII.",
+      "en": "Browser utility converting images into ASCII art."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "vessa",
+    "url": "https://vessa.design",
+    "name": "Vessa",
+    "category": "utilities",
+    "tags": [],
+    "desc": {
+      "es": "Publica guías de marca como páginas vivas.",
+      "en": "Publish brand guidelines as live pages."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "icoon",
+    "url": "https://icoon.co",
+    "name": "Icoon",
+    "category": "utilities",
+    "tags": [
+      "ai",
+      "icons"
+    ],
+    "desc": {
+      "es": "Herramienta de IA que genera iconos 3D personalizados.",
+      "en": "AI tool generating custom 3D icons."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "design-minis",
+    "url": "https://www.designminis.com",
+    "name": "Design Minis",
+    "category": "utilities",
+    "tags": [],
+    "desc": {
+      "es": "Suite de micro herramientas y escalas de diseño.",
+      "en": "Suite of micro design tools and scales."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "ascii-kracked-devs",
+    "url": "https://ascii.krackeddevs.com",
+    "name": "ASCII (Kracked Devs)",
+    "category": "utilities",
+    "tags": [],
+    "desc": {
+      "es": "Herramienta rápida que convierte texto en arte ASCII.",
+      "en": "Fast tool converting text into ASCII art."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "dither-lab",
+    "url": "https://literate-enigma-snowy.vercel.app",
+    "name": "Dither Lab",
+    "category": "utilities",
+    "tags": [],
+    "desc": {
+      "es": "Aplica filtros de tramado vintage a fotografías.",
+      "en": "Applies vintage dithering filters to photographs."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "hallmark",
+    "url": "https://www.usehallmark.com",
+    "name": "Hallmark",
+    "category": "utilities",
+    "tags": [
+      "landing"
+    ],
+    "desc": {
+      "es": "Constructor de landing pages con diseños hechos a mano.",
+      "en": "Landing page builder producing handcrafted designs."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "tooooools",
+    "url": "https://www.tooooools.app",
+    "name": "Tooooools",
+    "category": "utilities",
+    "tags": [],
+    "desc": {
+      "es": "Utilidades en el navegador para tramar y pixelar imágenes.",
+      "en": "In-browser utilities to dither and pixelate images."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "screan",
+    "url": "https://screan.app",
+    "name": "Screan",
+    "category": "utilities",
+    "tags": [],
+    "desc": {
+      "es": "Crea mockups de capturas promocionales para el App Store.",
+      "en": "Create promotional App Store screenshot mockups."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "postspark",
+    "url": "https://postspark.app",
+    "name": "PostSpark",
+    "category": "utilities",
+    "tags": [],
+    "desc": {
+      "es": "Da formato a capturas con fondos sociales limpios.",
+      "en": "Format screenshots with clean social backgrounds."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "mesurer",
+    "url": "https://mesurer.dev",
+    "name": "Mesurer",
+    "category": "utilities",
+    "tags": [],
+    "desc": {
+      "es": "Herramienta en pantalla que verifica el espaciado en píxeles.",
+      "en": "On-screen tool checking website pixel spacing."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "render-labs",
+    "url": "https://render-labs.evlog.cloud",
+    "name": "Render Labs",
+    "category": "utilities",
+    "tags": [],
+    "desc": {
+      "es": "Herramienta de renderizado de imágenes del equipo evlog.",
+      "en": "Image rendering tool from evlog team."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "butterfly",
+    "url": "https://www.butterfly.so",
+    "name": "Butterfly",
+    "category": "utilities",
+    "tags": [
+      "landing"
+    ],
+    "desc": {
+      "es": "Constructor de landing pages minimalista para validar rápido.",
+      "en": "Minimalist landing page builder for validation."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "corne",
+    "url": "https://corne.rs",
+    "name": "Corne",
+    "category": "utilities",
+    "tags": [],
+    "desc": {
+      "es": "Documentación del teclado mecánico dividido Corne.",
+      "en": "Documentation for the Corne split keyboard."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "shiori",
+    "url": "https://www.shiori.sh",
+    "name": "Shiori",
+    "category": "utilities",
+    "tags": [],
+    "desc": {
+      "es": "Gestor de marcadores con CLI y soporte de Raycast.",
+      "en": "Bookmark manager with CLI and Raycast support."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "open-source-together",
+    "url": "https://opensource-together.com",
+    "name": "Open Source Together",
+    "category": "utilities",
+    "tags": [
+      "open source"
+    ],
+    "desc": {
+      "es": "Plataforma que conecta desarrolladores con proyectos open source.",
+      "en": "Platform matching developers with open-source projects."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "ascii-studio",
+    "url": "https://www.asciistudio.space",
+    "name": "ASCII Studio",
+    "category": "utilities",
+    "tags": [
+      "video"
+    ],
+    "desc": {
+      "es": "Convierte imágenes y videos en arte ASCII.",
+      "en": "Transforms images and videos into ASCII art."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "tabbied",
+    "url": "https://tabbied.com",
+    "name": "Tabbied",
+    "category": "utilities",
+    "tags": [
+      "svg"
+    ],
+    "desc": {
+      "es": "Creador de patrones geométricos generativos para SVG.",
+      "en": "Generative geometric pattern creator for SVG."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "rynix-studio",
+    "url": "https://studio.rynix.in/edit/",
+    "name": "Rynix Studio",
+    "category": "utilities",
+    "tags": [
+      "video"
+    ],
+    "desc": {
+      "es": "Playground de efectos visuales de video en tiempo real.",
+      "en": "Playground for real-time video visual effects."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "mascofast",
+    "url": "https://mascofast.com",
+    "name": "Mascofast",
+    "category": "utilities",
+    "tags": [
+      "ai",
+      "animated"
+    ],
+    "desc": {
+      "es": "Herramienta de IA que genera mascotas 3D transparentes animadas.",
+      "en": "AI tool generating animated transparent 3D mascots."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "screenshot-studio",
+    "url": "https://www.screenshot-studio.com",
+    "name": "Screenshot Studio",
+    "category": "utilities",
+    "tags": [],
+    "desc": {
+      "es": "Enmarca capturas en mockups 3D realistas.",
+      "en": "Frames screenshots inside realistic 3D mockups."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "replay",
+    "url": "https://letsreplay.co",
+    "name": "Replay",
+    "category": "utilities",
+    "tags": [],
+    "desc": {
+      "es": "Reproducción de sesiones y grabación de visitantes para sitios web.",
+      "en": "Session replay and visitor recording for websites."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "raycast",
+    "url": "https://raycast.com",
+    "name": "Raycast",
+    "category": "utilities",
+    "tags": [],
+    "desc": {
+      "es": "Lanzador de escritorio extensible que reemplaza a Spotlight.",
+      "en": "Extendable desktop launcher replacing Spotlight."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "ghostty",
+    "url": "https://ghostty.org",
+    "name": "Ghostty",
+    "category": "utilities",
+    "tags": [],
+    "desc": {
+      "es": "Emulador de terminal rápido acelerado por GPU.",
+      "en": "Fast GPU-accelerated terminal emulator for developers."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "warp",
+    "url": "https://warp.dev",
+    "name": "Warp",
+    "category": "utilities",
+    "tags": [
+      "ai"
+    ],
+    "desc": {
+      "es": "Terminal basada en Rust con salidas en bloques e IA.",
+      "en": "Rust-based terminal with block outputs and AI."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "cleanshot-x",
+    "url": "https://cleanshot.com",
+    "name": "CleanShot X",
+    "category": "utilities",
+    "tags": [],
+    "desc": {
+      "es": "Herramienta definitiva de captura y grabación de pantalla.",
+      "en": "Ultimate screen capture and recording utility."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "granola",
+    "url": "https://granola.ai",
+    "name": "Granola",
+    "category": "utilities",
+    "tags": [
+      "ai"
+    ],
+    "desc": {
+      "es": "Bloc de notas con IA que resume reuniones sin bots.",
+      "en": "AI notepad generating meeting summaries without bots."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "localsend",
+    "url": "https://localsend.org",
+    "name": "LocalSend",
+    "category": "utilities",
+    "tags": [],
+    "desc": {
+      "es": "Comparte archivos con seguridad por la Wi-Fi local.",
+      "en": "Share files securely across local Wi-Fi networks."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "canario",
+    "url": "https://rioterm.com/canario/",
+    "name": "Canario",
+    "category": "utilities",
+    "tags": [],
+    "desc": {
+      "es": "Terminal que organiza sesiones CLI en paneles.",
+      "en": "Terminal organizing CLI sessions into panes."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "cooldock",
+    "url": "https://cooldock.app",
+    "name": "CoolDock",
+    "category": "utilities",
+    "tags": [],
+    "desc": {
+      "es": "Dock secundario con widgets de monitoreo de escritorio.",
+      "en": "Secondary dock supporting desktop monitoring widgets."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "supaste",
+    "url": "https://supaste.com",
+    "name": "Supaste",
+    "category": "utilities",
+    "tags": [],
+    "desc": {
+      "es": "Gestor de portapapeles e historial de capturas para Mac.",
+      "en": "Clipboard manager and screenshot history for Mac."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "runey",
+    "url": "https://runey.app",
+    "name": "Runey",
+    "category": "utilities",
+    "tags": [],
+    "desc": {
+      "es": "App de facturación y seguimiento de clientes para freelancers.",
+      "en": "Invoicing and client tracking app for freelancers."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "revone",
+    "url": "https://revone.app",
+    "name": "Revone",
+    "category": "utilities",
+    "tags": [],
+    "desc": {
+      "es": "Dashboard de ingresos unificado que agrega métricas de pagos.",
+      "en": "Unified revenue dashboard aggregating payment metrics."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "zen-browser",
+    "url": "https://zen-browser.app",
+    "name": "Zen Browser",
+    "category": "utilities",
+    "tags": [],
+    "desc": {
+      "es": "Fork de Firefox con pestañas verticales y modo foco.",
+      "en": "Firefox fork with vertical tabs and focus."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "screen-studio",
+    "url": "https://screen.studio",
+    "name": "Screen Studio",
+    "category": "utilities",
+    "tags": [],
+    "desc": {
+      "es": "Grabador de pantalla que añade zooms de cámara automáticamente.",
+      "en": "Screen recorder adding camera zooms automatically."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "remotion",
+    "url": "https://remotion.dev",
+    "name": "Remotion",
+    "category": "utilities",
+    "tags": [
+      "react",
+      "video"
+    ],
+    "desc": {
+      "es": "Renderiza videos en alta definición con React.",
+      "en": "Render high-definition videos programmatically with React."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "davinci-resolve",
+    "url": "https://www.blackmagicdesign.com/products/davinciresolve/",
+    "name": "DaVinci Resolve",
+    "category": "utilities",
+    "tags": [
+      "video"
+    ],
+    "desc": {
+      "es": "Suite profesional de edición de video y corrección de color.",
+      "en": "Professional video editing and color grading suite."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "descript",
+    "url": "https://descript.com",
+    "name": "Descript",
+    "category": "utilities",
+    "tags": [
+      "ai",
+      "video"
+    ],
+    "desc": {
+      "es": "Editor de video con IA donde editas el texto.",
+      "en": "AI video editor where you edit text."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "gifski",
+    "url": "https://gif.ski",
+    "name": "Gifski",
+    "category": "utilities",
+    "tags": [
+      "video"
+    ],
+    "desc": {
+      "es": "Convertidor de video a GIF de alta calidad que preserva los fotogramas.",
+      "en": "High-quality video-to-GIF converter preserving framerates."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "slant-it",
+    "url": "https://slantit.app",
+    "name": "Slant It",
+    "category": "utilities",
+    "tags": [],
+    "desc": {
+      "es": "Convierte capturas planas en mockups 3D.",
+      "en": "Transforms flat captures into 3D mockups."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "remocn",
+    "url": "https://www.remocn.dev",
+    "name": "Remocn",
+    "category": "utilities",
+    "tags": [
+      "animated",
+      "video"
+    ],
+    "desc": {
+      "es": "Componentes de animación Remotion para producción de video.",
+      "en": "Remotion animation components for video production."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "bettershot",
+    "url": "https://www.bettershot.site",
+    "name": "BetterShot",
+    "category": "utilities",
+    "tags": [],
+    "desc": {
+      "es": "Grabador de pantalla con zoom de cursor y subtítulos.",
+      "en": "Screen recorder featuring cursor zoom and captions."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "recordly",
+    "url": "https://recordly.dev",
+    "name": "Recordly",
+    "category": "utilities",
+    "tags": [],
+    "desc": {
+      "es": "Grabador de pantalla para demos de desarrollador pulidas.",
+      "en": "Screen recording tool for polished developer demos."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "cursorful",
+    "url": "https://cursorful.com",
+    "name": "Cursorful",
+    "category": "utilities",
+    "tags": [],
+    "desc": {
+      "es": "Grabador de pantalla que sigue el cursor automáticamente.",
+      "en": "Screen recorder that automatically tracks cursor."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "tokokino",
+    "url": "https://tokokino.com",
+    "name": "Tokokino",
+    "category": "utilities",
+    "tags": [],
+    "desc": {
+      "es": "Editor en el navegador para encuadre de dispositivos y mockups.",
+      "en": "In-browser editor for device framing and mockups."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "tldraw",
+    "url": "https://tldraw.com",
+    "name": "tldraw",
+    "category": "utilities",
+    "tags": [
+      "react"
+    ],
+    "desc": {
+      "es": "Biblioteca de pizarra infinita con SDK para React.",
+      "en": "Infinite whiteboard library offering React SDK."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "excalidraw",
+    "url": "https://excalidraw.com",
+    "name": "Excalidraw",
+    "category": "utilities",
+    "tags": [],
+    "desc": {
+      "es": "Pizarra colaborativa con estética de boceto a mano.",
+      "en": "Collaborative whiteboard with hand-drawn sketch aesthetic."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "obsidian",
+    "url": "https://obsidian.md",
+    "name": "Obsidian",
+    "category": "utilities",
+    "tags": [],
+    "desc": {
+      "es": "Base de conocimiento Markdown local-first con grafos.",
+      "en": "Local-first Markdown knowledge base with graphs."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
+  },
+  {
+    "id": "linear",
+    "url": "https://linear.app",
+    "name": "Linear",
+    "category": "utilities",
+    "tags": [],
+    "desc": {
+      "es": "Software de gestión de proyectos que marca el estándar de velocidad.",
+      "en": "Project management software setting speed standards."
+    },
+    "addedAt": "2026-10-08T22:13:02.792Z"
   }
 ]
