@@ -53,6 +53,13 @@ export const ui = {
     "footer.projectBy": "Un proyecto de",
     "footer.links": "Enlaces de DylanZM",
 
+    "cta.title": "¿Te falta algún recurso?",
+    "cta.text":
+      "El directorio crece con la comunidad. Propón una herramienta nueva o cuéntanos qué debería estar aquí.",
+    "cta.primary": "Enviar recurso",
+    "cta.secondary": "Ver en GitHub",
+    "cta.note": "Cada propuesta se revisa antes de publicarse.",
+
     "notfound.title": "404",
     "notfound.text": "Esta página no existe.",
     "notfound.back": "Volver al inicio",
@@ -108,6 +115,13 @@ export const ui = {
     "footer.note": "Curated with care. Resources belong to their authors.",
     "footer.projectBy": "A project by",
     "footer.links": "DylanZM links",
+
+    "cta.title": "Missing something?",
+    "cta.text":
+      "The directory grows with the community. Suggest a new tool or tell us what should be here.",
+    "cta.primary": "Submit a resource",
+    "cta.secondary": "View on GitHub",
+    "cta.note": "Every submission is reviewed before it goes live.",
 
     "notfound.title": "404",
     "notfound.text": "This page does not exist.",

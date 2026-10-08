@@ -2,6 +2,7 @@ import React from "react";
 import type { Locale } from "../../i18n/ui";
 import { createT } from "../../i18n/ui";
 import ShinyText from "./ShinyText";
+import CountUp from "./CountUp";
 import { links } from "../../data/links";
 import { categories } from "../../data/categories";
 
@@ -38,19 +39,16 @@ const Hero: React.FC<Props> = ({ locale }) => {
         {t("hero.subtitle")}
       </p>
 
-      <div className="mt-8 flex items-center justify-center gap-3">
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-line px-3.5 py-1.5 text-[12.5px] text-muted">
-          <span className="font-semibold text-ink">{links.length}</span>
-          <span>{t("stat.links")}</span>
+      <div className="mt-8 flex items-center justify-center gap-2.5 text-[13px] leading-none text-muted">
+        <span className="text-[16px] font-semibold tabular-nums text-ink">
+          <CountUp to={links.length} duration={1.6} />
         </span>
-        <span
-          aria-hidden="true"
-          className="h-1 w-1 rounded-full bg-accent"
-        />
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-line px-3.5 py-1.5 text-[12.5px] text-muted">
-          <span className="font-semibold text-ink">{categories.length}</span>
-          <span>{t("stat.categories")}</span>
+        <span>{t("stat.links")}</span>
+        <span aria-hidden="true" className="h-1 w-1 rounded-full bg-accent" />
+        <span className="text-[16px] font-semibold tabular-nums text-ink">
+          <CountUp to={categories.length} duration={1.6} delay={0.2} />
         </span>
+        <span>{t("stat.categories")}</span>
       </div>
     </section>
   );
