@@ -11,8 +11,9 @@ import { Grid2X2, List, Search } from "lucide";
 
 interface Props {
   locale: Locale;
+  sidebar?: boolean;
 }
-const { locale } = Astro.props;
+const { locale, sidebar = true } = Astro.props;
 const t = createT(locale);
 ---
 
@@ -20,30 +21,32 @@ const t = createT(locale);
   class="sticky top-0 z-30 border-b border-line bg-surface/85 backdrop-blur-md"
 >
   <div class="flex h-14 items-center gap-3 px-5 sm:px-8">
-    <button
-      type="button"
-      data-sidebar-open
-      data-tooltip={t("nav.menu")}
-      data-tooltip-align="start"
-      aria-label={t("nav.menu")}
-      aria-controls="sidebar"
-      aria-expanded="false"
-      class="grid h-8 w-8 shrink-0 place-items-center rounded-md text-muted transition-colors hover:bg-surface-2 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent lg:hidden"
-    >
-      <svg
-        width="14"
-        height="14"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        aria-hidden="true"
-        ><path d="M4 6h16"></path><path d="M4 12h16"></path><path
-          d="M4 18h16"
-        ></path></svg
+    {sidebar && (
+      <button
+        type="button"
+        data-sidebar-open
+        data-tooltip={t("nav.menu")}
+        data-tooltip-align="start"
+        aria-label={t("nav.menu")}
+        aria-controls="sidebar"
+        aria-expanded="false"
+        class="grid h-8 w-8 shrink-0 place-items-center rounded-md text-muted transition-colors hover:bg-surface-2 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent lg:hidden"
       >
-    </button>
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          aria-hidden="true"
+          ><path d="M4 6h16"></path><path d="M4 12h16"></path><path
+            d="M4 18h16"
+          ></path></svg
+        >
+      </button>
+    )}
 
     <a
       href={localePath(locale, "/")}

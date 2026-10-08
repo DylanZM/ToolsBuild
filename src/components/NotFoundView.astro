@@ -2,6 +2,7 @@
 import type { Locale } from "../i18n/ui";
 import { createT } from "../i18n/ui";
 import { localePath } from "../i18n/path";
+import AIOrbFace from "./smoothui/ai-orb-face";
 
 interface Props {
   locale: Locale;
@@ -13,11 +14,18 @@ const t = createT(locale);
 <main
   class="mx-auto flex min-h-[68vh] max-w-[1400px] flex-col justify-center px-5 py-24 sm:px-8"
 >
-  <h1
-    class="text-[clamp(5rem,20vw,12rem)] font-semibold leading-[0.85] tracking-[-0.04em] text-ink tabular-nums"
-  >
-    404<span class="sr-only"> — {t("notfound.text")}</span>
-  </h1>
+  <div class="flex flex-wrap items-center gap-x-7 gap-y-5">
+    <h1
+      class="text-[clamp(5rem,20vw,12rem)] font-semibold leading-[0.85] tracking-[-0.04em] text-ink tabular-nums"
+    >
+      404<span class="sr-only"> — {t("notfound.text")}</span>
+    </h1>
+    <AIOrbFace
+      client:load
+      state="error"
+      size="clamp(84px, 14vw, 156px)"
+    />
+  </div>
 
   <p class="mt-8 max-w-[52ch] text-balance text-lg leading-relaxed text-muted">
     {t("notfound.text")}

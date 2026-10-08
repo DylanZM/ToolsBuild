@@ -15,9 +15,10 @@ interface Props {
   locale: Locale;
   title: string;
   description: string;
+  hideSidebar?: boolean;
 }
 
-const { locale, title, description } = Astro.props;
+const { locale, title, description, hideSidebar = false } = Astro.props;
 const t = createT(locale);
 
 const searchItems = links.map((l) => {
@@ -50,22 +51,27 @@ const navItems: NavItem[] = [
 ---
 
 <Layout title={title} description={description} locale={locale}>
-  <div
-    data-sidebar-backdrop
-    class="pointer-events-none fixed inset-0 z-40 bg-surface/70 opacity-0 backdrop-blur-sm transition-opacity duration-300 lg:hidden"
-    aria-hidden="true"
-  ></div>
+  {!hideSidebar && (
+    <div
+      data-sidebar-backdrop
+      class="pointer-events-none fixed inset-0 z-40 bg-surface/70 opacity-0 backdrop-blur-sm transition-opacity duration-300 lg:hidden"
+      aria-hidden="true"
+    ></div>
+  )}
 
-  <Header locale={locale} />
+  <Header locale={locale} sidebar={!hideSidebar} />
 
   <div class="mx-auto max-w-[1360px] px-5 sm:px-8">
     <slot name="top" />
   </div>
 
   <div
-    class="shell-grid mx-auto grid max-w-[1360px] px-5 sm:px-8 lg:grid-cols-[230px_minmax(0,1fr)] lg:gap-11 xl:gap-14"
+    class:list={[
+      "shell-grid mx-auto grid max-w-[1360px] px-5 sm:px-8",
+      !hideSidebar && "lg:grid-cols-[230px_minmax(0,1fr)] lg:gap-11 xl:gap-14",
+    ]}
   >
-    <Sidebar locale={locale} items={navItems} />
+    {!hideSidebar && <Sidebar locale={locale} items={navItems} />}
     <div class="min-w-0">
       <slot />
     </div>

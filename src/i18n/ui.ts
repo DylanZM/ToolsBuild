@@ -209,7 +209,7 @@ export type TParams = Record<string, string | number>;
 export function createT(locale: Locale) {
   const dict = ui[locale];
   return (key: UIKey, params?: TParams): string => {
-    let s = dict[key] ?? ui.es[key] ?? key;
+    let s: string = dict[key] ?? ui.es[key] ?? key;
     if (params)
       for (const [k, v] of Object.entries(params))
         s = s.split(`{${k}}`).join(String(v));
