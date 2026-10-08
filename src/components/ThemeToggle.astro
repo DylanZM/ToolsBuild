@@ -40,12 +40,22 @@ const { label, tipLight, tipDark } = Astro.props;
       if (btn.dataset.bound) return;
       btn.dataset.bound = "1";
       btn.addEventListener("click", () => {
-        const isDark = document.documentElement.classList.toggle("dark");
-        document.documentElement.style.colorScheme = isDark ? "dark" : "light";
+        const root = document.documentElement;
+        // Sin transiciones en el frame del swap: fondo, texto, iconos y
+        // keycaps deben saltar de color juntos, no fundirse por separado.
+        root.classList.add("suspend-transitions");
+        void root.offsetWidth;
+        const isDark = root.classList.toggle("dark");
+        root.style.colorScheme = isDark ? "dark" : "light";
         try {
           localStorage.setItem("theme", isDark ? "dark" : "light");
         } catch {}
         sync(btn, true);
+        requestAnimationFrame(() =>
+          requestAnimationFrame(() =>
+            root.classList.remove("suspend-transitions"),
+          ),
+        );
       });
     });
   }

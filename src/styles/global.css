@@ -131,6 +131,16 @@
   }
 }
 
+/* Cambio de tema: mientras se aplica el nuevo modo se suspenden las
+   transiciones un par de frames. Si no, el fondo salta al instante y
+   texto/iconos/keycaps se quedan ~150ms con el color viejo sobre el
+   fondo nuevo (se ven "fantasma" en Chromium). */
+html.suspend-transitions *,
+html.suspend-transitions *::before,
+html.suspend-transitions *::after {
+  transition: none !important;
+}
+
 @keyframes star-movement-bottom {
   0% {
     transform: translate(0%, 0%);
