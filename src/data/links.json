@@ -1767,5 +1767,51 @@
       "en": "Design a logo, a website, or anything else in seconds with the power of AI."
     },
     "addedAt": "2026-10-07T21:50:22.207Z"
+  },
+  {
+    "id": "collectui",
+    "url": "https://collectui.com/",
+    "name": "Collectui",
+    "category": "inspiration",
+    "tags": [
+      "desing",
+      "Inspiration"
+    ],
+    "desc": {
+      "es": "Inspiración diaria de interfaz de usuario seleccionada por Design Magicians",
+      "en": "Design Magicians Daily User Interface Inspiration Curated by Design\nMagicians"
+    },
+    "addedAt": "2026-10-08T02:16:32.867Z"
+  },
+  {
+    "id": "originkit",
+    "url": "https://www.originkit.dev",
+    "name": "OriginKit",
+    "category": "components",
+    "tags": [
+      "backgrounds",
+      "ui",
+      "animations"
+    ],
+    "desc": {
+      "es": "OriginKit es la capa de infraestructura de componentes para la creación web moderna: en tu código, en tu lienzo y en tu agente de IA.",
+      "en": "OriginKit is the component infrastructure layer for modern web building, in your code, on your canvas, and in your AI agent."
+    },
+    "addedAt": "2026-10-08T02:20:25.445Z"
+  },
+  {
+    "id": "getarcraft",
+    "url": "https://getartcraft.com",
+    "name": "Getarcraft",
+    "category": "build",
+    "tags": [
+      "ai",
+      "design"
+    ],
+    "desc": {
+      "es": "ArtCraft crea herramientas de código abierto para artistas. Nos enorgullecemos de la libertad de control y expresión.",
+      "en": "ArtCraft builds open source tools for artists. We pride ourselves on freedom of control and expression."
+    },
+    "addedAt": "2026-10-08T02:25:45.717Z"
   }
 ]

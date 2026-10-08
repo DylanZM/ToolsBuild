@@ -1,0 +1,16 @@
+
+:root {
+  --font-ui: "Inter", "Instrument Sans", system-ui, sans-serif;
+  --bg: #000;
+  --ink: #fff;
+  --ink-2: #b4b4b4;
+  --ink-3: #9a9a9a;
+  --ink-4: #828282;
+  --ink-5: #6b6b6b;
+  --ink-rgb: 255, 255, 255;
+  --glass-rgb: 255, 255, 255;
+  --glass-a: 0.16;
+  --glass-edge-a: 0.2;
+  --pane: rgba(var(--glass-rgb), var(--glass-a));
+  --pane-edge: rgba(var(--glass-rgb), var(--glass-edge-a));
+}
