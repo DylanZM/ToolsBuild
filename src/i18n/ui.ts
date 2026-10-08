@@ -53,6 +53,49 @@ export const ui = {
     "footer.projectBy": "Un proyecto de",
     "footer.links": "Enlaces de DylanZM",
 
+    "admin.title": "Panel de recursos",
+    "admin.links": "{n} enlaces",
+    "admin.readonly1":
+      "Este panel es de solo lectura en producción. Para agregar o editar recursos, corre ",
+    "admin.readonly2": " en local.",
+    "admin.add": "+ Agregar",
+    "admin.addTitle": "Agregar recurso",
+    "admin.editing": "Editando: {name}",
+    "admin.closePanel": "Cerrar panel",
+    "admin.cancel": "Cancelar",
+    "admin.save": "Guardar cambios",
+    "admin.category": "Categoría",
+    "admin.fName": "Nombre",
+    "admin.descEs": "Descripción ES",
+    "admin.descEn": "Descripción EN",
+    "admin.errName": "El nombre es obligatorio.",
+    "admin.errUrl": "La URL es obligatoria.",
+    "admin.errUrlPrefix": "Debe empezar por http:// o https://",
+    "admin.errDescEs": "La descripción en español es obligatoria.",
+    "admin.errDescEn": "La descripción en inglés es obligatoria.",
+    "admin.errServer": "Error {status} del servidor",
+    "admin.errWrite":
+      "No se pudo escribir el archivo. ¿Sigue corriendo astro dev?",
+    "admin.results": "{n} resultados",
+    "admin.showing": "{x} de {y}",
+    "admin.all": "Todas",
+    "admin.search": "Buscar",
+    "admin.emptyTitle": "Sin resultados",
+    "admin.emptyNoMatch": "Nada coincide con “{q}”.",
+    "admin.emptyCat": "Sin recursos en esta categoría.",
+    "admin.thResource": "Recurso",
+    "admin.thDesc": "Descripción",
+    "admin.thActions": "Acciones",
+    "admin.edit": "Editar",
+    "admin.delete": "Eliminar",
+    "admin.editAria": "Editar {name}",
+    "admin.delAria": "Eliminar {name}",
+    "admin.delTitle": "¿Eliminar recurso?",
+    "admin.delDesc": "Se quitará “{name}” de la lista.",
+    "admin.toastUpdated": "✓ \"{name}\" actualizado",
+    "admin.toastAdded": "✓ \"{name}\" agregado a {cat}",
+    "admin.toastDeleted": "✓ \"{name}\" eliminado",
+
     "notfound.title": "404",
     "notfound.text": "Esta página no existe.",
     "notfound.back": "Volver al inicio",
@@ -109,6 +152,48 @@ export const ui = {
     "footer.projectBy": "A project by",
     "footer.links": "DylanZM links",
 
+    "admin.title": "Resource panel",
+    "admin.links": "{n} links",
+    "admin.readonly1":
+      "This panel is read-only in production. To add or edit resources, run ",
+    "admin.readonly2": " locally.",
+    "admin.add": "+ Add",
+    "admin.addTitle": "Add resource",
+    "admin.editing": "Editing: {name}",
+    "admin.closePanel": "Close panel",
+    "admin.cancel": "Cancel",
+    "admin.save": "Save changes",
+    "admin.category": "Category",
+    "admin.fName": "Name",
+    "admin.descEs": "Spanish description",
+    "admin.descEn": "English description",
+    "admin.errName": "Name is required.",
+    "admin.errUrl": "URL is required.",
+    "admin.errUrlPrefix": "Must start with http:// or https://",
+    "admin.errDescEs": "Spanish description is required.",
+    "admin.errDescEn": "English description is required.",
+    "admin.errServer": "Server error {status}",
+    "admin.errWrite": "Couldn't write the file. Is astro dev still running?",
+    "admin.results": "{n} results",
+    "admin.showing": "{x} of {y}",
+    "admin.all": "All",
+    "admin.search": "Search",
+    "admin.emptyTitle": "No results",
+    "admin.emptyNoMatch": "Nothing matches “{q}”.",
+    "admin.emptyCat": "No resources in this category.",
+    "admin.thResource": "Resource",
+    "admin.thDesc": "Description",
+    "admin.thActions": "Actions",
+    "admin.edit": "Edit",
+    "admin.delete": "Delete",
+    "admin.editAria": "Edit {name}",
+    "admin.delAria": "Delete {name}",
+    "admin.delTitle": "Delete resource?",
+    "admin.delDesc": "“{name}” will be removed from the list.",
+    "admin.toastUpdated": "✓ \"{name}\" updated",
+    "admin.toastAdded": "✓ \"{name}\" added to {cat}",
+    "admin.toastDeleted": "✓ \"{name}\" removed",
+
     "notfound.title": "404",
     "notfound.text": "This page does not exist.",
     "notfound.back": "Back to home",
@@ -117,7 +202,15 @@ export const ui = {
 
 export type UIKey = keyof (typeof ui)["es"];
 
+export type TParams = Record<string, string | number>;
+
 export function createT(locale: Locale) {
   const dict = ui[locale];
-  return (key: UIKey): string => dict[key] ?? ui.es[key] ?? key;
+  return (key: UIKey, params?: TParams): string => {
+    let s = dict[key] ?? ui.es[key] ?? key;
+    if (params)
+      for (const [k, v] of Object.entries(params))
+        s = s.split(`{${k}}`).join(String(v));
+    return s;
+  };
 }
