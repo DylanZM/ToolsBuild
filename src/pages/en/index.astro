@@ -1,7 +1,6 @@
 ---
 import Shell from "../../components/Shell.astro";
 import LandingView from "../../components/LandingView.astro";
-import CTA from "../../components/CTA.astro";
 import Hero from "../../components/react/Hero";
 import { createT } from "../../i18n/ui";
 
@@ -16,5 +15,4 @@ const t = createT(locale);
 >
   <Hero slot="top" client:load locale={locale} />
   <LandingView locale={locale} />
-  <CTA locale={locale} />
 </Shell>

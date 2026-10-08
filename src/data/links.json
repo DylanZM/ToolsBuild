@@ -1813,5 +1813,17 @@
       "en": "ArtCraft builds open source tools for artists. We pride ourselves on freedom of control and expression."
     },
     "addedAt": "2026-10-08T02:25:45.717Z"
+  },
+  {
+    "id": "ascii-rest",
+    "url": "https://ascii.rest/",
+    "name": "Ascii Rest",
+    "category": "components",
+    "tags": [],
+    "desc": {
+      "es": "Arte ASCII animado para páginas web",
+      "en": "animated ascii art for web pages"
+    },
+    "addedAt": "2026-10-08T20:09:21.106Z"
   }
 ]

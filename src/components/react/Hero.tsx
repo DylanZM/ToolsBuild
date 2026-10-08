@@ -39,16 +39,28 @@ const Hero: React.FC<Props> = ({ locale }) => {
         {t("hero.subtitle")}
       </p>
 
-      <div className="mt-8 flex items-center justify-center gap-2.5 text-[13px] leading-none text-muted">
-        <span className="text-[16px] font-semibold tabular-nums text-ink">
-          <CountUp to={links.length} duration={1.6} />
-        </span>
-        <span>{t("stat.links")}</span>
-        <span aria-hidden="true" className="h-1 w-1 rounded-full bg-accent" />
-        <span className="text-[16px] font-semibold tabular-nums text-ink">
-          <CountUp to={categories.length} duration={1.6} delay={0.2} />
-        </span>
-        <span>{t("stat.categories")}</span>
+      <div
+        className="mx-auto mt-9 grid w-[min(100%,440px)] grid-cols-2 border-y border-line"
+        aria-label={
+          locale === "en" ? "Directory statistics" : "Estadísticas del directorio"
+        }
+      >
+        <div className="flex min-h-[80px] flex-col items-center justify-center gap-1 border-l border-line">
+          <strong className="font-display text-[19px] font-semibold tabular-nums tracking-tight text-ink">
+            <CountUp to={links.length} duration={1.6} />
+          </strong>
+          <span className="text-[10px] uppercase tracking-[0.12em] text-muted">
+            {t("stat.links")}
+          </span>
+        </div>
+        <div className="flex min-h-[80px] flex-col items-center justify-center gap-1 border-l border-r border-line">
+          <strong className="font-display text-[19px] font-semibold tabular-nums tracking-tight text-ink">
+            <CountUp to={categories.length} duration={1.6} delay={0.2} />
+          </strong>
+          <span className="text-[10px] uppercase tracking-[0.12em] text-muted">
+            {t("stat.categories")}
+          </span>
+        </div>
       </div>
     </section>
   );

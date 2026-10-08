@@ -330,9 +330,3 @@ html.suspend-transitions *::after {
     margin-top: 0;
   }
 }
-
-@media (width >= 80rem) {
-  html[data-view="list"] [data-card-tags] {
-    display: flex;
-  }
-}
