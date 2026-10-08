@@ -47,12 +47,6 @@ const ogLocale = locale === "es" ? "es_ES" : "en_US";
           } catch (e) {
             document.documentElement.dataset.view = "grid";
           }
-          try {
-            document.cookie =
-              "locale=" +
-              (document.documentElement.lang || "es") +
-              ";path=/;max-age=31536000;samesite=lax";
-          } catch (e) {}
         }
         apply();
         document.addEventListener("astro:after-swap", apply);

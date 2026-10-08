@@ -38,6 +38,7 @@ export const ui = {
 
     "stat.links": "recursos",
     "stat.categories": "categorías",
+    "stat.updated": "última actualización",
 
     "filter.all": "Todos",
     "filter.label": "Filtrar por categoría",
@@ -137,6 +138,7 @@ export const ui = {
 
     "stat.links": "resources",
     "stat.categories": "categories",
+    "stat.updated": "last update",
 
     "filter.all": "All",
     "filter.label": "Filter by category",

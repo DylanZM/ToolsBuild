@@ -13,6 +13,15 @@ interface Props {
 const Hero: React.FC<Props> = ({ locale }) => {
   const t = createT(locale);
 
+  const latestTs = links.reduce((max, l) => {
+    const ts = l.addedAt ? Date.parse(l.addedAt) : NaN;
+    return Number.isFinite(ts) && ts > max ? ts : max;
+  }, 0);
+  const latestLabel = new Intl.DateTimeFormat(
+    locale === "en" ? "en-US" : "es-ES",
+    { month: "short", year: "numeric" },
+  ).format(latestTs > 0 ? new Date(latestTs) : new Date());
+
   return (
     <section className="pb-16 pt-14 text-center sm:pb-20 sm:pt-20 lg:pb-24 lg:pt-24">
       <div className="relative">
@@ -40,25 +49,33 @@ const Hero: React.FC<Props> = ({ locale }) => {
       </p>
 
       <div
-        className="mx-auto mt-9 grid w-[min(100%,440px)] grid-cols-2 border-y border-line"
+        className="mx-auto mt-10 grid w-[min(100%,660px)] grid-cols-3 overflow-hidden rounded-xl border border-line bg-surface"
         aria-label={
           locale === "en" ? "Directory statistics" : "Estadísticas del directorio"
         }
       >
-        <div className="flex min-h-[80px] flex-col items-center justify-center gap-1 border-l border-line">
-          <strong className="font-display text-[19px] font-semibold tabular-nums tracking-tight text-ink">
+        <div className="flex min-h-[88px] flex-col items-center justify-center gap-1.5 border-r border-line px-3">
+          <strong className="font-display text-[22px] font-semibold tabular-nums tracking-tight text-ink">
             <CountUp to={links.length} duration={1.6} />
           </strong>
-          <span className="text-[10px] uppercase tracking-[0.12em] text-muted">
+          <span className="text-center text-[10px] font-medium uppercase tracking-[0.14em] text-muted">
             {t("stat.links")}
           </span>
         </div>
-        <div className="flex min-h-[80px] flex-col items-center justify-center gap-1 border-l border-r border-line">
-          <strong className="font-display text-[19px] font-semibold tabular-nums tracking-tight text-ink">
+        <div className="flex min-h-[88px] flex-col items-center justify-center gap-1.5 border-r border-line px-3">
+          <strong className="font-display text-[22px] font-semibold tabular-nums tracking-tight text-ink">
             <CountUp to={categories.length} duration={1.6} delay={0.2} />
           </strong>
-          <span className="text-[10px] uppercase tracking-[0.12em] text-muted">
+          <span className="text-center text-[10px] font-medium uppercase tracking-[0.14em] text-muted">
             {t("stat.categories")}
+          </span>
+        </div>
+        <div className="flex min-h-[88px] flex-col items-center justify-center gap-1.5 px-3">
+          <strong className="font-display text-[19px] font-semibold tabular-nums tracking-tight text-ink">
+            {latestLabel}
+          </strong>
+          <span className="text-center text-[10px] font-medium uppercase tracking-[0.14em] text-muted">
+            {t("stat.updated")}
           </span>
         </div>
       </div>
