@@ -10,6 +10,51 @@ interface Props {
   locale: Locale;
 }
 
+const stripStyle: React.CSSProperties = {
+  display: "grid",
+  gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+  width: "min(100%, 660px)",
+  marginTop: "2.5rem",
+  border: "1px solid var(--line)",
+  borderRadius: "12px",
+  overflow: "hidden",
+  background: "var(--surface)",
+};
+
+const cellStyle: React.CSSProperties = {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "6px",
+  minHeight: "88px",
+  paddingInline: "12px",
+  borderRight: "1px solid var(--line)",
+};
+
+const cellStyleLast: React.CSSProperties = {
+  ...cellStyle,
+  borderRight: undefined,
+};
+
+const numStyle: React.CSSProperties = {
+  color: "var(--ink)",
+  fontFamily: "var(--font-display)",
+  fontSize: "22px",
+  fontWeight: 600,
+  fontVariantNumeric: "tabular-nums",
+  letterSpacing: "-0.025em",
+};
+
+const labelStyle: React.CSSProperties = {
+  color: "var(--muted)",
+  fontSize: "10px",
+  fontWeight: 500,
+  letterSpacing: "0.14em",
+  textTransform: "uppercase",
+  textAlign: "center",
+};
+
 const Hero: React.FC<Props> = ({ locale }) => {
   const t = createT(locale);
 
@@ -50,31 +95,32 @@ const Hero: React.FC<Props> = ({ locale }) => {
 
       <div
         className="mx-auto mt-10 grid w-[min(100%,660px)] grid-cols-3 overflow-hidden rounded-xl border border-line bg-surface"
+        style={stripStyle}
         aria-label={
           locale === "en" ? "Directory statistics" : "Estadísticas del directorio"
         }
       >
-        <div className="flex min-h-[88px] flex-col items-center justify-center gap-1.5 border-r border-line px-3">
-          <strong className="font-display text-[22px] font-semibold tabular-nums tracking-tight text-ink">
+        <div className="flex min-h-[88px] flex-col items-center justify-center gap-1.5 border-r border-line px-3" style={cellStyle}>
+          <strong className="font-display text-[22px] font-semibold tabular-nums tracking-tight text-ink" style={numStyle}>
             <CountUp to={links.length} duration={1.6} />
           </strong>
-          <span className="text-center text-[10px] font-medium uppercase tracking-[0.14em] text-muted">
+          <span className="text-center text-[10px] font-medium uppercase tracking-[0.14em] text-muted" style={labelStyle}>
             {t("stat.links")}
           </span>
         </div>
-        <div className="flex min-h-[88px] flex-col items-center justify-center gap-1.5 border-r border-line px-3">
-          <strong className="font-display text-[22px] font-semibold tabular-nums tracking-tight text-ink">
+        <div className="flex min-h-[88px] flex-col items-center justify-center gap-1.5 border-r border-line px-3" style={cellStyle}>
+          <strong className="font-display text-[22px] font-semibold tabular-nums tracking-tight text-ink" style={numStyle}>
             <CountUp to={categories.length} duration={1.6} delay={0.2} />
           </strong>
-          <span className="text-center text-[10px] font-medium uppercase tracking-[0.14em] text-muted">
+          <span className="text-center text-[10px] font-medium uppercase tracking-[0.14em] text-muted" style={labelStyle}>
             {t("stat.categories")}
           </span>
         </div>
-        <div className="flex min-h-[88px] flex-col items-center justify-center gap-1.5 px-3">
-          <strong className="font-display text-[19px] font-semibold tabular-nums tracking-tight text-ink">
+        <div className="flex min-h-[88px] flex-col items-center justify-center gap-1.5 px-3" style={cellStyleLast}>
+          <strong className="font-display text-[19px] font-semibold tabular-nums tracking-tight text-ink" style={{ ...numStyle, fontSize: "19px" }}>
             {latestLabel}
           </strong>
-          <span className="text-center text-[10px] font-medium uppercase tracking-[0.14em] text-muted">
+          <span className="text-center text-[10px] font-medium uppercase tracking-[0.14em] text-muted" style={labelStyle}>
             {t("stat.updated")}
           </span>
         </div>
