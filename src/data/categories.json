@@ -151,5 +151,22 @@
       "es": "Utilidades de escritorio, captura de pantalla, pizarras infinitas y herramientas creativas para el día a día.",
       "en": "Desktop utilities, screen capture, infinite whiteboards and everyday creative tools."
     }
+  },
+  {
+	"id": "MCPs",
+	"slug": "MCPs",
+	"order": 6,
+	"name": {
+		"es": "PCMs",
+		"en": "MCPs"
+	},
+	"short": {
+		"es": "PCMs",
+		"en": "MCPs"
+	},
+	"desc": {
+		"es": "Herramientas para programas para conectar tus agentes de IA",
+		"en": "Tools for programs to connect your AI agents"
+	}
   }
 ]
