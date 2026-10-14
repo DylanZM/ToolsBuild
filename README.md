@@ -1,79 +1,68 @@
 # Toolsbuild
 
-**Toolsbuild** is a hand-curated directory of **490 design and development resources** — tools, components, icon sets, motion references, AI utilities, fonts, and more — organized into **9 categories** and built as a fully static, fast, bilingual site.
+## Description
 
-Every entry has a short description in Spanish and English, tags, and a favicon, so you can scan the catalog, filter by category, and jump straight to the resource.
+Toolsbuild is a hand-curated directory of **506 resources for designers, developers and small teams**, organized into **10 categories**: inspiration galleries, UI components, icon sets, animation references, visual assets, build tools, MCP servers, learning material, and everyday utilities.
+
+Every entry includes a favicon, tags, and a short description in **Spanish and English**, so you can scan the catalog, filter by category, and jump straight to the resource. The site is fully static, dark-first, responsive, and ships with:
+
+- Full-text **search** over names, descriptions and tags — press `Ctrl` / `⌘ + K`
+- **Category sidebar** with live counts
+- **Grid and list views** with a layout toggle
+- Bilingual UI — Spanish at `/`, English at `/en`
+- "New" badges on resources added in the last 14 days
+
+Built with [Astro](https://astro.build), React and Tailwind CSS.
+
+## Screenshots
 
 ![Toolsbuild — the resource catalog](./public/preview.png)
 
-## What you can do with it
+## Getting Started
 
-- **Browse 490 resources** in9 curated categories: Inspiration, Components, Icons, Animation, Visuals, AI, Build, Learn, and Utilities
-- **Search everything** (names, descriptions, tags) with the command palette — `Ctrl`/`⌘ + K`
-- **Filter by category** from the sidebar, with live counts per category
-- **Switch between grid and list views** with a smooth layout toggle
-- **Read it in Spanish or English** — every resource description is written in both languages (`/` and `/en`)
-- **Spot fresh additions** — resources added in the last14 days show a "New" badge
-- Dark-first UI, responsive layout, and a static build that deploys anywhere
+### Dependencies
 
-## Tech stack
+- [Node.js](https://nodejs.org) **22.12 or newer** (the project declares `engines: node >=22.12.0`)
+- npm (ships with Node)
+- A modern browser (Chrome, Firefox, Safari or Edge)
 
-- [Astro 7](https://astro.build) — static site framework with island architecture
-- React 19 — interactive islands (search palette)
-- [Tailwind CSS 4](https://tailwindcss.com)
-- [Morphicons](https://www.morphicons.com) + [lucide](https://lucide.dev) — icons and morphing icon transitions
-- TypeScript
-
-## Quick start
+### Installing
 
 ```sh
+git clone https://github.com/DylanZM/ToolsBuild.git
+cd ToolsBuild
 npm install
-npm run dev        # http://localhost:4321
 ```
 
-| Command                   | Action                                      |
-| :------------------------ | :------------------------------------------ |
-| `npm run dev`             | Start the dev server at `localhost:4321`    |
-| `npm run build`           | Build the production site to `./dist/`      |
-| `npm run preview`         | Preview the production build locally        |
-| `npm run astro check`     | Type-check the project                      |
-| `npm run astro ...`       | Run any Astro CLI command                   |
+### Executing program
 
-## Project structure
-
-```text
-/
-├── public/                 # favicons and static assets
-├── src/
-│   ├── components/         # UI: Header, Sidebar, ResourceCard, search palette…
-│   ├── data/
-│   │   ├── links.json      # the catalog —490 resources with ES/EN descriptions
-│   │   └── categories.json # the9 categories
-│   ├── i18n/               # Spanish / English dictionaries
-│   ├── layouts/            # shared page layout
-│   ├── lib/                # helpers (URLs, icon morphing…)
-│   ├── pages/              # routes: /, /en, /404, category redirects
-│   └── styles/             # global CSS and design tokens
-└── package.json
+```sh
+npm run dev          # dev server at http://localhost:4321
+npm run build        # production build → ./dist/
+npm run preview      # preview the production build locally
+npm run astro check  # type-check the project
 ```
 
-## Adding a resource
+Step by step:
 
-The catalog lives in [`src/data/links.json`](./src/data/links.json). Each entry looks like:
+1. Run `npm install` once after cloning.
+2. Start the dev server with `npm run dev` and open `http://localhost:4321`.
+3. Browse the catalog: filter with the sidebar, search with `Ctrl` / `⌘ + K`, toggle grid/list from the header, and switch languages with the `EN` / `ES` control.
+4. For deployment, run `npm run build` and publish the generated `dist/` folder to any static host.
 
-```json
-{
-  "id": "magic-ui",
-  "url": "https://magicui.design",
-  "name": "Magic UI",
-  "category": "components",
-  "tags": ["react", "animated", "free"],
-  "desc": {
-    "es": "Componentes animados listos para copiar y pegar.",
-    "en": "Animated components ready to copy and paste."
-  },
-  "addedAt": "2026-10-13T00:00:00.000Z"
-}
-```
+## Help
 
-Rules: `id` is a lowercase slug (`^[a-z0-9-]+$`) and must be unique; `category` must exist in `categories.json`; `tags` are1–3 short lowercase strings; both descriptions are required. Entries are appended in ascending `addedAt` order.
+- **Dev server hangs or assets return `504 (Outdated Optimize Dep)`?** Stale Vite cache — wipe it and restart:
+
+  ```sh
+  rm -rf node_modules/.vite node_modules/.astro .astro node_modules/.cache
+  npm run dev
+  ```
+
+- **Type errors or warnings?** Run `npm run astro check`.
+- **Port 4321 already in use?** Stop the other process or run Astro with `--port` to pick a different one.
+- Anything else — open an issue and describe what you did and what you saw.
+
+## License
+
+No license has been specified for this project yet.
