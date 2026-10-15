@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "engines": {
-    "node": "22.x"
+    "node": "24.x"
   },
   "scripts": {
     "dev": "astro dev",
@@ -15,6 +15,7 @@
     "@astrojs/check": "^0.9.10",
     "@astrojs/node": "^11.1.7",
     "@astrojs/react": "^7.0.1",
+    "@astrojs/vercel": "^11.0.14",
     "@lucide/astro": "^1.52.0",
     "@radix-ui/react-dialog": "^1.2.0",
     "@radix-ui/react-select": "^2.3.8",
