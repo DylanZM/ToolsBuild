@@ -381,7 +381,7 @@ const SearchPalette: React.FC<Props> = ({ items, locale }) => {
                     width="17"
                     height="17"
                     loading="lazy"
-                    className="h-[20px] w-[20px] object-contain"
+                    className="h-5 w-5 object-contain"
                   />
                 </span>
                 <span className="min-w-0 flex-1">
