@@ -8,7 +8,7 @@ import React, {
 import type { Locale } from "../../i18n/ui";
 import { createT } from "../../i18n/ui";
 import { MorphIcon } from "morphicons/react";
-import { Search } from "lucide";
+import { Brain, Search, Send } from "lucide";
 
 export interface SearchItem {
   id: string;
@@ -24,6 +24,8 @@ interface Props {
   items: SearchItem[];
   locale: Locale;
 }
+
+type AiState = "idle" | "loading" | "ready" | "error";
 
 function faviconUrl(url: string): string {
   try {
@@ -74,10 +76,13 @@ const SearchPalette: React.FC<Props> = ({ items, locale }) => {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [active, setActive] = useState(0);
+  const [aiMode, setAiMode] = useState(false);
+  const [aiIds, setAiIds] = useState<string[] | null>(null);
+  const [aiState, setAiState] = useState<AiState>("idle");
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
 
-  const results = useMemo(() => {
+  const localResults = useMemo(() => {
     const q = query.trim().toLowerCase();
     const base = q
       ? items
@@ -89,9 +94,65 @@ const SearchPalette: React.FC<Props> = ({ items, locale }) => {
     return base.slice(0, 30);
   }, [items, query]);
 
-  const open_ = useCallback(() => {
+  const results = useMemo(() => {
+    if (!aiIds) return localResults;
+    const byId = new Map(items.map((item) => [item.id, item]));
+    return aiIds
+      .map((id) => byId.get(id))
+      .filter((item): item is SearchItem => Boolean(item));
+  }, [aiIds, items, localResults]);
+
+  const rememberSearch = useCallback(
+    (searchQuery: string, resultItems: SearchItem[]) => {
+      window.dispatchEvent(
+        new CustomEvent("toolsbuild:search-history", {
+          detail: {
+            query: searchQuery,
+            ids: resultItems.map((item) => item.id),
+          },
+        }),
+      );
+    },
+    [],
+  );
+
+  const submitAISearch = useCallback(async () => {
+    const cleanQuery = query.trim();
+    if (!aiMode || cleanQuery.length < 2 || aiState === "loading") return;
+
+    setAiIds(null);
+    setAiState("loading");
+    try {
+      const response = await fetch("/api/ai-search", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query: cleanQuery, locale }),
+      });
+      if (!response.ok) throw new Error("AI search unavailable");
+      const data = (await response.json()) as { ids?: string[] };
+      setAiIds(data.ids?.length ? data.ids : null);
+      setAiState("ready");
+      rememberSearch(
+        cleanQuery,
+        data.ids
+          ? data.ids
+              .map((id) => items.find((item) => item.id === id))
+              .filter((item): item is SearchItem => Boolean(item))
+          : [],
+      );
+    } catch {
+      setAiIds(null);
+      setAiState("error");
+    } finally {
+    }
+  }, [aiMode, aiState, items, locale, query, rememberSearch]);
+
+  const open_ = useCallback((initialQuery = "") => {
     setOpen(true);
-    setQuery("");
+    setQuery(initialQuery);
+    setAiMode(false);
+    setAiIds(null);
+    setAiState("idle");
     setActive(0);
   }, []);
 
@@ -105,12 +166,18 @@ const SearchPalette: React.FC<Props> = ({ items, locale }) => {
       }
       if (e.key === "Escape") setOpen(false);
     };
-    const onCustom = () => open_();
+    const onCustom = (event: Event) => {
+      const query = (event as CustomEvent<{ query?: string }>).detail?.query;
+      open_(query || "");
+    };
     window.addEventListener("keydown", onKey);
     window.addEventListener("toolsbuild:search", onCustom as EventListener);
     return () => {
       window.removeEventListener("keydown", onKey);
-      window.removeEventListener("toolsbuild:search", onCustom as EventListener);
+      window.removeEventListener(
+        "toolsbuild:search",
+        onCustom as EventListener,
+      );
     };
   }, [open_]);
 
@@ -128,6 +195,11 @@ const SearchPalette: React.FC<Props> = ({ items, locale }) => {
   useEffect(() => setActive(0), [query]);
 
   const onInputKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter" && aiMode) {
+      e.preventDefault();
+      void submitAISearch();
+      return;
+    }
     if (e.key === "ArrowDown") {
       e.preventDefault();
       setActive((i) => Math.min(i + 1, results.length - 1));
@@ -137,12 +209,20 @@ const SearchPalette: React.FC<Props> = ({ items, locale }) => {
     } else if (e.key === "Enter") {
       e.preventDefault();
       const item = results[active];
-      if (item) window.open(item.url, "_blank", "noopener,noreferrer");
+      if (item) {
+        const cleanQuery = query.trim();
+        if (cleanQuery) {
+          rememberSearch(cleanQuery, results);
+        }
+        window.open(item.url, "_blank", "noopener,noreferrer");
+      }
     }
   };
 
   useEffect(() => {
-    const el = listRef.current?.querySelector<HTMLElement>(`[data-idx="${active}"]`);
+    const el = listRef.current?.querySelector<HTMLElement>(
+      `[data-idx="${active}"]`,
+    );
     el?.scrollIntoView({ block: "nearest" });
   }, [active]);
 
@@ -171,19 +251,107 @@ const SearchPalette: React.FC<Props> = ({ items, locale }) => {
           <input
             ref={inputRef}
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={(e) => {
+              setQuery(e.target.value);
+              if (aiMode) {
+                setAiIds(null);
+                setAiState("idle");
+              }
+            }}
             onKeyDown={onInputKey}
             placeholder={t("search.placeholder")}
             className="h-12 w-full bg-transparent text-[14px] text-ink outline-none placeholder:text-muted"
             autoComplete="off"
             spellCheck={false}
           />
+          {aiMode && (
+            <button
+              type="button"
+              onClick={() => void submitAISearch()}
+              disabled={aiState === "loading" || query.trim().length < 2}
+              aria-label={t("search.aiSubmit")}
+              title={t("search.aiSubmit")}
+              className="grid h-8 w-8 shrink-0 place-items-center rounded-md text-muted transition-colors hover:bg-surface-2 hover:text-ink disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+            >
+              <MorphIcon icon={Send} size={15} strokeWidth={2} />
+            </button>
+          )}
+          <button
+            type="button"
+            onClick={() => {
+              setAiMode((enabled) => !enabled);
+              setAiIds(null);
+              setAiState("idle");
+            }}
+            aria-label={t(
+              aiState === "loading"
+                ? "search.aiSearching"
+                : aiMode
+                  ? "search.aiDeactivate"
+                  : "search.aiActivate",
+            )}
+            aria-pressed={aiMode}
+            title={t(
+              aiState === "loading"
+                ? "search.aiSearching"
+                : aiMode
+                  ? "search.aiDeactivate"
+                  : "search.aiActivate",
+            )}
+            aria-busy={aiState === "loading"}
+            className={`grid h-8 w-8 shrink-0 place-items-center rounded-md transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${
+              aiState === "loading"
+                ? "bg-accent text-white"
+                : aiMode
+                  ? "bg-accent text-white"
+                  : "text-muted hover:bg-surface-2 hover:text-ink"
+            }`}
+          >
+            <MorphIcon
+              icon={Brain}
+              size={16}
+              strokeWidth={2}
+              className={aiState === "loading" ? "animate-pulse" : ""}
+            />
+          </button>
         </div>
 
         <div ref={listRef} className="max-h-[52vh] overflow-y-auto p-2">
-          {results.length === 0 ? (
+          {aiIds && aiState !== "loading" && (
+            <p className="px-3 pb-1 text-[10px] uppercase tracking-[0.12em] text-muted">
+              {t("search.ai")}
+            </p>
+          )}
+          {aiState === "loading" ? (
+            <div
+              className="space-y-2 px-3 py-3"
+              aria-live="polite"
+              aria-label={t("search.aiLoading")}
+            >
+              {[0, 1, 2, 3].map((skeleton) => (
+                <div
+                  key={skeleton}
+                  className="flex items-center gap-3 rounded-lg px-3 py-2.5"
+                >
+                  <span className="h-7 w-7 shrink-0 animate-pulse rounded-md bg-surface-2" />
+                  <span className="min-w-0 flex-1 space-y-2">
+                    <span className="block h-3 w-2/5 animate-pulse rounded bg-surface-2" />
+                    <span className="block h-2.5 w-4/5 animate-pulse rounded bg-surface-2" />
+                  </span>
+                </div>
+              ))}
+            </div>
+          ) : aiMode && aiState === "idle" ? (
             <p className="px-3 py-10 text-center text-[13px] text-muted">
-              {t("search.empty")}{" "}
+              {t("search.aiPrompt")}
+            </p>
+          ) : aiMode && aiState === "error" ? (
+            <p className="px-3 py-10 text-center text-[13px] text-muted">
+              {t("search.aiError")}
+            </p>
+          ) : results.length === 0 ? (
+            <p className="px-3 py-10 text-center text-[13px] text-muted">
+              {aiMode ? t("search.aiEmpty") : t("search.empty")}{" "}
               <span className="text-ink">“{query}”</span>
             </p>
           ) : (
@@ -195,7 +363,13 @@ const SearchPalette: React.FC<Props> = ({ items, locale }) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 onMouseEnter={() => setActive(idx)}
-                onClick={close}
+                onClick={() => {
+                  const cleanQuery = query.trim();
+                  if (cleanQuery) {
+                    rememberSearch(cleanQuery, results);
+                  }
+                  close();
+                }}
                 className={`flex items-center gap-3 rounded-lg px-3 py-2.5 transition-colors ${
                   idx === active ? "bg-surface-2" : ""
                 }`}
