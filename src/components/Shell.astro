@@ -5,7 +5,6 @@ import Footer from "./Footer.astro";
 import Sidebar from "./Sidebar.astro";
 import type { NavItem } from "./Sidebar.astro";
 import SearchPalette from "./react/SearchPalette";
-import RecentSearches from "./react/RecentSearches";
 import HoverPreview from "./react/HoverPreview";
 import type { Locale } from "../i18n/ui";
 import { createT } from "../i18n/ui";
@@ -62,11 +61,10 @@ const navItems: NavItem[] = [
     )
   }
 
-  <Header locale={locale} sidebar={!hideSidebar} />
+  <Header locale={locale} sidebar={!hideSidebar} items={searchItems} />
 
   <div class="mx-auto max-w-[1360px] px-5 sm:px-8">
     <slot name="top" />
-    <slot name="recent-searches" />
   </div>
 
   <div

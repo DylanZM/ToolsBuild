@@ -25,7 +25,7 @@ interface Props {
   locale: Locale;
 }
 
-type AiState = "idle" | "loading" | "ready" | "error";
+type AiState = "idle" | "loading" | "ready" | "empty" | "error";
 
 function faviconUrl(url: string): string {
   try {
@@ -122,30 +122,43 @@ const SearchPalette: React.FC<Props> = ({ items, locale }) => {
 
     setAiIds(null);
     setAiState("loading");
+    const controller = new AbortController();
+    const timer = window.setTimeout(() => controller.abort(), 45_000);
+    const fallbackSearches = localResults;
     try {
       const response = await fetch("/api/ai-search", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ query: cleanQuery, locale }),
+        signal: controller.signal,
       });
       if (!response.ok) throw new Error("AI search unavailable");
-      const data = (await response.json()) as { ids?: string[] };
-      setAiIds(data.ids?.length ? data.ids : null);
+      const data = (await response.json()) as { ids?: string[]; degraded?: boolean };
+      const ids = data.degraded ? [] : (data.ids ?? []).slice(0, 10);
+
+      if (!ids.length) {
+        // Sin IA (cuota agotada o proveedor caído): se dejan los resultados
+        // locales y se avisa, en lugar de dejar la lista vacía.
+        setAiIds(null);
+        setAiState(data.degraded || data.ids === undefined ? "error" : "empty");
+        rememberSearch(cleanQuery, data.degraded ? fallbackSearches : []);
+        return;
+      }
+
+      const resolved = ids
+        .map((id) => items.find((item) => item.id === id))
+        .filter((item): item is SearchItem => Boolean(item));
+      setAiIds(ids);
       setAiState("ready");
-      rememberSearch(
-        cleanQuery,
-        data.ids
-          ? data.ids
-              .map((id) => items.find((item) => item.id === id))
-              .filter((item): item is SearchItem => Boolean(item))
-          : [],
-      );
+      rememberSearch(cleanQuery, resolved);
     } catch {
       setAiIds(null);
       setAiState("error");
+      rememberSearch(cleanQuery, fallbackSearches);
     } finally {
+      window.clearTimeout(timer);
     }
-  }, [aiMode, aiState, items, locale, query, rememberSearch]);
+  }, [aiMode, aiState, items, locale, localResults, query, rememberSearch]);
 
   const open_ = useCallback((initialQuery = "") => {
     setOpen(true);
@@ -345,55 +358,67 @@ const SearchPalette: React.FC<Props> = ({ items, locale }) => {
             <p className="px-3 py-10 text-center text-[13px] text-muted">
               {t("search.aiPrompt")}
             </p>
-          ) : aiMode && aiState === "error" ? (
+          ) : aiState === "empty" ? (
             <p className="px-3 py-10 text-center text-[13px] text-muted">
-              {t("search.aiError")}
-            </p>
-          ) : results.length === 0 ? (
-            <p className="px-3 py-10 text-center text-[13px] text-muted">
-              {aiMode ? t("search.aiEmpty") : t("search.empty")}{" "}
-              <span className="text-ink">“{query}”</span>
+              {t("search.aiEmpty")} <span className="text-ink">“{query}”</span>
             </p>
           ) : (
-            results.map((item, idx) => (
-              <a
-                key={item.id}
-                data-idx={idx}
-                href={item.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                onMouseEnter={() => setActive(idx)}
-                onClick={() => {
-                  const cleanQuery = query.trim();
-                  if (cleanQuery) {
-                    rememberSearch(cleanQuery, results);
-                  }
-                  close();
-                }}
-                className={`flex items-center gap-3 rounded-lg px-3 py-2.5 transition-colors ${
-                  idx === active ? "bg-surface-2" : ""
-                }`}
-              >
-                <span className="grid h-7 w-7 shrink-0 place-items-center ">
-                  <img
-                    src={faviconUrl(item.url)}
-                    alt=""
-                    width="17"
-                    height="17"
-                    loading="lazy"
-                    className="h-5 w-5 object-contain"
-                  />
-                </span>
-                <span className="min-w-0 flex-1">
-                  <span className="block truncate text-[13px] tracking-tight text-ink">
-                    {item.name}
-                  </span>
-                  <span className="block truncate text-[11.5px] text-muted">
-                    {item.desc}
-                  </span>
-                </span>
-              </a>
-            ))
+            <>
+              {aiState === "error" && (
+                <p
+                  role="status"
+                  className="mb-1 rounded-lg border border-line bg-surface-2 px-3 py-2 text-[11.5px] text-muted"
+                >
+                  {results.length ? t("search.aiFallback") : t("search.aiError")}
+                </p>
+              )}
+              {results.length === 0 ? (
+                <p className="px-3 py-10 text-center text-[13px] text-muted">
+                  {aiMode && aiState !== "error" ? t("search.aiEmpty") : t("search.empty")}{" "}
+                  <span className="text-ink">“{query}”</span>
+                </p>
+              ) : (
+                results.map((item, idx) => (
+                  <a
+                    key={item.id}
+                    data-idx={idx}
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onMouseEnter={() => setActive(idx)}
+                    onClick={() => {
+                      const cleanQuery = query.trim();
+                      if (cleanQuery) {
+                        rememberSearch(cleanQuery, results);
+                      }
+                      close();
+                    }}
+                    className={`flex items-center gap-3 rounded-lg px-3 py-2.5 transition-colors ${
+                      idx === active ? "bg-surface-2" : ""
+                    }`}
+                  >
+                    <span className="grid h-7 w-7 shrink-0 place-items-center ">
+                      <img
+                        src={faviconUrl(item.url)}
+                        alt=""
+                        width="17"
+                        height="17"
+                        loading="lazy"
+                        className="h-5 w-5 object-contain"
+                      />
+                    </span>
+                    <span className="min-w-0 flex-1">
+                      <span className="block truncate text-[13px] tracking-tight text-ink">
+                        {item.name}
+                      </span>
+                      <span className="block truncate text-[11.5px] text-muted">
+                        {item.desc}
+                      </span>
+                    </span>
+                  </a>
+                ))
+              )}
+            </>
           )}
         </div>
       </div>

@@ -7,13 +7,22 @@ import LangSwitch from "./LangSwitch.astro";
 import Logo from "./Logo.astro";
 import MorphIcon from "morphicons/astro";
 import HeaderKbd from "./react/HeaderKbd";
+import RecentSearches from "./react/RecentSearches";
 import { Grid2X2, List, Search } from "lucide";
+
+interface SearchItem {
+  id: string;
+  url: string;
+  name: string;
+  desc: string;
+}
 
 interface Props {
   locale: Locale;
   sidebar?: boolean;
+  items: SearchItem[];
 }
-const { locale, sidebar = true } = Astro.props;
+const { locale, sidebar = true, items } = Astro.props;
 const t = createT(locale);
 ---
 
@@ -66,6 +75,8 @@ const t = createT(locale);
         <MorphIcon icon={Search} size={14} strokeWidth={2} />
         <HeaderKbd client:idle />
       </button>
+
+      <RecentSearches client:idle locale={locale} items={items} />
 
       <LangSwitch locale={locale} label={t("lang.switch")} />
       <button

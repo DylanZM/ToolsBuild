@@ -2,9 +2,7 @@
 import Shell from "../../components/Shell.astro";
 import LandingView from "../../components/LandingView.astro";
 import Hero from "../../components/react/Hero";
-import RecentSearches from "../../components/react/RecentSearches";
 import { createT } from "../../i18n/ui";
-import { links } from "../../data/links";
 
 const locale = "en" as const;
 const t = createT(locale);
@@ -16,16 +14,5 @@ const t = createT(locale);
   locale={locale}
 >
   <Hero slot="top" client:load locale={locale} />
-  <RecentSearches
-    slot="recent-searches"
-    client:load
-    locale={locale}
-    items={links.map((link) => ({
-      id: link.id,
-      url: link.url,
-      name: link.name,
-      desc: link.desc[locale],
-    }))}
-  />
   <LandingView locale={locale} />
 </Shell>

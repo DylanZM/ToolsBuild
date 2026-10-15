@@ -63,6 +63,8 @@ export const ui = {
     "search.closeResults": "Cerrar resultados",
     "search.aiActivate": "Activar búsqueda con IA",
     "search.aiDeactivate": "Desactivar búsqueda con IA",
+    "search.aiFallback": "La IA no está disponible ahora: mostrando resultados de búsqueda local.",
+    "search.history": "Historial de búsqueda",
 
     "card.visit": "Visitar",
     "card.newTab": "(se abre en una pestaña nueva)",
@@ -180,6 +182,8 @@ export const ui = {
     "search.closeResults": "Close results",
     "search.aiActivate": "Activate AI search",
     "search.aiDeactivate": "Deactivate AI search",
+    "search.aiFallback": "AI is unavailable right now: showing local search results.",
+    "search.history": "Search history",
 
     "card.visit": "Visit",
     "card.newTab": "(opens in a new tab)",
