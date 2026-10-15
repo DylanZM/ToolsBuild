@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",
+    "@astrojs/node": "^11.1.7",
     "@astrojs/react": "^7.0.1",
     "@lucide/astro": "^1.52.0",
     "@radix-ui/react-dialog": "^1.2.0",
@@ -34,5 +35,8 @@
   },
   "allowScripts": {
     "esbuild": true
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5"
   }
 }
