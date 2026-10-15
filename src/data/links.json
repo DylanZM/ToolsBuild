@@ -7483,5 +7483,275 @@
       "en": "Handpicked interfaces, interactions and motionfrom live websites, apps and dashboards."
     },
     "addedAt": "2026-10-10T23:31:17.260Z"
+  },
+  {
+	"id": "aseprite",
+	"url": "https://aseprite.org/",
+	"name": "Aseprite",
+	"category": "build",
+	"tags": [
+		"animation",
+		"assets",
+		"pixel"
+	],
+	"desc": {
+		"en": "Draw pixel art drawing for your projects",
+		"es": "Haz dibujos pixel arts para tus proyectos"
+	},
+	"addedAt": "2026-10-13T03:24:05.000Z"
+  },
+  {
+	"id": "aseprite-mcp",
+	"url": "https://github.com/diivi/aseprite-mcp",
+	"name": "Aseprite MCP",
+	"category": "MCPs",
+	"tags": [
+		"MCP",
+		"ai"
+	],
+	"desc": {
+		"es": "Conecta tu IA con aseprite para que haga pixel arts!",
+		"en": "Connect your AI to Aseprite to create pixel art!"
+	},
+	"addedAt": "2026-10-13T03:24:05.000Z"
+  },
+  {
+    "id": "blender-mcp",
+    "url": "https://github.com/ahujasid/blender-mcp",
+    "name": "Blender MCP",
+    "category": "MCPs",
+    "tags": [
+      "MCP",
+      "blender",
+      "3d",
+      "ai"
+    ],
+    "desc": {
+      "es": "Conecta tu IA con Blender para modelar, texturizar y animar escenas 3D en vivo.",
+      "en": "Connect your AI to Blender to model, texture and animate 3D scenes live."
+    },
+    "addedAt": "2026-10-13T03:24:05.000Z"
+  },
+  {
+    "id": "supabase-mcp",
+    "url": "https://github.com/supabase-community/supabase-mcp",
+    "name": "Supabase MCP",
+    "category": "MCPs",
+    "tags": [
+      "MCP",
+      "supabase",
+      "database",
+      "backend"
+    ],
+    "desc": {
+      "es": "Deja que tu agente gestione tu proyecto de Supabase: base de datos, auth, storage y edge functions.",
+      "en": "Let your agent manage your Supabase project: database, auth, storage and edge functions."
+    },
+    "addedAt": "2026-10-13T03:24:05.000Z"
+  },
+  {
+    "id": "super-productivity-mcp",
+    "url": "https://github.com/b0x42/Super-Productivity-MCP",
+    "name": "Super Productivity MCP",
+    "category": "MCPs",
+    "tags": [
+      "MCP",
+      "tasks",
+      "productivity",
+      "time tracking"
+    ],
+    "desc": {
+      "es": "Gestiona tareas, proyectos, etiquetas y el registro de tiempo de Super Productivity desde tu IA.",
+      "en": "Manage tasks, projects, tags and Super Productivity time tracking from your AI."
+    },
+    "addedAt": "2026-10-13T03:24:05.000Z"
+  },
+  {
+    "id": "godot-mcp",
+    "url": "https://github.com/Coding-Solo/godot-mcp",
+    "name": "Godot MCP",
+    "category": "MCPs",
+    "tags": [
+      "MCP",
+      "godot",
+      "gamedev",
+      "ai"
+    ],
+    "desc": {
+      "es": "Controla Godot desde tu IA: abre el editor, ejecuta el proyecto y lee la salida de depuración.",
+      "en": "Control Godot from your AI: launch the editor, run the project and read debug output."
+    },
+    "addedAt": "2026-10-13T03:24:05.000Z"
+  },
+  {
+    "id": "supabase",
+    "url": "https://supabase.com",
+    "name": "Supabase",
+    "category": "build",
+    "tags": [
+      "backend",
+      "database",
+      "postgres",
+      "auth",
+      "open source"
+    ],
+    "desc": {
+      "es": "Backend open source sobre Postgres: base de datos, auth, storage, realtime y edge functions.",
+      "en": "Open-source backend on Postgres: database, auth, storage, realtime and edge functions."
+    },
+    "addedAt": "2026-10-13T03:24:05.000Z"
+  },
+  {
+    "id": "super-productivity",
+    "url": "https://super-productivity.com",
+    "name": "Super Productivity",
+    "category": "utilities",
+    "tags": [
+      "tasks",
+      "timeboxing",
+      "time tracking",
+      "open source"
+    ],
+    "desc": {
+      "es": "Lista de tareas avanzada con timeboxing, registro de tiempo y sincronización con Jira o GitLab.",
+      "en": "Advanced todo app with timeboxing, time tracking and Jira or GitLab sync."
+    },
+    "addedAt": "2026-10-13T03:24:05.000Z"
+  },
+  {
+    "id": "godot",
+    "url": "https://godotengine.org",
+    "name": "Godot",
+    "category": "build",
+    "tags": [
+      "game engine",
+      "gamedev",
+      "open source",
+      "2d",
+      "3d"
+    ],
+    "desc": {
+      "es": "Motor de videojuegos open source para 2D y 3D con su propio lenguaje GDScript.",
+      "en": "Open-source 2D and 3D game engine with its own GDScript language."
+    },
+    "addedAt": "2026-10-13T03:24:05.000Z"
+  },
+  {
+    "id": "github-mcp",
+    "url": "https://github.com/github/github-mcp-server",
+    "name": "GitHub MCP",
+    "category": "MCPs",
+    "tags": [
+      "MCP",
+      "github",
+      "dev",
+      "ai"
+    ],
+    "desc": {
+      "es": "Servidor MCP oficial de GitHub: repos, issues, pull requests y workflows desde tu IA.",
+      "en": "GitHub's official MCP server: repos, issues, pull requests and workflows from your AI."
+    },
+    "addedAt": "2026-10-13T03:24:05.000Z"
+  },
+  {
+    "id": "context7-mcp",
+    "url": "https://github.com/upstash/context7-mcp",
+    "name": "Context7 MCP",
+    "category": "MCPs",
+    "tags": [
+      "MCP",
+      "docs",
+      "context",
+      "ai"
+    ],
+    "desc": {
+      "es": "Inyecta documentación actualizada de cualquier librería o framework en el contexto de tu agente.",
+      "en": "Inject up-to-date documentation for any library or framework into your agent's context."
+    },
+    "addedAt": "2026-10-13T03:24:05.000Z"
+  },
+  {
+    "id": "figma-mcp",
+    "url": "https://github.com/figma/mcp-server-guide",
+    "name": "Figma MCP",
+    "category": "MCPs",
+    "tags": [
+      "MCP",
+      "figma",
+      "design",
+      "dev mode"
+    ],
+    "desc": {
+      "es": "Servidor MCP oficial de Figma (Dev Mode): lleva el diseño a código con contexto real.",
+      "en": "Figma's official MCP server (Dev Mode): turn designs into code with real context."
+    },
+    "addedAt": "2026-10-13T03:24:05.000Z"
+  },
+  {
+    "id": "firecrawl-mcp",
+    "url": "https://github.com/mendableai/firecrawl-mcp-server",
+    "name": "Firecrawl MCP",
+    "category": "MCPs",
+    "tags": [
+      "MCP",
+      "scraping",
+      "web",
+      "ai"
+    ],
+    "desc": {
+      "es": "Da a tu agente scraping y extracción de datos web listos para usar.",
+      "en": "Give your agent ready-to-use web scraping and data extraction."
+    },
+    "addedAt": "2026-10-13T03:24:05.000Z"
+  },
+  {
+    "id": "unity-mcp",
+    "url": "https://github.com/CoplayDev/unity-mcp",
+    "name": "Unity MCP",
+    "category": "MCPs",
+    "tags": [
+      "MCP",
+      "unity",
+      "gamedev",
+      "ai"
+    ],
+    "desc": {
+      "es": "Puente entre tu IA y el editor de Unity: gestiona assets, escenas y scripts C#.",
+      "en": "Bridge between your AI and the Unity editor: manage assets, scenes and C# scripts."
+    },
+    "addedAt": "2026-10-13T03:24:05.000Z"
+  },
+  {
+    "id": "filesystem-mcp",
+    "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem",
+    "name": "Filesystem MCP",
+    "category": "MCPs",
+    "tags": [
+      "MCP",
+      "files",
+      "official"
+    ],
+    "desc": {
+      "es": "Servidor de referencia de Anthropic: operaciones de archivos seguras con control de acceso.",
+      "en": "Anthropic's reference server: secure file operations with configurable access control."
+    },
+    "addedAt": "2026-10-13T03:24:05.000Z"
+  },
+  {
+    "id": "memory-mcp",
+    "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/memory",
+    "name": "Memory MCP",
+    "category": "MCPs",
+    "tags": [
+      "MCP",
+      "memory",
+      "knowledge graph",
+      "official"
+    ],
+    "desc": {
+      "es": "Servidor de referencia de Anthropic: memoria persistente basada en grafo de conocimiento.",
+      "en": "Anthropic's reference server: persistent memory backed by a knowledge graph."
+    },
+    "addedAt": "2026-10-13T03:24:05.000Z"
   }
 ]
