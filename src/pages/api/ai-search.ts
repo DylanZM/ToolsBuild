@@ -15,12 +15,13 @@ const TOTAL_BUDGET_MS = 35_000;
 const CACHE_TTL_MS = 15 * 60 * 1000;
 const CACHE_MAX = 200;
 const resultCache = new Map<string, { ids: string[]; at: number }>();
+const rateLimit = new Map<string, { count: number; resetAt: number }>();
+const RATE_LIMIT_WINDOW_MS = 60_000;
+const RATE_LIMIT_MAX = 10;
 
 const DEFAULT_GEMINI_MODELS = [
     "gemini-3.8-flash",
-    "gemini-flash-latest",
     "gemini-3.5-flash-lite",
-    "gemini-3.1-flash-lite",
 ];
 
 function providerOrder(): Provider[] {
@@ -41,6 +42,27 @@ function geminiModels(): string[] {
     const primary = (import.meta.env.GEMINI_MODEL || "").trim();
     const base = fromEnv.length ? fromEnv : DEFAULT_GEMINI_MODELS;
     return [...new Set([primary, ...base].filter(Boolean))];
+}
+
+function clientKey(request: Request): string {
+    const ip =
+        request.headers.get("x-forwarded-for")?.split(",")[0].trim() ||
+        request.headers.get("x-real-ip")?.trim() ||
+        "unknown";
+    return ip;
+}
+
+function checkRateLimit(key: string): boolean {
+    const now = Date.now();
+    const entry = rateLimit.get(key);
+    if (!entry || now > entry.resetAt) {
+        rateLimit.set(key, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
+        return true;
+    }
+    if (entry.count >= RATE_LIMIT_MAX) return false;
+    entry.count += 1;
+    rateLimit.set(key, entry);
+    return true;
 }
 
 function cacheKey(locale: "es" | "en", query: string) {
@@ -221,6 +243,12 @@ function ok(ids: string[], extra: Record<string, unknown> = {}) {
 
 export const POST: APIRoute = async ({ request }) => {
     try {
+        if (!checkRateLimit(clientKey(request))) {
+            return new Response(JSON.stringify({ ids: [], error: "Rate limit exceeded" }), {
+                status: 429,
+                headers: { "Content-Type": "application/json", "Cache-Control": "no-store" },
+            });
+        }
         const body = await request.json();
         const query = typeof body.query === "string" ? body.query.trim().slice(0, 500) : "";
         const locale = body.locale === "en" ? "en" : "es";

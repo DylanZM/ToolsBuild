@@ -8,6 +8,7 @@ export const BOT_APPEARANCES: BotAvatarType[] = [
   "cloud",
   "square",
   "pill",
+  "blob",
 ];
 
 export const AI_PROVIDERS: {
