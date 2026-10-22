@@ -253,6 +253,7 @@ html.suspend-transitions *::after {
 [data-tooltip][data-tooltip-align="end"]::after {
   left: auto;
   right: 0;
+  top: calc(100% + 8px);
   transform: translateY(-4px);
 }
 
@@ -265,6 +266,7 @@ html.suspend-transitions *::after {
 [data-tooltip][data-tooltip-align="start"]::after {
   left: 0;
   right: auto;
+  top: calc(100% + 8px);
   transform: translateY(-4px);
 }
 

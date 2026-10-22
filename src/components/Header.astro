@@ -8,7 +8,7 @@ import Logo from "./Logo.astro";
 import MorphIcon from "morphicons/astro";
 import HeaderKbd from "./react/HeaderKbd";
 import RecentSearches from "./react/RecentSearches";
-import { Grid2X2, List, Search } from "lucide";
+import { Grid2X2, Search } from "lucide";
 
 interface SearchItem {
   id: string;
@@ -120,10 +120,7 @@ const t = createT(locale);
     });
   }
 
-  /**
-   * Fades each visible card grid out as a single block, swaps the layout,
-   * then fades the grids back in — one animation, no per-card stagger.
-   */
+
   let switching = false;
 
   async function switchView(view: string) {

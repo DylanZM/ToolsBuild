@@ -5,6 +5,7 @@ import Footer from "./Footer.astro";
 import Sidebar from "./Sidebar.astro";
 import type { NavItem } from "./Sidebar.astro";
 import SearchPalette from "./react/SearchPalette";
+import AgentDock from "./react/AgentDock";
 import HoverPreview from "./react/HoverPreview";
 import type { Locale } from "../i18n/ui";
 import { createT } from "../i18n/ui";
@@ -82,6 +83,16 @@ const navItems: NavItem[] = [
   <Footer locale={locale} />
 
   <SearchPalette client:load items={searchItems} locale={locale} />
+  <AgentDock
+    client:load
+    items={searchItems.map((item) => ({
+      id: item.id,
+      url: item.url,
+      name: item.name,
+      desc: item.desc,
+    }))}
+    locale={locale}
+  />
   <HoverPreview client:load />
 </Layout>
 
