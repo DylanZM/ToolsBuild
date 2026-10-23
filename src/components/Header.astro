@@ -1,4 +1,5 @@
 ---
+
 import type { Locale } from "../i18n/ui";
 import { createT } from "../i18n/ui";
 import { localePath } from "../i18n/path";
@@ -7,7 +8,7 @@ import LangSwitch from "./LangSwitch.astro";
 import Logo from "./Logo.astro";
 import MorphIcon from "morphicons/astro";
 import HeaderKbd from "./react/HeaderKbd";
-import RecentSearches from "./react/RecentSearches";
+import Favorites from "./react/Favorites";
 import { Grid2X2, Search } from "lucide";
 
 
@@ -76,8 +77,9 @@ const t = createT(locale);
         <MorphIcon icon={Search} size={14} strokeWidth={2} />
         <HeaderKbd client:idle />
       </button>
-
-      <RecentSearches client:idle locale={locale} items={items} />
+    </div>
+    <!-- @ts-ignore -->
+      <Favorites client:idle locale={locale} />
 
       <LangSwitch locale={locale} label={t("lang.switch")} />
       <button

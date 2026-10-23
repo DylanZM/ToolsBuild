@@ -305,7 +305,7 @@ html.suspend-transitions *::after {
     display: contents;
   }
 
-  html[data-view="list"] [data-card-head] > div {
+  html[data-view="list"] [data-card-head] > div:first-child {
     min-width: 0;
     order: 1;
   }
@@ -318,17 +318,24 @@ html.suspend-transitions *::after {
     text-overflow: ellipsis;
   }
 
-  html[data-view="list"] [data-card-tags] {
+  html[data-view="list"] [data-card-head] [data-favorite-toggle] {
     order: 3;
-    display: none;
-    flex-wrap: nowrap;
-    margin-top: 0;
-    padding-top: 0;
-    justify-content: flex-end;
+    pointer-events: auto;
+    opacity: 1;
+    justify-self: end;
   }
 
-  html[data-view="list"] [data-card-head] > span {
+  html[data-view="list"] [data-card-tags] {
+    display: none;
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  html[data-view="list"] [data-card-head] > div:last-child,
+  html[data-view="list"] [data-card-head] > span[aria-hidden="true"] {
     order: 4;
     margin-top: 0;
+    opacity: 1;
+    transform: none;
   }
 }
