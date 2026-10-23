@@ -77,11 +77,12 @@ const t = createT(locale);
         <MorphIcon icon={Search} size={14} strokeWidth={2} />
         <HeaderKbd client:idle />
       </button>
-    </div>
-    <!-- @ts-ignore -->
+      
+      <!-- @ts-ignore -->
       <Favorites client:idle locale={locale} />
 
       <LangSwitch locale={locale} label={t("lang.switch")} />
+      
       <button
         type="button"
         data-view-toggle
@@ -105,6 +106,7 @@ const t = createT(locale);
     </div>
   </div>
 </header>
+
 
 <script>
   import { Grid2X2, List } from "lucide";
