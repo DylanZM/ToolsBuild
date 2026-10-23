@@ -8,7 +8,7 @@ import React, {
 import type { Locale } from "../../i18n/ui";
 import { createT } from "../../i18n/ui";
 import { MorphIcon } from "morphicons/react";
-import { Brain, Search, Send } from "lucide";
+import {Search, Send } from "lucide";
 
 export interface SearchItem {
   id: string;
@@ -289,44 +289,7 @@ const SearchPalette: React.FC<Props> = ({ items, locale }) => {
               <MorphIcon icon={Send} size={15} strokeWidth={2} />
             </button>
           )}
-          <button
-            type="button"
-            onClick={() => {
-              setAiMode((enabled) => !enabled);
-              setAiIds(null);
-              setAiState("idle");
-            }}
-            aria-label={t(
-              aiState === "loading"
-                ? "search.aiSearching"
-                : aiMode
-                  ? "search.aiDeactivate"
-                  : "search.aiActivate",
-            )}
-            aria-pressed={aiMode}
-            title={t(
-              aiState === "loading"
-                ? "search.aiSearching"
-                : aiMode
-                  ? "search.aiDeactivate"
-                  : "search.aiActivate",
-            )}
-            aria-busy={aiState === "loading"}
-            className={`grid h-8 w-8 shrink-0 place-items-center rounded-md transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${
-              aiState === "loading"
-                ? "bg-accent text-white"
-                : aiMode
-                  ? "bg-accent text-white"
-                  : "text-muted hover:bg-surface-2 hover:text-ink"
-            }`}
-          >
-            <MorphIcon
-              icon={Brain}
-              size={16}
-              strokeWidth={2}
-              className={aiState === "loading" ? "animate-pulse" : ""}
-            />
-          </button>
+       
         </div>
 
         <div ref={listRef} className="max-h-[52vh] overflow-y-auto p-2">
