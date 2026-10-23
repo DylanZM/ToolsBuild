@@ -7485,35 +7485,35 @@
     "addedAt": "2026-10-10T23:31:17.260Z"
   },
   {
-	"id": "aseprite",
-	"url": "https://aseprite.org/",
-	"name": "Aseprite",
-	"category": "build",
-	"tags": [
-		"animation",
-		"assets",
-		"pixel"
-	],
-	"desc": {
-		"en": "Draw pixel art drawing for your projects",
-		"es": "Haz dibujos pixel arts para tus proyectos"
-	},
-	"addedAt": "2026-10-13T03:24:05.000Z"
+    "id": "aseprite",
+    "url": "https://aseprite.org/",
+    "name": "Aseprite",
+    "category": "build",
+    "tags": [
+      "animation",
+      "assets",
+      "pixel"
+    ],
+    "desc": {
+      "en": "Draw pixel art drawing for your projects",
+      "es": "Haz dibujos pixel arts para tus proyectos"
+    },
+    "addedAt": "2026-10-13T03:24:05.000Z"
   },
   {
-	"id": "aseprite-mcp",
-	"url": "https://github.com/diivi/aseprite-mcp",
-	"name": "Aseprite MCP",
-	"category": "MCPs",
-	"tags": [
-		"MCP",
-		"ai"
-	],
-	"desc": {
-		"es": "Conecta tu IA con aseprite para que haga pixel arts!",
-		"en": "Connect your AI to Aseprite to create pixel art!"
-	},
-	"addedAt": "2026-10-13T03:24:05.000Z"
+    "id": "aseprite-mcp",
+    "url": "https://github.com/diivi/aseprite-mcp",
+    "name": "Aseprite MCP",
+    "category": "MCPs",
+    "tags": [
+      "MCP",
+      "ai"
+    ],
+    "desc": {
+      "es": "Conecta tu IA con aseprite para que haga pixel arts!",
+      "en": "Connect your AI to Aseprite to create pixel art!"
+    },
+    "addedAt": "2026-10-13T03:24:05.000Z"
   },
   {
     "id": "blender-mcp",
@@ -7753,5 +7753,124 @@
       "en": "Anthropic's reference server: persistent memory backed by a knowledge graph."
     },
     "addedAt": "2026-10-13T03:24:05.000Z"
+  },
+  {
+    "id": "glassyui",
+    "url": "https://glassyui.com",
+    "name": "GlassyUI",
+    "category": "components",
+    "tags": [
+      "glassmorphism",
+      "components",
+      "tailwind",
+      "css"
+    ],
+    "desc": {
+      "es": "Componentes con efecto glassmorphism listos para usar con Tailwind CSS.",
+      "en": "Glassmorphism UI components ready to use with Tailwind CSS."
+    },
+    "addedAt": "2026-10-23"
+  },
+  {
+    "id": "obsidianui",
+    "url": "https://www.obsidianui.dev/components",
+    "name": "Obsidian UI",
+    "category": "components",
+    "tags": [
+      "components",
+      "ui",
+      "library",
+      "modern"
+    ],
+    "desc": {
+      "es": "Biblioteca de componentes UI moderna y minimalista.",
+      "en": "Modern and minimal UI component library."
+    },
+    "addedAt": "2026-10-23"
+  },
+  {
+    "id": "hextaui",
+    "url": "https://hextaui.com/components",
+    "name": "HextaUI",
+    "category": "components",
+    "tags": [
+      "components",
+      "tailwind",
+      "ui",
+      "blocks"
+    ],
+    "desc": {
+      "es": "Componentes y bloques UI para acelerar el desarrollo con Tailwind.",
+      "en": "UI components and blocks to speed up development with Tailwind."
+    },
+    "addedAt": "2026-10-23"
+  },
+  {
+    "id": "panelui",
+    "url": "https://panelui.dev/docs/components",
+    "name": "Panel UI",
+    "category": "components",
+    "tags": [
+      "components",
+      "dashboard",
+      "ui",
+      "tailwind"
+    ],
+    "desc": {
+      "es": "Componentes UI enfocados a paneles y dashboards.",
+      "en": "UI components focused on panels and dashboards."
+    },
+    "addedAt": "2026-10-23"
+  },
+  {
+    "id": "vengeanceui",
+    "url": "https://www.vengeanceui.com/components/animated-rays",
+    "name": "Vengeance UI",
+    "category": "motion",
+    "tags": [
+      "animation",
+      "effects",
+      "ui",
+      "components"
+    ],
+    "desc": {
+      "es": "Componentes con animaciones y efectos visuales impactantes.",
+      "en": "Components with striking animations and visual effects."
+    },
+    "addedAt": "2026-10-23"
+  },
+  {
+    "id": "sortui",
+    "url": "https://sortui.dev/docs/components",
+    "name": "Sort UI",
+    "category": "components",
+    "tags": [
+      "components",
+      "ui",
+      "library",
+      "tailwind"
+    ],
+    "desc": {
+      "es": "Colección de componentes UI ordenados y listos para usar.",
+      "en": "Organized collection of UI components ready to use."
+    },
+    "addedAt": "2026-10-23"
+  },
+  {
+    "id": "piixpal",
+    "url": "https://piixpal.dvkk.dev/",
+    "name": "PiixPal",
+    "category": "utilities",
+    "tags": [
+      "tools",
+      "utilities",
+      "design",
+      "web"
+    ],
+    "desc": {
+      "es": "Herramientas y utilidades para diseño y desarrollo web.",
+      "en": "Tools and utilities for web design and development."
+    },
+    "addedAt": "2026-10-23"
   }
 ]
