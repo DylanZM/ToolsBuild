@@ -48,7 +48,7 @@ const AgentDock: React.FC<Props> = ({ items, locale }) => {
   const [query, setQuery] = useState("");
   const [phase, setPhase] = useState<AgentPhase>("idle");
   const [ids, setIds] = useState<string[] | null>(null);
-  const [rested, setRested] = useState(false);
+  const [rested, setRested] = useState(true);
   const [celebrating, setCelebrating] = useState(false);
   const [appearanceIndex, setAppearanceIndex] = useState(0);
   const [showSwitcher, setShowSwitcher] = useState(false);

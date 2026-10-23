@@ -2,10 +2,10 @@ import React, { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import type { Locale } from "../../i18n/ui";
 import { createT } from "../../i18n/ui";
-import { ExternalLink, Eye, History, X } from "lucide-react";
+import { ExternalLink, History, Search, X } from "lucide-react";
 
 const STORAGE_KEY = "toolsbuild:recent-searches";
-const MAX_SEARCHES = 6;
+const MAX_SEARCHES = 8;
 
 interface Props {
   locale: Locale;
@@ -26,6 +26,15 @@ interface RecentSearch {
 
 interface SearchHistoryEvent extends CustomEvent {
   detail: { query?: string; ids?: string[] };
+}
+
+function faviconUrl(url: string): string {
+  try {
+    const domain = new URL(url).hostname;
+    return `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
+  } catch {
+    return "/favicon.svg";
+  }
 }
 
 const RecentSearches: React.FC<Props> = ({ locale, items }) => {
@@ -99,7 +108,10 @@ const RecentSearches: React.FC<Props> = ({ locale, items }) => {
     if (!open) return;
     const onPointer = (event: PointerEvent) => {
       const target = event.target as Node;
-      if (buttonRef.current?.contains(target) || popoverRef.current?.contains(target)) {
+      if (
+        buttonRef.current?.contains(target) ||
+        popoverRef.current?.contains(target)
+      ) {
         return;
       }
       setOpen(false);
@@ -119,12 +131,15 @@ const RecentSearches: React.FC<Props> = ({ locale, items }) => {
     localStorage.removeItem(STORAGE_KEY);
     setSearches([]);
     setModalQuery(null);
+    setOpen(false);
   };
 
   const openSearch = (query: string) => {
     setOpen(false);
     setModalQuery(null);
-    window.dispatchEvent(new CustomEvent("toolsbuild:search", { detail: { query } }));
+    window.dispatchEvent(
+      new CustomEvent("toolsbuild:search", { detail: { query } }),
+    );
   };
 
   const removeSearch = (query: string) => {
@@ -146,42 +161,55 @@ const RecentSearches: React.FC<Props> = ({ locale, items }) => {
   const modal =
     modalSearch && modalResults?.length ? (
       <div
-        className="fixed inset-0 z-50 flex items-start justify-center bg-black/60 px-4 pt-[12vh] backdrop-blur-sm"
+        className="fixed inset-0 z-50 flex items-start justify-center bg-black/60 px-4 pt-[14vh] backdrop-blur-sm animate-fade-in"
         role="dialog"
         aria-modal="true"
         aria-label={t("search.resultsFor")}
         onClick={() => setModalQuery(null)}
       >
         <div
-          className="w-full max-w-xl overflow-hidden rounded-xl bg-surface shadow-2xl"
+          className="w-full max-w-xl overflow-hidden rounded-2xl border border-line bg-surface shadow-[0_60px_120px_-80px_rgba(0,0,0,0.9)]"
           onClick={(event) => event.stopPropagation()}
         >
-          <div className="flex items-center gap-3 border-b border-line px-4 py-3">
+          <div className="flex items-center gap-3 border-b border-line px-5 py-3.5">
             <div className="min-w-0 flex-1">
-              <p className="text-[11px] text-muted">{t("search.resultsFor")}</p>
-              <p className="truncate text-[14px] text-ink">“{modalSearch.query}”</p>
+              <p className="text-[10px] uppercase tracking-[0.14em] text-muted">
+                {t("search.resultsFor")}
+              </p>
+              <p className="mt-1 truncate text-[14px] tracking-tight text-ink">
+                “{modalSearch.query}”
+              </p>
             </div>
             <button
               type="button"
               onClick={() => setModalQuery(null)}
               aria-label={t("search.closeResults")}
-              title={t("search.closeResults")}
-              className="grid h-8 w-8 shrink-0 place-items-center rounded-md text-muted transition-colors hover:bg-surface-2 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              className="grid h-8 w-8 shrink-0 place-items-center rounded-lg text-muted transition-colors hover:bg-surface-2 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             >
-              <X size={16} aria-hidden="true" />
+              <X size={15} strokeWidth={1.8} aria-hidden="true" />
             </button>
           </div>
-          <div className="max-h-[55vh] space-y-2 overflow-y-auto p-3">
+          <div className="max-h-[56vh] space-y-1 overflow-y-auto p-2">
             {modalResults.map((item) => (
               <a
                 key={item.id}
                 href={item.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex min-w-0 items-center gap-3 rounded-lg border border-line px-3 py-3 transition-colors hover:border-accent hover:bg-surface-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                className="group flex min-w-0 items-center gap-3 rounded-xl px-3 py-2.5 transition-colors hover:bg-surface-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
               >
+                <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-surface-2">
+                  <img
+                    src={faviconUrl(item.url)}
+                    alt=""
+                    width="16"
+                    height="16"
+                    loading="lazy"
+                    className="h-4 w-4 object-contain"
+                  />
+                </span>
                 <span className="min-w-0 flex-1">
-                  <span className="block truncate text-[13px] text-ink">
+                  <span className="block truncate text-[13px] tracking-tight text-ink">
                     {item.name}
                   </span>
                   <span className="mt-0.5 block truncate text-[11.5px] text-muted">
@@ -221,11 +249,11 @@ const RecentSearches: React.FC<Props> = ({ locale, items }) => {
           ref={popoverRef}
           role="menu"
           aria-label={t("search.recent")}
-          className="absolute right-5 top-[calc(100%+8px)] z-50 w-[min(92vw,21rem)] overflow-hidden rounded-xl border border-line bg-surface shadow-2xl sm:right-8"
+          className="absolute right-5 top-[calc(100%+8px)] z-50 w-[min(92vw,22rem)] overflow-hidden rounded-2xl border border-line bg-surface shadow-[0_40px_90px_-60px_rgba(0,0,0,0.9)] sm:right-8"
         >
-          <div className="flex items-center gap-2 border-b border-line px-3 py-2">
+          <div className="flex items-center gap-2 border-b border-line px-4 py-2.5">
             <History size={13} className="text-muted" aria-hidden="true" />
-            <span className="text-[11px] font-medium uppercase tracking-[0.12em] text-muted">
+            <span className="text-[10px] uppercase tracking-[0.14em] text-muted">
               {t("search.recent")}
             </span>
             <button
@@ -233,46 +261,49 @@ const RecentSearches: React.FC<Props> = ({ locale, items }) => {
               onClick={clear}
               className="ml-auto inline-flex items-center gap-1 text-[11px] text-muted transition-colors hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             >
-              <X size={13} aria-hidden="true" />
+              <X size={12} strokeWidth={1.8} aria-hidden="true" />
               {t("search.clearRecent")}
             </button>
           </div>
 
-          <div className="max-h-[60vh] space-y-1 overflow-y-auto p-2">
+          <div className="max-h-[62vh] space-y-0.5 overflow-y-auto p-1.5">
             {searches.map(({ query, ids }) => (
               <div
                 key={query}
-                className="flex min-w-0 items-center gap-1 rounded-lg px-1 py-0.5 transition-colors hover:bg-surface-2"
+                className="group/item flex min-w-0 items-center gap-1 rounded-xl px-1 transition-colors hover:bg-surface-2"
               >
                 <button
                   type="button"
                   onClick={() => openSearch(query)}
                   aria-label={`${t("search.searchAgain")}: ${query}`}
-                  title={t("search.searchAgain")}
-                  className="min-w-0 flex-1 truncate rounded-md px-2 py-1.5 text-left text-[12.5px] text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                  className="flex min-w-0 flex-1 items-center gap-2 rounded-lg px-2 py-2 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                 >
-                  {query}
+                  <span className="grid h-6 w-6 shrink-0 place-items-center rounded-md bg-surface-2">
+                    <Search size={12} className="text-muted" aria-hidden="true" />
+                  </span>
+                  <span className="min-w-0 flex-1 truncate text-[12.5px] tracking-tight text-ink">
+                    {query}
+                  </span>
                 </button>
-                <button
-                  type="button"
-                  onClick={() => setModalQuery(query)}
-                  disabled={!ids.length}
-                  aria-label={`${t("search.showResults")}: ${query}`}
-                  title={
-                    ids.length ? t("search.showResults") : t("search.noSavedResults")
-                  }
-                  className="grid h-7 w-7 shrink-0 place-items-center rounded-md text-muted transition-colors hover:bg-surface hover:text-ink disabled:cursor-not-allowed disabled:opacity-30 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-                >
-                  <Eye size={14} aria-hidden="true" />
-                </button>
+                {ids.length > 0 && (
+                  <button
+                    type="button"
+                    onClick={() => setModalQuery(query)}
+                    aria-label={`${t("search.showResults")}: ${query}`}
+                    title={t("search.showResults")}
+                    className="grid h-7 w-7 shrink-0 place-items-center rounded-md text-muted opacity-0 transition-all hover:bg-surface hover:text-ink group-hover/item:opacity-100 focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                  >
+                    <ExternalLink size={13} strokeWidth={1.8} aria-hidden="true" />
+                  </button>
+                )}
                 <button
                   type="button"
                   onClick={() => removeSearch(query)}
                   aria-label={`${t("search.deleteRecent")}: ${query}`}
                   title={t("search.deleteRecent")}
-                  className="grid h-7 w-7 shrink-0 place-items-center rounded-md text-muted transition-colors hover:bg-red-500/10 hover:text-red-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                  className="grid h-7 w-7 shrink-0 place-items-center rounded-md text-muted opacity-0 transition-all hover:bg-red-500/10 hover:text-red-500 group-hover/item:opacity-100 focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                 >
-                  <X size={14} aria-hidden="true" />
+                  <X size={13} strokeWidth={1.8} aria-hidden="true" />
                 </button>
               </div>
             ))}
