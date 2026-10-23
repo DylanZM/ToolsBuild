@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import type { Locale } from "../../i18n/ui";
 import { createT } from "../../i18n/ui";
-import { ExternalLink, History, Search, X } from "lucide-react";
+import { ExternalLink, History, Search, Trash2, X } from "lucide-react";
 
 const STORAGE_KEY = "toolsbuild:recent-searches";
 const MAX_SEARCHES = 8;
@@ -173,10 +173,10 @@ const RecentSearches: React.FC<Props> = ({ locale, items }) => {
         >
           <div className="flex items-center gap-3 border-b border-line px-5 py-3.5">
             <div className="min-w-0 flex-1">
-              <p className="text-[10px] uppercase tracking-[0.14em] text-muted">
+              <p className="font-sans text-[10px] uppercase tracking-[0.16em] text-muted">
                 {t("search.resultsFor")}
               </p>
-              <p className="mt-1 truncate text-[14px] tracking-tight text-ink">
+              <p className="mt-1 truncate font-sans text-[14px] tracking-tight text-ink">
                 “{modalSearch.query}”
               </p>
             </div>
@@ -209,10 +209,10 @@ const RecentSearches: React.FC<Props> = ({ locale, items }) => {
                   />
                 </span>
                 <span className="min-w-0 flex-1">
-                  <span className="block truncate text-[13px] tracking-tight text-ink">
+                  <span className="block truncate font-sans text-[13px] tracking-tight text-ink">
                     {item.name}
                   </span>
-                  <span className="mt-0.5 block truncate text-[11.5px] text-muted">
+                  <span className="mt-0.5 block truncate font-sans text-[11.5px] text-muted">
                     {item.desc}
                   </span>
                 </span>
@@ -253,15 +253,15 @@ const RecentSearches: React.FC<Props> = ({ locale, items }) => {
         >
           <div className="flex items-center gap-2 border-b border-line px-4 py-2.5">
             <History size={13} className="text-muted" aria-hidden="true" />
-            <span className="text-[10px] uppercase tracking-[0.14em] text-muted">
+            <span className="font-sans text-[10px] uppercase tracking-[0.16em] text-muted">
               {t("search.recent")}
             </span>
             <button
               type="button"
               onClick={clear}
-              className="ml-auto inline-flex items-center gap-1 text-[11px] text-muted transition-colors hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              className="ml-auto inline-flex items-center gap-1.5 rounded-md px-1.5 py-1 font-sans text-[11px] text-muted transition-colors hover:bg-surface-2 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             >
-              <X size={12} strokeWidth={1.8} aria-hidden="true" />
+              <Trash2 size={12} strokeWidth={1.8} aria-hidden="true" />
               {t("search.clearRecent")}
             </button>
           </div>
@@ -281,7 +281,7 @@ const RecentSearches: React.FC<Props> = ({ locale, items }) => {
                   <span className="grid h-6 w-6 shrink-0 place-items-center rounded-md bg-surface-2">
                     <Search size={12} className="text-muted" aria-hidden="true" />
                   </span>
-                  <span className="min-w-0 flex-1 truncate text-[12.5px] tracking-tight text-ink">
+                  <span className="min-w-0 flex-1 truncate font-sans text-[12.5px] tracking-tight text-ink">
                     {query}
                   </span>
                 </button>
