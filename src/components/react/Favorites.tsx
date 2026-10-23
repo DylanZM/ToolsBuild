@@ -85,14 +85,14 @@ const Favorites: React.FC<Props> = ({ locale }) => {
 
       {open && mounted && (
         <div
-          className="fixed inset-0 z-50 flex items-start justify-center bg-black/60 px-4 pt-[14vh] backdrop-blur-sm animate-fade-in"
+          className="fixed inset-0 z-50 flex items-start justify-center px-4 pt-[14vh] animate-fade-in"
           role="dialog"
           aria-modal="true"
           aria-label={locale === "en" ? "Favorite websites" : "Sitios web favoritos"}
           onClick={() => setOpen(false)}
         >
           <div
-            className="w-full max-w-xl overflow-hidden rounded-2xl border border-line bg-surface shadow-[0_60px_120px_-80px_rgba(0,0,0,0.9)]"
+            className="w-full max-w-xl overflow-hidden rounded-2xl border border-line bg-surface shadow-[0_40px_100px_-60px_rgba(0,0,0,0.8)]"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center gap-3 border-b border-line px-5 py-3.5">
