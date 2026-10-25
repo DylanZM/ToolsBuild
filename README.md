@@ -20,12 +20,6 @@ Built with [Astro](https://astro.build), React and Tailwind CSS.
 
 ## Getting Started
 
-### Dependencies
-
-- [Node.js](https://nodejs.org) **22.12 or newer** (the project declares `engines: node >=22.12.0`)
-- npm (ships with Node)
-- A modern browser (Chrome, Firefox, Safari or Edge)
-
 ### Installing
 
 ```sh
@@ -34,34 +28,10 @@ cd ToolsBuild
 npm install
 ```
 
-### Executing program
-
+### Execute
 ```sh
-npm run dev          # dev server at http://localhost:4321
-npm run build        # production build → ./dist/
-npm run preview      # preview the production build locally
-npm run astro check  # type-check the project
+npm run dev
 ```
-
-Step by step:
-
-1. Run `npm install` once after cloning.
-2. Start the dev server with `npm run dev` and open `http://localhost:4321`.
-3. Browse the catalog: filter with the sidebar, search with `Ctrl` / `⌘ + K`, toggle grid/list from the header, and switch languages with the `EN` / `ES` control.
-4. For deployment, run `npm run build` and publish the generated `dist/` folder to any static host.
-
-## Help
-
-- **Dev server hangs or assets return `504 (Outdated Optimize Dep)`?** Stale Vite cache — wipe it and restart:
-
-  ```sh
-  rm -rf node_modules/.vite node_modules/.astro .astro node_modules/.cache
-  npm run dev
-  ```
-
-- **Type errors or warnings?** Run `npm run astro check`.
-- **Port 4321 already in use?** Stop the other process or run Astro with `--port` to pick a different one.
-- Anything else — open an issue and describe what you did and what you saw.
 
 ## License
 
