@@ -32,6 +32,7 @@ npm install
 ```sh
 npm run dev
 ```
+Starts the local dev server at `localhost:4321`.
 
 ## License
 
