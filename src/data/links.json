@@ -7872,5 +7872,22 @@
       "en": "Tools and utilities for web design and development."
     },
     "addedAt": "2026-10-23"
+  },
+  {
+    "id": "layoutkeeper",
+    "url": "https://github.com/tumingke0/LayoutKeeper",
+    "name": "LayoutKeeper",
+    "category": "utilities",
+    "tags": [
+      "macos",
+      "window manager",
+      "multi-monitor",
+      "open source"
+    ],
+    "desc": {
+      "es": "Gestor gratuito y de código abierto para macOS que restaura automáticamente las ventanas a su monitor y escritorio (Space) original, con brillo DDC sincronizado y modo anti-suspensión.",
+      "en": "Free open-source macOS multi-monitor window layout and display manager that restores windows to their original screen and Space, with DDC brightness sync and 4-mode anti-sleep."
+    },
+    "addedAt": "2026-10-28"
   }
 ]
