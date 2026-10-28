@@ -1,62 +1,62 @@
-# Cómo contribuir
+# Contributing
 
-Gracias por querer aportar a ToolsBuild. `master` está protegida: **ningún cambio entra sin pull request, CI en verde y revisión del mantenedor**.
+Thanks for wanting to contribute to ToolsBuild. `master` is protected: **nothing lands without a pull request, green CI, and maintainer review**.
 
-## Flujo paso a paso
+## Step-by-step workflow
 
-1. **Haz fork** del repositorio (botón *Fork* arriba a la derecha).
-2. **Clona tu fork** y crea una rama descriptiva desde `master`:
+1. **Fork** the repository (the *Fork* button at the top right).
+2. **Clone your fork** and create a descriptive branch from `master`:
 
    ```bash
-   git clone https://github.com/<tu-usuario>/ToolsBuild.git
+   git clone https://github.com/<your-username>/ToolsBuild.git
    cd ToolsBuild
-   git checkout -b feat/mi-mejora   # o fix/mi-bug
+   git checkout -b feat/my-improvement   # or fix/my-bug
    ```
 
-3. **Instala dependencias** (Node >= 22.12):
+3. **Install dependencies** (Node >= 22.12):
 
    ```bash
    npm ci
    ```
 
-4. **Desarrolla** con el servidor local:
+4. **Develop** with the local server:
 
    ```bash
    npm run dev
    ```
 
-5. **Verifica antes de subir** — el CI ejecuta exactamente esto y no se puede mergear si falla:
+5. **Verify before pushing** — CI runs exactly this and the PR cannot be merged if it fails:
 
    ```bash
    npm run check
    npm run build
    ```
 
-6. **Haz commit** siguiendo el estilo del repo (`feat:`, `fix:`, `docs:`, `refactor:`):
+6. **Commit** following the repo style (`feat:`, `fix:`, `docs:`, `refactor:`):
 
    ```bash
    git add .
-   git commit -m "feat: describe el cambio"
-   git push origin feat/mi-mejora
+   git commit -m "feat: describe the change"
+   git push origin feat/my-improvement
    ```
 
-7. **Abre el Pull Request** contra `master` y rellena la plantilla. Enlaza la issue con `Closes #123`.
+7. **Open the Pull Request** against `master` and fill in the template. Link the issue with `Closes #123`.
 
-## Qué pasa después de abrir el PR
+## What happens after you open the PR
 
-- GitHub pedirá a un mantenedor que **apruebe la ejecución del CI** (medida de seguridad para PRs de forks). Hasta entonces el check queda en espera.
-- El job `ci` debe pasar: `npm ci` + `npm run check` + `npm run build`.
-- Si `master` avanzó, actualiza tu rama (merge o rebase) para que el PR quede al día.
-- Se requiere **1 aprobación** y resolver todos los comentarios.
-- El mantenedor mergea con **squash**; tu PR se convierte en un único commit lineal en `master`.
+- GitHub will ask a maintainer to **approve running the CI** (a security measure for fork PRs). Until then the check stays pending.
+- The `ci` job must pass: `npm ci` + `npm run check` + `npm run build`.
+- If `master` has moved ahead, update your branch (merge or rebase) so the PR is up to date.
+- **1 approval** is required and all comments must be resolved.
+- The maintainer merges with **squash**; your PR becomes a single linear commit on `master`.
 
-## Reglas importantes
+## Important rules
 
-- **No subas secretos** ni archivos `.env`. El repo es público y tiene push protection activa.
-- No modifiques archivos de la lista de `.gitignore` (panel admin, `dist/`, `node_modules/`).
-- Un PR = un cambio coherente. Evita mezclar refactors grandes con features.
-- Los cambios de seguridad repórtalos en privado (ver *Security advisories*), no en un issue público.
+- **Do not upload secrets** or `.env` files. The repo is public and has push protection enabled.
+- Do not modify files listed in `.gitignore` (admin panel, `dist/`, `node_modules/`).
+- One PR = one coherent change. Avoid mixing large refactors with features.
+- Report security issues privately (see *Security advisories*), not in a public issue.
 
-## Entorno local
+## Local environment
 
-Copia `.env.example` a `.env` y rellena las claves que necesites. Sin claves el sitio funciona, pero las búsquedas con IA quedan deshabilitadas.
+Copy `.env.example` to `.env` and fill in the keys you need. The site works without keys, but AI searches stay disabled.
