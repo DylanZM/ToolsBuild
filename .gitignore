@@ -4,8 +4,7 @@ dist/
 # vercel build output / project link
 .vercel/
 
-# admin panel (local-only: la UI y la API no se suben a GitHub;
-# los datos viven en src/data/links.json y sí se commitean)
+
 /src/pages/admin.astro
 /src/components/react/AdminPanel.tsx
 /src/components/react/TableResources.tsx
