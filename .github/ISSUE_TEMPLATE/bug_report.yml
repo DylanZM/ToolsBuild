@@ -1,0 +1,41 @@
+name: Reporte de bug
+description: Algo no funciona como debería
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Gracias por reportar. Antes de enviar, busca si ya existe un issue similar.
+  - type: textarea
+    id: description
+    attributes:
+      label: Descripción del problema
+      description: Qué ocurre y qué esperabas que ocurriera.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Pasos para reproducir
+      placeholder: |
+        1. Ir a...
+        2. Hacer clic en...
+        3. Ver el error
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Entorno
+      description: Navegador, sistema operativo y versión de Node.
+      placeholder: "Chrome 140 / Linux / Node 22.12"
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Capturas o logs
+      description: Pega errores de consola o capturas de pantalla.
+      render: shell
+    validations:
+      required: false

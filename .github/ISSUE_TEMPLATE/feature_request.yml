@@ -1,0 +1,31 @@
+name: Propuesta de funcionalidad
+description: Idea o mejora para el proyecto
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problema o necesidad
+      description: Qué problema resolvería esta idea.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Propuesta
+      description: Cómo imaginas la solución o el comportamiento esperado.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternativas consideradas
+    validations:
+      required: false
+  - type: textarea
+    id: context
+    attributes:
+      label: Contexto adicional
+      description: Capturas, referencias o ejemplos.
+    validations:
+      required: false
