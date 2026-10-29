@@ -7889,5 +7889,120 @@
       "en": "Free open-source macOS multi-monitor window layout and display manager that restores windows to their original screen and Space, with DDC brightness sync and 4-mode anti-sleep."
     },
     "addedAt": "2026-10-28"
+  },
+  {
+    "id": "animata",
+    "url": "https://animata.design",
+    "name": "Animata",
+    "category": "components",
+    "tags": [
+      "animated",
+      "react",
+      "open source"
+    ],
+    "desc": {
+      "es": "Componentes React animados para copiar y pegar, con más de 150 efectos.",
+      "en": "Animated React components to copy and paste, with 150+ effects."
+    },
+    "addedAt": "2026-10-29"
+  },
+  {
+    "id": "hover-dev",
+    "url": "https://hover.dev",
+    "name": "Hover.dev",
+    "category": "components",
+    "tags": [
+      "animated",
+      "react",
+      "tailwind",
+      "templates"
+    ],
+    "desc": {
+      "es": "Componentes y plantillas animadas para React y Tailwind CSS.",
+      "en": "Animated components and templates for React and Tailwind CSS."
+    },
+    "addedAt": "2026-10-29"
+  },
+  {
+    "id": "reactdrops",
+    "url": "https://reactdrops.dev",
+    "name": "ReactDrops",
+    "category": "components",
+    "tags": [
+      "animated",
+      "react",
+      "ai"
+    ],
+    "desc": {
+      "es": "Componentes, animaciones y efectos React con acabado premium.",
+      "en": "React components, animations and effects with a premium finish."
+    },
+    "addedAt": "2026-10-29"
+  },
+  {
+    "id": "systaliko-ui",
+    "url": "https://systaliko-ui.vercel.app",
+    "name": "Systaliko UI",
+    "category": "components",
+    "tags": [
+      "shadcn",
+      "tailwind",
+      "blocks",
+      "templates"
+    ],
+    "desc": {
+      "es": "Bloques y plantillas React compatibles con shadcn y Tailwind.",
+      "en": "shadcn-compatible React blocks and templates built with Tailwind."
+    },
+    "addedAt": "2026-10-29"
+  },
+  {
+    "id": "ovio-ui",
+    "url": "https://ovioui.vercel.app",
+    "name": "Ovio UI",
+    "category": "components",
+    "tags": [
+      "motion",
+      "react",
+      "open source"
+    ],
+    "desc": {
+      "es": "Sistema de componentes con movimiento para sitios de developers.",
+      "en": "A motion-first component system for developer sites."
+    },
+    "addedAt": "2026-10-29"
+  },
+  {
+    "id": "lunar-ui",
+    "url": "https://lunarui.dev",
+    "name": "Lunar UI",
+    "category": "components",
+    "tags": [
+      "tailwind",
+      "react",
+      "vue",
+      "paid"
+    ],
+    "desc": {
+      "es": "Componentes interactivos de Tailwind CSS para React y Vue (pago único).",
+      "en": "Interactive Tailwind CSS components for React and Vue (one-time payment)."
+    },
+    "addedAt": "2026-10-29"
+  },
+  {
+    "id": "itom-ui",
+    "url": "https://itom-ui-components.vercel.app",
+    "name": "ITOM UI",
+    "category": "components",
+    "tags": [
+      "animated",
+      "react",
+      "learn"
+    ],
+    "desc": {
+      "es": "Componentes de interacción para aprender a construirlos desde cero.",
+      "en": "Interaction components to learn how to build them from scratch."
+    },
+    "addedAt": "2026-10-29"
   }
 ]
