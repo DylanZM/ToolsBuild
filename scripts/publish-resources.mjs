@@ -24,6 +24,25 @@ function fail(message) {
   process.exit(1);
 }
 
+function ensurePullRequest(message) {
+  const prNumber = output("gh", [
+    "pr", "list", "--head", BRANCH, "--base", BASE,
+    "--state", "open", "--json", "number", "--jq", ".[0].number",
+  ]);
+
+  if (prNumber) {
+    const url = output("gh", ["pr", "view", prNumber, "--json", "url", "--jq", ".url"]);
+    console.log(`\nPR #${prNumber} actualizado: ${url}`);
+  } else if (output("gh", ["--version"])) {
+    run("gh", [
+      "pr", "create", "--base", BASE, "--head", BRANCH,
+      "--title", message, "--body", "Automated resources update.",
+    ]);
+  } else {
+    console.log(`\nAbre el PR manualmente: https://github.com/DylanZM/ToolsBuild/compare/${BASE}...${BRANCH}?expand=1`);
+  }
+}
+
 const message = process.argv.slice(2).join(" ").trim() || "feat: add new resources";
 
 if (output("git", ["rev-parse", "--is-inside-work-tree"]) !== "true") {
@@ -46,7 +65,13 @@ if (output("git", ["rev-parse", "--abbrev-ref", "HEAD"]) !== BRANCH) {
 
 const ahead = Number(output("git", ["rev-list", "--count", `origin/${BRANCH}..${BRANCH}`]) || 0);
 if (ahead > 0) {
-  fail(`La rama ${BRANCH} tiene ${ahead} commit(s) locales sin publicar.\nEjecuta 'git push origin ${BRANCH}' o resetea la rama antes de continuar.`);
+  if (hasDataChanges) {
+    run("git", ["add", DATA_FILE]);
+    run("git", ["commit", "-m", message]);
+  }
+  run("git", ["push", "-u", "origin", BRANCH]);
+  ensurePullRequest(message);
+  process.exit(0);
 }
 
 if (hasDataChanges) run("git", ["stash", "push", "--", DATA_FILE], { quiet: true });
@@ -67,19 +92,4 @@ run("git", ["add", DATA_FILE]);
 run("git", ["commit", "-m", message]);
 run("git", ["push", "-u", "origin", BRANCH]);
 
-const prNumber = output("gh", [
-  "pr", "list", "--head", BRANCH, "--base", BASE,
-  "--state", "open", "--json", "number", "--jq", ".[0].number",
-]);
-
-if (prNumber) {
-  const url = output("gh", ["pr", "view", prNumber, "--json", "url", "--jq", ".url"]);
-  console.log(`\nPR #${prNumber} actualizado: ${url}`);
-} else if (output("gh", ["--version"])) {
-  run("gh", [
-    "pr", "create", "--base", BASE, "--head", BRANCH,
-    "--title", message, "--body", "Automated resources update.",
-  ]);
-} else {
-  console.log(`\nAbre el PR manualmente: https://github.com/DylanZM/ToolsBuild/compare/${BASE}...${BRANCH}?expand=1`);
-}
+ensurePullRequest(message);
