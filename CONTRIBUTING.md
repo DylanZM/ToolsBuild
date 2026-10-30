@@ -52,7 +52,15 @@ Thanks for wanting to contribute to ToolsBuild. `master` is protected: **nothing
 
 ## Adding website resources
 
-All website additions go to the long-lived `resources` branch, so you do not need a new branch for each one:
+All website additions go to the long-lived `resources` branch, so you do not need a new branch for each one. Edit `src/data/links.json` and run:
+
+```bash
+npm run publish:resources -- "feat: add new resources"
+```
+
+The script syncs `resources` with `master`, commits the data file, pushes, and opens or updates the PR automatically. It refuses to run if you have unrelated uncommitted changes.
+
+To do it manually:
 
 ```bash
 git checkout resources
@@ -61,9 +69,10 @@ git fetch origin && git reset --hard origin/master   # sync with master first
 git add src/data/links.json
 git commit -m "feat: add new resources"
 git push origin resources
+gh pr create --base master --head resources
 ```
 
-Then open the PR with `gh pr create --base master --head resources` (or from the GitHub UI). After it is merged, run the sync command again before your next batch. **Do not delete the `resources` branch when merging.**
+After a merge, the next script run syncs the branch again. **Do not delete the `resources` branch when merging.**
 
 ## Important rules
 

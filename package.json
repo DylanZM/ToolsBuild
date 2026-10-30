@@ -9,6 +9,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "check": "astro check",
+    "publish:resources": "node scripts/publish-resources.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },
