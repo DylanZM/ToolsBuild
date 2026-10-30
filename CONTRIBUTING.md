@@ -50,6 +50,21 @@ Thanks for wanting to contribute to ToolsBuild. `master` is protected: **nothing
 - **1 approval** is required and all comments must be resolved.
 - The maintainer merges with **squash**; your PR becomes a single linear commit on `master`.
 
+## Adding website resources
+
+All website additions go to the long-lived `resources` branch, so you do not need a new branch for each one:
+
+```bash
+git checkout resources
+git fetch origin && git reset --hard origin/master   # sync with master first
+# edit src/data/links.json
+git add src/data/links.json
+git commit -m "feat: add new resources"
+git push origin resources
+```
+
+Then open the PR with `gh pr create --base master --head resources` (or from the GitHub UI). After it is merged, run the sync command again before your next batch. **Do not delete the `resources` branch when merging.**
+
 ## Important rules
 
 - **Do not upload secrets** or `.env` files. The repo is public and has push protection enabled.
