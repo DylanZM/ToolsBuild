@@ -1,23 +1,23 @@
-## Qué cambia
+## What changes
 
-<!-- Describe brevemente el cambio y el problema que resuelve. -->
+<!-- Briefly describe the change and the problem it solves. -->
 
-## Tipo de cambio
+## Type of change
 
 - [ ] Bug fix
-- [ ] Nueva funcionalidad
-- [ ] Refactor / limpieza
-- [ ] Documentación
-- [ ] Otro (descríbelo arriba)
+- [ ] New feature
+- [ ] Refactor / cleanup
+- [ ] Documentation
+- [ ] Other (describe above)
 
 ## Checklist
 
-- [ ] `npm run check` pasa sin errores
-- [ ] `npm run build` pasa sin errores
-- [ ] Probé el cambio en local
-- [ ] No incluí secretos ni archivos `.env`
-- [ ] Actualicé la documentación si hacía falta
+- [ ] `npm run check` passes without errors
+- [ ] `npm run build` passes without errors
+- [ ] I tested the change locally
+- [ ] I did not include secrets or `.env` files
+- [ ] I updated the documentation if needed
 
-## Issue relacionada
+## Related issue
 
 <!-- Closes #123 -->
