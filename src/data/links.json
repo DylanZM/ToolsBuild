@@ -8004,5 +8004,22 @@
       "en": "Interaction components to learn how to build them from scratch."
     },
     "addedAt": "2026-10-29"
+  },
+  {
+    "id": "agent-qa",
+    "url": "https://vostride.com",
+    "name": "agent-qa",
+    "category": "MCPs",
+    "tags": [
+      "MCP",
+      "testing",
+      "memory",
+      "web",
+      "mobile"
+    ],
+    "desc": {
+      "es": "Prueba apps web y móviles por MCP, con memoria persistente memidex, aprendizaje validado y evidencias revisables.",
+      "en": "Test web and mobile apps through MCP, with memidex memory, validated self-improvement and reviewable run evidence."
+    }
   }
 ]
