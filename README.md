@@ -2,7 +2,7 @@
 
 ## Description
 
-Toolsbuild is a hand-curated directory of **506 resources for designers, developers and small teams**, organized into **10 categories**: inspiration galleries, UI components, icon sets, animation references, visual assets, build tools, MCP servers, learning material, and everyday utilities.
+Toolsbuild is a hand-curated directory of **522 resources for designers, developers and small teams**, organized into **10 categories**: inspiration galleries, UI components, icon sets, animation references, visual assets, build tools, MCP servers, learning material, and everyday utilities.
 
 Every entry includes a favicon, tags, and a short description in **Spanish and English**, so you can scan the catalog, filter by category, and jump straight to the resource. The site is fully static, dark-first, responsive, and ships with:
 
