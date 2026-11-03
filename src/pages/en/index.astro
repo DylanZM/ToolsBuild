@@ -4,6 +4,8 @@ import LandingView from "../../components/LandingView.astro";
 import Hero from "../../components/react/Hero";
 import { createT } from "../../i18n/ui";
 
+export const prerender = true;
+
 const locale = "en" as const;
 const t = createT(locale);
 ---

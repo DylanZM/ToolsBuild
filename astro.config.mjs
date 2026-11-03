@@ -7,9 +7,11 @@ import tailwindcss from '@tailwindcss/vite';
 import react from '@astrojs/react';
 import node from '@astrojs/node';
 import vercel from '@astrojs/vercel';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://tools-build.vercel.app',
   output: 'server',
   adapter: process.env.VERCEL ? vercel() : node({ mode: 'standalone' }),
   i18n: {
@@ -25,7 +27,16 @@ export default defineConfig({
   ...(fs.existsSync(path.resolve(process.cwd(), 'src/pages/admin.astro'))
     ? { redirects: { '/en/admin': '/admin' } }
     : {}),
-  integrations: [react()],
+  integrations: [
+    react(),
+    sitemap({
+      filter: (page) => !page.includes('/admin'),
+      i18n: {
+        defaultLocale: 'es',
+        locales: { es: 'es-ES', en: 'en-US' },
+      },
+    }),
+  ],
   vite: {
     plugins: [
       tailwindcss(),
