@@ -16,9 +16,7 @@ const canonicalURL = new URL(Astro.url.pathname, site);
 const alternatePath = switchLocalePath(Astro.url.pathname, locale);
 const alternateURL = new URL(alternatePath, site);
 const ogImage = new URL("/preview.png", site);
-const verification =
-  import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION ||
-  "n3R4paaq_J78lftKsIYupsOuSktP2hXKwE7srkkuZ34";
+const verification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
