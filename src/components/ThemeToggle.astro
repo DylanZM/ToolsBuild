@@ -41,8 +41,8 @@ const { label, tipLight, tipDark } = Astro.props;
       btn.dataset.bound = "1";
       btn.addEventListener("click", () => {
         const root = document.documentElement;
-        // Sin transiciones en el frame del swap: fondo, texto, iconos y
-        // keycaps deben saltar de color juntos, no fundirse por separado.
+        // No transitions on the swap frame: background, text, icons and
+        // keycaps must change together, not fade separately.
         root.classList.add("suspend-transitions");
         void root.offsetWidth;
         const isDark = root.classList.toggle("dark");

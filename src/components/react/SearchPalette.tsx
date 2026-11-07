@@ -137,8 +137,8 @@ const SearchPalette: React.FC<Props> = ({ items, locale }) => {
       const ids = data.degraded ? [] : (data.ids ?? []).slice(0, 10);
 
       if (!ids.length) {
-        // Sin IA (cuota agotada o proveedor caído): se dejan los resultados
-        // locales y se avisa, en lugar de dejar la lista vacía.
+        // No AI (quota exhausted or provider down): keep local results
+        // and warn instead of leaving the list empty.
         setAiIds(null);
         setAiState(data.degraded || data.ids === undefined ? "error" : "empty");
         rememberSearch(cleanQuery, data.degraded ? fallbackSearches : []);
