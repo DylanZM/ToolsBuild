@@ -26,3 +26,5 @@ npm run dev
 Starts the local dev server at `localhost:4321`.
 
 
+## AI DISCLOSURE
+AI was used to create the portfolio design in Figma—specifically the styles, color variables, and so on.
