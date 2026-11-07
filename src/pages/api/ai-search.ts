@@ -6,12 +6,12 @@ type Provider = "gemini" | "deepseek" | "qwen";
 
 const providers: Provider[] = ["gemini", "deepseek", "qwen"];
 
-/** Cada intento corta a los 15s; la búsqueda completa no pasa de 35s. */
+/** Each attempt times out at 15s; the full search stays under 35s. */
 const ATTEMPT_TIMEOUT_MS = 15_000;
 const TOTAL_BUDGET_MS = 35_000;
 
-/** La cuota gratis de Gemini son ~20 peticiones al día por modelo: repetir
- *  una misma búsqueda no debe volver a gastar presupuesto. */
+/** Gemini's free tier is ~20 requests/day per model: cache repeats
+ *  so they don't spend quota. */
 const CACHE_TTL_MS = 15 * 60 * 1000;
 const CACHE_MAX = 200;
 const resultCache = new Map<string, { ids: string[]; at: number }>();
@@ -32,8 +32,8 @@ function providerOrder(): Provider[] {
     return [...new Set([...configured, ...providers])];
 }
 
-/** La cuota es por modelo: si el modelo principal se queda sin presupuesto
- *  (o devuelve 503), se baja a la siguiente alternativa disponible. */
+/** Quota is per model: if the primary runs out (or returns 503),
+ *  fall back to the next available model. */
 function geminiModels(): string[] {
     const fromEnv = (import.meta.env.GEMINI_MODELS || "")
         .split(",")
@@ -87,8 +87,8 @@ function writeCache(key: string, ids: string[]) {
     resultCache.set(key, { ids, at: Date.now() });
 }
 
-/** Catálogo en líneas compactas (`id | nombre | categoría | tags | descripción`):
- *  baja mucho el prompt frente a JSON con claves largas. */
+/** Compact catalog lines (`id | name | category | tags | description`):
+ *  keeps the prompt much smaller than keyed JSON. */
 function catalogForPrompt(locale: "es" | "en") {
     const clean = (value: string) => value.replace(/\s+/g, " ").replace(/[|~]/g, "/").trim();
     return links
@@ -119,7 +119,7 @@ Catalog (id | name | category | tags | description):
 ${catalogForPrompt(locale)}`;
 }
 
-/** Tolerante a vallas de código, prosa alrededor y JSON mal formateado. */
+/** Tolerates code fences, surrounding prose and malformed JSON. */
 function extractIds(text: string): string[] {
     if (!text) return [];
     const unfenced = text.replace(/```[a-z]*/gi, " ");
@@ -289,12 +289,12 @@ export const POST: APIRoute = async ({ request }) => {
                     return ok(ranked, attempt);
                 }
             } catch {
-                // Modelo sin cuota, caído o lento: se prueba el siguiente.
+                // No quota, down or slow: try the next model.
             }
         }
 
-        // Sin proveedor usable (cuota agotada/503): 200 con aviso para que la
-        // UI muestre resultados locales en vez de un error en pantalla.
+        // No usable provider (quota/503): return 200 with a warning so the
+        // UI can show local results instead of an error.
         return ok([], { degraded: true, error: "No AI provider available" });
     } catch {
         return new Response(JSON.stringify({ ids: [], error: "Invalid request" }), {
