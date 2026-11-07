@@ -21,9 +21,8 @@ export default defineConfig({
       prefixDefaultLocale: false,
     },
   },
-  // El panel /admin es solo español: /en/admin no existe, así que redirige
-  // en lugar de caer en el 404. Solo si admin.astro está presente (existe
-  // en local, no en un clone limpio/publicación).
+  // /admin is Spanish-only; redirect /en/admin instead of 404ing.
+  // Only when admin.astro exists (local-only, not in fresh clones).
   ...(fs.existsSync(path.resolve(process.cwd(), 'src/pages/admin.astro'))
     ? { redirects: { '/en/admin': '/admin' } }
     : {}),
@@ -43,10 +42,8 @@ export default defineConfig({
       {
         name: 'admin-links-api',
         /**
-         * API local para el panel /admin: solo existe en `astro dev`
-         * (el build estático no incluye middlewares de Vite).
-         * El script está en .gitignore (admin local-only), así que el
-         * middleware se registra solo si el archivo existe.
+         * Local /admin API, dev only (static builds skip Vite middleware).
+         * The script is gitignored, so register it only when present.
          * @param {import('vite').ViteDevServer} server
          */
         configureServer(server) {

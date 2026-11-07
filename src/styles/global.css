@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@100..900&family=Inter:wght@100..900&display=swap');
 @import "tailwindcss";
 
-/* El panel /admin vive en .gitignore (local-only) y Tailwind no escanea
-   archivos ignorados; sin estas líneas sus utilities no se generan. */
+/* /admin is gitignored (local-only) and Tailwind skips ignored files,
+   so these sources are needed to generate its utilities. */
 @source "../pages/admin.astro";
 @source "../components/react/AdminPanel.tsx";
 @source "../components/react/TableResources.tsx";
@@ -131,10 +131,8 @@
   }
 }
 
-/* Cambio de tema: mientras se aplica el nuevo modo se suspenden las
-   transiciones un par de frames. Si no, el fondo salta al instante y
-   texto/iconos/keycaps se quedan ~150ms con el color viejo sobre el
-   fondo nuevo (se ven "fantasma" en Chromium). */
+/* Theme switch: disable transitions for a couple of frames so background,
+   text, icons and keycaps change together instead of ghosting for ~150ms. */
 html.suspend-transitions *,
 html.suspend-transitions *::before,
 html.suspend-transitions *::after {
