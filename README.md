@@ -25,6 +25,4 @@ npm run dev
 ```
 Starts the local dev server at `localhost:4321`.
 
-## License
 
-No license has been specified for this project yet.
