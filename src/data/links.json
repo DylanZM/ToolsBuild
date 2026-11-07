@@ -8094,5 +8094,21 @@
       "en": "244 pixel art effects ready for games, with sprite-sheet export and a skill to make your own."
     },
     "addedAt": "2026-11-04"
+  },
+  {
+    "id": "appscreen",
+    "url": "https://appscreen.pro",
+    "name": "AppScreen",
+    "category": "utilities",
+    "tags": [
+      "app store",
+      "screenshots",
+      "device frames"
+    ],
+    "desc": {
+      "es": "Crea capturas para App Store y Google Play en el navegador, con marcos de dispositivo, titulares y diseños panorámicos, exportadas a los tamaños de cada tienda.",
+      "en": "Design App Store and Google Play screenshots in the browser, with device frames, headlines and panoramic layouts, exported at store sizes."
+    },
+    "addedAt": "2026-11-05"
   }
 ]
