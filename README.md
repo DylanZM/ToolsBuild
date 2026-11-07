@@ -14,6 +14,7 @@ Toolsbuild is a hand-curated directory of **526 resources for designers, develop
 ### Installing
 
 ```sh-
+git clone https://github.com/DylanZM/ToolsBuild.git
 cd ToolsBuild
 npm install
 ```
