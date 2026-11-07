@@ -8024,6 +8024,78 @@
     "addedAt": "2026-10-31"
   },
   {
+    "id": "nativecook",
+    "url": "https://nativecook.dev/blocks/",
+    "name": "Native Cook",
+    "category": "components",
+    "tags": [
+      "react native",
+      "swift",
+      "kotlin",
+      "mobile",
+      "blocks"
+    ],
+    "desc": {
+      "es": "766 bloques de UI para React Native, Swift y Kotlin, grabados y construidos por el equipo.",
+      "en": "766 UI blocks for React Native, Swift and Kotlin, built and recorded in-house."
+    },
+    "addedAt": "2026-11-04"
+  },
+  {
+    "id": "useanimations",
+    "url": "https://useanimations.com/#icons",
+    "name": "useAnimations",
+    "category": "icons",
+    "tags": [
+      "icons",
+      "animated",
+      "lottie",
+      "react",
+      "shadcn"
+    ],
+    "desc": {
+      "es": "300 micro-animaciones e iconos animados en Lottie para React, shadcn/ui y cualquier reproductor Lottie.",
+      "en": "300 micro animations and animated icons in Lottie for React, shadcn/ui and any Lottie player."
+    },
+    "addedAt": "2026-11-04"
+  },
+  {
+    "id": "scrapling",
+    "url": "https://github.com/D4Vinci/Scrapling",
+    "name": "Scrapling",
+    "category": "build",
+    "tags": [
+      "python",
+      "scraping",
+      "crawler",
+      "mcp",
+      "github"
+    ],
+    "desc": {
+      "es": "Framework de scraping en Python con requests sigilosos, navegadores stealth, spiders concurrentes y servidor MCP.",
+      "en": "Python scraping framework with stealthy requests, stealth browsers, concurrent spiders and an MCP server."
+    },
+    "addedAt": "2026-11-04"
+  },
+  {
+    "id": "pixelfx",
+    "url": "https://github.com/patch-gg/pixelfx",
+    "name": "pixelfx",
+    "category": "motion",
+    "tags": [
+      "pixel art",
+      "vfx",
+      "canvas",
+      "gamedev",
+      "github"
+    ],
+    "desc": {
+      "es": "244 efectos de pixel art listos para juegos, con exportación a sprite sheets y una skill para crear los tuyos.",
+      "en": "244 pixel art effects ready for games, with sprite-sheet export and a skill to make your own."
+    },
+    "addedAt": "2026-11-04"
+  },
+  {
     "id": "appscreen",
     "url": "https://appscreen.pro",
     "name": "AppScreen",
