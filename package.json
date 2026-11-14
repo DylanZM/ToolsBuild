@@ -24,7 +24,7 @@
     "@radix-ui/react-select": "^2.3.8",
     "@radix-ui/react-switch": "^1.3.8",
     "@tailwindcss/vite": "^4.3.3",
-    "astro": "^7.3.6",
+    "astro": "^7.4.12",
     "bot-avatars": "^0.2.2",
     "clsx": "^2.1.1",
     "framer-motion": "^14.0.0",
