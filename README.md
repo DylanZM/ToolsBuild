@@ -22,6 +22,7 @@ npm run dev
 4. Build the site to `/dist`
 ```sh
 npm run build
+```
 
 ## AI DISCLOSURE
 AI was used to create the portfolio design in Figma—specifically the styles, color variables, and so on.
