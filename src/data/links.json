@@ -1534,6 +1534,22 @@
     }
   },
   {
+    "id": "kite",
+    "url": "https://kite.new",
+    "name": "Kite",
+    "category": "ai",
+    "tags": [
+      "design",
+      "mcp",
+      "agents"
+    ],
+    "desc": {
+      "es": "Lienzo de diseño donde tus agentes de IA (Claude, ChatGPT, Cursor, Codex) dibujan capas editables vía MCP y tu equipo las edita en vivo; exporta a HTML, React o Tailwind.",
+      "en": "Design canvas where your AI agents (Claude, ChatGPT, Cursor, Codex) draw editable layers over MCP while your team edits live; export to HTML, React or Tailwind."
+    },
+    "addedAt": "2026-11-25"
+  },
+  {
     "id": "oreateai",
     "url": "https://www.oreateai.com",
     "name": "Oreate AI",
