@@ -2,29 +2,27 @@
 
 ## Description
 
-Toolsbuild is a hand-curated directory of **526 resources for designers, developers and small teams**, organized into **10 categories**: inspiration galleries, UI components, icon sets, animation references, visual assets, build tools, MCP servers, learning material, and everyday utilities.
+Toolsbuild is a hand-curated directory of **537 resources for designers, developers and small teams**, organized into **10 categories**: inspiration galleries, UI components, icon sets, animation references, visual assets, build tools, MCP servers, learning material, and everyday utilities.
 
-
-## Screenshots
-
-![Toolsbuild — the resource catalog](./public/preview.png)
-
-## Getting Started
-
-### Installing
-
+1. Clone the source code to your device
 ```sh
 git clone https://github.com/DylanZM/ToolsBuild.git
-cd ToolsBuild
+```
+
+2. Install the project's dependencies
+```sh
 npm install
 ```
 
-### Execute
+3. Start the development server on `localhost:4321`
 ```sh
 npm run dev
 ```
-Starts the local dev server at `localhost:4321`.
 
-## License
+4. Build the site to `/dist`
+```sh
+npm run build
+```
 
-No license has been specified for this project yet.
+## AI DISCLOSURE
+AI was used to create the portfolio design in Figma—specifically the styles, color variables, and so on.
