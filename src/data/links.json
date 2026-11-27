@@ -8058,7 +8058,7 @@
     "addedAt": "2026-11-04"
   },
   {
-    "id": "useanimations",
+    "id": "useanimations-lottie",
     "url": "https://useanimations.com/#icons",
     "name": "useAnimations",
     "category": "icons",
@@ -8126,5 +8126,190 @@
       "en": "Design App Store and Google Play screenshots in the browser, with device frames, headlines and panoramic layouts, exported at store sizes."
     },
     "addedAt": "2026-11-05"
+  },
+  {
+    "id": "iconmcp",
+    "url": "https://iconmcp.com/agents?set=generic",
+    "name": "IconMCP",
+    "category": "icons",
+    "tags": [
+      "icons",
+      "mcp",
+      "agent",
+      "outline",
+      "solid"
+    ],
+    "desc": {
+      "es": "6.248 iconos originales en outline y solid, más un servidor MCP con el que tu agente busca por significado. Licencia MIT.",
+      "en": "6,248 original icons in outline and solid, plus an MCP server your coding agent can search by meaning. MIT licensed."
+    },
+    "addedAt": "2026-11-21"
+  },
+  {
+    "id": "hamur",
+    "url": "https://hamur.dev/",
+    "name": "Hamur",
+    "category": "components",
+    "tags": [
+      "headless",
+      "accessible",
+      "react",
+      "vue",
+      "svelte",
+      "angular",
+      "solid",
+      "unstyled"
+    ],
+    "desc": {
+      "es": "112 componentes UI headless y accesibles para React, Vue, Svelte, Angular y Solid, con un core compartido y cero estilos impuestos.",
+      "en": "112 headless, accessible UI components for React, Vue, Svelte, Angular and Solid, on one shared core with no imposed styles."
+    },
+    "addedAt": "2026-11-21"
+  },
+  {
+    "id": "tuffui",
+    "url": "https://tuffui.com/components/agent-status",
+    "name": "TUFFUI",
+    "category": "components",
+    "tags": [
+      "shadcn",
+      "react",
+      "ai agents",
+      "registry",
+      "components"
+    ],
+    "desc": {
+      "es": "Registro de componentes React para interfaces de agentes de IA: estado del agente, chat, consola, aprobación de herramientas y más, instalables con shadcn.",
+      "en": "React component registry for AI agent interfaces: agent status, chat, console, tool approvals and more, installable with shadcn."
+    },
+    "addedAt": "2026-11-21"
+  },
+  {
+    "id": "prestigeui",
+    "url": "https://prestigeui.com/components",
+    "name": "Prestige UI",
+    "category": "components",
+    "tags": [
+      "react",
+      "tailwind",
+      "motion",
+      "shadcn",
+      "blocks",
+      "animated"
+    ],
+    "desc": {
+      "es": "150 bloques y 70 componentes React animados con Tailwind y Motion para landings y dashboards; instalación con shadcn y código propio.",
+      "en": "150 animated React blocks and 70 components with Tailwind and Motion for landing pages and dashboards; shadcn install, code you own."
+    },
+    "addedAt": "2026-11-21"
+  },
+  {
+    "id": "stick-it-up",
+    "url": "https://stickitupx.vercel.app/stickers#docs",
+    "name": "Stick It Up",
+    "category": "visuals",
+    "tags": [
+      "stickers",
+      "svg",
+      "react",
+      "illustrations",
+      "npm"
+    ],
+    "desc": {
+      "es": "64 stickers SVG para React y Next.js con efecto peel al hover; importa el que quieras o usa el componente genérico.",
+      "en": "64 SVG stickers for React and Next.js with a peel-on-hover effect; import each one or use the generic component."
+    },
+    "addedAt": "2026-11-21"
+  },
+  {
+    "id": "obsidianui-dashboard-shell",
+    "url": "https://www.obsidianui.dev/docs/dashboard-shell",
+    "name": "Obsidian UI · Dashboard Shell",
+    "category": "components",
+    "tags": [
+      "dashboard",
+      "shadcn",
+      "blocks",
+      "layout",
+      "react"
+    ],
+    "desc": {
+      "es": "Bloque de dashboard para shadcn con sidebar redimensionable, header, tabs animados, menús, filtros y tabla lista para producción.",
+      "en": "shadcn dashboard block with a resizable sidebar, header, animated tabs, menus, filters and a production-ready table."
+    },
+    "addedAt": "2026-11-21"
+  },
+  {
+    "id": "astryx",
+    "url": "https://astryx.atmeta.com/",
+    "name": "Astryx",
+    "category": "components",
+    "tags": [
+      "design system",
+      "react",
+      "meta",
+      "theming",
+      "components"
+    ],
+    "desc": {
+      "es": "Design system open source de Meta con más de 190 componentes React accesibles, temas personalizables y flujos listos para agentes.",
+      "en": "Meta's open-source design system with 190+ accessible React components, customizable themes and agent-ready workflows."
+    },
+    "addedAt": "2026-11-21"
+  },
+  {
+    "id": "mdxcn",
+    "url": "https://mdxcn.dev/",
+    "name": "mdxcn",
+    "category": "components",
+    "tags": [
+      "mdx",
+      "shadcn",
+      "charts",
+      "agents",
+      "markdown"
+    ],
+    "desc": {
+      "es": "Figuras y gráficos escritos como Markdown que se renderizan en MDX y como bloques ASCII para README, PRs y agentes; se instalan con shadcn.",
+      "en": "Figures and charts written as Markdown that render in MDX and as ASCII blocks for READMEs, PRs and agents; installed with shadcn."
+    },
+    "addedAt": "2026-11-21"
+  },
+  {
+    "id": "sakuga-vfx",
+    "url": "https://sakuga-vfx.vercel.app/gallery/",
+    "name": "Sakuga VFX",
+    "category": "motion",
+    "tags": [
+      "anime",
+      "vfx",
+      "canvas",
+      "effects",
+      "controls",
+      "single file"
+    ],
+    "desc": {
+      "es": "Doce controles que reaccionan como anime: springs con squash y overshoot, más efectos dibujados en canvas (humo, impactos, tajos) en un solo archivo.",
+      "en": "Twelve controls that react like anime: springs with squash and overshoot, plus canvas-drawn effects (smoke, impacts, slashes) in a single file."
+    },
+    "addedAt": "2026-11-21"
+  },
+  {
+    "id": "rubber-hose-ui",
+    "url": "https://rubber-hose-ui.vercel.app/gallery/",
+    "name": "Rubber Hose UI",
+    "category": "motion",
+    "tags": [
+      "rubber hose",
+      "cartoon",
+      "animation",
+      "controls",
+      "single file"
+    ],
+    "desc": {
+      "es": "Once controles animados con estética rubber hose de caricatura: cada uno es un archivo sin dependencias y respeta prefers-reduced-motion.",
+      "en": "Eleven animated controls with a cartoon rubber-hose look: each is a single dependency-free file and respects prefers-reduced-motion."
+    },
+    "addedAt": "2026-11-21"
   }
 ]
