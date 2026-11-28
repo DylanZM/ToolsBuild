@@ -2,7 +2,7 @@
 
 ## Description
 
-Toolsbuild is a hand-curated directory of **537 resources for designers, developers and small teams**, organized into **10 categories**: inspiration galleries, UI components, icon sets, animation references, visual assets, build tools, MCP servers, learning material, and everyday utilities.
+tools builds is a compilation of websites focused on technology and aimed at developers.
 
 1. Clone the source code to your device
 ```sh
